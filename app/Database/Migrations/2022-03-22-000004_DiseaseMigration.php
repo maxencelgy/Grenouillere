@@ -4,32 +4,32 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class PlanningMigration extends Migration
+class DiseaseMigration extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
-                'type'           => 'INT',
+            'id_disease'    => [
+                'type'       => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_planning'    => [
-                'type'       => 'INT',
-                'constraint'     => 5,
+            'name_disease'  => [
+                'type'       => 'VARCHAR',
+                'constraint'     => '180',
             ],
-            'libelle_planning'  => [
+            'description_disease' => [
                 'type'       => 'TEXT',
                 'constraint'     => '1000',
-            ],
+            ]
         ]);
-        $this->forge->addKey('id', true);
-        $this->forge->createTable('planning');
+        $this->forge->addKey('id_disease', true);
+        $this->forge->createTable('disease');
     }
 
     public function down()
     {
-        $this->forge->dropTable('planning');
+        $this->forge->dropTable('disease');
     }
 }

@@ -9,7 +9,7 @@ class ReservationMigration extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_reservation'     => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -18,17 +18,23 @@ class ReservationMigration extends Migration
             'fk_child'    => [
                 'type'       => 'INT',
                 'constraint'     => 5,
+                'unsigned'       => true,
             ],
             'fk_slot'  => [
                 'type'    => 'INT',
                 'constraint'  => 5,
+                'unsigned'       => true,
             ],
             'fk_facture' => [
                 'type'    => 'INT',
                 'constraint'  => 5,
+                'unsigned'       => true,
             ],
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('id_reservation', true);
+        $this->forge->addForeignKey('fk_child', 'child', 'id_child');
+        $this->forge->addForeignKey('fk_slot', 'slot', 'id_slot');
+        $this->forge->addForeignKey('fk_facture', 'facture', 'id_facture');
         $this->forge->createTable('reservation');
     }
 

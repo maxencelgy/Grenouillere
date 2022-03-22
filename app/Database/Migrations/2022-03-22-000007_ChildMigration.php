@@ -9,11 +9,16 @@ class ChildMigration extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_child'           => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
+            ],
+            'fk_users' => [
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
             ],
             'last_name_child'    => [
                 'type'       => 'VARCHAR',
@@ -31,14 +36,11 @@ class ChildMigration extends Migration
                 'constraint' => '1000',
                 'null' => true,
             ],
-            'fk_parent' => [
-                'type' => 'INT',
-                'constraint' => 11
-            ],
+            
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('id_child', true);
+        $this->forge->addForeignKey('fk_users', 'users', 'id_users');
         $this->forge->createTable('child');
-        $this->addForeignKey('fk_parent', 'users', 'id_users');
     }
 
     public function down()

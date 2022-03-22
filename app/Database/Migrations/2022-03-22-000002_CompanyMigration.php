@@ -9,7 +9,7 @@ class CompanyMigration extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_company'         => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -55,7 +55,7 @@ class CompanyMigration extends Migration
                 'type' => 'INT',
             ]
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('id_company', true);
         $this->forge->createTable('company');
     }
 

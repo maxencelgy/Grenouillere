@@ -9,7 +9,7 @@ class ChildAllergyMigration extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_child_allergy'   => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -24,8 +24,10 @@ class ChildAllergyMigration extends Migration
                 'constraint'     => 5,
             ],
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('id_child_allergy', true);
         $this->forge->createTable('child_allergy');
+        $this->addForeignKey('fk_child', 'child', 'id_child');
+        $this->addForeignKey('fk_disease', 'allergy', 'id_allergy');
     }
 
     public function down()
