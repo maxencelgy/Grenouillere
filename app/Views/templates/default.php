@@ -15,9 +15,9 @@
 <body>
     <?php include("navigation/header.php"); ?>
     <div class="container">
-        <div class="wrap">
-            <?= $this->renderSection('content') ?>
-        </div>
+
+        <?= $this->renderSection('content') ?>
+
     </div>
     <?php include("navigation/footer.php"); ?>
 </body>
