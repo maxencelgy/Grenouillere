@@ -7,6 +7,10 @@
 
 <?= $this->section('content') ?>
 
-<h1>GRENOUILLERE</h1>
+<section id="main">
+    <div class="wrap">
+        
+    </div>
+</section>
 
 <?= $this->endSection() ?>
