@@ -1,4 +1,0 @@
-sass style.scss ../style.css --watch
-
-commande pour la page HOME : 
-sass styleHome.scss ../styleHome.css --watch
