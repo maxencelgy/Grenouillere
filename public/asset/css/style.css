@@ -24,10 +24,12 @@ header .wrap {
   align-items: center;
   justify-content: space-between;
 }
-
-header .wrap .left img {
-  width: 40%;
+header .wrap .left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 header .wrap .right {
   display: flex;
 }
