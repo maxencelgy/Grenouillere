@@ -23,18 +23,22 @@ header .wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem;
 }
 header .wrap .left {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+header .wrap .left img {
+  width: 20%;
+}
 
 header .wrap .right {
   display: flex;
 }
 header .wrap .right a {
-  padding: 0.5rem;
+  padding: 0.6rem;
   text-decoration: none;
   color: black;
   margin-left: 1rem;

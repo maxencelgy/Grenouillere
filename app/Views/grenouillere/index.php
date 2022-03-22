@@ -15,6 +15,7 @@
             <h1>Grenouillere</h1>
             <h2>Trouvez parmi plus de 2000 annonces <br> d’Assitant Martenelle ou de creche <br> qualifiées !</h2>
             <form action="" class="filterSearch">
+                <img class="fleurs" src="asset/img/fleurs.svg" alt="">
                 <div class="top">
                     <select name="ville" id="ville">
                         <option value="">ville</option>

@@ -4,10 +4,7 @@
             <img src="/asset/img/logo.svg" alt="">
         </div>
         <div class="right">
-            <a href="/">Accueil</a>
-            <a href="">Particulier</a>
-            <a href="">Professionel</a>
-            <a href="" class="btn">connexion</a>
+            <a href="" class="btn">Connexion/Inscription</a>
         </div>
     </div>
 </header>
