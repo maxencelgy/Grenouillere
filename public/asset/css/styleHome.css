@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&family=Roboto:ital,wght@0,300;0,500;0,700;1,100;1,300;1,700&display=swap");
+/*REPONSIVE*/
+/*
+How to include
+@include breakpoints(parameters){
+    SCSS
+}
+*/
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400&family=Roboto:ital,wght@0,300;0,500;0,700;1,100;1,300;1,700&display=swap");
+/*REPONSIVE*/
+/*
+How to include
+@include breakpoints(parameters){
+    SCSS
+}
+*/
+.clear:before, .clear:after {
+  content: " ";
+  display: table;
+}
+
+.clear:after {
+  clear: both;
+}
+
+.clear {
+  *zoom: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  overflow-x: hidden;
+  font-size: 1rem;
+  font-family: "Arvo", serif;
+}
+
+/*BALISE DE BASE*/
+ul, ol, li, nav {
+  list-style: none;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+}
+
+em {
+  font-style: normal;
+}
+
+strong {
+  font-style: normal;
+  font-size: 3em;
+}
+
+textarea {
+  resize: none;
+}
+
+/*reset de toute les fonts, on augmente la taille avec des em*/
+/*CLASS*/
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.shadow {
+  -webkit-box-shadow: 1.25vw 1.25vw 1.25vw -0.625vw lightgray;
+  -moz-box-shadow: 1.25vw 1.25vw 0.625vw -0.625vw lightgray;
+  box-shadow: 1.25vw 1.25vw 0.625vw -0.625vw lightgray;
+}
+
+.shadow-image {
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem black);
+}
+
+.cover {
+  background-size: cover;
+}
+
+.none {
+  visibility: hidden;
+}
+
+.wrap {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+.wrap_footer {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+.wrap_petit {
+  width: min(900px, 100%);
+  margin-inline: auto;
+}
+
+.wrap_cv {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+.wrap_home {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+body {
+  background-color: red;
+}
+
+/*# sourceMappingURL=styleHome.css.map */
