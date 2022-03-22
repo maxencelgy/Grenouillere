@@ -2,7 +2,7 @@
 
 
 <?= $this->section('stylesheet') ?>
-<link rel="stylesheet" href="/asset/css/style.css">
+<link rel="stylesheet" href="/asset/css/home.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
