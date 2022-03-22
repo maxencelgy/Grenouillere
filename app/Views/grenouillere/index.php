@@ -18,7 +18,7 @@
                 <img class="fleurs" src="asset/img/fleurs.svg" alt="">
                 <div class="top">
                     <select name="ville" id="ville">
-                        <option value="">ville</option>
+                        <option value="">Ville</option>
                     </select>
                     <select name="enfant" id="enfant">
                         <option value="">Nombre d'enfant</option>
@@ -26,8 +26,8 @@
                     <select name="Journée" id="Journée">
                         <option value="">Journée</option>
                     </select>
-                    <select name="Horraire" id="Horraire">
-                        <option value="">Horraire</option>
+                    <select name="Horaire" id="Horaire">
+                        <option value="">Horaire</option>
                     </select>
                 </div>
                 <div class="bottom">
