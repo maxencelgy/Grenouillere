@@ -1,5 +1,7 @@
 <footer>
-    <div class="wrap">
-        <h2>Footer</h2>
+    <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
     </div>
 </footer>
+
