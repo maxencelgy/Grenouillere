@@ -38,6 +38,7 @@ class ChildMigration extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('child');
+        $this->addForeignKey('fk_parent', 'users', 'id_users');
     }
 
     public function down()

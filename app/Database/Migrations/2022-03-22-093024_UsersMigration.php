@@ -9,7 +9,7 @@ class UsersMigration extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_users'           => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -22,6 +22,10 @@ class UsersMigration extends Migration
             'first_name_users'  => [
                 'type'       => 'VARCHAR',
                 'constraint' => '180',
+            ],
+            'password_users'  => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'phone_users' => [
                 'type' => 'VARCHAR',
@@ -48,7 +52,7 @@ class UsersMigration extends Migration
                 'null' => true,
             ]
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('id_users', true);
         $this->forge->createTable('users');
     }
 
