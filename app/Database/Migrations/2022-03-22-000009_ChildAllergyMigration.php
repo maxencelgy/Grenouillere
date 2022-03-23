@@ -15,11 +15,11 @@ class ChildAllergyMigration extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_child'    => [
+            'fk_child'    => [
                 'type'       => 'INT',
                 'constraint'     => 5,
             ],
-            'fk_id_allergy'  => [
+            'fk_allergy'  => [
                 'type'       => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -29,7 +29,7 @@ class ChildAllergyMigration extends Migration
         ]);
         $this->forge->addKey('id_child_allergy', true);
         $this->forge->addForeignKey('fk_child', 'child', 'id_child');
-        $this->forge->addForeignKey('fk_disease', 'allergy', 'id_allergy');
+        $this->forge->addForeignKey('fk_allergy', 'allergy', 'id_allergy');
         $this->forge->createTable('child_allergy');
     }
 
