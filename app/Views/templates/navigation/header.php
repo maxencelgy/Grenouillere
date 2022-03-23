@@ -4,7 +4,11 @@
             <img src="/asset/img/logo.svg" alt="">
         </div>
         <div class="right">
-            <a href="authentification" class="btn">Connexion/Inscription</a>
+            <?php if(!empty(session()->get("email"))) { ?>
+                <a href="<?= site_url(); ?>deconnexion" class="btn">Deconnexion</a>
+            <?php } else { ?>
+                <a href="<?= site_url(); ?>authentification" class="btn">Connexion/Inscription</a>
+            <?php } ?>
         </div>
     </div>
 </header>
