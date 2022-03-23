@@ -4,36 +4,34 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AllergyMigration extends Migration
+class DiseaseMigration extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
-                'type'           => 'INT',
+            'id_disease'    => [
+                'type'       => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_allergy'    => [
-                'type'       => 'INT',
-                'constraint'     => 5,
-            ],
-            'name_allergy'  => [
+            'name_disease'  => [
                 'type'       => 'VARCHAR',
                 'constraint'     => '180',
             ],
-            'description_allergy' => [
+            'description_disease' => [
                 'type'       => 'TEXT',
                 'constraint'     => '1000',
-            ]
+            ],
+            'created_at_disease datetime default current_timestamp',
+            'updated_at_disease datetime default current_timestamp on update current_timestamp',
         ]);
-        $this->forge->addKey('id', true);
-        $this->forge->createTable('allergy');
+        $this->forge->addKey('id_disease', true);
+        $this->forge->createTable('disease');
     }
 
     public function down()
     {
-        $this->forge->dropTable('allergy');
+        $this->forge->dropTable('disease');
     }
 }
