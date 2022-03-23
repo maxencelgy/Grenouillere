@@ -12,6 +12,7 @@ a{
 body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
+  font-weight: 400;
 }
 
 img {
@@ -47,7 +48,9 @@ header .wrap .right a {
   text-decoration: none;
   color: black;
   margin-left: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  -webkit-box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.28);
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.28);
   border-bottom: 3px solid var(--green);
 }
 
@@ -59,45 +62,43 @@ header .wrap .right a {
 
 /* FOOTER */
 
-.ocean {
-  height: 5%;
-  width:100%;
-  position:absolute;
-  bottom:0;
-  left:0;
-  background: var(--blue);
+footer {
+  background: url(/asset/img/wave.svg);
+  padding: 10rem;
+  background-color: aquamarine;
+  background-size: cover;
+}
+footer .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .wrap .footerLeft {
+  width: 29%;
+}
+footer .wrap .footerLeft img {
+  width: 24%;
+  margin-bottom: 1rem;
 }
 
-.wave {
-  background: url("../img/waves.svg") repeat-x;
-  position: absolute;
-  top: -198px;
-  width: 6400px;
-  height: 198px;
-  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
-  transform: translate3d(0, 0, 0);
+.social {
+  display: flex;
+  align-items: center;
 }
-
-.wave:nth-of-type(2) {
-  top: -175px;
-  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
-  opacity: 1;
+.social i {
+  font-size: 1.2rem;
+  margin-right: 1rem;
 }
-
-@keyframes wave {
-  0% {
-    margin-left: 0;
-  }
-  100% {
-    margin-left: -1600px;
-  }
+footer .wrap .footerRight {
+  width: 69%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-@keyframes swell {
-  0%, 100% {
-    transform: translate3d(0,-25px,0);
-  }
-  50% {
-    transform: translate3d(0,5px,0);
-  }
+footer .wrap .footerRight h2 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+footer .wrap .footerRight p {
+  margin-bottom: 1rem;
 }

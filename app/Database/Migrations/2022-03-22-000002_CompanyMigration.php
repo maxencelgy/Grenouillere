@@ -9,11 +9,23 @@ class CompanyMigration extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
+            'id_company'         => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true,
+            ],
+            'frist_name_company'    => [
+                'type'       => 'VARCHAR',
+                'constraint' => '180',
+            ],
+            'last_name_company'    => [
+                'type'       => 'VARCHAR',
+                'constraint' => '180',
+            ],
+            'password_company'  => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ],
             'status_company'    => [
                 'type'       => 'VARCHAR',
@@ -53,9 +65,11 @@ class CompanyMigration extends Migration
             ],
             'child_capacity_company' => [
                 'type' => 'INT',
-            ]
+            ],
+            'created_at_company datetime default current_timestamp',
+            'updated_at_company datetime default current_timestamp on update current_timestamp',
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('id_company', true);
         $this->forge->createTable('company');
     }
 
