@@ -20,14 +20,14 @@
 <?php
 var_dump($childrens);
 foreach ($childrens as $children) { ?>
-    <div style="background-color: red; border-radius: 0.3rem; width: 50%;">
-        <h2><?= $children['last_name_child'] ?></h2>
-        <h2><?= $children['first_name_child'] ?></h2>
-        <h2><?= $children['need_child'] ?></h2>
-        <a href="/children/modify/<?php echo $children["id"]; ?>" style="background-color: blue;">Modifier</a>
-        <a href="/children/delete/<?php echo $children["id"]; ?>" style="background-color: green;">DELETE</a>
-    </div>
-    <br>
+<div style="background-color: red; border-radius: 0.3rem; width: 50%;">
+    <h2><?= $children['last_name_child'] ?></h2>
+    <h2><?= $children['first_name_child'] ?></h2>
+    <h2><?= $children['need_child'] ?></h2>
+    <a href="/children/modify/<?php echo $children["id_child"]; ?>" style="background-color: blue;">Modifier</a>
+    <a href="/children/delete/<?php echo $children["id_child"]; ?>" style="background-color: green;">DELETE</a>
+</div>
+<br>
 <?php }
 
 ?>

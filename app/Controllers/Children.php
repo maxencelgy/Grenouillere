@@ -38,11 +38,11 @@ class Children extends BaseController
         ];
     }
 
-    public function handleModify(int $id)
+    public function handleModify(int $id_child)
     {
-        var_dump($id);
+        var_dump($id_child);
 
-        $children = $this->childrenModel->find($id);
+        $children = $this->childrenModel->find($id_child);
         if (is_null($children)) {
             return redirect()->to('/create-children');
         }
@@ -54,13 +54,13 @@ class Children extends BaseController
     public function handleModified()
     {
         $data = $this->generateChildrenFromPost($this->request);
-        $this->childrenModel->update($this->request->getPost("id"), $data);
+        $this->childrenModel->update($this->request->getPost("id_child"), $data);
         return redirect()->to('/create-children');
     }
 
-    public function handleDelete(int $id)
+    public function handleDelete(int $id_child)
     {
-        $this->childrenModel->deleteById($id);
+        $this->childrenModel->deleteById($id_child);
         return redirect()->to('/create-children');
     }
 }

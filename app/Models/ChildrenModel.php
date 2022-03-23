@@ -8,7 +8,7 @@ class ChildrenModel extends Model
 {
     protected $table = 'child';
     protected $allowedFields = ['fk_users', 'last_name_child', 'first_name_child', 'birthday_child', 'need_child'];
-
+    protected $primaryKey    = 'id_child';
 
 
     public function getAllChildrens()

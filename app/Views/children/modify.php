@@ -6,7 +6,7 @@
 <?php var_dump($children) ?>
 
 <form class="formu" action="modified" method="post">
-    <input type="hidden" name="id" value="<?= $children["id"]; ?>">
+    <input type="hidden" name="id_child" value="<?= $children["id_child"]; ?>">
     <label for="">FK</label>
     <input type="text" name="fk_users" value="<?= $children['fk_users'] ?>">
     <label for="">Nom de l'enfant</label>
