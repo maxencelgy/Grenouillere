@@ -32,6 +32,15 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Grenouillere::index');
+
+// CHILDREN
+$routes->get('/create-children', 'Children::create');
+$routes->post('/children/add', 'Children::handlePost');
+$routes->get('/children/modify/(:num)', 'Children::handleModify/$1');
+$routes->post('/children/modify/modified', 'Children::handleModified');
+$routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
+
+
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 
 
