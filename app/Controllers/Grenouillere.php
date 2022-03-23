@@ -9,4 +9,5 @@ class Grenouillere extends BaseController
     {
         echo view('grenouillere/index');
     }
+
 }
