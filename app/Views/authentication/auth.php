@@ -26,7 +26,7 @@
             <h3>Quelle est votre situation ?</h3>
 
             <div class="cards__container">
-                <a href="#" class="card__box">
+                <a href="<?= site_url(); ?>particulier/connexion" class="card__box">
                     <div class="card__logo">
                         <img src="" alt="logo particulier">
                     </div>

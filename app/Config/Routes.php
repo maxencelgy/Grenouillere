@@ -42,7 +42,9 @@ $routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
 
 
 $routes->get('authentification', 'AuthenticationController::viewAuth');
-
+$routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
+$routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');
+$routes->get('deconnexion', 'AuthenticationController::logoutUser');
 
 /*
  * --------------------------------------------------------------------
