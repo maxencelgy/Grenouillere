@@ -4,7 +4,7 @@
             <img src="/asset/img/logo.svg" alt="">
         </div>
         <div class="right">
-            <a href="" class="btn">Connexion/Inscription</a>
+            <a href="authentification" class="btn">Connexion/Inscription</a>
         </div>
     </div>
 </header>
