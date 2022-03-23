@@ -19,6 +19,8 @@ class PlanningMigration extends Migration
                 'type'       => 'TEXT',
                 'constraint'     => '1000',
             ],
+            'created_at_planning datetime default current_timestamp',
+            'updated_at_planning datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_planning', true);
         $this->forge->createTable('planning');

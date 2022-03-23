@@ -28,10 +28,12 @@ class SlotMigration extends Migration
             'date_slot' => [
                 'type' => 'DATETIME',
             ],
-            'child_remaining' => [
+            'child_remaining_slot' => [
                 'type' => 'INT',
                 'constraint' => 2,
-            ]
+            ],
+            'created_at_slot datetime default current_timestamp',
+            'updated_at_slot datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_slot', true);
         $this->forge->addForeignKey('fk_planning', 'planning', 'id_planning');

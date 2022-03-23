@@ -36,6 +36,8 @@ class ChildMigration extends Migration
                 'constraint' => '1000',
                 'null' => true,
             ],
+            'created_at_child datetime default current_timestamp',
+            'updated_at_child datetime default current_timestamp on update current_timestamp',
             
         ]);
         $this->forge->addKey('id_child', true);

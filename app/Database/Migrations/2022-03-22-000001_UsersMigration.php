@@ -50,7 +50,9 @@ class UsersMigration extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 200,
                 'null' => true,
-            ]
+            ],
+            'created_at datetime default current_timestamp',
+            'updated_at datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_users', true);
         $this->forge->createTable('users');

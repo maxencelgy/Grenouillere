@@ -28,6 +28,8 @@ class FactureMigration extends Migration
             'date_facture' => [
                 'type'    => 'DATETIME',
             ],
+            'created_at_facture datetime default current_timestamp',
+            'updated_at_facture datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_facture', true);
         $this->forge->addForeignKey('fk_company', 'company', 'id_company');

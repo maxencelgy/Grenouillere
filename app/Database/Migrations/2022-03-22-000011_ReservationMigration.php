@@ -30,6 +30,8 @@ class ReservationMigration extends Migration
                 'constraint'  => 5,
                 'unsigned'       => true,
             ],
+            'created_at_reservation datetime default current_timestamp',
+            'updated_at_reservation datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_reservation', true);
         $this->forge->addForeignKey('fk_child', 'child', 'id_child');

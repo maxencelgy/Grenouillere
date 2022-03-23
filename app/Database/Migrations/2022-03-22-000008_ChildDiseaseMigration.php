@@ -28,6 +28,8 @@ class ChildDiseaseMigration extends Migration
             'description_child_disease' => [
                 'type' => 'TEXT',
             ],
+            'created_at_child_disease datetime default current_timestamp',
+            'updated_at_child_disease datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_child_disease', true);
         $this->forge->addForeignKey('fk_child', 'child', 'id_child');
