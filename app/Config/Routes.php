@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Grenouillere::index');
 $routes->get('authentification', 'AuthenticationController::viewAuth');
+$routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::handlePost');
 
 
 /*
