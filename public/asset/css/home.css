@@ -85,27 +85,30 @@ input[type="submit"] {
   z-index: -1;
 }
 /* SOLUTIONS */
+
 #solutions {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   margin-bottom: 13rem;
-  padding: 10rem;
   position: relative;
+  padding: 10rem 0;
 }
 #solutions .bigPic {
   position: absolute;
   height: 600px;
-  width: 1200px;
+  width: 100%;
   border-radius: 0.6rem;
   top: -42%;
   border-radius: 0.8rem;
-  left: 10.5%;
 }
 #solutions .filtre {
   height: 600px;
-  width: 1200px;
+  width: 100%;
   position: absolute;
   top: -42%;
   border-radius: 0.8rem;
-  left: 10.5%;
+
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
