@@ -37,15 +37,15 @@
 #auth__container .auth__conditions{
     display: flex;
     flex-flow: column nowrap;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
-    transform: translateY(50%);
+    transform: translateY(40%);
 }
 #auth__container .auth__conditions .cards__container{
     display: flex;
     flex-flow: column nowrap;
     gap: 2rem;
-    width:70%;
+    width:60%;
 }
 
 #auth__container .auth__conditions .cards__container .card__box{
