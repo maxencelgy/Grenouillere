@@ -18,6 +18,7 @@ class ChildAllergyMigration extends Migration
             'fk_child'    => [
                 'type'       => 'INT',
                 'constraint'     => 5,
+                'unsigned'       => true,
             ],
             'fk_allergy'  => [
                 'type'       => 'INT',
