@@ -29,7 +29,7 @@ class ChildMigration extends Migration
                 'constraint' => '180',
             ],
             'birthday_child' => [
-                'type' => 'DATETIME',
+                'type' => 'DATE',
             ],
             'need_child' => [
                 'type'       => 'TEXT',
