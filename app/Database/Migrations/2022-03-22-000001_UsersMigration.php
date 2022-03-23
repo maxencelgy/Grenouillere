@@ -15,6 +15,10 @@ class UsersMigration extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'email_users'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '180',
+            ],
             'last_name_users'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '180',
@@ -51,8 +55,8 @@ class UsersMigration extends Migration
                 'constraint' => 200,
                 'null' => true,
             ],
-            'created_at datetime default current_timestamp',
-            'updated_at datetime default current_timestamp on update current_timestamp',
+            'created_at_users datetime default current_timestamp',
+            'updated_at_users datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_users', true);
         $this->forge->createTable('users');
