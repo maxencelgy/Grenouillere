@@ -34,6 +34,7 @@ class Children extends BaseController
             "fk_users" => $this->request->getPost("fk_users"),
             "last_name_child" => $this->request->getPost("last_name_child"),
             "first_name_child" => $this->request->getPost("first_name_child"),
+            "birthday_child" => $this->request->getPost("birthday_child"),
             "need_child" => $this->request->getPost("need_child"),
         ];
     }
