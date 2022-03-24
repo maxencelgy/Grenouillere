@@ -4,8 +4,6 @@
 <?= $this->section('content') ?>
 
 <form class="formu" action="children/add" method="post">
-    <label for="">FK</label>
-    <input type="text" name="fk_users">
     <label for="">Nom de l'enfant</label>
     <input type="text" name="last_name_child">
     <br>
@@ -19,6 +17,8 @@
     <input type="text" name="need_child">
     <input type="submit" value="Valider">
 </form>
+
+
 
 <?php
 var_dump($childrens);

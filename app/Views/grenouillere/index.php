@@ -6,7 +6,6 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<?= session()->get("email") ?>
 
 <section id="main">
     <div class="wrap2">

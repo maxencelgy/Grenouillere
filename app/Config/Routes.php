@@ -40,7 +40,7 @@ $routes->get('/children/modify/(:num)', 'Children::handleModify/$1');
 $routes->post('/children/modify/modified', 'Children::handleModified');
 $routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
 
-
+//USERS Authentification
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
 $routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');
