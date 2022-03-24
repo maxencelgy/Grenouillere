@@ -39,6 +39,7 @@ $routes->post('/children/add', 'Children::handlePost');
 $routes->get('/children/modify/(:num)', 'Children::handleModify/$1');
 $routes->post('/children/modify/modified', 'Children::handleModified');
 $routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
+$routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
 
 
 
