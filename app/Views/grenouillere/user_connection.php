@@ -1,10 +1,21 @@
-
+<?= $this->extend('templates/default') ?>
+<?= $this->section('content') ?>
+<link rel="stylesheet" href="/asset/css/user_connection.css">
+<h3><- <a href="<?= site_url(); ?>">Retour à Connexion/Inscription</a></h3>
+<h2>Connexion</h2>
 <form action="" method="post">
     <input type="text" name="email_users" placeholder="exemple@gmail.com">
     <span class="error"></span>
-    <input type="password" name="password_users">
+    <input type="password" name="password_users" placeholder="Mot de passe">
     <span class="error"></span>
+    <select name="choix" id="choix">
+        <option value="">Choix</option>
+        <option value="">Particulier</option>
+        <option value="">Professionel</option>
+    </select>
 
-    <input type="submit" name="submitted" value="Envoyer">
+
+    <input type="submit" name="submitted" value="Envoyer" id="submit">
     <p>Vous n'avez pas de compte ? <a href="<?= site_url(); ?>particulier/inscription">Inscrivez-vous</a></p>
 </form>
+<?= $this->endSection() ?>

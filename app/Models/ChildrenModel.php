@@ -16,6 +16,14 @@ class ChildrenModel extends Model
         return $this->findAll();
     }
 
+    public function getParentsChild()
+    {
+        return $this->select('child.*')
+            ->join('users', 'child.fk_users = users.id_users')
+            ->where('child.fk_users =' . session()->get("id"))
+            ->find();
+    }
+
 
     // public function getAllChildrensFromClasse()
     // {
