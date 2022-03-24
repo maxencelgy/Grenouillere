@@ -60,6 +60,14 @@ header .wrap .right a {
   color: white !important;
 }
 
+/*POPUP*/
+.popup_hidden{
+  display: none;
+}
+.popup_display{
+  display: block;
+}
+
 /* FOOTER */
 
 footer {

@@ -20,6 +20,7 @@
 
     </div>
     <?php include("navigation/footer.php"); ?>
+    <script src="asset/js/popup.js"></script>
 </body>
 
 </html>
