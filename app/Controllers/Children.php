@@ -13,7 +13,7 @@ class Children extends BaseController
 
     public function create()
     {
-        $children = $this->childrenModel->getAllChildrens();
+        $children = $this->childrenModel->getParentsChild();
         echo view('children/add', [
             "childrens" => $children
         ]);
@@ -30,9 +30,10 @@ class Children extends BaseController
     private function generateChildrenFromPost($request)
     {
         return [
-            "fk_users" => $this->request->getPost("fk_users"),
+            "fk_users" => session()->get("id"),
             "last_name_child" => $this->request->getPost("last_name_child"),
             "first_name_child" => $this->request->getPost("first_name_child"),
+            "birthday_child" => $this->request->getPost("birthday_child"),
             "need_child" => $this->request->getPost("need_child"),
         ];
     }
@@ -62,4 +63,5 @@ class Children extends BaseController
         $this->childrenModel->deleteById($id_child);
         return redirect()->to('/create-children');
     }
+
 }
