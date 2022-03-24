@@ -25,6 +25,9 @@ class ChildAllergyMigration extends Migration
                 'constraint'     => 5,
                 'unsigned'       => true,
             ],
+            'description_child_allergy' => [
+                'type' => 'TEXT',
+            ],
             'created_at_allergy datetime default current_timestamp',
             'updated_at_allergy datetime default current_timestamp on update current_timestamp',
         ]);
