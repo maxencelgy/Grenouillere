@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Grenouillere::index');
 
-// CHILDREN
+// CHILDREN //////////////////////////////////
 $routes->get('/create-children', 'Children::create');
 $routes->post('/children/add', 'Children::handlePost');
 $routes->get('/children/modify/(:num)', 'Children::handleModify/$1');
@@ -41,11 +41,10 @@ $routes->post('/children/modify/modified', 'Children::handleModified');
 $routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
 
 
+
 //ALLERGY
 $routes->post('alergie/Ajouter', 'allergyController::addAllergy');
 
-
-//USERS Authentification
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
 $routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');
@@ -53,6 +52,21 @@ $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 // Company / Incription connection 
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
+
+
+
+// RESERVATION CSV/////////////////
+$routes->get('csv', 'CsvController::index');
+$routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
+
+
+
+
+
+$routes->get('export/(:num)', 'CsvController::export/$1');
+$routes->get('export/all/(:num)', 'CsvController::exportAll/$1');
+
+
 
 /*
  * --------------------------------------------------------------------

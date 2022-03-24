@@ -13,7 +13,9 @@
 </head>
 
 <body>
+
     <?php include("navigation/header.php"); ?>
+
     <div class="container">
 
         <?= $this->renderSection('content') ?>
