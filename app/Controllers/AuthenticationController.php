@@ -2,16 +2,25 @@
 
 namespace App\Controllers;
 use App\Models\userModel;
+use App\Models\CompanyModel;
 use CodeIgniter\HTTP\IncomingRequest;
 
 class AuthenticationController extends BaseController
 {
     private $userModel;
+    private $companyModel;
 
     public function __construct()
     {
         $this->userModel = model('App\Models\userModel');
+        $this->companyModel = model('App\Models\CompanyModel');
     }
+
+    public function viewAuth()
+    {
+        echo view('authentication/auth');
+    }
+
 
     private function generateUserFromPost(IncomingRequest $request): array
     {
@@ -29,10 +38,8 @@ class AuthenticationController extends BaseController
         return $data;
     }
 
-    public function viewAuth()
-    {
-        echo view('authentication/auth');
-    }
+    
+    
 
     public function registerUser()
     {
@@ -75,6 +82,7 @@ class AuthenticationController extends BaseController
                 }
             }
         }
+        
 
         echo view('grenouillere/user_connection', [
             'validation' => $this->validator
@@ -85,5 +93,172 @@ class AuthenticationController extends BaseController
     {
         session()->destroy();
         return redirect()->to('/');
+    }
+
+    
+
+    private function generateCompanyFromPost(IncomingRequest $request): array
+    {
+        $data = [
+            'email_company'=> $request->getPost("email_company"),
+            'name_company'=> $request->getPost("name_company"),
+            'last_name_company'=> $request->getPost("last_name_company"),
+            'frist_name_company'=> $request->getPost("frist_name_company"),
+            'password_company'=> password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
+            'status_company'=> "nouveau",
+            'city_company'=> "Cormelles le Royal",
+            'postal_code_company'=> "14123",
+            'adress_company'=> "1 rue de la vallée",
+            'x_company'=> "25",
+            'y_company'=> "42",
+            'siret_company'=> $request->getPost("siret_company"),
+            'hourly_rate_company'=> $request->getPost("hourly_rate_company"),
+            'child_capacity_company'=> $request->getPost("child_capacity_company"),
+        ];
+        return $data;
+    }
+ 
+    public function registerCompany()
+    {
+        $data = $this->generateCompanyFromPost($this->request);
+
+        $val = $this->validate([
+            'email_company'    => [
+                'rules'  => 'trim|required|valid_email|is_unique[company.email_company]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un email',
+                    'valid_email' => 'Votre mail n\'est pas valide',
+                    'is_unique' => 'Cette email existe déjà en base',
+                ],
+            ],
+            'name_company'    => [
+                'rules'  => 'trim|required|min_length[3]|max_length[200]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un email',
+                    'min_length' => 'Veuillez Saisir un nom d\'entreprise à plus de 3 caractère',
+                    'max_length' => 'Veuillez Saisir un nom d\'entreprise à moins de 200 caractère',
+                ],
+            ],
+            'last_name_company'    => [
+                'rules'  => 'trim|required|min_length[3]|max_length[200]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un nom',
+                    'min_length' => 'Veuillez Saisir un nom à plus de 3 caractère',
+                    'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
+                ],
+            ],
+            'last_name_company'    => [
+                'rules'  => 'trim|required|min_length[3]|max_length[200]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un nom',
+                    'min_length' => 'Veuillez Saisir un nom à plus de 3 caractère',
+                    'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
+                ],
+            ],
+            'password_company'    => [
+                'rules'  => 'trim|required|min_length[5]',
+                'errors' => [
+                    'required' => 'Veuillez un mot de passe',
+                    'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
+
+                ],
+            ],
+            'password_company_confirmation'    => [
+                'rules'  => 'trim|matches[password_company]',
+                'errors' => [
+                    'matches' => 'Mot de passe différents !',
+                    
+                ],
+            ],
+            'password_company_confirmation'    => [
+                'rules'  => 'trim|matches[password_company]',
+                'errors' => [
+                    'matches' => 'Mot de passe différents !',
+                    
+                ],
+            ],
+            'siret_company'    => [
+                'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
+                'errors' => [
+                    'min_length' => 'Pas assez de caractères 13 requis',
+                    'max_length' => 'Trop de caractères 13 requis',                    
+                    'numeric' => 'Vous devez rentrer des nombres',                    
+                ],
+            ],
+            'hourly_rate_company'    => [
+                'rules'  => 'trim|required|numeric',
+                'errors' => [
+                    'required' => 'Vous devez renter un taux horraire',
+                    'numeric' => 'Vous devez rentrer un nombre',                    
+                ],
+            ],
+
+            'cgu'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Veuillez accepter les CGU',
+                ],
+            ],
+
+            
+        ]);
+
+        if (!$val) {
+            echo view('grenouillere/company_register', [
+                'validation' => $this->validator,
+            ]);
+        } else {
+            $this->companyModel->insertCompany($data);
+            return redirect()->to('/entreprise/connexion');
+        }
+    }
+
+    public function loginCompany(){
+        $input = $this->validate([
+            'email_company'    => [
+                'rules'  => 'trim|required|valid_email',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un email',
+                    'valid_email' => 'Votre mail n\'est pas valide',
+                ],
+            ],
+            'password_company'    => [
+                'rules'  => 'trim|required|min_length[5]',
+                'errors' => [
+                    'required' => 'Veuillez un mot de passe',
+                    'min_length' => 'Veuillez saisir un mots de passe à plus de 5 caractère',
+
+                ],
+            ],
+        ]);
+
+        if ($input) {
+            $company = $this->companyModel->where(["email_company" => $this->request->getPost('email_company')])->first();
+
+            if (!empty($company)) {
+                if (password_verify($this->request->getPost('password_company'), $company["password_company"])) {
+                    session()->set([
+                        "id" => $company["id_company"],
+                        "email" => $company["email_company"],
+                        "name_company" => $company["name_company"],
+                        "frist_name_company" => $company["frist_name_company"],
+                        "last_name_company" => $company["last_name_company"],
+                        "city_company" => $company["city_company"],
+                        "postal_code_company" => $company["postal_code_company"],
+                        "adress_company" => $company["adress_company"],
+                        "x_company" => $company["x_company"],
+                        "siret_company" => $company["siret_company"],
+                        "rib_company" => $company["rib_company"],
+                        "hourly_rate_company" => $company["hourly_rate_company"],
+                        "child_capacity_company" => $company["child_capacity_company"],
+                    ]);
+                    return redirect()->to('/');
+                }
+            }
+        }
+
+        echo view('grenouillere/comany_connection', [
+            'validation' => $this->validator
+        ]);
     }
 }

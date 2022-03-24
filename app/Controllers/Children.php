@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 class Children extends BaseController
 {
-
     private $childrenModel;
     private $ChildAllergyModel;
     public function __construct()
