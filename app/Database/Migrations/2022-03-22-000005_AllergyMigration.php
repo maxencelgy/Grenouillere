@@ -19,10 +19,6 @@ class AllergyMigration extends Migration
                 'type'       => 'VARCHAR',
                 'constraint'     => '180',
             ],
-            'description_allergy' => [
-                'type'       => 'TEXT',
-                'constraint'     => '1000',
-            ],
             'created_at_allergy datetime default current_timestamp',
             'updated_at_allergy datetime default current_timestamp on update current_timestamp',
         ]);

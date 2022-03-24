@@ -64,4 +64,5 @@ class Children extends BaseController
         $this->childrenModel->deleteById($id_child);
         return redirect()->to('/create-children');
     }
+
 }
