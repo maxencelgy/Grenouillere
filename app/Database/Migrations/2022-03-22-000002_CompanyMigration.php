@@ -15,13 +15,21 @@ class CompanyMigration extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'frist_name_company'    => [
+            'email_company'    => [
                 'type'       => 'VARCHAR',
                 'constraint' => '180',
             ],
+            'name_company'    => [
+                'type'       => 'VARCHAR',
+                'constraint' => '200',
+            ],
+            'frist_name_company'    => [
+                'type'       => 'VARCHAR',
+                'constraint' => '200',
+            ],
             'last_name_company'    => [
                 'type'       => 'VARCHAR',
-                'constraint' => '180',
+                'constraint' => '200',
             ],
             'password_company'  => [
                 'type'       => 'VARCHAR',

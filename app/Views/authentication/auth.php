@@ -19,7 +19,6 @@
 
         <div class="auth__nav">
             <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
-            <a href="#">Se connecter</a>
         </div>
 
         <div class="auth__conditions">

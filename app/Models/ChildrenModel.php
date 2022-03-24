@@ -16,14 +16,13 @@ class ChildrenModel extends Model
         return $this->findAll();
     }
 
-
-    // public function getAllChildrensFromClasse()
-    // {
-    //     return $this->select('eleves.*, eleves.id as idClasse, classe.nomClasse')
-    //         ->where('eleves.categorieId=' . $_GET['categorieId'])
-    //         ->join('classe', 'classe.id = eleves.categorieId')
-    //         ->find();
-    // }
+    public function getParentsChild()
+    {
+        return $this->select('child.*')
+            ->join('users', 'child.fk_users = users.id_users')
+            ->where('child.fk_users =' . session()->get("id"))
+            ->find();
+    }
 
 
     public function getOneChildrens($id)

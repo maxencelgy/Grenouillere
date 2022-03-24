@@ -4,19 +4,23 @@ namespace App\Controllers;
 
 class Children extends BaseController
 {
-
     private $childrenModel;
+    private $ChildAllergyModel;
     public function __construct()
     {
         $this->childrenModel = model('App\Models\ChildrenModel');
+        $this->allergyModel = model('App\Models\AllergyModel');
+        $this->ChildAllergyModel = model('App\Models\ChildAllergyModel');
     }
 
 
     public function create()
     {
-        $children = $this->childrenModel->getAllChildrens();
+        $children = $this->childrenModel->getParentsChild();
+        $allergy = $this->allergyModel->getAllAllergy();
         echo view('children/add', [
-            "childrens" => $children
+            "childrens" => $children,
+            "allergy" => $allergy,
         ]);
     }
 
@@ -28,13 +32,30 @@ class Children extends BaseController
         return redirect()->to('/create-children');
     }
 
+    public function handlePostAllergyChild()
+    {
+        $data = $this->generateChildAllergyFromPost($this->request);
+        $this->ChildAllergyModel->insertAllergyChild($data);
+        return redirect()->to('/create-children');
+    }
+
     private function generateChildrenFromPost($request)
     {
         return [
-            "fk_users" => $this->request->getPost("fk_users"),
+            "fk_users" => session()->get("id"),
             "last_name_child" => $this->request->getPost("last_name_child"),
             "first_name_child" => $this->request->getPost("first_name_child"),
+            "birthday_child" => $this->request->getPost("birthday_child"),
             "need_child" => $this->request->getPost("need_child"),
+        ];
+    }
+
+    private function generateChildAllergyFromPost($request)
+    {
+        return [
+            "fk_child" => $this->request->getPost("fk_child"),
+            "fk_allergy" => $this->request->getPost("fk_allergy"),
+            "description_allergy" => $this->request->getPost("description_allergy"),
         ];
     }
 
@@ -63,4 +84,5 @@ class Children extends BaseController
         $this->childrenModel->deleteById($id_child);
         return redirect()->to('/create-children');
     }
+
 }
