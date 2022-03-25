@@ -54,12 +54,12 @@ class AuthenticationController extends BaseController
         ]);
 
         if (!$val) {
-            echo view('grenouillere/user_register', [
+            echo view('authentication/users/register', [
                 'validation' => $this->validator,
             ]);
         } else {
             $this->userModel->insertUser($data);
-            return redirect()->to('/');
+            return redirect()->to('authentication/users/login');
         }
     }
 
@@ -81,10 +81,9 @@ class AuthenticationController extends BaseController
                     return redirect()->to('/');
                 }
             }
-        }
-        
+        }  
 
-        echo view('grenouillere/user_connection', [
+        echo view('authentication/users/login', [
             'validation' => $this->validator
         ]);
     }
@@ -204,7 +203,7 @@ class AuthenticationController extends BaseController
         ]);
 
         if (!$val) {
-            echo view('grenouillere/company_register', [
+            echo view('authentication/company/register', [
                 'validation' => $this->validator,
             ]);
         } else {
@@ -257,7 +256,7 @@ class AuthenticationController extends BaseController
             }
         }
 
-        echo view('grenouillere/comany_connection', [
+        echo view('authentication/company/login', [
             'validation' => $this->validator
         ]);
     }
