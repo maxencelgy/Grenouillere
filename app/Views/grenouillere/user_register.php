@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="/asset/css/user_register.css">
 
-<h2>Particulier inscription</h2>
+<h2>Particulier Inscription</h2>
 
 <form action="" method="post" class="form">
     <input type="text" name="last_name_users" placeholder="Nom" id="box-shadow">
