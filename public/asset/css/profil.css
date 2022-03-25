@@ -1,0 +1,113 @@
+#profil {
+  background-color: #b7ab95b0;
+  padding: 1rem;
+}
+.wrapProfil {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+#profil .wrapProfil h2 {
+  margin-bottom: 1rem;
+}
+.informations {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.information {
+  width: 33.33333;
+}
+
+/* FACTURES */
+#factures {
+  background-color: #b7ab95b0;
+}
+#factures .wrapProfil {
+  margin-bottom: 1rem;
+  color: black;
+  text-align: center;
+}
+#factures .wrapProfil h2 {
+}
+#factures .wrapProfil i {
+  font-size: 1.4rem;
+}
+#factures .cards {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+#factures .card {
+  background-color: var(--green);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+#factures .card .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottom {
+  text-align: right;
+}
+
+.right {
+  margin-bottom: 1rem;
+}
+.download {
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 0.3rem;
+  color: black;
+}
+
+/* RESERVATION */
+#reservation {
+  background-color: #b7ab95b0;
+  margin-bottom: 10rem;
+}
+#reservation .wrapProfil {
+  margin-bottom: 1rem;
+  color: black;
+  text-align: center;
+}
+
+#reservation .wrapProfil i {
+  font-size: 1.4rem;
+}
+#reservation .cards {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+#reservation .card {
+  background-color: var(--green);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.3rem;
+}
+#reservation .card .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottom {
+  text-align: right;
+}
+
+.right {
+  margin-bottom: 1rem;
+}
+.download {
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 0.3rem;
+  color: black;
+}

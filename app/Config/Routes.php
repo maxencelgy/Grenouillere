@@ -60,6 +60,10 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 $routes->get('csv', 'CsvController::index');
 $routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
 
+//////////////////////PROFIL  //////////////////////////////////
+$routes->get('profil', 'ProfilController::index');
+
+
 
 
 
