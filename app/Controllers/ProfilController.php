@@ -13,7 +13,6 @@ class ProfilController extends BaseController
         $this->reservationModel = model('App\Models\reservationModel');
     }
 
-
     public function index()
     {
         $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
@@ -21,4 +20,7 @@ class ProfilController extends BaseController
             "reservations" => $reservations,
         ]);
     }
+
+
+
 }

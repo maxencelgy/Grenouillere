@@ -58,20 +58,15 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 
 
 
-// RESERVATION CSV/////////////////
-$routes->get('csv', 'CsvController::index');
-$routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
+
+
 
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
 
-
-
-
-
-
+// RESERVATION CSV/////////////////
 $routes->get('export/(:num)', 'CsvController::export/$1');
-$routes->get('export/all/(:num)', 'CsvController::exportAll/$1');
+$routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 
 
 
