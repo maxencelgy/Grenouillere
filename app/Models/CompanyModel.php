@@ -7,13 +7,14 @@ use CodeIgniter\Model;
 class CompanyModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'companies';
+    protected $table            = 'company';
     protected $primaryKey       = 'id_company';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
 
     protected $protectFields    = true;
     protected $allowedFields    = [
+    'email_company', 
     'frist_name_company',
     'last_name_company',
     'password_company',
@@ -23,7 +24,6 @@ class CompanyModel extends Model
     'adress_company',
     'x_company',
     'y_company',
-    'cni_company',
     'siret_company',
     'rib_company',
     'hourly_rate_company',
@@ -35,39 +35,9 @@ class CompanyModel extends Model
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
-    public function ajout()
+    public function insertCompany(array $data)
     {
-        $input = $this->validate([
-            'frist_name_company' => 'required',
-            'last_name_company' => 'required',
-            'password_company' => 'required',            
-            'status_company' => 'required',            
-            'city_company' => 'required',            
-            'postal_code_company' => 'required',            
-            'adress_company' => 'required',            
-            'password_company' => 'required',            
-            'x_company' => 'required',            
-            'y_company' => 'required',            
-            'cni_company' => 'required',            
-            'siret_company' => 'required',            
-            'rib_company' => 'required',            
-            'child_capacity_company' => 'required',         
-        ]);
-
-        if($input)
-        {
-       // POST
-        $this->eleveModel->insertEleve([
-        //TODO:
-        'champs' => $this->request->getPost('input'),
-        ]);  
-   // return redirect()->to('/');
-
-
-            
-            
-        }
-        return redirect()->to('/');
+        return $this->insert($data);
     }
 
 }

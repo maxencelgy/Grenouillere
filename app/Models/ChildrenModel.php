@@ -25,15 +25,6 @@ class ChildrenModel extends Model
     }
 
 
-    // public function getAllChildrensFromClasse()
-    // {
-    //     return $this->select('eleves.*, eleves.id as idClasse, classe.nomClasse')
-    //         ->where('eleves.categorieId=' . $_GET['categorieId'])
-    //         ->join('classe', 'classe.id = eleves.categorieId')
-    //         ->find();
-    // }
-
-
     public function getOneChildrens($id)
     {
         return $this->find($id);
