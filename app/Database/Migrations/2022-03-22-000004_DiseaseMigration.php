@@ -19,10 +19,6 @@ class DiseaseMigration extends Migration
                 'type'       => 'VARCHAR',
                 'constraint'     => '180',
             ],
-            'description_disease' => [
-                'type'       => 'TEXT',
-                'constraint'     => '1000',
-            ],
             'created_at_disease datetime default current_timestamp',
             'updated_at_disease datetime default current_timestamp on update current_timestamp',
         ]);

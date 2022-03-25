@@ -40,11 +40,13 @@ $routes->get('/children/modify/(:num)', 'Children::handleModify/$1');
 $routes->post('/children/modify/modified', 'Children::handleModified');
 $routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
 $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
+$routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
 
 //ALLERGY
-$routes->post('alergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('allergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('maladie/Ajouter', 'DiseaseController::addDisease');
 
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
@@ -56,16 +58,15 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 
 
 
+
+
+
+//////////////////////PROFIL  //////////////////////////////////
+$routes->get('profil', 'ProfilController::index');
+
 // RESERVATION CSV/////////////////
-$routes->get('csv', 'CsvController::index');
-$routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
-
-
-
-
-
 $routes->get('export/(:num)', 'CsvController::export/$1');
-$routes->get('export/all/(:num)', 'CsvController::exportAll/$1');
+$routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 
 
 

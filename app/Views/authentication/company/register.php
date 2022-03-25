@@ -1,4 +1,9 @@
-<?= $validation->listErrors(); ?>
+{# Login template #}
+<?= $this->extend('templates/authentication/default') ?>
+
+{# Form login User #}
+
+<?= $this->section('formAuth') ?>
 <form action="" method="post">
 
     <input type="email" name="email_company" placeholder="exemple@gmail.com">
@@ -8,8 +13,6 @@
     <input type="text" name="name_company" placeholder="Nom de l'entreprise">
     <span class="error"></span>
     <br><br>
-
-
     <br><br>
     <input type="text" name="last_name_company" placeholder="Nom">
     <span class="error"></span>
@@ -50,3 +53,5 @@
     <br><br>
     <input type="submit" name="submitted" value="Envoyer">
 </form>
+
+<?= $this->endSection() ?>

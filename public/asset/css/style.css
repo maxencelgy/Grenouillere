@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-a{
+a {
   text-decoration: none;
   color: black;
 }
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Varela Round", sans-serif;
   overflow-x: hidden;
   font-weight: 400;
 }
@@ -61,10 +61,10 @@ header .wrap .right a {
 }
 
 /*POPUP*/
-.popup_hidden{
+.popup_hidden {
   display: none;
 }
-.popup_display{
+.popup_display {
   display: block;
 }
 
