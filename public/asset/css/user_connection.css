@@ -11,8 +11,8 @@ form{
     align-content: center;
     justify-content: center;
     background-color: var(--greenopacity);
-    width: 840px;
-    height: 826px;
+    width: 45%;
+    height: 51.8rem;
     border-radius: 25px;
 }
 input{
