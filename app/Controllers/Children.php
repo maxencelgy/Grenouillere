@@ -6,11 +6,14 @@ class Children extends BaseController
 {
     private $childrenModel;
     private $ChildAllergyModel;
+    private $ChildDiseaseModel;
     public function __construct()
     {
         $this->childrenModel = model('App\Models\ChildrenModel');
         $this->allergyModel = model('App\Models\AllergyModel');
+        $this->diseaseModel = model('App\Models\diseaseModel');
         $this->ChildAllergyModel = model('App\Models\ChildAllergyModel');
+        $this->ChildDiseaseModel = model('App\Models\ChildDiseaseModel');
     }
 
 
@@ -18,9 +21,11 @@ class Children extends BaseController
     {
         $children = $this->childrenModel->getParentsChild();
         $allergy = $this->allergyModel->getAllAllergy();
+        $disease = $this->diseaseModel->getAllDisease();
         echo view('children/add', [
             "childrens" => $children,
             "allergy" => $allergy,
+            "disease" => $disease,
         ]);
     }
 
@@ -36,6 +41,13 @@ class Children extends BaseController
     {
         $data = $this->generateChildAllergyFromPost($this->request);
         $this->ChildAllergyModel->insertAllergyChild($data);
+        return redirect()->to('/create-children');
+    }
+
+    public function handlePostDiseaseChild()
+    {
+        $data = $this->generateChildDiseaseFromPost($this->request);
+        $this->ChildDiseaseModel->insertDiseaseChild($data);
         return redirect()->to('/create-children');
     }
 
@@ -56,6 +68,15 @@ class Children extends BaseController
             "fk_child" => $this->request->getPost("fk_child"),
             "fk_allergy" => $this->request->getPost("fk_allergy"),
             "description_allergy" => $this->request->getPost("description_allergy"),
+        ];
+    }
+
+    private function generateChildDiseaseFromPost($request)
+    {
+        return [
+            "fk_child" => $this->request->getPost("fk_child"),
+            "fk_disease" => $this->request->getPost("fk_disease"),
+            "description_child_disease" => $this->request->getPost("description_child_disease"),
         ];
     }
 

@@ -40,10 +40,12 @@ $routes->get('/children/modify/(:num)', 'Children::handleModify/$1');
 $routes->post('/children/modify/modified', 'Children::handleModified');
 $routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
 $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
+$routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
 //ALLERGY
-$routes->post('alergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('allergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('maladie/Ajouter', 'DiseaseController::addDisease');
 
 
 //USERS Authentification
