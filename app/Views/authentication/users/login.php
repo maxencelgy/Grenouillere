@@ -1,8 +1,11 @@
-<?= $this->extend('templates/default') ?>
-<?= $this->section('content') ?>
-<link rel="stylesheet" href="/asset/css/user_connection.css">
+{# Login template #}
+<?= $this->extend('templates/authentication/default') ?>
+
+{# Form login User #}
+
+<?= $this->section('formAuth') ?>
 <h3>
-    <- <a href="<?= site_url(); ?>">Retour à votre situation</a>
+    <a href="<?= site_url(); ?>">Retour à votre situation</a>
 </h3>
 <h2>Connexion</h2>
 <form action="" method="post">
@@ -14,4 +17,5 @@
     <input type="submit" name="submitted" value="Envoyer" id="submit">
     <p>Vous n'avez pas de compte ? <a href="<?= site_url(); ?>particulier/inscription">Inscrivez-vous</a></p>
 </form>
+
 <?= $this->endSection() ?>

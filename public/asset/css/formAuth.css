@@ -1,0 +1,6 @@
+/* TODO: CSS form loggin and register  */
+#formAuth {
+    background-color: red;
+    display: flex;
+    flex-flow: column;
+}
