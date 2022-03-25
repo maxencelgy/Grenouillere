@@ -1,5 +1,8 @@
+<?= $this->extend('templates/default') ?>
+<?= $this->section('content') ?>
 <?= $validation->listErrors(); ?>
 
+<link rel="stylesheet" href="/asset/css/user_register.css">
 <form action="" method="post">
     <input type="text" name="last_name_users" placeholder="Nom">
     <span class="error"></span>
@@ -14,3 +17,4 @@
 
     <input type="submit" name="submitted" value="Envoyer">
 </form>
+<?= $this->endSection() ?>
