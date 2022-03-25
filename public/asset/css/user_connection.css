@@ -1,51 +1,37 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+#connexion .wrap {
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
 }
-form{
-    margin: 6% auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    background-color: var(--greenopacity);
-    width: 45%;
-    height: 51.8rem;
-    border-radius: 25px;
+#connexion .wrap h2 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 2rem;
 }
-input{
-    border: none;
-    width: 53%;
-    margin: 2.4rem 0;
-    padding: 2.6rem 0;
-    border-radius: 25px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+#connexion .wrap form {
+  margin-bottom: 2rem;
+  padding: 7rem 0;
+  background-color: var(--green);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.8rem;
 }
-input::placeholder{
-    text-align: center;
-    font-size: 1.4rem;
+#connexion .wrap form input {
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+  border-radius: 0.8rem;
+  border: none;
+  width: 70%;
+  text-align: center;
 }
-#submit{
-    width: 30%;
-    padding: 1.8rem;
-    font-size: 1.4rem;
+#connexion .wrap form input[type="submit"] {
+  width: 30%;
 }
-h2{
-    display: flex;
-    justify-content: center;
-    font-size: 3rem;
-    margin-top: 8%;
+#connexion .wrap form p {
+  text-align: center;
 }
-h3{
-    margin-left: 14%;
-}
-a{
-    text-decoration: none;
-    color: black;
-}
-p{
-    margin-top: 1rem;
-    font-size: 1.4rem;
+#connexion .wrap form a {
 }
