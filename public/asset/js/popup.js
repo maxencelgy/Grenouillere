@@ -12,7 +12,6 @@ allergyButton.forEach(e => {
 })
 
 //Popup Maladie
-
 const diseaseButton = document.querySelectorAll(".btn_disease_popup");
 const diseasePopup = document.querySelector(".child_disease");
 
@@ -24,3 +23,4 @@ diseaseButton.forEach(e => {
         console.log(this.id)
     })
 })
+

@@ -7,6 +7,8 @@
 
 <?= $this->section('content') ?>
 
+<?= session()->get("email") ?>
+
 <section id="main">
     <div class="wrap2">
         <!-- <img class="nenu" src="/asset/img/nenuphar.svg" alt=""> -->

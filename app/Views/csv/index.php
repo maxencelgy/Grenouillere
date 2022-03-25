@@ -12,9 +12,11 @@
 
 <h1>CSV</h1>
 
-<?php
 
+<?php
 debug($reservations);
+
+
 
 
 foreach ($reservations as $reservation) { ?>

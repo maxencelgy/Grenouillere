@@ -26,6 +26,7 @@ class ReservationModel extends Model
             child.birthday_child,
 
             slot.child_remaining_slot,
+            slot.date_slot,
 
             company.frist_name_company,
             company.last_name_company,
@@ -48,6 +49,7 @@ class ReservationModel extends Model
             child.birthday_child,
 
             slot.child_remaining_slot,
+            slot.date_slot,
 
             company.frist_name_company,
             company.last_name_company,
@@ -71,6 +73,7 @@ class ReservationModel extends Model
             child.birthday_child,
 
             slot.child_remaining_slot,
+            slot.date_slot,
 
             company.frist_name_company,
             company.last_name_company,
