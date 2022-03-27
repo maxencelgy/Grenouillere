@@ -11,7 +11,7 @@
 }
 #connexion .wrap form {
   margin-bottom: 2rem;
-  padding: 7rem 0;
+  padding: 4rem 0;
   background-color: var(--green);
   display: flex;
   align-items: center;
@@ -19,12 +19,18 @@
   border-radius: 0.8rem;
 }
 #connexion .wrap form input {
-  padding: 1.2rem;
-  margin-bottom: 2rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  padding: 1.4rem;
+  margin-bottom: 2.5rem;
   border-radius: 0.8rem;
   border: none;
-  width: 70%;
+  width: 65%;
   text-align: center;
+  font-size: 1.2rem;
+}
+#connexion .wrap form input::placeholder {
+  color: black;
 }
 #connexion .wrap form input[type="submit"] {
   width: 30%;
@@ -33,4 +39,16 @@
   text-align: center;
 }
 #connexion .wrap form a {
+}
+#radio {
+  display: inline-block;
+  background-color: inherit;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0);
+  width: 5% !important;
+}
+.rad {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
 }
