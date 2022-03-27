@@ -4,9 +4,7 @@
 {# Form login User #}
 
 <?= $this->section('formAuth') ?>
-<h3>
-    <a href="<?= site_url(); ?>">Retour à votre situation</a>
-</h3>
+
 <h2>Connexion</h2>
 <form action="" method="post">
     <input type="text" name="email_company" placeholder="exemple@gmail.com">
@@ -15,7 +13,9 @@
     <span class="error"></span>
 
     <input type="submit" name="submitted" value="Envoyer">
-    <p>Vous n'avez pas de compte ? <a href="<?= site_url(); ?>entreprise/inscription">Inscrivez-vous</a></p>
+    <a href="<?= site_url(); ?>entreprise/inscription">
+        <p>Vous n'avez pas de compte ? Inscrivez-vous</p>
+    </a>
 </form>
 
 <?= $this->endSection() ?>

@@ -1,6 +1,6 @@
 <footer>
     <div class="wrap">
-        <div class="footerLeft">
+        <div class="footerLeft foot">
             <img src="/asset/img/logo.svg" alt="">
             <div class="social">
                 <i class="fa-brands fa-facebook-f"></i>
@@ -23,7 +23,6 @@
             <div class="foot">
                 <h2>Contact</h2>
                 <p>Nous contactez</p>
-
             </div>
         </div>
     </div>
