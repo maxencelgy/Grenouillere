@@ -8,10 +8,8 @@
 
 <?= $this->section('content') ?>
 <section id='connexion'>
-    <a href="<?= site_url(); ?>authentification">
-        <-- Retour à votre situation</a>
-            <div class="wrap">
-                <?= $this->renderSection('formAuth') ?>
-            </div>
+    <div class="wrap">
+        <?= $this->renderSection('formAuth') ?>
+    </div>
 </section>
 <?= $this->endSection() ?>

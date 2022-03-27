@@ -4,24 +4,15 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-
 <div id="auth__global">
     <div id="auth__container">
-        <div class="auth__logo">
-            <img src="asset/img/logo.svg" alt="Logo Grenouillere">
-        </div>
-
-        <div class="auth__nav">
-            <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
-        </div>
-
         <div class="auth__conditions">
             <h3>Quelle est votre situation ?</h3>
 
             <div class="cards__container">
                 <a href="<?= site_url(); ?>particulier/connexion" class="card__box">
                     <div class="card__logo">
-                        <img src="" alt="logo particulier">
+                        <img src="/asset/img/happy.svg" alt="logo particulier">
                     </div>
                     <div class="card__item">
                         <h4>Particulier</h4>
@@ -34,7 +25,7 @@
 
                 <a href="<?= site_url(); ?>entreprise/connexion" class="card__box">
                     <div class="card__logo">
-                        <img src="" alt="logo professionnel">
+                        <img src="/asset/img/happy.svg" alt="logo professionnel">
                     </div>
                     <div class="card__item">
                         <h4>Professionnel</h4>

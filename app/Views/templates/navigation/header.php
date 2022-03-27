@@ -2,6 +2,7 @@
     <div class="wrap">
         <div class="left">
             <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
+            <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
         </div>
         <div class="right">
             <?php if (!empty(session()->get("email"))) { ?>

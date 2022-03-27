@@ -33,8 +33,9 @@ header .wrap {
 }
 header .wrap .left {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
 header .wrap .left img {
   width: 20%;
@@ -71,10 +72,8 @@ header .wrap .right a {
 /* FOOTER */
 
 footer {
-  background: url(/asset/img/wave.svg);
-  padding: 10rem;
-  background-color: aquamarine;
-  background-size: cover;
+  background-color: #e7f7f3;
+  padding: 2rem;
 }
 footer .wrap {
   display: flex;
@@ -88,7 +87,9 @@ footer .wrap .footerLeft img {
   width: 24%;
   margin-bottom: 1rem;
 }
-
+.foot {
+  width: 23.333%;
+}
 .social {
   display: flex;
   align-items: center;
@@ -100,7 +101,7 @@ footer .wrap .footerLeft img {
 footer .wrap .footerRight {
   width: 69%;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: space-between;
 }
 footer .wrap .footerRight h2 {
