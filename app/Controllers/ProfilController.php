@@ -21,4 +21,9 @@ class ProfilController extends BaseController
             "reservations" => $reservations,
         ]);
     }
+
+    public function editCompany()
+    {
+        echo view('profil/edit_company');
+    }
 }

@@ -64,6 +64,7 @@ $routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
 
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
+$routes->get('Modification/compagny', 'ProfilController::editCompany');
 
 
 
