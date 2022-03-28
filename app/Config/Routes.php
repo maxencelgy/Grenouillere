@@ -52,27 +52,21 @@ $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
 $routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');
 $routes->get('deconnexion', 'AuthenticationController::logoutUser');
-// Company / Incription connection 
+// Company / Incription connection
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
 
 
 
-// RESERVATION CSV/////////////////
-$routes->get('csv', 'CsvController::index');
-$routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
+
+
 
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
-$routes->get('Modification/compagny', 'ProfilController::editCompany');
 
-
-
-
-
-
+// RESERVATION CSV/////////////////
 $routes->get('export/(:num)', 'CsvController::export/$1');
-$routes->get('export/all/(:num)', 'CsvController::exportAll/$1');
+$routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 
 
 

@@ -31,7 +31,7 @@
 </section>
 
 <section id="reservation">
-    <?php var_dump($reservations) ?>
+
     <div class="wrapProfil">
         <h2>Vos reservation</h2>
         <i class="fa-solid fa-chevron-down"></i>
@@ -53,7 +53,7 @@
                 </div>
             </div>
         <?php } ?>
-        <a href="/export/all" style="padding: .5rem; background-color: violet; margin-top: 1rem; border-radius: .3rem;">TELECHARGER ALL FACTURES</a>
+        <a href="/export/all/<?= session()->get("id") ?>" style="padding: .5rem; background-color: violet; margin-top: 1rem; border-radius: .3rem;">TELECHARGER ALL FACTURES</a>
 </section>
 
 
@@ -62,7 +62,7 @@
 
 
 
-<section id="factures">
+<!-- <section id="factures">
     <div class="wrapProfil">
         <h2>Vos Factures</h2>
         <i class="fa-solid fa-chevron-down"></i>
@@ -98,6 +98,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <?= $this->endSection() ?>

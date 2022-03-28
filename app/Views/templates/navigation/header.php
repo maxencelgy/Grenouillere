@@ -2,11 +2,11 @@
     <div class="wrap">
         <div class="left">
             <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
+            <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
         </div>
         <div class="right">
             <?php if (!empty(session()->get("email"))) { ?>
                 <a href="<?= site_url(); ?>create-children" class="btn">Inscrire mon enfant</a>
-                <a href="<?= site_url(); ?>csv/entreprise" class="btn">CSV</a>
                 <a href="<?= site_url(); ?>profil" class="btn">Mon Profil</a>
                 <a href="<?= site_url(); ?>deconnexion" class="btn">Deconnexion</a>
             <?php } else { ?>
