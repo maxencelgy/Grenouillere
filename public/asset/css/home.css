@@ -43,7 +43,7 @@
 
 .bottom {
   width: 120%;
-  text-align: center;
+  text-align: start;
 }
 
 input[type="submit"] {

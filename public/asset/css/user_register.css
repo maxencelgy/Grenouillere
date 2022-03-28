@@ -47,3 +47,21 @@ input::placeholder{
 .checkbox p{
     margin-left: -20%;
 }
+
+@media screen and (max-width: 1080px) {
+    form{
+        width: 85%;
+    }
+    input{
+        width: 85%;
+    }
+    .submit{
+        width: 60%;
+    }
+    .checkbox {
+        width: 100%;
+    }
+    .checkbox p{
+        margin-left: -40%;
+    }
+}

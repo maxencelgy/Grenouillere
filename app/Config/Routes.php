@@ -67,7 +67,10 @@ $routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
 $routes->get('export/(:num)', 'CsvController::export/$1');
 $routes->get('export/all/(:num)', 'CsvController::exportAll/$1');
 
-
+// CGU ///////
+$routes->get('legal/mentionLegal','cguController::showmentionLegal');
+$routes->get('legal/viePrivee','cguController::showviePrivee');
+$routes->get('legal/cgu','cguController::showcgu');
 
 /*
  * --------------------------------------------------------------------

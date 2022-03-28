@@ -38,9 +38,6 @@ h2{
     font-size: 3rem;
     margin-top: 8%;
 }
-h3{
-    margin-left: 14%;
-}
 a{
     text-decoration: none;
     color: black;
@@ -48,4 +45,16 @@ a{
 p{
     margin-top: 1rem;
     font-size: 1.4rem;
+}
+
+@media screen and (max-width: 1080px) {
+    form{
+        width: 85%;
+    }
+    input{
+        width: 85%;
+    }
+    #submit{
+        width: 60%;
+    }
 }

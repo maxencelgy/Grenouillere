@@ -1,4 +1,6 @@
 <?= $validation->listErrors(); ?>
+<link rel="stylesheet" href="/asset/css/company_register.css">
+<h2>Professionnel Inscription</h2>
 <form action="" method="post">
 
     <input type="email" name="email_company" placeholder="exemple@gmail.com">
@@ -8,7 +10,6 @@
     <input type="text" name="name_company" placeholder="Nom de l'entreprise">
     <span class="error"></span>
     <br><br>
-
 
     <br><br>
     <input type="text" name="last_name_company" placeholder="Nom">
