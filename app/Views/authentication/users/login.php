@@ -17,6 +17,4 @@
         </a>
     </form>
 </div>
-
-
 <?= $this->endSection() ?>

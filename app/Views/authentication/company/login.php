@@ -11,7 +11,7 @@
     <span class="error"></span>
     <input type="password" name="password_company">
     <span class="error"></span>
-
+    
     <input type="submit" name="submitted" value="Envoyer">
     <a href="<?= site_url(); ?>entreprise/inscription">
         <p>Vous n'avez pas de compte ? Inscrivez-vous</p>
