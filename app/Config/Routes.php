@@ -43,6 +43,9 @@ $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
 $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
+$routes->get('profil/editCompany', 'ProfilController::editCompany');
+$routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
+
 
 //ALLERGY
 $routes->post('allergie/Ajouter', 'allergyController::addAllergy');
@@ -55,6 +58,8 @@ $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 // Company / Incription connection
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
+
+
 
 
 
