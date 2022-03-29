@@ -38,9 +38,16 @@
 #connexion .wrap form p {
   text-align: center;
 }
-#connexion .wrap form a {
-}
 
 #connexion .error {
   color: red;
+}
+
+.childrenSearch {
+  background-color: aqua;
+  padding: 1rem;
+  position: absolute;
+  border-radius: 0.3rem;
+  top: 15%;
+  right: 0;
 }
