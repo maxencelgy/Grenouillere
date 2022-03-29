@@ -16,8 +16,11 @@ class ResultsController extends BaseController
 
     public function index()
     {
-        $data = $this->resultsModel->getDataParseJson();
-        echo view('results/global_result');
+        $createFile = $this->resultsModel->createJsonFile();
+        $companyData = $this->resultsModel->getAllCompany();
+        echo view('results/global_result', [
+            'companyData' => $companyData
+        ]);
     }
 
 

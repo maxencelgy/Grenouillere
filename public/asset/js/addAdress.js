@@ -31,8 +31,8 @@ input.addEventListener("keyup", (e) => {
           let adresse = info.children[0].textContent.trim();
           let ville = info.children[1].textContent.trim();
           let cp = info.children[2].textContent.trim();
-          let x = info.children[3].textContent.trim();
-          let y = info.children[4].textContent.trim();
+          let y = info.children[3].textContent.trim();
+          let x = info.children[4].textContent.trim();
           input.value = adresse + ", " + ville + ", " + cp;
           children.innerHTML = `
                 <div class="infos" style = "display: none">

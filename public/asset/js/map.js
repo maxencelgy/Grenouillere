@@ -16,7 +16,7 @@ fetch('api_company.json',{
         res.forEach(e => {
             console.log(e);
                 L.marker([e.x_company, e.y_company]).addTo(map)
-                .bindPopup(e.city_company + '<br>' + e.adress_company)
+                .bindPopup(e.name_company + '<br>' + e.adress_company + '<br>' + e.postal_code_company + '<br>' + e.city_company)
                 .openPopup();
         })
     )

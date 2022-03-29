@@ -6,14 +6,14 @@
 
 #global_results_container .result_list_box{
     width: 65%;
-    padding: 4rem 3rem;
+    padding: 2rem;
 }
 
 #global_results_container .result_list_box .box_item{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    padding: 0 0 3rem 0;
+    padding: 0 0 1.5rem 0;
     border-bottom: 1px solid var(--green);
     gap: 2rem;
     align-items: center;
@@ -30,6 +30,7 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    padding-top: 1.5rem;
 }
 
 #global_results_container .result_list_box .box_item .item_info_container{
