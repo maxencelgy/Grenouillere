@@ -34,3 +34,7 @@
 }
 #connexion .wrap form a {
 }
+
+#connexion .error {
+  color: red;
+}

@@ -8,10 +8,12 @@
 
 <?= $this->section('content') ?>
 <section id='connexion'>
-    <a href="<?= site_url(); ?>authentification">
-        <-- Retour à votre situation</a>
-            <div class="wrap">
-                <?= $this->renderSection('formAuth') ?>
-            </div>
+    <h3>
+        <a href="<?= site_url(); ?>authentification">
+            <i class="fa-solid fa-arrow-left"></i> Retour à votre situation </a>
+    </h3>
+    <div class="wrap">
+        <?= $this->renderSection('formAuth') ?>
+    </div>
 </section>
 <?= $this->endSection() ?>

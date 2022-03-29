@@ -24,7 +24,7 @@
 
     </div>
     <?php include("navigation/footer.php"); ?>
-
+    <?= $this->renderSection('js') ?>
 </body>
 
 </html>

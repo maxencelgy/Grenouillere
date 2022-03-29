@@ -36,21 +36,60 @@ class AuthenticationController extends BaseController
             "adress_users" => $request->getPost("adress_users"),
         ];
         return $data;
-    }
-
-    
+    } 
     
 
     public function registerUser()
     {
         $data = $this->generateUserFromPost($this->request);
 
-        $val = $this->validate([
-            "last_name_users"        => 'trim|required|min_length[3]|max_length[180]',
-            "first_name_users"       => 'trim|required|min_length[3]|max_length[180]',
-            "email_users"            => 'required|valid_email|is_unique[users.email_users]',
-            "password_users"         => 'min_length[6]',
-            "password_users_confirm" => 'required|matches[password_users]',
+        $val = $this->validate([     
+            
+            'last_name_users'    => [
+                'rules'  => 'trim|required|min_length[3]|max_length[200]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un nom',
+                    'min_length' => 'Veuillez saisir un nom à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un nom à moins de 200 caractère',
+                ],
+            ],
+            'frist_name_users'    => [
+                'rules'  => 'trim|required|min_length[3]|max_length[200]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un prenom',
+                    'min_length' => 'Veuillez saisir un prennom à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un prenom à moins de 200 caractère',
+                ],
+            ],
+            'email_users'    => [
+                'rules'  => 'trim|required|valid_email|is_unique[users.email_users]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un email',
+                    'valid_email' => 'Votre mail n\'est pas valide',
+                    'is_unique' => 'Cette email existe déjà en base',
+                ],
+            ],
+            'password_users'    => [
+                'rules'  => 'trim|required|min_length[6]',
+                'errors' => [
+                    'required' => 'Veuillez un mot de passe',
+                    'min_length' => 'Veuillez Saisir un mots de passe à plus de 6 caractère',
+
+                ],
+            ],
+            'password_users_confirmation'    => [
+                'rules'  => 'required|matches[password_users]',
+                'errors' => [
+                    'matches' => 'Mot de passe différents !',
+                    
+                ],
+            ],
+            'cgu'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Veuillez accepter les CGU',
+                ],
+            ],
         ]);
 
         if (!$val) {
@@ -65,8 +104,19 @@ class AuthenticationController extends BaseController
 
     public function loginUser(){
         $input = $this->validate([
-            'password_users' => 'required',
-            'email_users' => 'required|valid_email',
+            'email_users'    => [
+                'rules'  => 'trim|required|valid_email',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un email',
+                    'valid_email' => 'Votre mail n\'est pas valide',
+                ],
+            ],
+            'password_users'    => [
+                'rules'  => 'trim|required',
+                'errors' => [
+                    'required' => 'Veuillez un mot de passe',
+                ],
+            ],
         ]);
 
         if ($input) {
@@ -105,16 +155,16 @@ class AuthenticationController extends BaseController
             'frist_name_company'=> $request->getPost("frist_name_company"),
             'password_company'=> password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
             'status_company'=> "nouveau",
-            'city_company'=> "Cormelles le Royal",
-            'postal_code_company'=> "14123",
-            'adress_company'=> "1 rue de la vallée",
-            'x_company'=> "25",
-            'y_company'=> "42",
+            'city_company'=> $request->getPost("city_company"),
+            'postal_code_company'=> $request->getPost("postal_code_company"),
+            'adress_company'=> $request->getPost("adress_company"),
+            'x_company'=> $request->getPost("x_company"),
+            'y_company'=> $request->getPost("y_company"),
             'siret_company'=> $request->getPost("siret_company"),
             'hourly_rate_company'=> $request->getPost("hourly_rate_company"),
             'child_capacity_company'=> $request->getPost("child_capacity_company"),
         ];
-        return $data;
+        return $data;   
     }
  
     public function registerCompany()
@@ -133,7 +183,7 @@ class AuthenticationController extends BaseController
             'name_company'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
-                    'required' => 'Veuillez rentrer un email',
+                    'required' => 'Veuillez rentrer un nom d\'entreprise',
                     'min_length' => 'Veuillez Saisir un nom d\'entreprise à plus de 3 caractère',
                     'max_length' => 'Veuillez Saisir un nom d\'entreprise à moins de 200 caractère',
                 ],
@@ -146,10 +196,10 @@ class AuthenticationController extends BaseController
                     'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
                 ],
             ],
-            'last_name_company'    => [
+            'frist_name_company'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
-                    'required' => 'Veuillez rentrer un nom',
+                    'required' => 'Veuillez rentrer un prenom',
                     'min_length' => 'Veuillez Saisir un nom à plus de 3 caractère',
                     'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
                 ],
