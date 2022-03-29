@@ -12,21 +12,19 @@ input.addEventListener("keyup", (e) => {
     .then(function () {
       objRes = JSON.parse(res);
       children.innerHTML = "";
-      for (let i = 0; i < 5; i++) {
-        console.log(objRes.features[i]);
+      Object.entries(objRes.features).forEach(([key, value]) => {
         children.innerHTML += `
-                    <div class="infos">
-                        <span name='adress_company' class="adress_company">${objRes.features[i].properties.name}</span>
-                        <span name='city_company' class="city_company">${objRes.features[i].properties.city}</span>
-                        <span name='postal_code_company' class="postal_code_company">${objRes.features[i].properties.postcode}</span>                        
-                        <span name='x_company' class="x_company">${objRes.features[i].geometry.coordinates[0]}</span>
-                        <span name='y_company' class="y_company">${objRes.features[i].geometry.coordinates[1]}</span>                  
-                    <div>`;
-      }
+        <div class="infos">
+            <span name='adress_company' class="adress_company">${objRes.features[key].properties.name}</span>
+            <span name='city_company' class="city_company">${objRes.features[key].properties.city}</span>
+            <span name='postal_code_company' class="postal_code_company">${objRes.features[key].properties.postcode}</span>                        
+            <span name='x_company' class="x_company">${objRes.features[key].geometry.coordinates[0]}</span>
+            <span name='y_company' class="y_company">${objRes.features[key].geometry.coordinates[1]}</span>                  
+        <div>`;
+      });
     })
     .then(function () {
       const infos = document.querySelectorAll(".infos");
-
       infos.forEach((info) => {
         info.addEventListener("click", (e) => {
           e.preventDefault();
@@ -43,7 +41,7 @@ input.addEventListener("keyup", (e) => {
                             <input   name='postal_code_company' class="postal_code_company" value="${cp}"></input>                        
                             <input   name='x_company' class="x_company" value="${x}"></input>
                             <input   name='y_company' class="y_company" value="${y}"></input>          
-                    </div>`;
+                </div>`;
         });
       });
     });
