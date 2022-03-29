@@ -58,7 +58,6 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 
 
 $routes->get('resultats', 'ResultsController::index');
-$routes->get('api', 'ResultsController::getApiResult');
 
 
 //////////////////////PROFIL  //////////////////////////////////

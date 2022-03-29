@@ -15,8 +15,8 @@ class ResultsModel extends Model
     {
         $sql = $this->select('email_company,name_company,city_company,postal_code_company,
         adress_company,x_company,y_company')->findAll();
-        $data = json_encode($sql);
-        return $data;
+        $json = json_encode($sql);
+        $jsonFile = file_put_contents("api_company.json", $json);
     }
 
 }
