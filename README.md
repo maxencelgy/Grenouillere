@@ -6,4 +6,8 @@
 
 4 eme etape : créer la branch dev -> git branch dev
 
-5 eme etape : php spark serve
+5 eme etape : créer une bdd -> grenouillere
+
+6 eme etape : /!\ à faire une seule fois -> php spark migrate
+
+7 eme etape : php spark serve

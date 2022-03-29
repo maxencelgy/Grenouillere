@@ -24,9 +24,13 @@
 
     </div>
     <?php include("navigation/footer.php"); ?>
+<<<<<<< HEAD
 
     <script src="asset/js/popup.js"></script>
 
+=======
+    <?= $this->renderSection('js') ?>
+>>>>>>> ef025c6094902cd01f492602e36e6c99c9651ef3
 </body>
 
 </html>
