@@ -8,6 +8,7 @@
 
 <?= $this->section('content') ?>
 <section id='connexion'>
+
     <div class="wrap">
         <?= $this->renderSection('formAuth') ?>
     </div>
