@@ -38,8 +38,6 @@
 #connexion .wrap form p {
   text-align: center;
 }
-#connexion .wrap form a {
-}
 #radio {
   display: inline-block;
   background-color: inherit;
@@ -52,3 +50,4 @@
   align-items: top;
   justify-content: space-between;
 }
+

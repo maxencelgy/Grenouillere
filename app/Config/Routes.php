@@ -43,6 +43,9 @@ $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
 $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
+$routes->get('profil/editCompany', 'ProfilController::editCompany');
+$routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
+
 
 //ALLERGY
 $routes->post('allergie/Ajouter', 'allergyController::addAllergy');
@@ -59,6 +62,8 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 
 $routes->get('resultats', 'ResultsController::index');
 $routes->get('api', 'ResultsController::getApiResult');
+
+
 
 
 //////////////////////PROFIL  //////////////////////////////////
