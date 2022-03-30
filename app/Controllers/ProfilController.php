@@ -10,6 +10,7 @@ class ProfilController extends BaseController
     {
         $this->reservationModel = model('App\Models\reservationModel');
         $this->profilModel = model('App\Models\profilModel');
+        $this->planningModel = model('App\Models\planningModel');
     }
 
     public function index()
@@ -22,7 +23,10 @@ class ProfilController extends BaseController
 
     public function editCompany()
     {
-        echo view('profil/edit_company');
+        $planing = $this->planningModel->getAll();
+        echo view('profil/edit_company',[
+            "planing" => $planing,
+        ]);
     }
 
     public function handlePostCalandar()
@@ -54,10 +58,10 @@ class ProfilController extends BaseController
         debug($tabler);
         foreach ($tabler as $key) {
             $data = array(
-                "fk_company" => session()->get('id'),
-                "child_remaining_slot" =>  session()->get('child_capacity_company'),
-                "fk_planning" => $key['fk_planning'],
-                "date_slot" =>$key['date_slot'],
+                "fk_company"           => session()->get('id'),
+                "child_remaining_slot" => session()->get('child_capacity_company'),
+                "fk_planning"          => $key['fk_planning'],
+                "date_slot"            => $key['date_slot'],
             );
             $this->profilModel->insertCalendar($data);
         }

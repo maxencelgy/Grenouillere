@@ -47,20 +47,11 @@
         </div>
     </div>
 </section>
-<?= var_dump(session()->get())  ?>
+<?= var_dump($planing) ?>
 
 <section id="planning">
     <?php
     setlocale(LC_TIME, "fr_FR");
-    // $premierJour = strftime("%A - %d/%M/%Y", strtotime("+ 1 days"));
-    // echo "Premier jour de cette semaine est: ", $premierJour;
-
-    // echo '<br>';
-    // echo '<br>';
-
-    // $jour = date("Y-m-d");
-    // $maDate = strtotime($jour . "+ 1 days");
-    // echo date("Y-m-d", $maDate) . "\n";
     ?>
     <div class="wrap">
         <h2 class="hours">HORRAIRES</h2>
@@ -69,35 +60,31 @@
             for ($i = 0; $i < 7; $i++) { ?>
             <div class="days">
                 <div class="day">
-                    <h2><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></h2>
+                    <h2 class='date'><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></h2>
                     <div class="slots">
+                        <?php
+                        foreach($planing as $day){
+                            ?>
                         <div class="slot">
-                            <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
-                            <p style="display: none;">1</p>
-                            <p>Matin</p>
+                            <div style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></div>
+                            <div style="display: none;"> <?= $day['id_planning'] ?> </div>
+                            <div> <?= $day['libelle_planning'] ?> </div>
                         </div>
-                        <div class="slot">
-                            <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
-                            <p style="display: none;">2</p>
-                            <p>Midi</p>
-                        </div>
-                        <div class="slot">
-                            <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
-                            <p style="display: none;">3</p>
-                            <p>Soir</p>
-                        </div>
+                        <?php
+                        }
+                        ?>
+
                     </div>
                 </div>
             </div>
             <?php } ?>
         </div>
-        <div class="send"><a href="" id="send">ENVOYER EN BDD</a></div>
     </div>
 </section>
 
 
 <form action="/calendar/add" method="post" id="response">
-
+    <input class="send" type="submit" value="Envoyer le planning">
 </form>
 
 
