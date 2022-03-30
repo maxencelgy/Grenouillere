@@ -1,6 +1,7 @@
 const input = document.querySelector("#fullAdresse");
 const parent = document.querySelector(".parentSearch");
 const children = document.querySelector(".childrenSearch");
+
 console.log(input);
 let res;
 input.addEventListener("keyup", (e) => {
@@ -12,14 +13,16 @@ input.addEventListener("keyup", (e) => {
     .then(function () {
       objRes = JSON.parse(res);
       children.innerHTML = "";
+
       Object.entries(objRes.features).forEach(([key, value]) => {
+        parent.style.display = "block";
         children.innerHTML += `
         <div class="infos">
             <span name='adress_company' class="adress_company">${objRes.features[key].properties.name}</span>
             <span name='city_company' class="city_company">${objRes.features[key].properties.city}</span>
             <span name='postal_code_company' class="postal_code_company">${objRes.features[key].properties.postcode}</span>                        
-            <span name='x_company' class="x_company">${objRes.features[key].geometry.coordinates[0]}</span>
-            <span name='y_company' class="y_company">${objRes.features[key].geometry.coordinates[1]}</span>                  
+            <span style="display: none" name='x_company' class="x_company">${objRes.features[key].geometry.coordinates[0]}</span>
+            <span style="display: none" name='y_company' class="y_company">${objRes.features[key].geometry.coordinates[1]}</span>                  
         <div>`;
       });
     })
@@ -33,8 +36,10 @@ input.addEventListener("keyup", (e) => {
           let cp = info.children[2].textContent.trim();
           let x = info.children[3].textContent.trim();
           let y = info.children[4].textContent.trim();
+          parent.style.display = "none";
           input.value = adresse + ", " + ville + ", " + cp;
           children.innerHTML = `
+        
                 <div class="infos" style = "display: none">
                             <input  name='adress_company' class="adress_company" value="${adresse}"></input>
                             <input  name='city_company' class="city_company" value="${ville}"></input>

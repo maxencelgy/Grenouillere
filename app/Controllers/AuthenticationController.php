@@ -252,7 +252,7 @@ class AuthenticationController extends BaseController
             
         ]);
 
-        if (!$val) {
+        if (!$val || (!empty($_POST))) {
             echo view('authentication/company/register', [
                 'validation' => $this->validator,
             ]);

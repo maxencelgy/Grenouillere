@@ -29,6 +29,7 @@
   text-align: center;
   font-size: 1.2rem;
 }
+
 #connexion .wrap form input::placeholder {
   color: black;
 }
@@ -40,14 +41,30 @@
 }
 
 #connexion .error {
+  display: none;
   color: red;
 }
-
-.childrenSearch {
-  background-color: aqua;
-  padding: 1rem;
+.parentSearch {
   position: absolute;
+  top: 35%;
+  width: 500px;
+  display: none;
+}
+.childrenSearch {
+  background-color: white;
   border-radius: 0.3rem;
-  top: 15%;
-  right: 0;
+  padding: 0.5rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+}
+
+.infos:hover {
+  cursor: pointer;
+}
+.infos span {
+  font-size: 1.3rem;
+
+  color: black;
+  padding: 0.3rem;
+  background-color: white;
 }
