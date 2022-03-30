@@ -47,7 +47,7 @@
         </div>
     </div>
 </section>
-
+<?= var_dump(session()->get())  ?>
 
 <section id="planning">
     <?php
@@ -64,33 +64,34 @@
     ?>
     <div class="wrap">
         <h2 class="hours">HORRAIRES</h2>
-
         <div class="calendar">
             <?php
             for ($i = 0; $i < 7; $i++) { ?>
-                <div class="days">
-                    <div class="day">
-
-                        <h2><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></h2>
-                        <div class="slots">
-                            <div class="slot">
-                                <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
-                                <p>Matin</p>
-                            </div>
-                            <div class="slot">
-                                <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
-                                <p> Midi</p>
-                            </div>
-                            <div class="slot">
-                                <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
-                                <p> Soir</p>
-                            </div>
+            <div class="days">
+                <div class="day">
+                    <h2><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></h2>
+                    <div class="slots">
+                        <div class="slot">
+                            <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
+                            <p style="display: none;">1</p>
+                            <p>Matin</p>
+                        </div>
+                        <div class="slot">
+                            <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
+                            <p style="display: none;">2</p>
+                            <p>Midi</p>
+                        </div>
+                        <div class="slot">
+                            <p style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></p>
+                            <p style="display: none;">3</p>
+                            <p>Soir</p>
                         </div>
                     </div>
                 </div>
+            </div>
             <?php } ?>
         </div>
-        <div class="send"><a href="" id="send">ENVOYER EN BDD ZEBI</a></div>
+        <div class="send"><a href="" id="send">ENVOYER EN BDD</a></div>
     </div>
 </section>
 

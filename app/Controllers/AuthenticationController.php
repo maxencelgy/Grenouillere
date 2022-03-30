@@ -197,11 +197,8 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez accepter les CGU',
                 ],
-            ],
-
-            
+            ],            
         ]);
-
         if (!$val) {
             echo view('authentication/company/register', [
                 'validation' => $this->validator,
