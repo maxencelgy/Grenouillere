@@ -21,6 +21,9 @@ class ProfilController extends BaseController
         ]);
     }
 
-
+    public function editCompany()
+    {
+        echo view('profil/edit_company');
+    }
 
 }

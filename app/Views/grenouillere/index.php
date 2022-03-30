@@ -19,9 +19,11 @@
             <form action="" class="filterSearch">
                 <!-- <img class="fleurs" src="asset/img/fleurs.svg" alt=""> -->
                 <div class="top">
-                    <select name="ville" id="ville">
-                        <option value="">Ville</option>
-                    </select>
+                    <input type="text" name="fullAdresse" id='fullAdresse' placeholder="Choisissez ville ici">
+                    <div class="parentSearch">
+                        <div class="childrenSearch"></div>
+                    </div>
+
                     <select name="enfant" id="enfant">
                         <option value="">Nombre d'enfant</option>
                     </select>
@@ -85,4 +87,8 @@
 </section>
 
 
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+<script src="/asset/js/search.js"></script>
 <?= $this->endSection() ?>
