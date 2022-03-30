@@ -28,16 +28,6 @@ class AdminController extends BaseController
 
 
 
-    public function handleModify(int $id)
-    {
-        $entreprise = $this->companyModel->find($id);
-        if (is_null($entreprise)) {
-            return redirect()->to('/admin');
-        }
-        echo view('admin/modify', [
-            "entreprise" => $entreprise,
-        ]);
-    }
 
     public function handleModified()
     {

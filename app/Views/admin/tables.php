@@ -257,10 +257,17 @@
                                                 <td><?= $company['frist_name_company'] ?></td>
                                                 <td><?= $company['city_company'] ?></td>
                                                 <td><?= $company['postal_code_company'] ?></td>
-                                                <td><?= $company['status_company'] ?></td>
-                                                <td class="text-center"> <a href="/admin/modify/<?= $company['id_company'] ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                            </tr>
+                                                <form class="formu" action="/admin/modified" method="post">
+                                                    <input type="hidden" name="id" value="<?= $company['id_company'] ?>">
+                                                    <td><input type="text" name="status_company" value="<?= $company['status_company'] ?>"></td>
+                                                    <td> <button type="submit" class=" btn btn-outline-warning">
+                                                            <i class="fa-solid fa-pen-to-square "></i>
+                                                        </button></td>
 
+
+
+                                                </form>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
