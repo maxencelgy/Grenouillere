@@ -221,13 +221,6 @@ class AuthenticationController extends BaseController
 
                 ],
             ],
-            'password_company_confirmation'    => [
-                'rules'  => 'trim|matches[password_company]',
-                'errors' => [
-                    'matches' => 'Mot de passe différents !',
-
-                ],
-            ],
             'siret_company'    => [
                 'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
                 'errors' => [
