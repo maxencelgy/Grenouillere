@@ -6,8 +6,6 @@
 <?= $this->section('formAuth') ?>
 <form id="first" action="" method="post">
     <input type="text" name="fullAdresse" id='fullAdresse' placeholder="Veuillez saisir votre adresse">
-
-
     <div class="parentSearch">
         <div class="childrenSearch"></div>
     </div>

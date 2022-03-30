@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\userModel;
 use App\Models\CompanyModel;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -27,7 +28,7 @@ class AuthenticationController extends BaseController
         $data = [
             "email_users" => $request->getPost("email_users"),
             "last_name_users" => $request->getPost("last_name_users"),
-            "first_name_users" => $request->getPost("first_name_users"),
+            "first_name_users" => $request->getPost("frist_name_users"),
             "password_users" => password_hash($this->request->getPost('password_users'), PASSWORD_DEFAULT),
             "phone_users" => $request->getPost("phone_users"),
             "role_users" => "user",
@@ -36,15 +37,15 @@ class AuthenticationController extends BaseController
             "adress_users" => $request->getPost("adress_users"),
         ];
         return $data;
-    } 
-    
+    }
+
 
     public function registerUser()
     {
         $data = $this->generateUserFromPost($this->request);
 
-        $val = $this->validate([     
-            
+        $val = $this->validate([
+
             'last_name_users'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
@@ -81,7 +82,7 @@ class AuthenticationController extends BaseController
                 'rules'  => 'required|matches[password_users]',
                 'errors' => [
                     'matches' => 'Mot de passe différents !',
-                    
+
                 ],
             ],
             'cgu'    => [
@@ -102,7 +103,8 @@ class AuthenticationController extends BaseController
         }
     }
 
-    public function loginUser(){
+    public function loginUser()
+    {
         $input = $this->validate([
             'email_users'    => [
                 'rules'  => 'trim|required|valid_email',
@@ -131,7 +133,7 @@ class AuthenticationController extends BaseController
                     return redirect()->to('/');
                 }
             }
-        }  
+        }
 
         echo view('authentication/users/login', [
             'validation' => $this->validator
@@ -144,29 +146,29 @@ class AuthenticationController extends BaseController
         return redirect()->to('/');
     }
 
-    
+
 
     private function generateCompanyFromPost(IncomingRequest $request): array
     {
         $data = [
-            'email_company'=> $request->getPost("email_company"),
-            'name_company'=> $request->getPost("name_company"),
-            'last_name_company'=> $request->getPost("last_name_company"),
-            'frist_name_company'=> $request->getPost("frist_name_company"),
-            'password_company'=> password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
-            'status_company'=> "nouveau",
-            'city_company'=> $request->getPost("city_company"),
-            'postal_code_company'=> $request->getPost("postal_code_company"),
-            'adress_company'=> $request->getPost("adress_company"),
-            'x_company'=> $request->getPost("x_company"),
-            'y_company'=> $request->getPost("y_company"),
-            'siret_company'=> $request->getPost("siret_company"),
-            'hourly_rate_company'=> $request->getPost("hourly_rate_company"),
-            'child_capacity_company'=> $request->getPost("child_capacity_company"),
+            'email_company' => $request->getPost("email_company"),
+            'name_company' => $request->getPost("name_company"),
+            'last_name_company' => $request->getPost("last_name_company"),
+            'frist_name_company' => $request->getPost("frist_name_company"),
+            'password_company' => password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
+            'status_company' => "nouveau",
+            'city_company' => $request->getPost("city_company"),
+            'postal_code_company' => $request->getPost("postal_code_company"),
+            'adress_company' => $request->getPost("adress_company"),
+            'x_company' => $request->getPost("x_company"),
+            'y_company' => $request->getPost("y_company"),
+            'siret_company' => $request->getPost("siret_company"),
+            'hourly_rate_company' => $request->getPost("hourly_rate_company"),
+            'child_capacity_company' => $request->getPost("child_capacity_company"),
         ];
-        return $data;   
+        return $data;
     }
- 
+
     public function registerCompany()
     {
         $data = $this->generateCompanyFromPost($this->request);
@@ -216,29 +218,29 @@ class AuthenticationController extends BaseController
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
                     'matches' => 'Mot de passe différents !',
-                    
+
                 ],
             ],
             'password_company_confirmation'    => [
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
                     'matches' => 'Mot de passe différents !',
-                    
+
                 ],
             ],
             'siret_company'    => [
                 'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
                 'errors' => [
                     'min_length' => 'Pas assez de caractères 13 requis',
-                    'max_length' => 'Trop de caractères 13 requis',                    
-                    'numeric' => 'Vous devez rentrer des nombres',                    
+                    'max_length' => 'Trop de caractères 13 requis',
+                    'numeric' => 'Vous devez rentrer des nombres',
                 ],
             ],
             'hourly_rate_company'    => [
                 'rules'  => 'trim|required|numeric',
                 'errors' => [
                     'required' => 'Vous devez renter un taux horraire',
-                    'numeric' => 'Vous devez rentrer un nombre',                    
+                    'numeric' => 'Vous devez rentrer un nombre',
                 ],
             ],
 
@@ -249,7 +251,7 @@ class AuthenticationController extends BaseController
                 ],
             ],
 
-            
+
         ]);
 
         if (!$val || (!empty($_POST))) {
@@ -262,7 +264,8 @@ class AuthenticationController extends BaseController
         }
     }
 
-    public function loginCompany(){
+    public function loginCompany()
+    {
         $input = $this->validate([
             'email_company'    => [
                 'rules'  => 'trim|required|valid_email',
