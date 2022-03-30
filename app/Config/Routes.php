@@ -57,7 +57,7 @@ $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationControl
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
 
 
-$routes->get('resultats', 'ResultsController::index');
+$routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 
 
 //////////////////////PROFIL  //////////////////////////////////

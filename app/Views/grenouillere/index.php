@@ -7,8 +7,6 @@
 
 <?= $this->section('content') ?>
 
-<?= session()->get("email") ?>
-
 <section id="main">
     <div class="wrap2">
         <!-- <img class="nenu" src="/asset/img/nenuphar.svg" alt=""> -->
@@ -16,7 +14,7 @@
             <h1>Grenouillere</h1>
             <h2>Recherchez votre garde d'enfant directement <br> grâce au moteur de recherche ci-dessous.</h2>
             <!-- <h2>Trouvez parmi plus de 2000 annonces <br> d’Assitant Martenelle ou de creche <br> qualifiées !</h2> -->
-            <form action="" class="filterSearch">
+            <form action="resultats" method="post" class="filterSearch">
                 <!-- <img class="fleurs" src="asset/img/fleurs.svg" alt=""> -->
                 <div class="top">
                     <input type="text" name="fullAdresse" id='fullAdresse' placeholder="Choisissez ville ici">
@@ -25,19 +23,22 @@
                     </div>
 
                     <select name="enfant" id="enfant">
-                        <option value="">Nombre d'enfant</option>
+                        <option value="1">1 enfant</option>
+                        <option value="2">2 enfants</option>
+                        <option value="3">3 enfants ou plus</option>
                     </select>
-                    <select name="Journée" id="Journée">
-                        <option value="">Journée</option>
+                    <select name="Journee" id="Journee">
+                        <option value="date">Date</option>
                     </select>
                     <select name="Horaire" id="Horaire">
-                        <option value="">Horaire</option>
+                        <option value="matin">Matin</option>
+                        <option value="midi">Midi</option>
+                        <option value="soir">Soir</option>
                     </select>
                 </div>
                 <div class="bottom">
                     <input type="submit" name="submitted" value="Rechercher">
                 </div>
-
             </form>
         </div>
         <div class="rightMain">
@@ -90,5 +91,5 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
-<script src="/asset/js/search.js"></script>
+<script src="/asset/js/addAdress.js"></script>
 <?= $this->endSection() ?>

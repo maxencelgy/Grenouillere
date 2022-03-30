@@ -129,6 +129,7 @@ class AuthenticationController extends BaseController
                     session()->set([
                         "id" => $user["id_users"],
                         "email" => $user["email_users"],
+                        "role" => $user["role_users"]
                     ]);
                     return redirect()->to('/');
                 }

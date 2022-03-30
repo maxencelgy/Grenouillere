@@ -16,12 +16,21 @@ class ResultsController extends BaseController
 
     public function index()
     {
-        $createFile = $this->resultsModel->createJsonFile();
+
+        if(!empty($_POST)){
+            $postalCode = $_POST['postal_code_company'];
+            $planning = $_POST['Horaire'];
+            $enfant = $_POST['enfant'];
+        }
+
+        $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant);
         $companyData = $this->resultsModel->getAllCompany();
         echo view('results/global_result', [
             'companyData' => $companyData
         ]);
     }
+
+
 
 
 }
