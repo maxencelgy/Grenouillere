@@ -6,7 +6,6 @@
         </div>
         <div class="right">
             <?php if (!empty(session()->get("email"))) { ?>
-                <a href="<?= site_url(); ?>create-children" class="btn">Inscrire mon enfant</a>
                 <a href="<?= site_url(); ?>profil" class="btn">Mon Profil</a>
                 <a href="<?= site_url(); ?>deconnexion" class="btn">Deconnexion</a>
             <?php } else { ?>
