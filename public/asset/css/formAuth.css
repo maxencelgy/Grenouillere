@@ -40,10 +40,10 @@
   text-align: center;
 }
 
-#connexion .error {
+/* #connexion .error {
   display: none;
   color: red;
-}
+} */
 
 .childrenSearch {
   display: none;

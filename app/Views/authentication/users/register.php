@@ -27,10 +27,10 @@
         <?php if (!empty($validation->getErrors()['password_users'])) echo $validation->getErrors()['password_users'] ?>
     </span>
 
-    <label for="password_users_confirm">Confirmer votre mot de passe *</label>
-    <input type="password" name="password_users_confirm" id="box-shadow" placeholder="Confirmer votre mot de passe">
+    <label for="password_users_confirmation">Confirmer votre mot de passe *</label>
+    <input type="password" name="password_users_confirmation" id="box-shadow" placeholder="Confirmer votre mot de passe">
     <span class="error">
-        <?php if (!empty($validation->getErrors()['password_users_confirm'])) echo $validation->getErrors()['password_users_confirm'] ?>
+        <?php if (!empty($validation->getErrors()['password_users_confirmation'])) echo $validation->getErrors()['password_users_confirmation'] ?>
     </span>
 
     <label for="cgu">J’accepte la politique de confidentialité du site</label>
@@ -39,7 +39,7 @@
         <?php if (!empty($validation->getErrors()['cgu'])) echo $validation->getErrors()['cgu'] ?>
     </span>
 
-    <input type="submit" name="submitted" value="Envoyer" class="submit">
+    <input type="submit" name="submitted" value="Envoyer">
 </form>
 
 </div>
