@@ -42,7 +42,7 @@
 
 
 
-    <span class="error" style="display: block;">
+    <span class="error">
         <?php if (!empty($validation->getErrors()['siret_company'])) echo  $validation->getErrors()['siret_company']  ?>
     </span>
     <input type="text" name="siret_company" placeholder="Numéro de siret">

@@ -39,7 +39,7 @@
         <?php if (!empty($validation->getErrors()['cgu'])) echo $validation->getErrors()['cgu'] ?>
     </span>
 
-    <input type="submit" name="submitted" value="Envoyer" class="submit" id="box-shadow">
+    <input type="submit" name="submitted" value="Envoyer" class="submit">
 </form>
 
 </div>
