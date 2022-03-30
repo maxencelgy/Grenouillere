@@ -5,6 +5,8 @@
             <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
         </div>
         <div class="right">
+            <?php if (session()->get("role") == "admin") { ?>
+                <a href="<?= site_url(); ?>admin" class="btn">admin</a> <?php } ?>
             <?php if (!empty(session()->get("email"))) { ?>
                 <a href="<?= site_url(); ?>create-children" class="btn">Inscrire mon enfant</a>
                 <a href="<?= site_url(); ?>profil" class="btn">Mon Profil</a>

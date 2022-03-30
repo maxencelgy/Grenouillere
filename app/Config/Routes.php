@@ -67,7 +67,10 @@ $routes->get('profil', 'ProfilController::index');
 $routes->get('export/(:num)', 'CsvController::export/$1');
 $routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 
-
+// ///ADMIN /////////////////
+$routes->get('/admin', 'AdminController::index');
+$routes->get('admin/modify/(:num)', 'AdminController::handleModify/$1');
+$routes->post('admin/modify/modified', 'AdminController::handleModified');
 
 /*
  * --------------------------------------------------------------------
