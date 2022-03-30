@@ -23,7 +23,7 @@
     </div>
     <?php include("navigation/footer.php"); ?>
 
-    <script src="asset/js/popup.js"></script>
+    <script src="/asset/js/popup.js"></script>
 
     <?= $this->renderSection('js') ?>
 

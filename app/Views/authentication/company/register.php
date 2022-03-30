@@ -6,8 +6,6 @@
 <?= $this->section('formAuth') ?>
 <form id="first" action="" method="post">
     <input type="text" name="fullAdresse" id='fullAdresse' placeholder="Veuillez saisir votre adresse">
-
-
     <div class="parentSearch">
         <div class="childrenSearch"></div>
     </div>
@@ -44,7 +42,7 @@
 
 
 
-    <span class="error" style="display: block;">
+    <span class="error">
         <?php if (!empty($validation->getErrors()['siret_company'])) echo  $validation->getErrors()['siret_company']  ?>
     </span>
     <input type="text" name="siret_company" placeholder="Numéro de siret">

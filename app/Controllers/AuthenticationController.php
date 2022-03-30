@@ -28,7 +28,7 @@ class AuthenticationController extends BaseController
         $data = [
             "email_users" => $request->getPost("email_users"),
             "last_name_users" => $request->getPost("last_name_users"),
-            "first_name_users" => $request->getPost("first_name_users"),
+            "first_name_users" => $request->getPost("frist_name_users"),
             "password_users" => password_hash($this->request->getPost('password_users'), PASSWORD_DEFAULT),
             "phone_users" => $request->getPost("phone_users"),
             "role_users" => "user",
@@ -45,7 +45,14 @@ class AuthenticationController extends BaseController
         $data = $this->generateUserFromPost($this->request);
 
         $val = $this->validate([
-
+            'email_users'    => [
+                'rules'  => 'trim|required|valid_email|is_unique[users.email_users]',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un email',
+                    'valid_email' => 'Votre mail n\'est pas valide',
+                    'is_unique' => 'Cette email existe déjà en base',
+                ],
+            ],
             'last_name_users'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
@@ -62,14 +69,7 @@ class AuthenticationController extends BaseController
                     'max_length' => 'Veuillez saisir un prenom à moins de 200 caractère',
                 ],
             ],
-            'email_users'    => [
-                'rules'  => 'trim|required|valid_email|is_unique[users.email_users]',
-                'errors' => [
-                    'required' => 'Veuillez rentrer un email',
-                    'valid_email' => 'Votre mail n\'est pas valide',
-                    'is_unique' => 'Cette email existe déjà en base',
-                ],
-            ],
+
             'password_users'    => [
                 'rules'  => 'trim|required|min_length[6]',
                 'errors' => [
@@ -99,7 +99,7 @@ class AuthenticationController extends BaseController
             ]);
         } else {
             $this->userModel->insertUser($data);
-            return redirect()->to('authentication/users/login');
+            return redirect()->to('/particulier/connexion');
         }
     }
 
@@ -254,7 +254,7 @@ class AuthenticationController extends BaseController
 
         ]);
 
-        if (!$val || (!empty($_POST))) {
+        if (!$val) {
             echo view('authentication/company/register', [
                 'validation' => $this->validator
             ]);
