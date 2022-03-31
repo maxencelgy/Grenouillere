@@ -23,7 +23,6 @@ class allergyController extends BaseController
     {
         $data = $this->generateAllergyFromPost($this->request);
         $this->allergyModel->insertAllergy($data);
-        return redirect()->to('/create-children');
+        return redirect()->to('/admin/allergie');
     }
-
 }

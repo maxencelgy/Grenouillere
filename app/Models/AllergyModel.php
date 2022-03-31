@@ -16,8 +16,13 @@ class allergyModel extends Model
         return $this->insert($data);
     }
 
-    public function getAllAllergy(){
+    public function getAllAllergy()
+    {
         return $this->findAll();
     }
 
+    public function deleteById(int $id)
+    {
+        return $this->delete($id);
+    }
 }

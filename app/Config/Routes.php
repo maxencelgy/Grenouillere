@@ -48,8 +48,8 @@ $routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
 
 
 //ALLERGY
-$routes->post('allergie/Ajouter', 'allergyController::addAllergy');
-$routes->post('maladie/Ajouter', 'DiseaseController::addDisease');
+$routes->post('/allergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('/maladie/Ajouter', 'DiseaseController::addDisease');
 
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
@@ -76,6 +76,9 @@ $routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 // ///ADMIN /////////////////
 $routes->get('/admin', 'AdminController::index');
 $routes->post('/admin/modified', 'AdminController::handleModified');
+$routes->get('/admin/allergie', 'AdminController::viewAllergie');
+$routes->get('/admin/allergie/delete/(:num)', 'AdminController::handleDelete/$1');
+$routes->get('/admin/maladie/delete/(:num)', 'AdminController::handleDeleteMaladie/$1');
 
 
 // STRIPE

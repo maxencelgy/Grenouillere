@@ -16,8 +16,13 @@ class diseaseModel extends Model
         return $this->insert($data);
     }
 
-    public function getAllDisease(){
+    public function getAllDisease()
+    {
         return $this->findAll();
     }
 
+    public function deleteById(int $id)
+    {
+        return $this->delete($id);
+    }
 }
