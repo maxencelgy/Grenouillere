@@ -61,7 +61,6 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 
 
 $routes->get('resultats', 'ResultsController::index');
-$routes->get('api', 'ResultsController::getApiResult');
 
 
 
@@ -73,7 +72,9 @@ $routes->get('profil', 'ProfilController::index');
 $routes->get('export/(:num)', 'CsvController::export/$1');
 $routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 
-
+// ///ADMIN /////////////////
+$routes->get('/admin', 'AdminController::index');
+$routes->post('/admin/modified', 'AdminController::handleModified');
 
 /*
  * --------------------------------------------------------------------

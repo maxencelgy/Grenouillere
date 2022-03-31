@@ -13,16 +13,15 @@ class ResultsController extends BaseController
         $this->resultsModel = model('App\Models\ResultsModel');
     }
 
+
     public function index()
     {
-        echo view('results/global_result');
-    }
-
-    public function getApiResult(){
-        $data = $this->resultsModel->getDataParseJson();
-        echo view('api/api_company', [
-            "jsonData" => $data,
+        $createFile = $this->resultsModel->createJsonFile();
+        $companyData = $this->resultsModel->getAllCompany();
+        echo view('results/global_result', [
+            'companyData' => $companyData
         ]);
     }
+
 
 }

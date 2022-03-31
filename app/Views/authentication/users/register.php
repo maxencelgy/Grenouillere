@@ -1,33 +1,45 @@
-{# Login template #}
 <?= $this->extend('templates/authentication/default') ?>
 
-{# Form login User #}
-
 <?= $this->section('formAuth') ?>
-<div class="wrap">
-    <h2>Particulier Inscription</h2>
-    <form action="" method="post" class="form">
 
-        <input type="text" name="last_name_users" placeholder="Nom" id="box-shadow">
-        <span class="error"> </span>
+<form action="" method="post" class="form">
+    <label for="last_name_users">Nom *</label>
+    <input type="text" name="last_name_users" placeholder="Nom" >
+    <span class="error">
+        <?php if (!empty($validation->getErrors()['last_name_users'])) echo $validation->getErrors()['last_name_users'] ?>
+    </span>
 
-        <input type="text" name="first_name_users" placeholder="Prenom" id="box-shadow">
-        <span class="error"></span>
+    <label for="frist_name_users">Prénom *</label>
+    <input type="text" name="frist_name_users" placeholder="Prenom" >
+    <span class="error">
+        <?php if (!empty($validation->getErrors()['frist_name_users'])) echo $validation->getErrors()['frist_name_users'] ?>
+    </span>
 
-        <input type="text" name="email_users" placeholder="exemple@gmail.com" id="box-shadow">
-        <span class="error"></span>
+    <label for="email_users">Email *</label>
+    <input type="text" name="email_users" placeholder="exemple@gmail.com" >
+    <span class="error">
+        <?php if (!empty($validation->getErrors()['email_users'])) echo $validation->getErrors()['email_users'] ?>
+    </span>
 
-        <input type="password" name="password_users" id="box-shadow" placeholder="Mot de passe">
-        <span class="error"></span>
+    <label for="password_users">Mot de passe *</label>
+    <input type="password" name="password_users"  placeholder="Mot de passe">
+    <span class="error">
+        <?php if (!empty($validation->getErrors()['password_users'])) echo $validation->getErrors()['password_users'] ?>
+    </span>
 
-        <input type="password" name="password_users_confirm" id="box-shadow" placeholder="Confirmer votre mot de passe">
-        <div class="rad">
-            <input name="cgu" type="radio" id="radio">
-            <p>J’accepte la politique de confidentialité du site</p>
-        </div>
+    <label for="password_users_confirmation">Confirmer votre mot de passe *</label>
+    <input type="password" name="password_users_confirmation"  placeholder="Confirmer votre mot de passe">
+    <span class="error">
+        <?php if (!empty($validation->getErrors()['password_users_confirmation'])) echo $validation->getErrors()['password_users_confirmation'] ?>
+    </span>
 
-        <input type="submit" name="submitted" value="Envoyer" class="submit" id="box-shadow">
-    </form>
-</div>
+    <label for="cgu">J’accepte la politique de confidentialité du site</label>
+    <input name="cgu" type="checkbox">
+    <span class="error">
+        <?php if (!empty($validation->getErrors()['cgu'])) echo $validation->getErrors()['cgu'] ?>
+    </span>
+
+    <input type="submit" name="submitted" value="Envoyer">
+</form>
 
 <?= $this->endSection() ?>
