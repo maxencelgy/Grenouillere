@@ -33,7 +33,6 @@ class ResultsModel extends Model
         $jsonDecode = json_decode($companyData);
         foreach ($jsonDecode as $jsonItem){
             if($jsonItem->id_company === $id){
-                var_dump($jsonItem);
                 return $jsonItem;
             }
         }
