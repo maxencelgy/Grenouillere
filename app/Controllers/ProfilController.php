@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use CodeIgniter\HTTP\IncomingRequest;
 
 class ProfilController extends BaseController
 {
@@ -8,9 +9,10 @@ class ProfilController extends BaseController
     private $profilModel;
     public function __construct()
     {
-        $this->reservationModel = model('App\Models\reservationModel');
-        $this->profilModel = model('App\Models\profilModel');
-        $this->planningModel = model('App\Models\planningModel');
+        $this->reservationModel   = model('App\Models\reservationModel');
+        $this->profilModel        = model('App\Models\profilModel');
+        $this->planningModel      = model('App\Models\planningModel');
+        $this->slotModel          = model('App\Models\slotModel');
     }
 
     public function index()
@@ -31,39 +33,31 @@ class ProfilController extends BaseController
 
     public function handlePostCalandar()
     {
-
-
-        function debug($tableau)
-        {
-            echo '<pre style="height:300px;overflow-y: scroll;font-size: .7rem;padding: .6rem;font-family: Consolas, Monospace;background-color: #000;color:#fff;">';
-            print_r($tableau);
-            echo '</pre>';
-        }
-
-
-        debug($_POST);
-        var_dump(session());
-        $tabler = [];
-        $string = '';
+        $data = [];
         $a = 0;
-        $tablerPost = array_values($_POST);
-        for ($i = 2; $i < count($tablerPost); $i++) {
+        $dataPost = array_values($this->request->getPost());
+        for ($i = 0; $i < count($dataPost); $i++) {
+            // On créer un tableau avec les données du post (via le JS)
+            // on fait un modulo pour savoir si on est sur une date ou un planning
+            // On ajoute les données en base de données à la fin du modulo, apres que le tableau aient toutes les infos
             if ($i % 2 == 0) {
-                $tabler[$a]['date_slot'] = $tablerPost[$i];
+                $data[$a]['fk_company'] = session()->get('id');
+                $data[$a]['child_remaining_slot'] = session()->get('child_capacity_company');
+                $data[$a]['date_slot'] = $dataPost[$i];
             } else {               
-                $tabler [$a]['fk_planning'] = $tablerPost[$i];                
+                $data[$a]['fk_planning'] = $dataPost[$i]; 
+                // verif que les données n'existe pas en déja en base de données
+                $occurenceData = $this->slotModel->verifyOccurence($data[$a]['fk_planning'], $data[$a]['fk_company'], $data[$a]['date_slot']);
+                // $occurenceData = false;
+                if(!$occurenceData){
+                    $this->profilModel->insertCalendar($data[$a]); 
+                }else{
+                    echo'erreur donnée déja presentent en base !';
+                }
+                // $this->profilModel->insertCalendar($data[$a]);            
                 $a++;
             }
-        }
-        debug($tabler);
-        foreach ($tabler as $key) {
-            $data = array(
-                "fk_company"           => session()->get('id'),
-                "child_remaining_slot" => session()->get('child_capacity_company'),
-                "fk_planning"          => $key['fk_planning'],
-                "date_slot"            => $key['date_slot'],
-            );
-            $this->profilModel->insertCalendar($data);
+            
         }
     }
 }

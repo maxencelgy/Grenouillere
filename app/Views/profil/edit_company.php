@@ -66,7 +66,7 @@
                         foreach($planing as $day){
                             ?>
                         <div class="slot">
-                            <div style="display: none;"><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></div>
+                            <div style="display: none;"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></div>
                             <div style="display: none;"> <?= $day['id_planning'] ?> </div>
                             <div> <?= $day['libelle_planning'] ?> </div>
                         </div>

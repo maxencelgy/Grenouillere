@@ -120,7 +120,6 @@ class AuthenticationController extends BaseController
     public function registerCompany()
     {
         $data = $this->generateCompanyFromPost($this->request);
-
         $val = $this->validate([
             'email_company'    => [
                 'rules'  => 'trim|required|valid_email|is_unique[company.email_company]',
@@ -159,14 +158,12 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez un mot de passe',
                     'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
-
                 ],
             ],
             'password_company_confirmation'    => [
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
-                    'matches' => 'Mot de passe différents !',
-                    
+                    'matches' => 'Mot de passe différents !',                    
                 ],
             ],
             'password_company_confirmation'    => [
