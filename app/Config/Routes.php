@@ -71,6 +71,14 @@ $routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 $routes->get('/admin', 'AdminController::index');
 $routes->post('/admin/modified', 'AdminController::handleModified');
 
+
+// STRIPE
+
+$routes->get("stripe/(:num)", "StripeController::stripe/$1");
+$routes->post("payment", "StripeController::payment");
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
