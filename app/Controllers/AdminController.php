@@ -13,8 +13,6 @@ class AdminController extends BaseController
     public function index()
     {
         $companys = $this->companyModel->getAllCompany();
-
-
         if (session()->get("role") == "admin") {
 
             echo view('admin/tables', [

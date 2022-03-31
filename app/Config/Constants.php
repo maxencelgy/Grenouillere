@@ -24,6 +24,8 @@ defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
  | the vendor folder is in the Root directory, but you can customize that here.
  */
 defined('COMPOSER_PATH') || define('COMPOSER_PATH', ROOTPATH . 'vendor/autoload.php');
+defined("STRIPE_KEY") || define('STRIPE_KEY', "pk_test_51KjIWSDJlMchz5cRXWb0bhJJu9jqdUDdQUX40jZAxi9Hro0X7KbqIFCEgbOQufI1LGEPlfehoPuXTPCn20gNOnfp00SGBCRgsr");
+defined("STRIPE_SECRET") || define('STRIPE_SECRET', "sk_test_51KjIWSDJlMchz5cRNJnftCaLvosL56RAjmAabPP3qGEjD0iReuqc4sSqGjb2tnhGNZQXd7SPwcC1lmSePWpwsR7k00vj2iXv2f");
 
 /*
  |--------------------------------------------------------------------------
