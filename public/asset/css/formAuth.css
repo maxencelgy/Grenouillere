@@ -39,7 +39,7 @@
 #connexion .wrap form p {
   text-align: center;
 }
-<<<<<<< HEAD
+
 #radio {
   display: inline-block;
   background-color: inherit;
@@ -51,7 +51,7 @@
   display: flex;
   align-items: top;
   justify-content: space-between;
-=======
+}
 
 /* #connexion .error {
   display: none;
@@ -76,6 +76,4 @@
 .infos {
   margin-bottom: 1rem;
   cursor: pointer;
->>>>>>> dev
 }
-
