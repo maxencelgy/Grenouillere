@@ -30,6 +30,12 @@ class ResultsController extends BaseController
         ]);
     }
 
+    public function singlePage($id){
+        $single_company = $this->resultsModel->getCompanyById($id);
+        echo view('results/single_result', [
+            'single' => $single_company
+        ]);
+    }
 
 
 

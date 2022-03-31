@@ -16,7 +16,7 @@ leaflet-0.7.3/leaflet.css" />
 <?php
 if (!empty($companyData)){
     foreach($companyData as $company){ ?>
-        <div class="box_item">
+        <a href="profil/creche/<?= $company->id_company ?>" class="box_item">
             <div class="image">
                 <img src="asset/img/illustration_result.jpg" alt="Image">
             </div>
@@ -44,7 +44,7 @@ if (!empty($companyData)){
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     <?php }
 }else{ ?>
     <h2>Désolé, nous n'avons trouvé aucune crèche qui correspond à votre recherche ...</h2>

@@ -13,7 +13,7 @@ class ResultsModel extends Model
 
     public function createJsonFile($postalCode, $enfant)
     {
-        $sql = $this->select('name_company,city_company,postal_code_company,
+        $sql = $this->select('id_company,name_company,city_company,postal_code_company,
         adress_company,x_company,y_company,child_capacity_company,hourly_rate_company')
             ->where('postal_code_company', $postalCode)
             ->where('child_capacity_company >=', $enfant)
@@ -26,6 +26,17 @@ class ResultsModel extends Model
         $companyData = file_get_contents('api_company.json');
         $jsonDecode = json_decode($companyData);
         return $jsonDecode;
+    }
+
+    public function getCompanyById($id){
+        $companyData = file_get_contents('api_company.json');
+        $jsonDecode = json_decode($companyData);
+        foreach ($jsonDecode as $jsonItem){
+            if($jsonItem->id_company === $id){
+                var_dump($jsonItem);
+                return $jsonItem;
+            }
+        }
     }
 
 }
