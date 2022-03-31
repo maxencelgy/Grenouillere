@@ -59,8 +59,9 @@ $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
 
-
-$routes->get('resultats', 'ResultsController::index');
+////Search result
+$routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
+$routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 
 
