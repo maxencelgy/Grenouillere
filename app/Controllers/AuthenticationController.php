@@ -129,7 +129,9 @@ class AuthenticationController extends BaseController
                     session()->set([
                         "id" => $user["id_users"],
                         "email" => $user["email_users"],
-                        "role" => $user["role_users"]
+                        "role" => $user["role_users"],
+                        "nom" => $user["last_name_users"],
+                        "prenom" => $user["first_name_users"]
                     ]);
                     return redirect()->to('/');
                 }
@@ -173,7 +175,6 @@ class AuthenticationController extends BaseController
     public function registerCompany()
     {
         $data = $this->generateCompanyFromPost($this->request);
-
         $val = $this->validate([
             'email_company'    => [
                 'rules'  => 'trim|required|valid_email|is_unique[company.email_company]',
@@ -212,23 +213,15 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez un mot de passe',
                     'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
-
                 ],
             ],
             'password_company_confirmation'    => [
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
-                    'matches' => 'Mot de passe différents !',
-
+                    'matches' => 'Mot de passe différents !',                    
                 ],
-            ],
-            'password_company_confirmation'    => [
-                'rules'  => 'trim|matches[password_company]',
-                'errors' => [
-                    'matches' => 'Mot de passe différents !',
+            ],          
 
-                ],
-            ],
             'siret_company'    => [
                 'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
                 'errors' => [
@@ -250,11 +243,9 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez accepter les CGU',
                 ],
-            ],
-
+            ],            
 
         ]);
-
         if (!$val) {
             echo view('authentication/company/register', [
                 'validation' => $this->validator

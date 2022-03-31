@@ -43,6 +43,9 @@ $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
 $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
+$routes->get('profil/editCompany', 'ProfilController::editCompany');
+$routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
+
 
 //ALLERGY
 $routes->post('allergie/Ajouter', 'allergyController::addAllergy');
@@ -60,6 +63,8 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 
 
+
+
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
 
@@ -67,7 +72,9 @@ $routes->get('profil', 'ProfilController::index');
 $routes->get('export/(:num)', 'CsvController::export/$1');
 $routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 
-
+// ///ADMIN /////////////////
+$routes->get('/admin', 'AdminController::index');
+$routes->post('/admin/modified', 'AdminController::handleModified');
 
 /*
  * --------------------------------------------------------------------
