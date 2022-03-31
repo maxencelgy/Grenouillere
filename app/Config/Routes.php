@@ -59,8 +59,9 @@ $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
 
-
-$routes->get('resultats', 'ResultsController::index');
+////Search result
+$routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
+$routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 
 
@@ -75,6 +76,14 @@ $routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 // ///ADMIN /////////////////
 $routes->get('/admin', 'AdminController::index');
 $routes->post('/admin/modified', 'AdminController::handleModified');
+
+
+// STRIPE
+
+$routes->get("stripe/(:num)", "StripeController::stripe/$1");
+$routes->post("payment", "StripeController::payment");
+
+
 
 /*
  * --------------------------------------------------------------------

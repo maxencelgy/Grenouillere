@@ -39,6 +39,7 @@ input.addEventListener("keyup", (e) => {
           children.style.display = "none";
           input.value = adresse + ", " + ville + ", " + cp;
           children.innerHTML = `
+
                 <div class="infos" style = "display: none">
                             <input  name='adress_company' class="adress_company" value="${adresse}"></input>
                             <input  name='city_company' class="city_company" value="${ville}"></input>
