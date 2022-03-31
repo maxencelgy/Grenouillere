@@ -81,7 +81,7 @@ $routes->post('/admin/modified', 'AdminController::handleModified');
 // STRIPE
 
 $routes->get("stripe/(:num)", "StripeController::stripe/$1");
-$routes->post("payment", "StripeController::payment");
+$routes->post("payment/(:num)", "StripeController::payment/$1");
 
 
 

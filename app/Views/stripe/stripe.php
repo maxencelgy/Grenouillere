@@ -1,14 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <title>CodeIgniter 4 - Stripe Payment Gateway Integration - onlinewebtutorblog.com</title>
- 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-
-<body> -->
-
 <?= $this->extend('templates/default') ?>
 <?= $this->section('stylesheet') ?>
 <link rel="stylesheet" href="/asset/css/profil.css">
@@ -20,7 +9,7 @@
 
 <div class="container">
 
-    <h3 style="text-align: center;">Paiement pour Maxence</h3><br />
+    <h3 style="text-align: center;">Paiement pour <?= $single->name_company ?></h3><br />
 
     <?php
 
@@ -33,13 +22,14 @@
     }
     ?>
 
+    <?php var_dump($single) ?>
+
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
                 <div class="panel-body">
 
-                    <form role="form" action="<?php echo base_url('payment') ?>" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="<?= STRIPE_KEY ?>" id="payment-form">
-
+                    <form role="form" action="/payment/<?= $single->id_company ?>" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="<?= STRIPE_KEY ?>" id="payment-form">
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <label class='control-label'>Nom sur la carte</label>
@@ -78,7 +68,7 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Payer maintenant ($70)</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Payer maintenant <?= $single->hourly_rate_company ?> €</button>
                             </div>
                         </div>
 
