@@ -2,7 +2,8 @@
 
 
 <?= $this->section('stylesheet') ?>
-    <link rel="stylesheet" href="/asset/css/single.css">
+<link rel="stylesheet" href="/asset/css/single.css">
+<link rel="stylesheet" href="/asset/css/edit_company.css">
 
 <?= $this->endSection() ?>
 
@@ -40,4 +41,11 @@
 
 
 
+<?= $this->endSection() ?>
+<?= $this->section('content2') ?>
+<?= $this->include('templates/calendar/planning') ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+<script src="/asset/js/calendar.js"></script>
 <?= $this->endSection() ?>

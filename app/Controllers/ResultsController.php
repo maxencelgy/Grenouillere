@@ -11,6 +11,9 @@ class ResultsController extends BaseController
     public function __construct()
     {
         $this->resultsModel = model('App\Models\ResultsModel');
+        $this->planningModel = model('App\Models\PlanningModel');
+        $this->slotModel = model('App\Models\SlotModel');
+        // findAllSlotByCompanyAndWeek
     }
 
 
@@ -32,8 +35,13 @@ class ResultsController extends BaseController
 
     public function singlePage($id){
         $single_company = $this->resultsModel->getCompanyById($id);
+        $planning = $this->planningModel->getAll();
+        $slot = $this->slotModel->findAllSlotByCompanyAndWeek(1, '2022-03-31');
+        // var_dump($slot);    
         echo view('results/single_result', [
-            'single' => $single_company
+            'single' => $single_company,
+            'planning' => $planning,
+            'slot' => $slot
         ]);
     }
 
