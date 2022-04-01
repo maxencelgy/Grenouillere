@@ -11,14 +11,14 @@
         <h2 class="hours">HORAIRES</h2>
         <div class="calendar">
             <?php
-            $ligne = 0;
+          
             for ($i = 0; $i < 7; $i++) { ?>
             <div class="days">
                 <div class="day">
-                    <h2 class='date'><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></h2>
+                    <h2 class='date'><?= date('Y-m-d', strtotime("+ $i days")) ?></h2>
                     <div class="slots">
                         <?php
-                        $column = 0;
+                        
                         foreach($planning as $day){
                             // On boucle dans le tableau slot
                             if(!empty($slot)){
@@ -42,17 +42,15 @@
                             <div> <?= $day['libelle_planning'] ?> </div>
                         </div>
                         <?php
-                            }
-                            
+                            }                            
                         
-                        $column++;
+                        
                         }
                         ?>
                     </div>
                 </div>
             </div>
-            <?php 
-        $ligne++;
+            <?php         
         } ?>
         </div>
     </div>

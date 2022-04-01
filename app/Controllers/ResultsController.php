@@ -35,8 +35,8 @@ class ResultsController extends BaseController
 
     public function singlePage($id){
         $single_company = $this->resultsModel->getCompanyById($id);
-        $planning = $this->planningModel->getAll();
-        $slot = $this->slotModel->findAllSlotByCompanyAndWeek(1, '2022-03-31');
+        $planning = $this->planningModel->getAll();        
+        $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
         // var_dump($slot);    
         echo view('results/single_result', [
             'single' => $single_company,
