@@ -27,13 +27,16 @@
                         <option value="2">2 enfants</option>
                         <option value="3">3 enfants ou plus</option>
                     </select>
-                    <select name="Journee" id="Journee">
-                        <option value="date">Date</option>
+                    <select name="day" id="day">
+                        <?php for ($i = 0; $i < 7; $i++){ ?>
+                            <option value="<?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?>"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></option>
+                       <?php } ?>
+
                     </select>
-                    <select name="Horaire" id="Horaire">
-                        <option value="matin">Matin</option>
-                        <option value="midi">Midi</option>
-                        <option value="soir">Soir</option>
+                    <select name="horaire" id="horaire">
+                        <?php foreach ($planning as $time){ ?>
+                            <option value="<?= $time['id_planning'] ?>"><?= $time['libelle_planning'] ?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="bottom">

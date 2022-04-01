@@ -48,8 +48,7 @@ class ProfilController extends BaseController
         $infoBtn = ['/calendar/add','Envoyer le planning'] ;  
         echo view('profil/edit_company', [
             "planning" => $planning,
-            "infoBtn" => $infoBtn,
-            
+            "infoBtn" => $infoBtn,   
         ]);
     }
 

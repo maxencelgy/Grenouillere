@@ -23,11 +23,14 @@ class ResultsController extends BaseController
 
         if(!empty($_POST)){
             $postalCode = $_POST['postal_code_company'];
-            $planning = $_POST['Horaire'];
+            $planning = $_POST['horaire'];
             $enfant = $_POST['enfant'];
+            $day = $_POST['day'];
+        }else{
+            return redirect()->to('/');
         }
 
-        $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant);
+        $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
         $companyData = $this->resultsModel->getAllCompany();
         echo view('results/global_result', [
             'companyData' => $companyData
