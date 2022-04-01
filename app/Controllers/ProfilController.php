@@ -46,7 +46,7 @@ class ProfilController extends BaseController
     {
         $planing = $this->planningModel->getAll();
         echo view('profil/edit_company', [
-            "planing" => $planing,
+            "planning" => $planing,
         ]);
     }
 
