@@ -1,7 +1,7 @@
 <footer>
     <div class="wrap">
         <div class="footerLeft">
-            <img src="/asset/img/logo.svg" alt="">
+            <img src="/asset/img/logo_footer.svg" alt="">
             <div class="social">
                 <i class="fa-brands fa-facebook-f"></i>
                 <i class="fa-brands fa-twitter"></i>
@@ -23,8 +23,13 @@
             <div class="foot">
                 <h2>Contact</h2>
                 <p>Nous contactez</p>
-
             </div>
         </div>
     </div>
+    <div class="footerbottom">
+        <img src="/asset/img/fleurs_2.svg" alt="" class="fleurs2">
+        <p>© Grenouillere 2022-2025. TOUS DROITS RÉSERVÉS</p>
+        <img src="/asset/img/FroagHead.svg" alt="">
+    </div>
+    <script src="/asset/js/wave.js"></script>
 </footer>

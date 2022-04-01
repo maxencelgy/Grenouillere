@@ -71,10 +71,9 @@ header .wrap .right a {
 /* FOOTER */
 
 footer {
-  background: url(/asset/img/wave.svg);
-  padding: 10rem;
-  background-color: aquamarine;
+  padding-top: 30rem;
   background-size: cover;
+  z-index: 99;
 }
 footer .wrap {
   display: flex;
@@ -85,8 +84,14 @@ footer .wrap .footerLeft {
   width: 29%;
 }
 footer .wrap .footerLeft img {
-  width: 24%;
+  width: 40%;
   margin-bottom: 1rem;
+}
+
+footer .wrap .foot{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .social {
@@ -94,57 +99,39 @@ footer .wrap .footerLeft img {
   align-items: center;
 }
 .social i {
-  font-size: 1.2rem;
-  margin-right: 1rem;
+  font-size: 3rem;
+  margin-right: 1.3rem;
 }
 footer .wrap .footerRight {
   width: 69%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 footer .wrap .footerRight h2 {
   font-weight: 500;
   margin-bottom: 1rem;
+  font-size: 2.4rem;
 }
 footer .wrap .footerRight p {
   margin-bottom: 1rem;
+  font-size: 1.6rem;
 }
-
-@media screen and (max-width:1080px) {
-  #main .wrap2 .leftMain h1{font-size: 2rem;}
-  #main .wrap2 .leftMain h2{font-size: 1rem;}
-  #main .wrap2 .top{
-    width: 90%;
-  }
-  #main .wrap2 select{
-    font-size: 1rem;
-  }
-  #main .wrap2 .rightMain img{
-    width: 55%;
-  }
-  input[type="submit"]{
-    font-size: 1rem;
-    width: 25%;
-  }
-  #solutions{
-    margin: 0 auto;
-  }
-  #solutions .filtre{
-    top: -90%;
-  }
-  #solutions .bigPic{
-    top: -90%;
-  }
-  #solutions .txtSolutions{
-    top: -20%;
-  }
-  #cards .wrapCards{
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  #cards .wrapCards .card{
-    width: 26%;
-  }
+footer .footerbottom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6rem;
 }
+footer .footerbottom p{
+  margin: 0 .7rem;
+  padding-top: 1rem;
+}
+footer .footerbottom img{
+  width: 7%;
+  transform: translate(1vh, 1vh);
+}
+footer .footerbottom .FroagHead{
+  width: 6%;
+}
+/* Footer animation */
