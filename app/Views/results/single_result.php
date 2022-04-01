@@ -3,6 +3,8 @@
 
 <?= $this->section('stylesheet') ?>
 <link rel="stylesheet" href="/asset/css/single.css">
+<link rel="stylesheet" href="/asset/css/edit_company.css">
+
 
 <?= $this->endSection() ?>
 
@@ -24,7 +26,8 @@
     <div class="single_info_container">
         <h3>Informations :</h3>
         <div class="single_box">
-            <p>Adresse : <?= $single->adress_company . ', ' . $single->postal_code_company . ', ' . $single->city_company ?></p>
+            <p>Adresse :
+                <?= $single->adress_company . ', ' . $single->postal_code_company . ', ' . $single->city_company ?></p>
             <p>Taux horaire : <?= $single->hourly_rate_company ?>€</p>
             <p>Place disponible : <?= $single->child_capacity_company ?></p>
             <h4>Description :</h4>
@@ -42,4 +45,11 @@
 <a href="/stripe/<?= $single->id_company ?>">LA</a>
 
 
+<?= $this->endSection() ?>
+<?= $this->section('content2') ?>
+<?= $this->include('templates/calendar/planning') ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+<script src="/asset/js/calendar.js"></script>
 <?= $this->endSection() ?>
