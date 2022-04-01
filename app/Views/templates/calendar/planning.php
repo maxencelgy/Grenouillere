@@ -2,23 +2,22 @@
 
     <?php
     if (!empty($slot)) {
-        var_dump($slot);
+        // var_dump($slot);
+        var_dump($chidrenList);
     }
-
     setlocale(LC_TIME, "fr_FR");
     ?>
     <div class="wrap">
         <h2 class="hours">HORAIRES</h2>
         <div class="calendar">
             <?php
-            $ligne = 0;
             for ($i = 0; $i < 7; $i++) { ?>
                 <div class="days">
                     <div class="day">
-                        <h2 class='date'><?= strftime("%d/%m/%Y", strtotime("+ $i days")) ?></h2>
+                        <h2 class='date'><?= date('Y-m-d', strtotime("+ $i days")) ?></h2>
                         <div class="slots">
                             <?php
-                            $column = 0;
+
                             foreach ($planning as $day) {
                                 // On boucle dans le tableau slot
                                 if (!empty($slot)) {
@@ -43,20 +42,18 @@
                                     </div>
                             <?php
                                 }
-
-
-                                $column++;
                             }
                             ?>
                         </div>
                     </div>
                 </div>
             <?php
-                $ligne++;
             } ?>
         </div>
     </div>
-    <form style="text-align: center;" action="/calendar/add" method="post" id="response">
-        <input style="padding: .5rem; background-color: violet; margin-top: 1rem; border-radius: .3rem; " class="send" type="submit" value="Envoyer le planning">
+    <form action=" <?= $infoBtn[0] ?> " method="post" id="response">
+        <input class="send" type="submit" value=" <?= $infoBtn[1] ?>">
     </form>
+
+
 </section>

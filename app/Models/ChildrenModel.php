@@ -24,6 +24,13 @@ class ChildrenModel extends Model
             ->find();
     }
 
+    public function getAllIdNameChildByIdParent(int $idParent)
+    {
+        return $this->select('id_child, first_name_child')
+                    ->where('child.fk_users =' .$idParent)
+                    ->find();
+    }
+
 
     public function getOneChildrens($id)
     {

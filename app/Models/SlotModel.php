@@ -12,7 +12,6 @@ class SlotModel extends Model
     protected $allowedFields = ['fk_planning','fk_company','date_slot'];
     protected $primaryKey = 'id_slot';
 
-
     public function verifyOccurence($planning, $fkCompany, $dateSlot)
     {
         return $this->select('id_slot')

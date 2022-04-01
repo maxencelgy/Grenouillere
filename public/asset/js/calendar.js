@@ -1,6 +1,10 @@
 const slot = document.querySelectorAll('.slot')
-const submit = document.querySelector("#send")
+const submit = document.querySelector(".send")
 const response = document.querySelector("#response")
+
+console.log(slot);
+console.log(submit);
+console.log(response);
 
 let send = []
 slot.forEach((e) => {
@@ -13,6 +17,7 @@ slot.forEach((e) => {
         let index = send.indexOf(this)
         send.splice(index, 1);
     }
+    console.log(send);
     let i = 0
     e.preventDefault()
     send.forEach(e => {

@@ -11,12 +11,7 @@
   background-color: aqua;
   margin-bottom: 2rem;
 }
-.calendar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: aqua;
-}
+
 .days {
   width: 13.33333%;
   text-align: center;
