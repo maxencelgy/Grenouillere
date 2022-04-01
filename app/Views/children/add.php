@@ -18,23 +18,4 @@
     <input type="submit" value="Valider">
 </form>
 
-<!--Doit etre deplacer dans admin-->
-
-    <form class="formu" action="allergie/Ajouter" method="post">
-        <h2>Ajouter une allergie</h2>
-        <label for="name_allergy">Quelle allergie ?</label>
-        <input type="text" name="name_allergy">
-
-        <input type="submit" value="Ajouter">
-    </form>
-
-    <form class="formu" action="maladie/Ajouter" method="post">
-        <h2>Ajouter une maladie</h2>
-        <label for="name_disease">Quelle maladie ?</label>
-        <input type="text" name="name_disease">
-
-        <input type="submit" value="Ajouter">
-    </form>
-
-
 <?= $this->endSection() ?>

@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"id_company":"1","name_company":"aaaaaaa","city_company":"Rouen","postal_code_company":"76100","adress_company":"77 Rue de Lessard","x_company":"49.4305","y_company":"1.0919","child_capacity_company":"7","hourly_rate_company":"8"}]
+=======
+[{"id_company":"4","name_company":"LaTITINE","city_company":"Rouen","postal_code_company":"76100","adress_company":"6 rue d'ecosse","x_company":"49.4405","y_company":"1.09397","child_capacity_company":"4","hourly_rate_company":"50"},{"id_company":"5","name_company":"Jody COMP","city_company":"Nebourg","postal_code_company":"76100","adress_company":"ezrtr","x_company":"49.4405","y_company":"1.09397","child_capacity_company":"3","hourly_rate_company":"50"}]
+>>>>>>> dev
