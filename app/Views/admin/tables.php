@@ -59,7 +59,7 @@
             </div>
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="admin">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Entreprises</span></a>
             </li>
