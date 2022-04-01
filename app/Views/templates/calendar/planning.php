@@ -2,16 +2,15 @@
 
     <?php
     if(!empty($slot)){
-        var_dump($slot);
-    }
-    
+        // var_dump($slot);
+        var_dump($chidrenList);
+    }    
     setlocale(LC_TIME, "fr_FR");
     ?>
     <div class="wrap">
         <h2 class="hours">HORAIRES</h2>
         <div class="calendar">
             <?php
-          
             for ($i = 0; $i < 7; $i++) { ?>
             <div class="days">
                 <div class="day">
@@ -23,7 +22,7 @@
                             // On boucle dans le tableau slot
                             if(!empty($slot)){
                                 foreach($slot as $uniqueSlot){
-                                        if($uniqueSlot['fk_planning'] === $day['id_planning'] && $uniqueSlot['date_slot'] === strftime("%Y-%m-%d", strtotime("+ $i days")) && $uniqueSlot['child_remaining_slot'] > 0){
+                                    if($uniqueSlot['fk_planning'] === $day['id_planning'] && $uniqueSlot['date_slot'] === strftime("%Y-%m-%d", strtotime("+ $i days")) && $uniqueSlot['child_remaining_slot'] > 0){
                                         ?>
                         <div class="slot">
                             <div style="display: none;"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></div>
@@ -43,8 +42,6 @@
                         </div>
                         <?php
                             }                            
-                        
-                        
                         }
                         ?>
                     </div>
@@ -54,7 +51,9 @@
         } ?>
         </div>
     </div>
-    <form action="/calendar/add" method="post" id="response">
-        <input class="send" type="submit" value="Envoyer le planning">
+    <form action=" <?= $infoBtn[0] ?> " method="post" id="response">
+        <input class="send" type="submit" value=" <?= $infoBtn[1] ?>">
     </form>
+
+
 </section>

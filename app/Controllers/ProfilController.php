@@ -44,9 +44,12 @@ class ProfilController extends BaseController
 
     public function editCompany()
     {
-        $planing = $this->planningModel->getAll();
+        $planning = $this->planningModel->getAll();
+        $infoBtn = ['/calendar/add','Envoyer le planning'] ;  
         echo view('profil/edit_company', [
-            "planing" => $planing,
+            "planning" => $planning,
+            "infoBtn" => $infoBtn,
+            
         ]);
     }
 

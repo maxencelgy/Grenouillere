@@ -64,6 +64,9 @@ $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 
+// Adding resvation
+$routes->post('/reservation/ajouter/enfant', 'ProfilController::handlePostCalandar');
+
 
 
 //////////////////////PROFIL  //////////////////////////////////
