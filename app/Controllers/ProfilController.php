@@ -1,15 +1,26 @@
 <?php
 
 namespace App\Controllers;
+
 use CodeIgniter\HTTP\IncomingRequest;
 
 class ProfilController extends BaseController
 {
+
+    private $childrenModel;
+    private $ChildAllergyModel;
+    private $ChildDiseaseModel;
     private $reservationModel;
     private $profilModel;
     public function __construct()
     {
-        $this->reservationModel   = model('App\Models\reservationModel');
+
+        $this->childrenModel = model('App\Models\ChildrenModel');
+        $this->allergyModel = model('App\Models\AllergyModel');
+        $this->diseaseModel = model('App\Models\diseaseModel');
+        $this->ChildAllergyModel = model('App\Models\ChildAllergyModel');
+        $this->ChildDiseaseModel = model('App\Models\ChildDiseaseModel');
+        $this->reservationModel = model('App\Models\reservationModel');
         $this->profilModel        = model('App\Models\profilModel');
         $this->planningModel      = model('App\Models\planningModel');
         $this->slotModel          = model('App\Models\slotModel');
@@ -17,17 +28,25 @@ class ProfilController extends BaseController
 
     public function index()
     {
+        $children = $this->childrenModel->getParentsChild();
+        $allergy = $this->allergyModel->getAllAllergy();
+        $disease = $this->diseaseModel->getAllDisease();
         $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
+
+
         echo view('profil/index', [
             "reservations" => $reservations,
+            "childrens" => $children,
+            "allergy" => $allergy,
+            "disease" => $disease,
         ]);
     }
 
     public function editCompany()
     {
-        $planning = $this->planningModel->getAll();
-        echo view('profil/edit_company',[
-            "planning" => $planning,
+        $planing = $this->planningModel->getAll();
+        echo view('profil/edit_company', [
+            "planing" => $planing,
         ]);
     }
 
@@ -44,17 +63,19 @@ class ProfilController extends BaseController
                 $data[$a]['fk_company'] = session()->get('id');
                 $data[$a]['child_remaining_slot'] = session()->get('child_capacity_company');
                 $data[$a]['date_slot'] = $dataPost[$i];
-            } else {               
-                $data[$a]['fk_planning'] = $dataPost[$i]; 
+            } else {
+                $data[$a]['fk_planning'] = $dataPost[$i];
                 // verif que les données n'existe pas en déja en base de données
                 $occurenceData = $this->slotModel->verifyOccurence($data[$a]['fk_planning'], $data[$a]['fk_company'], $data[$a]['date_slot']);
-                if(!$occurenceData){
-                    $this->profilModel->insertCalendar($data[$a]); 
-                }else{
-                    echo'erreur donnée déja presentent en base !';
+                // $occurenceData = false;
+                if (!$occurenceData) {
+                    $this->profilModel->insertCalendar($data[$a]);
+                } else {
+                    echo 'erreur donnée déja presentent en base !';
                 }
+                // $this->profilModel->insertCalendar($data[$a]);            
                 $a++;
-            }            
+            }
         }
     }
 }
