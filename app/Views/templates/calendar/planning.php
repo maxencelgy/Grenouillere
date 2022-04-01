@@ -2,7 +2,7 @@
 
     <?php
     if(!empty($slot)){
-        var_dump($slot[0]);
+        var_dump($slot);
     }
     
     setlocale(LC_TIME, "fr_FR");
@@ -23,8 +23,7 @@
                             // On boucle dans le tableau slot
                             if(!empty($slot)){
                                 foreach($slot as $uniqueSlot){
-                                    // var_dump($uniqueSlot);
-                                    if($uniqueSlot['fk_planning'] === $day['id_planning'] && $uniqueSlot['date_slot'] === strftime("%Y-%m-%d", strtotime("+ $i days")) && $uniqueSlot['child_remaining_slot'] > 0){
+                                        if($uniqueSlot['fk_planning'] === $day['id_planning'] && $uniqueSlot['date_slot'] === strftime("%Y-%m-%d", strtotime("+ $i days")) && $uniqueSlot['child_remaining_slot'] > 0){
                                         ?>
                         <div class="slot">
                             <div style="display: none;"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></div>
@@ -32,7 +31,7 @@
                             <div> <?= $day['libelle_planning']  ?> </div>
                             <div> Nombre de place Disponible : <?= $uniqueSlot['child_remaining_slot'] ?> </div>
                         </div>
-                        <?php
+                        <?php   
                                     }
                                 }
                             }else{
@@ -47,7 +46,6 @@
                             
                         
                         $column++;
-
                         }
                         ?>
                     </div>
