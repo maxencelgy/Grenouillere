@@ -1,6 +1,7 @@
 const input = document.querySelector("#fullAdresse");
 const parent = document.querySelector(".parentSearch");
 const children = document.querySelector(".childrenSearch");
+const filterSearch = document.querySelector(".filterSearch");
 
 console.log(input);
 let res;
@@ -13,7 +14,6 @@ input.addEventListener("keyup", (e) => {
     .then(function () {
       objRes = JSON.parse(res);
       children.innerHTML = "";
-
       Object.entries(objRes.features).forEach(([key, value]) => {
         children.style.display = "block";
         children.innerHTML += `
@@ -28,6 +28,7 @@ input.addEventListener("keyup", (e) => {
     })
     .then(function () {
       const infos = document.querySelectorAll(".infos");
+
       infos.forEach((info) => {
         info.addEventListener("click", (e) => {
           e.preventDefault();
@@ -38,15 +39,26 @@ input.addEventListener("keyup", (e) => {
           let y = info.children[3].textContent.trim();
           children.style.display = "none";
           input.value = adresse + ", " + ville + ", " + cp;
+          filterSearch.addEventListener("submit", (e) => {
+            children.innerHTML = `
+            <div class="infos" style = "display: none">
+                        <input  name='adress_company' class="adress_company" value="${adresse}"></input>
+                        <input  name='city_company' class="city_company" value="${ville}"></input>
+                        <input   name='postal_code_company' class="postal_code_company" value="${cp}"></input>
+                        <input   name='x_company' class="x_company" value="${x}"></input>
+                        <input   name='y_company' class="y_company" value="${y}"></input>
+            </div>`;
+          });
+        });
+        filterSearch.addEventListener("submit", (e) => {
           children.innerHTML = `
-
-                <div class="infos" style = "display: none">
-                            <input  name='adress_company' class="adress_company" value="${adresse}"></input>
-                            <input  name='city_company' class="city_company" value="${ville}"></input>
-                            <input   name='postal_code_company' class="postal_code_company" value="${cp}"></input>
-                            <input   name='x_company' class="x_company" value="${x}"></input>
-                            <input   name='y_company' class="y_company" value="${y}"></input>
-                </div>`;
+            <div class="infos" style = "display: none">
+                        <input  name='adress_company' class="adress_company" value="${objRes.features[0].properties.name}"></input>
+                        <input  name='city_company' class="city_company" value="${objRes.features[0].properties.city}"></input>
+                        <input   name='postal_code_company' class="postal_code_company" value="${objRes.features[0].properties.postcode}"></input>
+                        <input   name='x_company' class="x_company" value="${objRes.features[0].geometry.coordinates[0]}"></input>
+                        <input   name='y_company' class="y_company" value="${objRes.features[0].geometry.coordinates[1]}"></input>
+            </div>`;
         });
       });
     });
