@@ -45,11 +45,13 @@
 <a href="/stripe/<?= $single->id_company ?>">LA</a>
 
 
+
+
 <?= $this->endSection() ?>
 <?= $this->section('content2') ?>
 <?= $this->include('templates/calendar/planning') ?>
-<?= $this->endSection() ?>
 
-<?= $this->section('js') ?>
-<script src="/asset/js/calendar.js"></script>
+
+</div> <?= $this->endSection() ?> <?= $this->section('js') ?> <script src="/asset/js/calendarReservation.js">
+</script>
 <?= $this->endSection() ?>

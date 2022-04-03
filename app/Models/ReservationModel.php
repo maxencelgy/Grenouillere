@@ -85,4 +85,6 @@ class ReservationModel extends Model
             ->join('company', 'company.id_company = slot.fk_company')
             ->find();
     }
+
+    
 }
