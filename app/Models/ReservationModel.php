@@ -15,6 +15,11 @@ class ReservationModel extends Model
         return $this->findAll();
     }
 
+    public function insertReservation(array $data)
+    {
+        return $this->insert($data);
+    }
+
     public function getReservationsWithChildren()
     {
         return $this

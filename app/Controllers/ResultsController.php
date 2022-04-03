@@ -8,12 +8,15 @@ class ResultsController extends BaseController
 {
 
     private $resultsModel;
+  
     public function __construct()
     {
         $this->resultsModel = model('App\Models\ResultsModel');
         $this->planningModel = model('App\Models\PlanningModel');
         $this->slotModel = model('App\Models\SlotModel');
         $this->childModel = model('App\Models\ChildrenModel');
+        $this->factureModel = model('App\Models\FactureModel');
+        $this->reservationModel = model('App\Models\ReservationModel');
         // findAllSlotByCompanyAndWeek
     }
 
@@ -96,8 +99,25 @@ class ResultsController extends BaseController
         }	
         debug($newArray);
         // On créer la facture
+        $dataFacture = [
+            'fk_company' => 1,
+            'fk_users' => $idUser,
+            'date_facture' => date('Y-m-d')
+        ];
+        $this->factureModel->insertFacture($dataFacture);
+        // $lastUsersFacture = $this->factureModel->getLastUsersFacture($idUser);
 
-
+        $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
+        debug($lastUsersFacture);
+        $idFacture = $lastUsersFacture[0]['id_facture'];
+        debug($idFacture);
+        $reservation=[];
+        foreach($newArray as $data){
+            $reservation['fk_facture'] = $idFacture;
+            $reservation['fk_child'] = $data['id_child'];
+            $reservation['fk_slot'] = $data['id_slot'];
+            $this->reservationModel->insertReservation($reservation);
+        }
         // TODO: verification si un enfant à été selectionné
         // TODO:verification du nombre d'enfant est posible a ajouter dans le slot (si le child_remaining_slot est inférieur 
         // au nombre d'enfant voulu, on ne peut pas ajouter)
