@@ -52,20 +52,17 @@
 </section>
 
 <section id="solutions">
-
     <div class="filtre"></div>
     <img class="bigPic" src="/asset/img/bigPicChildren.jpg" alt="">
     <div class="txtSolutions">
         <h2>Partez sereinement au travail, <br> votre assistante maternelle s'occupe du reste.</h2>
         <a href="">Voir autour de vous</a>
     </div>
-
 </section>
 
 <section id="cards">
     <div class="wrap3">
         <h2>Des solutions de garde adaptée à vos besoins.</h2>
-
         <div class="wrapCards">
             <div class="card">
                 <img src="/asset/img/float.jpg" alt="">
