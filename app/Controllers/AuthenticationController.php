@@ -131,7 +131,11 @@ class AuthenticationController extends BaseController
                         "email" => $user["email_users"],
                         "role" => $user["role_users"],
                         "nom" => $user["last_name_users"],
-                        "prenom" => $user["first_name_users"]
+                        "prenom" => $user["first_name_users"],
+                        "adresse " => $user["adresse_users"],
+                        "telephone " => $user["phone_users"],
+                        "ville  " => $user["city_users"],
+                        "postal  " => $user["postal_users"],
                     ]);
                     return redirect()->to('/');
                 }
@@ -218,9 +222,9 @@ class AuthenticationController extends BaseController
             'password_company_confirmation'    => [
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
-                    'matches' => 'Mot de passe différents !',                    
+                    'matches' => 'Mot de passe différents !',
                 ],
-            ],          
+            ],
 
             'siret_company'    => [
                 'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
@@ -243,7 +247,7 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez accepter les CGU',
                 ],
-            ],            
+            ],
 
         ]);
         if (!$val) {
