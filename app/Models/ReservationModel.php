@@ -96,4 +96,12 @@ class ReservationModel extends Model
             ->where('fk_facture', $idFacture)
             ->countAllResults();
     }
+
+
+    public function getAllSlotByFacture($idFacture)    {
+        return $this->select('*')
+            ->join('slot', 'reservation.fk_slot = slot.id_slot')
+            ->where('fk_facture', $idFacture)
+            ->findAll();
+    }
 }

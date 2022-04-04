@@ -1,0 +1,42 @@
+#facture{
+    padding: 3rem 0;
+    background-color: yellowgreen;
+    .head{
+        background-color: lightskyblue;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        .logo{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            background-color: lightcoral;
+            img{
+                width: 15rem;
+            }
+        }
+        
+    }
+    .contacts{
+        padding: 1rem;
+        background-color: lightgreen;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        .contact{
+            display: flex;
+            flex-flow: column nowrap;
+        }
+        .contact.left{
+            width: 100%;
+            background-color: yellow;
+        }
+        .contact.right{
+            width: 100%;
+            background-color: red;
+        }
+    }
+    .list-facture{
+        background-color: lightcoral;
+    }
+}

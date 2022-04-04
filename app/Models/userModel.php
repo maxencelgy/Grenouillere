@@ -17,4 +17,11 @@ class userModel extends Model
         return $this->insert($data);
     }
 
+    public function getInfoUser(int $id)
+    {
+        return $this->select('*')
+        ->where('id_users',$id)
+        ->find();
+    }
+
 }

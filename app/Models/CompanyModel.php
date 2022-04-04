@@ -41,4 +41,11 @@ class CompanyModel extends Model
         return $this->insert($data);
     }
 
+    public function getInfoCompany(int $id)
+    {
+        return $this->select('*')
+        ->where('id_company',$id)
+        ->find();
+    }
+
 }

@@ -1,0 +1,43 @@
+#facture {
+  padding: 3rem 0;
+  background-color: yellowgreen;
+}
+#facture .head {
+  background-color: lightskyblue;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+#facture .head .logo {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: lightcoral;
+}
+#facture .head .logo img {
+  width: 15rem;
+}
+#facture .contacts {
+  padding: 1rem;
+  background-color: lightgreen;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+#facture .contacts .contact {
+  display: flex;
+  flex-flow: column nowrap;
+}
+#facture .contacts .contact.left {
+  width: 100%;
+  background-color: yellow;
+}
+#facture .contacts .contact.right {
+  width: 100%;
+  background-color: red;
+}
+#facture .list-facture {
+  background-color: lightcoral;
+}
+
+/*# sourceMappingURL=facture.css.map */
