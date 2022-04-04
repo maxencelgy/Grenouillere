@@ -26,7 +26,6 @@ slot.forEach((e) => {
         response.innerHTML += `
         <input style="display : none" type="text" name="date_slot_${i}" value="${e.children[0].textContent}">
         <input style="display : none" type="text" name="fk_planning_${i}" value="${e.children[1].textContent}">
-        <input style="display : none" type="text" name="id_slot${i}" value="${e.children[3].textContent}">
         `
         i++;
     })
