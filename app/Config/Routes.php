@@ -64,10 +64,16 @@ $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 
+// Adding resvation
+$routes->post('/reservation/ajouter/enfant', 'ProfilController::handlePostCalandar');
+
 
 
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
+$routes->get('profil/compagny', 'ProfilController::ProfilCompany');
+$routes->post('add/addFiles/(:num)', 'ProfilController::updateFile/$1');
+
 
 // RESERVATION CSV/////////////////
 $routes->get('export/(:num)', 'CsvController::export/$1');

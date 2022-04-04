@@ -12,11 +12,11 @@
         <h2>Mes informations</h2>
         <div class="informations">
             <div class="information">
-                <h3>Nom : <?= session()->get("last_name_company") ?></h3>
+                <h3>Nom : <?= session()->get("nom") ?></h3>
                 <h3>Email : <?= session()->get("email") ?></h3>
             </div>
             <div class="information">
-                <h3>Prénom : <?= session()->get("frist_name_company") ?></h3>
+                <h3>Prénom : <?= session()->get("prenom") ?></h3>
                 <h3>Adresse : </h3>
             </div>
             <div class="information">
@@ -31,7 +31,7 @@
 <section id="reservation">
 
     <div class="wrapProfil">
-        <h2>Vos reservation</h2>
+        <h2>Mes reservations</h2>
         <i class="fa-solid fa-chevron-down"></i>
     </div>
     <div class="cards">
@@ -119,7 +119,7 @@
 
 
 
-        <a href="/export/all/<?= session()->get("id") ?>" style="padding: .5rem; background-color: violet; margin-top: 1rem; border-radius: .3rem;">TELECHARGER ALL FACTURES</a>
+        <a href="/export/all/<?= session()->get("id") ?>" style="padding: .5rem; background-color: violet; margin-top: 1rem; border-radius: .3rem;">TELECHARGER TOUTES MES FACTURES</a>
 </section>
 
 

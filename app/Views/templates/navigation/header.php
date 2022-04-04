@@ -12,7 +12,7 @@
                     <a href="<?= site_url(); ?>profil" class="btn">Mon Profil</a>
                 <?php
                 }else{ ?>
-                    <a href="<?= site_url(); ?>profil/editCompany" class="btn">Mon Profil</a>
+                    <a href="<?= site_url(); ?>profil/compagny" class="btn">Mon Profil</a>
                 <?php } ?>
 
                 <a href="<?= site_url(); ?>deconnexion" class="btn">Deconnexion</a>
