@@ -1,4 +1,7 @@
 <footer>
+    <section class="container">
+        <div class="wave"></div>
+    </section>
     <div class="wrap">
         <div class="footerLeft">
             <img src="/asset/img/logo_footer.svg" alt="">
@@ -31,5 +34,4 @@
         <p>© Grenouillere 2022-2025. TOUS DROITS RÉSERVÉS</p>
         <img src="/asset/img/FroagHead.svg" alt="">
     </div>
-    <script src="/asset/js/wave.js"></script>
 </footer>

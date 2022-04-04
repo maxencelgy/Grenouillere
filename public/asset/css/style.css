@@ -71,14 +71,15 @@ header .wrap .right a {
 /* FOOTER */
 
 footer {
-  padding-top: 30rem;
   background-size: cover;
   z-index: 99;
+  background-color:#E7F7F3;
 }
 footer .wrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 8rem;
 }
 footer .wrap .footerLeft {
   width: 29%;
@@ -134,4 +135,197 @@ footer .footerbottom img{
 footer .footerbottom .FroagHead{
   width: 6%;
 }
+
 /* Footer animation */
+
+:root {
+  --bg-color: #fff;
+  --wave-color: #E7F7F3;
+  --animation-time: 10s;
+  --max-height: 200px;
+  --circle-offset: -1.5%;
+  --wave-width: 55%;
+  --height-wave-up: 109%;
+  --height-wave-down: 100%;
+  --top-wave-up: 60%;
+  --top-wave-down: 40%;
+  --border-radius-right-up: 100% 50%;
+  --border-radius-left-up: 50% 100%;
+}
+
+.container {
+  position: relative;
+  height: 40vh;
+  background: var(--bg-color);
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--max-height);
+  background: var(--bg-color);
+  animation: beWavy var(--animation-time) infinite linear;
+}
+
+.wave::before, .wave::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: var(--border-radius-right-up);
+  width: var(--wave-width);
+}
+
+.wave::before {
+  height: var(--height-wave-up);
+  background-color: var(--wave-color);
+  right: var(--circle-offset);
+  top: var(--top-wave-up);
+  animation: beWavyBefore var(--animation-time) infinite step-end;
+}
+.wave::after {
+  height: var(--height-wave-down);
+  background-color: var(--bg-color);
+  left: var(--circle-offset);
+  top: var(--top-wave-down);
+  animation: beWavyAfter var(--animation-time) infinite step-end;
+}
+
+
+@keyframes beWavy {
+  0% {
+      animation-timing-function: ease-in;
+      height: var(--max-height);
+  }
+  25% {
+      animation-timing-function: ease-out;
+      height: 0;
+  }
+  50% {
+      animation-timing-function: ease-in;
+      height: var(--max-height);
+  }
+  75% {
+      animation-timing-function: ease-out;
+      height: 0;
+  }
+  100% {
+      animation-timing-function: ease-in;
+      height: var(--max-height);
+  }
+}
+
+@keyframes beWavyBefore {
+  25% {
+      background-color: var(--bg-color);
+      height: var(--height-wave-down);
+      top: var(--top-wave-down);
+      border-radius: var(--border-radius-left-up);
+  }
+  75% {
+      background-color: var(--wave-color);
+      height: var(--height-wave-up);
+      top: var(--top-wave-up);
+      border-radius: var(--border-radius-right-up);
+  }
+}
+
+@keyframes beWavyAfter {
+  25% {
+      background-color: var(--wave-color);
+      height: var(--height-wave-up);
+      top: var(--top-wave-up);
+      border-radius: var(--border-radius-left-up);
+  }
+  75% {
+      background-color: var(--bg-color);
+      height: var(--height-wave-down);
+      top: var(--top-wave-down);
+      border-radius: var(--border-radius-right-up);
+  }
+}
+
+/* Responsive Footer */
+@media screen and (max-width:1430px) {
+  footer{
+    padding-top: 135rem;
+  }
+  footer .wrap{
+    justify-content: space-evenly;
+  }
+  footer .wrap .footerRight{
+    width: 65%;
+    justify-content: space-evenly;
+  }
+  footer .wrap .footerRight h2{
+    font-size: 2rem;
+  }
+  footer .wrap .footerRight p{
+    font-size: 1.4rem;
+  }
+  footer .wrap .footerLeft img{
+    width: 35%;
+  }
+  .social i{
+    font-size: 2.5rem;
+  }
+  footer .footerbottom{
+    margin-top: 5rem;
+  }
+  footer .footerbottom img{
+    transform: translate(1vh, 0vh);
+  }
+}
+@media screen and (max-width:1150px) {
+  footer{
+    padding-top: 125rem;
+  }
+  footer .footerbottom p{
+    font-size: .9rem;
+  }
+}
+@media screen and (max-width:1050px) {
+  footer{
+    padding-top: 105rem;
+  }
+  footer .wrap .footerRight h2{
+    font-size: 1.8rem;
+  }  
+  footer .wrap .footerRight p{
+    font-size: 1.2rem;
+  }  
+  .social i{
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width:900px) {
+  footer{
+    padding-top: 115rem;
+  }
+  footer .wrap .footerRight h2{
+    font-size: 1.6rem;
+  }  
+  footer .wrap .footerRight p{
+    font-size: 1rem;
+  }  
+  .social i{
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width:750px) {
+  footer{
+    padding-top: 110rem;
+  }
+  footer .wrap .footerRight{
+    justify-content: space-between;
+  }  
+  footer .wrap .footerRight h2{
+    font-size: 1.4rem;
+  }  
+  footer .wrap .footerRight p{
+    font-size: .8rem;
+  } 
+  .social i{
+    font-size: 1.4rem;
+  }
+}

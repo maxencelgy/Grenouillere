@@ -55,7 +55,6 @@
             <img src="/asset/img/FroagHead.svg" alt="" class="back_2">
         </div>
         <div class="wrapCards">
-            
             <div class="card">
                 <img src="/asset/img/cards_1.svg" alt="">
                 <h3>Garde à domicile</h3>
