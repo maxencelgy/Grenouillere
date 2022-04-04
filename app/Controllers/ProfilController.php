@@ -75,7 +75,6 @@ class ProfilController extends BaseController
                 } else {
                     echo 'erreur donnée déja presentent en base !';
                 }
-                // $this->profilModel->insertCalendar($data[$a]);            
                 $a++;
             }
         }

@@ -3,7 +3,10 @@
     <?php
     if (!empty($slot)) {
         // var_dump($slot);
-        var_dump($chidrenList);
+        // var_dump($chidrenList);
+        // var_dump (session()->get("id"));
+        // var_dump ('eeere');
+
     }
     setlocale(LC_TIME, "fr_FR");
     ?>
@@ -27,6 +30,8 @@
                                             <div class="slot">
                                                 <div style="display: none;"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></div>
                                                 <div style="display: none;"> <?= $day['id_planning'] ?> </div>
+                                                <div style="display: none;"> <?= $uniqueSlot['id_slot'] ?> </div>
+
                                                 <div> <?= $day['libelle_planning']  ?> </div>
                                                 <div> Nombre de place Disponible : <?= $uniqueSlot['child_remaining_slot'] ?> </div>
                                             </div>
@@ -51,9 +56,26 @@
             } ?>
         </div>
     </div>
-    <form action=" <?= $infoBtn[0] ?> " method="post" id="response">
-        <input class="send" type="submit" value=" <?= $infoBtn[1] ?>">
+
+
+    <h2 id='reservation' class="hours">Votre reservation</h2>
+    <form action=" <?= $infoBtn[0] ?> " method="post">
+        <div class=" wrap" id="response">
+
+            <?php
+            if (!empty($slot) && !empty($chidrenList)) { ?>
+                <?php
+                $i = 0;
+                foreach ($chidrenList as $uniqueChild) { ?>
+                    <div class='childs' id=" <?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?>
+                    </div>
+            <?php
+                }
+            } ?>
+        </div> <input class="send" type="submit" value="<?= $infoBtn[1] ?>">
     </form>
+
+
 
 
 </section>
