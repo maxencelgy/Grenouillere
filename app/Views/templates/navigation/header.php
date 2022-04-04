@@ -10,7 +10,7 @@
             <?php if (!empty(session()->get("email"))) {
                 if (!empty(session()->get("role"))) { ?>
                     <a href="<?= site_url(); ?>profil" class="btn">Mon Profil</a>
-                <?php
+                    <?php
                 } else { ?>
                     <a href="<?= site_url(); ?>profil/editCompany" class="btn">Mon Profil</a>
                 <?php } ?>

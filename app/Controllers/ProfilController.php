@@ -12,10 +12,12 @@ class ProfilController extends BaseController
     private $ChildDiseaseModel;
     private $reservationModel;
     private $profilModel;
+    private $companyModel;
     public function __construct()
     {
 
         $this->childrenModel = model('App\Models\ChildrenModel');
+        $this->companyModel = model('App\Models\CompanyModel');
         $this->allergyModel = model('App\Models\AllergyModel');
         $this->diseaseModel = model('App\Models\diseaseModel');
         $this->ChildAllergyModel = model('App\Models\ChildAllergyModel');
@@ -24,6 +26,7 @@ class ProfilController extends BaseController
         $this->profilModel        = model('App\Models\profilModel');
         $this->planningModel      = model('App\Models\planningModel');
         $this->slotModel          = model('App\Models\slotModel');
+
     }
 
     public function index()
@@ -41,6 +44,88 @@ class ProfilController extends BaseController
             "disease" => $disease,
         ]);
     }
+
+    public function ProfilCompany()
+    {
+        echo view('profil/profil_company');
+    }
+
+    public function uploadFolder()
+    {
+        if(!empty($_FILES)){
+            $random = random_int(100, 2000);
+            $day = date("m_d_y");
+            if(!empty($_FILES["rib_company"])){
+                $tmp_name = $_FILES["rib_company"]["tmp_name"];
+                $fileType = pathinfo($_FILES["rib_company"]["name"], PATHINFO_EXTENSION);
+
+                $fileName = basename("rib_".$day.'_'.$random.'.'.$fileType);
+                move_uploaded_file($tmp_name, "./upload/".$fileName);
+                return $fileName;
+
+            }
+            elseif(!empty($_FILES["identity_company"])){
+                $tmp_name = $_FILES["identity_company"]["tmp_name"];
+                $fileType = pathinfo($_FILES["identity_company"]["name"], PATHINFO_EXTENSION);
+
+                $fileName = basename("cni_".$day.'_'.$random.'.'.$fileType);
+                move_uploaded_file($tmp_name, "./upload/".$fileName);
+                return $fileName;
+            }
+            elseif(!empty($_FILES["certificate_company"])){
+                $tmp_name = $_FILES["certificate_company"]["tmp_name"];
+                $fileType = pathinfo($_FILES["certificate_company"]["name"], PATHINFO_EXTENSION);
+
+                $fileName = basename("certif_".$day.'_'.$random.'.'.$fileType);
+                move_uploaded_file($tmp_name, "./upload/".$fileName);
+                return $fileName;
+            }
+            elseif(!empty($_FILES["licence_company"])){
+                $tmp_name = $_FILES["licence_company"]["tmp_name"];
+                $fileType = pathinfo($_FILES["licence_company"]["name"], PATHINFO_EXTENSION);
+
+                $fileName = basename("licence_".$day.'_'.$random.'.'.$fileType);
+                move_uploaded_file($tmp_name, "./upload/".$fileName);
+                return $fileName;
+            }
+            elseif(!empty($_FILES["kbis_company"])){
+                $tmp_name = $_FILES["kbis_company"]["tmp_name"];
+                $fileType = pathinfo($_FILES["kbis_company"]["name"], PATHINFO_EXTENSION);
+
+                $fileName = basename("kbis_".$day.'_'.$random.'.'.$fileType);
+                move_uploaded_file($tmp_name, "./upload/".$fileName);
+                return $fileName;
+            }
+        }else{
+            return redirect()->to('/profil/compagny');
+        }
+    }
+
+    public function updateFile($id)
+    {
+        $fileName = $this->uploadFolder();
+        if(!empty($_FILES["rib_company"])){
+            $this->companyModel->updateFolder($id, "rib_company" ,$fileName);
+            return redirect()->to('/profil/compagny');
+        }
+        elseif(!empty($_FILES["identity_company"])){
+            $this->companyModel->updateFolder($id, "cni_company" ,$fileName);
+            return redirect()->to('/profil/compagny');
+        }
+        elseif(!empty($_FILES["certificate_company"])){
+            $this->companyModel->updateFolder($id, "certificate_company" ,$fileName);
+            return redirect()->to('/profil/compagny');
+        }
+        elseif(!empty($_FILES["licence_company"])){
+            $this->companyModel->updateFolder($id, "licence_company" ,$fileName);
+            return redirect()->to('/profil/compagny');
+        }
+        elseif(!empty($_FILES["kbis_company"])){
+            $this->companyModel->updateFolder($id, "kbis_company" ,$fileName);
+            return redirect()->to('/profil/compagny');
+        }
+    }
+
 
     public function editCompany()
     {

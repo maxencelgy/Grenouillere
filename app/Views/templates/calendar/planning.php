@@ -26,7 +26,7 @@
                                 if (!empty($slot)) {
                                     foreach ($slot as $uniqueSlot) {
                                         if ($uniqueSlot['fk_planning'] === $day['id_planning'] && $uniqueSlot['date_slot'] === strftime("%Y-%m-%d", strtotime("+ $i days")) && $uniqueSlot['child_remaining_slot'] > 0) {
-                            ?>
+                                            ?>
                                             <div class="slot">
                                                 <div style="display: none;"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></div>
                                                 <div style="display: none;"> <?= $day['id_planning'] ?> </div>
@@ -35,7 +35,7 @@
                                                 <div> <?= $day['libelle_planning']  ?> </div>
                                                 <div> Nombre de place Disponible : <?= $uniqueSlot['child_remaining_slot'] ?> </div>
                                             </div>
-                                    <?php
+                                            <?php
                                         }
                                     }
                                 } else {
@@ -45,14 +45,14 @@
                                         <div style="display: none;"> <?= $day['id_planning'] ?> </div>
                                         <div> <?= $day['libelle_planning'] ?> </div>
                                     </div>
-                            <?php
+                                    <?php
                                 }
                             }
                             ?>
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
             } ?>
         </div>
     </div>
@@ -69,7 +69,7 @@
                 foreach ($chidrenList as $uniqueChild) { ?>
                     <div class='childs' id=" <?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?>
                     </div>
-            <?php
+                    <?php
                 }
             } ?>
         </div> <input class="send" type="submit" value="<?= $infoBtn[1] ?>">

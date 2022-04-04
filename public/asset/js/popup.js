@@ -1,3 +1,6 @@
+console.log("popup.js");
+
+/////////////////POPUP CHILD///////////////////
 //POPUP Allergie
 const allergyButton = document.querySelectorAll(".btn_allergy_popup");
 const allergyPopup = document.querySelector(".child_allergy");
@@ -31,3 +34,31 @@ diseaseButton.forEach((e) => {
     console.log(this.id);
   });
 });
+
+//////////////////Popup function/////////////////////////////
+
+function popupFolder(btnClass, popupClass) {
+  const popupBtn = document.querySelector("." + btnClass);
+  const popupContainer = document.querySelector("." + popupClass);
+
+  popupBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    popupContainer.className = ".popup_display";
+    popupContainer.innerHTML += `<input style="display: none" type="text" name="" value="${this.id}">`;
+  });
+}
+
+//Popup RIB
+popupFolder("btn_rib_popup", "rib_popup");
+
+//Popup identity
+popupFolder("btn_identity_popup", "identity_popup");
+
+//Popup certificate
+popupFolder("btn_certificate_popup", "certificate_popup");
+
+//Popup Licence
+popupFolder("btn_licence_popup", "licence_popup");
+
+//Popup Kbis
+popupFolder("btn_kbis_popup", "kbis_popup");

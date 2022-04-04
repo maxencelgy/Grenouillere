@@ -5,6 +5,7 @@
   -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   margin-bottom: 2rem;
+
 }
 .wrapProfil {
   width: 100%;
@@ -80,10 +81,7 @@
 
 /* CHILDRENS */
 
-.childrens {
 
-
-}
 .childrens .childrenCard {
  background-color: #E7F7F3;
   padding: 1rem;
@@ -204,6 +202,7 @@ flex-direction: column;
   color: black;
 }
 
+
 /* POPUP */
 
 .popup {
@@ -263,3 +262,40 @@ select {
   font-size: 1.3rem;
   margin-bottom: 2rem;
 }
+
+
+.wrapProfil .actu{
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 5rem 1rem 0;
+}
+.wrapProfil .actu a{
+  padding: .6rem;
+}
+
+/************************************PROFIL COMPANY*************************/
+
+#profil #administration{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+}
+#profil #administration .administration_status{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .4rem;
+  width: 100%;
+}
+#profil #administration .administration_status .card{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#profil #administration .administration_status .card a{
+  padding: .4rem;
+}
+
+

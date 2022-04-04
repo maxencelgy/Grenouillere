@@ -18,6 +18,7 @@
             <div class="information">
                 <h3>Prénom : <?= session()->get("prenom") ?></h3><br>
                 <h3>Adresse : <?= session()->get("adresse") ?></h3><br>
+
             </div>
             <div class="information">
                 <h3>Télephone : <?= session()->get("telephone") ?></h3><br>
@@ -28,6 +29,7 @@
             <a href="" class="btn">Modifier informations</a>
         </div>
     </section>
+
 
 
     <div class="add">
@@ -132,8 +134,6 @@
         </div>
     </section>
 </div>
-
-
 
 
 
