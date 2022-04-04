@@ -26,7 +26,7 @@ class SlotMigration extends Migration
                 'unsigned'       => true,
             ],
             'date_slot' => [
-                'type' => 'DATETIME',
+                'type' => 'DATE',
             ],
             'child_remaining_slot' => [
                 'type' => 'INT',
@@ -39,7 +39,6 @@ class SlotMigration extends Migration
         $this->forge->addForeignKey('fk_planning', 'planning', 'id_planning');
         $this->forge->addForeignKey('fk_company', 'company', 'id_company');
         $this->forge->createTable('slot');
-        
     }
 
     public function down()

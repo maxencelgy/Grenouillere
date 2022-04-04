@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ADMIN</title>
+    <title>MALADIE</title>
 
     <!-- Custom fonts for this template -->
     <link href="/asset/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -33,7 +33,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -45,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -59,7 +59,7 @@
             </div>
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="admin">
+                <a class="nav-link" href="/admin">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Entreprises</span></a>
             </li>
@@ -219,57 +219,81 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Email </th>
-                                            <th>Nom entreprise</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Ville</th>
-                                            <th>Code Postal</th>
-                                            <th>Status</th>
-                                            <th>Modifier</th>
+                                            <th>Id Allergy</th>
+                                            <th>name Allergy</th>
+                                            <th>Supprimer</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Email </th>
-                                            <th>Nom entreprise</th>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Ville</th>
-                                            <th>Code Postal</th>
-                                            <th>Status</th>
-                                            <th>Modifier</th>
+                                            <th>Id Allergy</th>
+                                            <th>name Allergy</th>
+                                            <th>Supprimer</th>
+
                                         </tr>
                                     </tfoot>
                                     <tbody>
-
                                         <?php
 
-                                        foreach ($companys as $company) { ?>
+                                        foreach ($allergys as $allergy) { ?>
                                             <tr>
-                                                <td><?= $company['id_company'] ?></td>
-                                                <td><?= $company['email_company'] ?></td>
-                                                <td><?= $company['name_company'] ?></td>
-                                                <td><?= $company['last_name_company'] ?></td>
-                                                <td><?= $company['frist_name_company'] ?></td>
-                                                <td><?= $company['city_company'] ?></td>
-                                                <td><?= $company['postal_code_company'] ?></td>
-                                                <form class="formu" action="/admin/modified" method="post">
-                                                    <input type="hidden" name="id" value="<?= $company['id_company'] ?>">
-                                                    <td><input type="text" name="status_company" value="<?= $company['status_company'] ?>"></td>
-                                                    <td> <button type="submit" class=" btn btn-outline-warning">
-                                                            <i class="fa-solid fa-pen-to-square "></i>
-                                                        </button></td>
-                                                </form>
+                                                <td><?= $allergy['id_allergy'] ?></td>
+                                                <td><?= $allergy['name_allergy'] ?></td>
+                                                <td><a href="/admin/allergie/delete/<?= $allergy['id_allergy'] ?>">Delete</a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
+
+
+                                <table class="table table-bordered text-center" id="dataTable" width="50%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id Maladie</th>
+                                            <th>name Maladie</th>
+                                            <th>Supprimer</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id Maladie</th>
+                                            <th>name Maladie</th>
+                                            <th>Supprimer</th>
+
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php
+
+                                        foreach ($diseases as $disease) { ?>
+                                            <tr>
+                                                <td><?= $disease['id_disease'] ?></td>
+                                                <td><?= $disease['name_disease'] ?></td>
+                                                <td><a href="/admin/maladie/delete/<?= $disease['id_disease'] ?>">Delete</a></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+
+
+                                <form class="formu" action="/allergie/Ajouter" method="post">
+                                    <h2>Ajouter une allergie</h2>
+                                    <label for="name_allergy">Quelle allergie ?</label>
+                                    <input type="text" name="name_allergy">
+
+                                    <input type="submit" value="Ajouter">
+                                </form>
+
+                                <form class="formu" action="/maladie/Ajouter" method="post">
+                                    <h2>Ajouter une maladie</h2>
+                                    <label for="name_disease">Quelle maladie ?</label>
+                                    <input type="text" name="name_disease">
+
+                                    <input type="submit" value="Ajouter">
+                                </form>
                             </div>
                         </div>
                     </div>

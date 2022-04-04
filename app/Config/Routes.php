@@ -43,10 +43,13 @@ $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
 $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
+$routes->get('profil/editCompany', 'ProfilController::editCompany');
+$routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
+
 
 //ALLERGY
-$routes->post('allergie/Ajouter', 'allergyController::addAllergy');
-$routes->post('maladie/Ajouter', 'DiseaseController::addDisease');
+$routes->post('/allergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('/maladie/Ajouter', 'DiseaseController::addDisease');
 
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
@@ -56,12 +59,22 @@ $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
 
+////Search result
+$routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
+$routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
+// $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
-$routes->get('resultats', 'ResultsController::index');
+
+// Adding resvation
+$routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReservation/$1');
+
 
 
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
+$routes->get('profil/compagny', 'ProfilController::ProfilCompany');
+$routes->post('add/addFiles/(:num)', 'ProfilController::updateFile/$1');
+
 
 // RESERVATION CSV/////////////////
 $routes->get('export/(:num)', 'CsvController::export/$1');
@@ -70,6 +83,17 @@ $routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
 // ///ADMIN /////////////////
 $routes->get('/admin', 'AdminController::index');
 $routes->post('/admin/modified', 'AdminController::handleModified');
+$routes->get('/admin/allergie', 'AdminController::viewAllergie');
+$routes->get('/admin/allergie/delete/(:num)', 'AdminController::handleDelete/$1');
+$routes->get('/admin/maladie/delete/(:num)', 'AdminController::handleDeleteMaladie/$1');
+
+
+// STRIPE
+
+$routes->get("stripe/(:num)", "StripeController::stripe/$1");
+$routes->post("payment/(:num)", "ResultsController::payment/$1");
+
+
 
 /*
  * --------------------------------------------------------------------

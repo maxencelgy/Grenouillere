@@ -131,7 +131,11 @@ class AuthenticationController extends BaseController
                         "email" => $user["email_users"],
                         "role" => $user["role_users"],
                         "nom" => $user["last_name_users"],
-                        "prenom" => $user["first_name_users"]
+                        "prenom" => $user["first_name_users"],
+                        "adresse " => $user["adresse_users"],
+                        "telephone " => $user["phone_users"],
+                        "ville  " => $user["city_users"],
+                        "postal  " => $user["postal_users"],
                     ]);
                     return redirect()->to('/');
                 }
@@ -175,7 +179,6 @@ class AuthenticationController extends BaseController
     public function registerCompany()
     {
         $data = $this->generateCompanyFromPost($this->request);
-
         $val = $this->validate([
             'email_company'    => [
                 'rules'  => 'trim|required|valid_email|is_unique[company.email_company]',
@@ -214,16 +217,15 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez un mot de passe',
                     'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
-
                 ],
             ],
             'password_company_confirmation'    => [
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
                     'matches' => 'Mot de passe différents !',
-
                 ],
             ],
+
             'siret_company'    => [
                 'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
                 'errors' => [
@@ -247,9 +249,7 @@ class AuthenticationController extends BaseController
                 ],
             ],
 
-
         ]);
-
         if (!$val) {
             echo view('authentication/company/register', [
                 'validation' => $this->validator

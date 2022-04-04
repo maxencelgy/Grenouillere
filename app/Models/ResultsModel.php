@@ -11,18 +11,34 @@ class ResultsModel extends Model
         'x_company', 'y_company'];
     protected $primaryKey    = 'id_company';
 
-    public function createJsonFile()
+    public function createJsonFile($postalCode, $enfant, $planning, $day)
     {
-        $sql = $this->select('name_company,city_company,postal_code_company,
-        adress_company,x_company,y_company')->findAll();
+        $sql = $this->select('id_company,name_company,city_company,postal_code_company,
+        adress_company,x_company,y_company,child_capacity_company,hourly_rate_company')
+            ->join('slot', 'slot.fk_company = id_company')
+            ->where('fk_planning =', $planning)
+            ->where('slot.date_slot =', $day)
+            ->where('slot.child_remaining_slot >=', $enfant)
+            ->where('postal_code_company', $postalCode)
+            ->findAll();
         $json = json_encode($sql);
         $jsonFile = file_put_contents("api_company.json", $json);
     }
 
     public function getAllCompany(){
-        return $this->select('email_company,name_company,frist_name_company,last_name_company,
-        city_company,postal_code_company,adress_company,x_company,y_company,siret_company,hourly_rate_company,
-        child_capacity_company')->findAll();
+        $companyData = file_get_contents('api_company.json');
+        $jsonDecode = json_decode($companyData);
+        return $jsonDecode;
+    }
+
+    public function getCompanyById($id){
+        $companyData = file_get_contents('api_company.json');
+        $jsonDecode = json_decode($companyData);
+        foreach ($jsonDecode as $jsonItem){
+            if($jsonItem->id_company === $id){
+                return $jsonItem;
+            }
+        }
     }
 
 }

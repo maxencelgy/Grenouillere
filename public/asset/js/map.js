@@ -16,12 +16,28 @@ fetch('api_company.json',{
         res.forEach(e => {
             console.log(e);
                 L.marker([e.x_company, e.y_company]).addTo(map)
-                .bindPopup(e.name_company + '<br>' + e.adress_company + '<br>' + e.postal_code_company + '<br>' + e.city_company)
+                .bindPopup(e.name_company + '<br>' + e.hourly_rate_company + '€/heure <br>' + '<br>' + e.adress_company + '<br>' + e.postal_code_company + '<br>' + e.city_company)
                 .openPopup();
         })
     )
 
+if(!navigator.geolocation){
+    console.log("Geolocalisation non activée")
+}else{
+    navigator.geolocation.getCurrentPosition(getPosition)
+}
 
 
+function getPosition(position){
+    // console.log(position)
+    var lat = position.coords.latitude
+    var long = position.coords.longitude
+    var accuracy = position.coords.accuracy
 
+    var marker = L.marker([lat, long])
+    var circle = L.circle([lat, long], 1000)
+    var featureGroup = L.featureGroup([marker, circle]).addTo(map)
+
+    console.log("position : lat "+ lat +"long "+ long + "accuracy" + accuracy)
+}
 

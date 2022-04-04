@@ -16,5 +16,7 @@ class ChildAllergyModel extends Model
         return $this->insert($data);
     }
 
+   
+
 
 }

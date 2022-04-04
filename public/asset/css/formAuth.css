@@ -40,6 +40,19 @@
   text-align: center;
 }
 
+#radio {
+  display: inline-block;
+  background-color: inherit;
+  -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0);
+  width: 5% !important;
+}
+.rad {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+}
+
 /* #connexion .error {
   display: none;
   color: red;
@@ -64,3 +77,4 @@
   margin-bottom: 1rem;
   cursor: pointer;
 }
+
