@@ -41,7 +41,6 @@ class AdminController extends BaseController
             "allergys" => $allergys,
             "diseases" => $diseases,
         ]);
-        echo view('admin/allergy');
     }
 
 

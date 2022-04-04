@@ -62,10 +62,11 @@ $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationControlle
 ////Search result
 $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
+// $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 
 // Adding resvation
-$routes->post('/reservation/ajouter/enfant', 'ProfilController::handlePostCalandar');
+$routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReservation/$1');
 
 
 
@@ -90,7 +91,7 @@ $routes->get('/admin/maladie/delete/(:num)', 'AdminController::handleDeleteMalad
 // STRIPE
 
 $routes->get("stripe/(:num)", "StripeController::stripe/$1");
-$routes->post("payment/(:num)", "StripeController::payment/$1");
+$routes->post("payment/(:num)", "ResultsController::payment/$1");
 
 
 

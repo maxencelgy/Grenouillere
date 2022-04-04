@@ -8,11 +8,11 @@
             <?php if (session()->get("role") == "admin") { ?>
                 <a href="<?= site_url(); ?>admin" class="btn">admin</a> <?php } ?>
             <?php if (!empty(session()->get("email"))) {
-                if(!empty(session()->get("role"))){ ?>
+                if (!empty(session()->get("role"))) { ?>
                     <a href="<?= site_url(); ?>profil" class="btn">Mon Profil</a>
-                <?php
-                }else{ ?>
-                    <a href="<?= site_url(); ?>profil/compagny" class="btn">Mon Profil</a>
+                    <?php
+                } else { ?>
+                    <a href="<?= site_url(); ?>profil/editCompany" class="btn">Mon Profil</a>
                 <?php } ?>
 
                 <a href="<?= site_url(); ?>deconnexion" class="btn">Deconnexion</a>
