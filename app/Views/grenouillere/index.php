@@ -31,7 +31,6 @@
                         <?php for ($i = 0; $i < 7; $i++){ ?>
                             <option value="<?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?>"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></option>
                        <?php } ?>
-
                     </select>
                     <select name="horaire" id="horaire">
                         <?php foreach ($planning as $time){ ?>
