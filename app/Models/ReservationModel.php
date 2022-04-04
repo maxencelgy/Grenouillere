@@ -15,6 +15,11 @@ class ReservationModel extends Model
         return $this->findAll();
     }
 
+    public function insertReservation(array $data)
+    {
+        return $this->insert($data);
+    }
+
     public function getReservationsWithChildren()
     {
         return $this
@@ -26,6 +31,7 @@ class ReservationModel extends Model
             child.birthday_child,
 
             slot.child_remaining_slot,
+            slot.date_slot,
 
             company.frist_name_company,
             company.last_name_company,
@@ -48,6 +54,7 @@ class ReservationModel extends Model
             child.birthday_child,
 
             slot.child_remaining_slot,
+            slot.date_slot,
 
             company.frist_name_company,
             company.last_name_company,
@@ -71,6 +78,7 @@ class ReservationModel extends Model
             child.birthday_child,
 
             slot.child_remaining_slot,
+            slot.date_slot,
 
             company.frist_name_company,
             company.last_name_company,
@@ -81,5 +89,11 @@ class ReservationModel extends Model
             ->join('slot', 'slot.id_slot = reservation.fk_slot')
             ->join('company', 'company.id_company = slot.fk_company')
             ->find();
+    }
+    public function getCountFactures($idFacture)
+    {
+        return $this
+            ->where('fk_facture', $idFacture)
+            ->countAllResults();
     }
 }

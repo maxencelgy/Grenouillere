@@ -13,13 +13,13 @@ class CsvController extends BaseController
         $this->childrenModel = model('App\Models\ChildrenModel');
     }
 
-    // public function index()
-    // {
-    //     $reservations = $this->reservationModel->getReservationsWithChildren();
-    //     echo view('csv/index', [
-    //         "reservations" => $reservations,
-    //     ]);
-    // }
+    public function index()
+    {
+        $reservations = $this->reservationModel->getReservationsWithChildren();
+        echo view('csv/index', [
+            "reservations" => $reservations,
+        ]);
+    }
 
 
     public function entreprise($id)

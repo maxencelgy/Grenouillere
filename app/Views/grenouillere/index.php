@@ -18,23 +18,31 @@
             <form action="" class="filterSearch">
                 <!-- <img class="fleurs" src="asset/img/fleurs.svg" alt=""> -->
                 <div class="top">
-                    <select name="ville" id="ville">
-                        <option value="">Ville</option>
-                    </select>
+                    <input type="text" name="fullAdresse" id='fullAdresse' placeholder="Choisissez ville ici">
+                    <div class="parentSearch">
+                        <div class="childrenSearch"></div>
+                    </div>
+
                     <select name="enfant" id="enfant">
-                        <option value="">Nombre d'enfant</option>
+                        <option value="1">1 enfant</option>
+                        <option value="2">2 enfants</option>
+                        <option value="3">3 enfants ou plus</option>
                     </select>
-                    <select name="Journée" id="Journée">
-                        <option value="">Journée</option>
+                    <select name="day" id="day">
+                        <?php for ($i = 0; $i < 7; $i++) { ?>
+                            <option value="<?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?>">
+                                <?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></option>
+                        <?php } ?>
                     </select>
-                    <select name="Horaire" id="Horaire">
-                        <option value="">Horaire</option>
+                    <select name="horaire" id="horaire">
+                        <?php foreach ($planning as $time) { ?>
+                            <option value="<?= $time['id_planning'] ?>"><?= $time['libelle_planning'] ?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="bottom">
                     <input type="submit" name="submitted" value="Rechercher">
                 </div>
-
             </form>
         </div>
         <div class="rightMain">
@@ -73,7 +81,7 @@
             </div>
             <div class="card">
                 <img src="/asset/img/cards_5.svg" alt="">
-                <h3>Service disponible 7j /7</h3>
+                <h3>Service disponible 7j/7</h3>
             </div>
         </div>
     </div>
@@ -109,4 +117,8 @@
     </div>
 </section>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('js') ?>
+<script src="/asset/js/addAdress.js"></script>
 <?= $this->endSection() ?>

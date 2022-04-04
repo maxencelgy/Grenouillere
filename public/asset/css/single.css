@@ -1,0 +1,37 @@
+#single_container{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+#single_container .single_picture{
+    background-color: var(--greenopacity);
+    border-radius: 10px;
+}
+#single_container .single_picture .picture_items{
+    padding: 1rem;
+    border-radius: 5px;
+}
+#single_container .single_picture .picture_items img{
+    width: 20rem;
+}
+
+#single_container .separator{
+    height: 1px;
+    width: 100%;
+    background-color: var(--greenopacity);
+}
+
+#single_container .single_info_container{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
+#single_container .single_info_container .single_box{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .7rem;
+    padding: 1.5rem;
+    border: 1px solid var(--greenopacity);
+    border-radius: 10px;
+}

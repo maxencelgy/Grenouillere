@@ -15,6 +15,7 @@ class CompanyModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
     'email_company', 
+    'name_company', 
     'frist_name_company',
     'last_name_company',
     'password_company',

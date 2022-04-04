@@ -2,4 +2,6 @@
   --green: #b5c462;
   --blue: #e7f7f3;
   --greenopacity : rgba(181, 196, 98, 0.59);
+  --shadow :   -webkit-box-shadow 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);;
 }

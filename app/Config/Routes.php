@@ -40,32 +40,55 @@ $routes->get('/children/modify/(:num)', 'Children::handleModify/$1');
 $routes->post('/children/modify/modified', 'Children::handleModified');
 $routes->get('/children/delete/(:num)', 'Children::handleDelete/$1');
 $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
+$routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
+
+$routes->get('profil/editCompany', 'ProfilController::editCompany');
+$routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
 
 
 //ALLERGY
-$routes->post('alergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('/allergie/Ajouter', 'allergyController::addAllergy');
+$routes->post('/maladie/Ajouter', 'DiseaseController::addDisease');
 
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
 $routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');
 $routes->get('deconnexion', 'AuthenticationController::logoutUser');
-// Company / Incription connection 
+// Company / Incription connection
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
 
+////Search result
+$routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
+$routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
+// $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
+
+// Adding resvation
+$routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReservation/$1');
+
+
+
+//////////////////////PROFIL  //////////////////////////////////
+$routes->get('profil', 'ProfilController::index');
 
 // RESERVATION CSV/////////////////
-$routes->get('csv', 'CsvController::index');
-$routes->get('csv/entreprise/(:num)', 'CsvController::entreprise/$1');
-
-
-
-
-
 $routes->get('export/(:num)', 'CsvController::export/$1');
-$routes->get('export/all/(:num)', 'CsvController::exportAll/$1');
+$routes->get('/export/all/(:num)', 'CsvController::exportAll/$1');
+
+// ///ADMIN /////////////////
+$routes->get('/admin', 'AdminController::index');
+$routes->post('/admin/modified', 'AdminController::handleModified');
+$routes->get('/admin/allergie', 'AdminController::viewAllergie');
+$routes->get('/admin/allergie/delete/(:num)', 'AdminController::handleDelete/$1');
+$routes->get('/admin/maladie/delete/(:num)', 'AdminController::handleDeleteMaladie/$1');
+
+
+// STRIPE
+
+$routes->get("stripe/(:num)", "StripeController::stripe/$1");
+$routes->post("payment/(:num)", "ResultsController::payment/$1");
 
 // CGU ///////
 $routes->get('legal/mentionLegal','cguController::showmentionLegal');
