@@ -13,16 +13,16 @@
             <div class="information">
                 <h3>Nom : <?= session()->get("nom") ?></h3><br>
                 <h3>Email : <?= session()->get("email") ?></h3><br>
-                <h3>Code Postale : <?= session()->get("postal") ?></h3><br><br>
+                <h3>Code Postale : <?= session()->get("postal") ?>27100</h3><br><br>
             </div>
             <div class="information">
                 <h3>Prénom : <?= session()->get("prenom") ?></h3><br>
-                <h3>Adresse : <?= session()->get("adresse") ?></h3><br>
+                <h3>Adresse : <?= session()->get("adresse") ?>14 rue de la sauvagine</h3><br>
 
             </div>
             <div class="information">
-                <h3>Télephone : <?= session()->get("telephone") ?></h3><br>
-                <h3>Ville : <?= session()->get("ville") ?></h3><br>
+                <h3>Télephone : <?= session()->get("telephone") ?>0651718409</h3><br>
+                <h3>Ville : <?= session()->get("ville") ?>Val de reuil</h3><br>
             </div>
         </div>
         <div class="buttons">
@@ -41,6 +41,7 @@
             <!--Popup Allergie -->
             <div class="filtre">
                 <div class="popup">
+                    <i class="fa-solid fa-xmark"></i>
                     <form id="child_allergy" class="child_allergy popup_hidden" action="<?= site_url(); ?>children/allergyChild" method="post">
                         <h2>Declarer une allergie</h2>
                         <div class="selectPop">
@@ -61,6 +62,7 @@
             <!--Popup maladie -->
 
             <div class="popup2 popup">
+                <i class="fa-solid fa-xmark"></i>
                 <form id="child_disease" class="child_disease popup_hidden" action="<?= site_url(); ?>children/diseaseChild" method="post">
                     <h2>Declarer une Maladie</h2>
                     <div class="selectPop">

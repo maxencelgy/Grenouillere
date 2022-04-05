@@ -5,6 +5,7 @@ console.log("popup.js");
 const allergyButton = document.querySelectorAll(".btn_allergy_popup");
 const allergyPopup = document.querySelector(".child_allergy");
 const filtre = document.querySelector(".filtre");
+const croix = document.querySelectorAll(".fa-xmark");
 const popup = document.querySelector(".popup");
 const popup2 = document.querySelector(".popup2");
 
@@ -26,7 +27,6 @@ const diseasePopup = document.querySelector(".child_disease");
 diseaseButton.forEach((e) => {
   e.addEventListener("click", function (e) {
     e.preventDefault();
-
     popup2.style.display = "block";
     filtre.style.display = "block";
     diseasePopup.className = ".popup_display";
@@ -47,7 +47,12 @@ function popupFolder(btnClass, popupClass) {
     popupContainer.innerHTML += `<input style="display: none" type="text" name="" value="${this.id}">`;
   });
 }
-
+croix.forEach((element) => {
+  element.addEventListener("click", function (e) {
+    filtre.style.display = "none";
+    popup2.style.display = "none";
+  });
+});
 //Popup RIB
 popupFolder("btn_rib_popup", "rib_popup");
 
