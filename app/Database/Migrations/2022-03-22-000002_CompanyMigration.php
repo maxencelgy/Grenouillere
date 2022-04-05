@@ -59,14 +59,28 @@ class CompanyMigration extends Migration
                 'type' => 'FLOAT',
             ],
             'cni_company' => [
-                'type' => 'TEXT',
+                'type' => 'VARCHAR',
+                'constraint' => '255',
             ],
             'siret_company' => [
                 'type' => 'VARCHAR',
                 'constraint' => '14',
             ],
             'rib_company' => [
-                'type' => 'TEXT',
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'certificate_company' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'licence_company' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'kbis_company' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
             ],
             'hourly_rate_company' => [
                 'type' => 'FLOAT',

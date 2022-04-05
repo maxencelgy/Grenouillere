@@ -26,7 +26,11 @@ class CompanyModel extends Model
     'x_company',
     'y_company',
     'siret_company',
+    'cni_company',
     'rib_company',
+    'certificate_company',
+    'licence_company',
+    'kbis_company',
     'hourly_rate_company',
     'child_capacity_company'];
 
@@ -36,16 +40,27 @@ class CompanyModel extends Model
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
+
+
     public function insertCompany(array $data)
     {
         return $this->insert($data);
     }
+
 
     public function getInfoCompany(int $id)
     {
         return $this->select('*')
         ->where('id_company',$id)
         ->find();
+    }
+
+
+
+    public function updateFolder($id, $row ,$data){
+        return $this->update($id, [
+            $row => "/upload/".$data
+        ]);
     }
 
 }

@@ -74,6 +74,9 @@ $routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReser
 
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
+$routes->get('profil/compagny', 'ProfilController::ProfilCompany');
+$routes->post('add/addFiles/(:num)', 'ProfilController::updateFile/$1');
+
 
 // RESERVATION CSV/////////////////
 $routes->get('export/(:num)', 'CsvController::export/$1');

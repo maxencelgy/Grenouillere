@@ -1,40 +1,165 @@
 #profil {
-  background-color: #b7ab95b0;
+  background-color: white;
+  border-radius: .8rem;
   padding: 1rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  margin-bottom: 2rem;
+
 }
 .wrapProfil {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: white;
+  background-color: var(--bleuVert);
   border-radius: 0.8rem;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
 }
+
 #profil .wrapProfil h2 {
   margin-bottom: 1rem;
 }
 .informations {
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: space-between;
 }
 .information {
   width: 33.33333;
 }
-
-/* FACTURES */
-#factures {
-  background-color: #b7ab95b0;
-}
-#factures .wrapProfil {
+.buttons {
   margin-bottom: 1rem;
-  color: black;
+}
+
+.buttons .btn {
+  width: 100%;
+  padding: .6rem;
+  border-radius: 9rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   text-align: center;
+
+
 }
-#factures .wrapProfil h2 {
+.add {
+  text-align: center;
+  margin-bottom: 2rem;
 }
+.addChild {
+  padding: .8rem;
+  background-color: var(--green);
+  text-align: center;
+  color: white;
+  font-size: 1.6rem;
+  border-radius: .8rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);  transition: .5s;
+
+}
+
+.addChild:hover {
+  background-color: white;
+  color: black;
+
+}
+/* CARDS */
+
+.cards {
+  background-color: white;
+  border-radius: .3rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);  transition: .5s;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.cards h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* CHILDRENS */
+
+
+.childrens .childrenCard {
+ background-color: #E7F7F3;
+  padding: 1rem;
+  border-radius: .3rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);  transition: .5s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.childrens .childrenCard h2 {
+  font-size: 1.3rem;
+}
+.childrens .childrenCard .name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.childrens .childrenCardLeft {
+  width: 59%;
+}
+.childrens .childrenCardRight {
+  width: 29%;
+  display: flex;
+  justify-content: space-between;
+
+}
+.childrens .childrenCardRight .left{
+display: flex;
+flex-direction: column;
+}
+.childrens .childrenCardRight .right{
+  display: flex;
+  flex-direction: column;
+  }
+
+.btnChild {
+  text-align: center;
+  background-color: var(--green);
+  color: white;
+  padding: .8rem;
+  border-radius: .3rem;
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);  transition: .5s;
+}
+/* Administration */
+
+#administration {
+  background-color: white;
+  border-radius: .8rem;
+  padding: 1rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  margin-bottom: 2rem;
+}
+#administration h2{
+  margin-bottom: 2rem;
+}
+
+#administration .administration_status .card .box .threeBox:nth-child(3){
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+
+ }
+#administration .administration_status .card .box{
+display: flex;
+align-items: center;
+justify-content: space-between;
+ }
+#administration .administration_status .card .box .threeBox{
+  width: 33.3333%;
+}
+  
+/* FACTURES */
+
 #factures .wrapProfil i {
   font-size: 1.4rem;
 }
@@ -42,6 +167,7 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+
 }
 #factures .card {
   background-color: var(--green);
@@ -70,18 +196,10 @@
 
 /* RESERVATION */
 #reservation {
-  background-color: #b7ab95b0;
+ 
   margin-bottom: 10rem;
 }
-#reservation .wrapProfil {
-  margin-bottom: 1rem;
-  color: black;
-  text-align: center;
-}
 
-#reservation .wrapProfil i {
-  font-size: 1.4rem;
-}
 #reservation .cards {
   max-width: 1200px;
   width: 100%;
@@ -111,3 +229,108 @@
   border-radius: 0.3rem;
   color: black;
 }
+
+
+/* POPUP */
+
+.popup {
+  padding: 1rem;
+  position: fixed;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  text-align: center;
+  border-radius: .8rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);  transition: .5s;
+  display: none;
+  z-index: 99999;
+}
+.popup i{
+  cursor: pointer;
+  position: absolute;
+  right: 10%;
+  font-size: 2.3rem;
+  z-index: 999999;
+}
+
+.filtre {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+}
+ 
+.selectPop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+select {
+ padding: .5rem;
+ border: none;
+ border-radius: .3rem;
+ margin-bottom: 1rem;
+}
+.popup textarea{
+  width: 80%;
+  resize: none;
+  padding: .5rem;
+}.popup textarea::placeholder{
+ font-size: 1.1rem;
+ font-family: "Varela Round", sans-serif;
+}
+.popup input[type="submit"]{
+  width: 80%;
+  padding: .5rem;
+  border: none;
+  background-color: var(--green);
+  border-radius: .8rem;
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+
+.wrapProfil .actu{
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 5rem 1rem 0;
+}
+.wrapProfil .actu a{
+  padding: .6rem;
+}
+
+/************************************PROFIL COMPANY*************************/
+
+#profil #administration{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+}
+#profil #administration .administration_status{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .4rem;
+  width: 100%;
+}
+#profil #administration .administration_status .card{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#profil #administration .administration_status .card a{
+  padding: .4rem;
+}
+
+

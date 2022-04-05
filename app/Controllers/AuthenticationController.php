@@ -125,13 +125,21 @@ class AuthenticationController extends BaseController
             $user = $this->userModel->where(["email_users" => $this->request->getPost('email_users')])->first();
 
             if (!empty($user)) {
+                if (empty($user["adresse_users"])) {
+                    $userAdresse = "";
+                } else {
+                    $userAdresse = $user["adresse_users"];
+                }
+
                 if (password_verify($this->request->getPost('password_users'), $user["password_users"])) {
                     session()->set([
                         "id" => $user["id_users"],
                         "email" => $user["email_users"],
                         "role" => $user["role_users"],
                         "nom" => $user["last_name_users"],
-                        "prenom" => $user["first_name_users"]
+                        "prenom" => $user["first_name_users"],
+                        "adresse " => $userAdresse,
+
                     ]);
                     return redirect()->to('/');
                 }
@@ -218,9 +226,9 @@ class AuthenticationController extends BaseController
             'password_company_confirmation'    => [
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
-                    'matches' => 'Mot de passe différents !',                    
+                    'matches' => 'Mot de passe différents !',
                 ],
-            ],          
+            ],
 
             'siret_company'    => [
                 'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
@@ -243,7 +251,7 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez accepter les CGU',
                 ],
-            ],            
+            ],
 
         ]);
         if (!$val) {
@@ -287,12 +295,17 @@ class AuthenticationController extends BaseController
                         "name_company" => $company["name_company"],
                         "frist_name_company" => $company["frist_name_company"],
                         "last_name_company" => $company["last_name_company"],
+                        "status_company" => $company["status_company"],
                         "city_company" => $company["city_company"],
                         "postal_code_company" => $company["postal_code_company"],
                         "adress_company" => $company["adress_company"],
                         "x_company" => $company["x_company"],
                         "siret_company" => $company["siret_company"],
                         "rib_company" => $company["rib_company"],
+                        "cni_company" => $company["cni_company"],
+                        "certificate_company" => $company["certificate_company"],
+                        "licence_company" => $company["licence_company"],
+                        "kbis_company" => $company["kbis_company"],
                         "hourly_rate_company" => $company["hourly_rate_company"],
                         "child_capacity_company" => $company["child_capacity_company"],
                     ]);
