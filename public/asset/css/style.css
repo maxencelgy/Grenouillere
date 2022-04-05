@@ -245,3 +245,11 @@ footer .footerbottom .FroagHead{
     font-size: 1.4rem;
   }
 }
+@media screen and (max-width:426px) {
+  footer .wrap{display: flex;flex-direction: column;}
+  footer .wrap .footerLeft{width: 50%;display: flex;flex-direction: column;align-items: center;margin-bottom: 10%;}
+  .social{margin-left: 10%;}
+  footer .wrap .footerRight{text-align: center;gap: 1.5rem;}
+  footer .footerbottom img {width: 0%;}
+  footer .footerbottom{padding-bottom: 3rem;}
+}

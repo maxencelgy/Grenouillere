@@ -539,3 +539,12 @@ input[type="submit"] {
     font-size: .8rem;
   }
 }
+@media screen and (max-width:426px) {
+  #cards .wrap3 h2{font-size: 1.6rem;text-align: center;}
+  #cards .wrap3 .img .back_1{right: -25%;margin-bottom: -20%;}
+  #cards .wrap3 .img .back_2{right: -215%;width: 40%;}
+  #cards .wrapCards{display: flex;flex-direction: column;}
+  #cards .wrapCards .card{margin-bottom: 0;}
+  #cards .wrapCards .card img{width: 130%;}
+  #cards .wrapCards .cards h3{font-size: 1.5rem;width: 27vh;}
+}
