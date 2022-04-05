@@ -138,46 +138,4 @@
 
 
 
-
-
-
-
-<!-- <section id="factures">
-    <div class="wrapProfil">
-        <h2>Vos Factures</h2>
-        <i class="fa-solid fa-chevron-down"></i>
-    </div>
-
-    <div class="cards">
-        <div class="card">
-            <div class="top">
-                <div class="left">
-                    <h2>Facture n°1</h2>
-                    <h3>Dupont Jean Michel</h3>
-                </div>
-                <div class="right">
-                    <h3>12/02/2022</h3>
-                </div>
-            </div>
-            <div class="bottom">
-                <a href="" class="download">Télecharger cette facture</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="top">
-                <div class="left">
-                    <h2>Facture n°2</h2>
-                    <h3>Dupont Jean Michel</h3>
-                </div>
-                <div class="right">
-                    <h3>12/02/2022</h3>
-                </div>
-            </div>
-            <div class="bottom">
-                <a href="" class="download">Télecharger cette facture</a>
-            </div>
-        </div>
-    </div>
-</section> -->
-
 <?= $this->endSection() ?>

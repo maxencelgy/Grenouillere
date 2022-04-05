@@ -88,6 +88,16 @@
 </section>
 
 
+<section id="maxou">
+    <div class="wrap">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</section>
+
+
+
+
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>

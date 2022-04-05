@@ -45,7 +45,6 @@
                     </div>
                     <div class="factures">
                         <?php
-
                         foreach ($reservations as $reservation) { ?>
                             <div class="facture">
                                 <div class="left">
