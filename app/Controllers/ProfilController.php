@@ -54,8 +54,10 @@ class ProfilController extends BaseController
     {
         if(!empty(session()->get("status_company"))) {
             $companyData = $this->companyModel->companyData($id);
+            $companyFolder = $this->companyModel->companyFolder($id);
             echo view('profil/profil_company', [
-                "companyData" => $companyData
+                "companyData" => $companyData,
+                "companyFolder" => $companyFolder
             ]);
         }else{
             return redirect()->to('/404');
@@ -119,23 +121,23 @@ class ProfilController extends BaseController
             $fileName = $this->uploadFolder();
             if(!empty($_FILES["rib_company"])){
                 $this->companyModel->updateFolder($id, "rib_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["identity_company"])){
                 $this->companyModel->updateFolder($id, "cni_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["certificate_company"])){
                 $this->companyModel->updateFolder($id, "certificate_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["licence_company"])){
                 $this->companyModel->updateFolder($id, "licence_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["kbis_company"])){
                 $this->companyModel->updateFolder($id, "kbis_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
         }
         else{
@@ -148,7 +150,7 @@ class ProfilController extends BaseController
         $nom = $this->request->getPost("nom");
         $email = $this->request->getPost("email");
         $postal = $this->request->getPost("postal");
-        $first_name = $this->request->getPost("first_name");
+        $last_name_company = $this->request->getPost("last_name_company");
         $adress = $this->request->getPost("adress");
         $siret = $this->request->getPost("siret");
         $capacity = $this->request->getPost("capacity");
@@ -160,7 +162,7 @@ class ProfilController extends BaseController
                 'email_company' => $email,
                 'name_company' => $nom,
                 'postal_code_company' => $postal,
-                'frist_name_company' => $first_name,
+                'last_name_company' => $last_name_company,
                 'adress_company' => $adress,
                 'siret_company' => $siret,
                 'child_capacity_company	' => $capacity,
