@@ -55,8 +55,6 @@ class CompanyModel extends Model
         ->find();
     }
 
-
-
     public function updateFolder($id, $row ,$data){
         return $this->update($id, [
             $row => "/upload/".$data

@@ -20,7 +20,6 @@
                         <h2 class='date'><?= date('Y-m-d', strtotime("+ $i days")) ?></h2>
                         <div class="slots">
                             <?php
-
                             foreach ($planning as $day) {
                                 // On boucle dans le tableau slot
                                 if (!empty($slot)) {

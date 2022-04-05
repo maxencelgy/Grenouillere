@@ -133,11 +133,34 @@
             <a href="/export/all/<?= session()->get("id") ?>" class="">Télécharger le récapitulatif de vos réservations <i class="fa-solid fa-file-arrow-down"></i> </a>
         </div>
     </section>
+
+    <section id="factures">    
+        <div class="cards">
+        <h2>Mes Factures</h2>
+        <?php
+        if(empty($idFacturePdf)){
+            echo '<p>Vous n\'avez pas encore de facture.</p>';
+        }else{
+            var_dump($idFacturePdf); 
+            ?>
+            <div class='childrens'>
+            <?php
+            foreach ($idFacturePdf as $facture) { ?>
+                <div class='childrenCard'>
+                    <p>Facture du <?= $facture['date_facture'] ?> </p>
+                    <a href=" <?= $facture['fk_facture'] ?> ">PDF</a>
+                </div>
+            <?php
+                
+            }
+            ?>
+            </div>
+            <?php
+        }  
+        ?>
+        </div>
+    </section>
 </div>
-
-
-
-
 
 
 

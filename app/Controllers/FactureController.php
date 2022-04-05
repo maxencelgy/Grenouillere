@@ -21,17 +21,24 @@ class FactureController extends BaseController
         echo '</pre>';
     }
 
-    public function lastFactureUser($idFacture = false)
+    public function factureUser(int $idFacture = null)
     {   
         // s'il n'y a pas de facture renseiger on prend par défault celle de l'utilsateur
-        if($idFacture === false){   
-            $idUser = session()->get('id');
-            $idFacture = $this->factureModel->getLastFactureByUser($idUser)[0]['id_facture'];
+        $idUser = session()->get('id');
+        if($idFacture === null){   
+            $idFacture = $this->factureModel->getLastFactureByUser($idUser)[0]['id_facture'];        
         }else{
-            // TODO:si on possède la facture, on doit chercher l'id User pour être sur que la facture soit correct
-            $idUser = session()->get('id');
-        }        
+        // si on possède la facture, on doit chercher l'id User pour être sur que la facture soit correct
+            if($this->factureModel->getUserFacture($idFacture)[0]['fk_users'] != $idUser){
+                // On verifie que la facture est bien celle de l'utilisateur
+                return redirect('/');
+            }
+        }
         $reservations = $this->reservationModel->getAllSlotByFacture($idFacture);
+        if(empty($reservations)){
+            // Si la facture est vide on redirige vers la page d'accueil
+            return redirect('/');
+        }
         
         // tous les slots on le même id company, on prend le 0 pour être sur d'avoir un résultat
         // avec l'id company on récup toutes les infos dont on a besoin

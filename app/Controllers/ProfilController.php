@@ -36,13 +36,14 @@ class ProfilController extends BaseController
             $allergy = $this->allergyModel->getAllAllergy();
             $disease = $this->diseaseModel->getAllDisease();
             $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
-
+            $idFacturePdf = $this->reservationModel->getAllUserFacture(session()->get("id")) ;
 
             echo view('profil/index', [
                 "reservations" => $reservations,
                 "childrens" => $children,
                 "allergy" => $allergy,
                 "disease" => $disease,
+                "idFacturePdf" => $idFacturePdf,
             ]);
         }else{
             return redirect()->to('/404');

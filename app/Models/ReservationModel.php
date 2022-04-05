@@ -108,4 +108,13 @@ class ReservationModel extends Model
         ->orderBy("fk_planning")
         ->findAll();
     }
+     
+    public function getAllUserFacture($idUser)
+    {
+        return $this->select('fk_facture,date_facture')
+        ->join('facture', 'facture.id_facture = reservation.fk_facture')
+        ->where('fk_users', $idUser)
+        ->distinct()
+        ->findAll();
+    }
 }

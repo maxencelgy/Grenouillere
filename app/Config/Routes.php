@@ -65,7 +65,8 @@ $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 // $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 // Facture
-$routes->get('utilisateur/facture', 'FactureController::lastFactureUser');
+$routes->get('utilisateur/facture/(:num)', 'FactureController::factureUser/$1');
+$routes->get('utilisateur/facture', 'FactureController::factureUser');
 
 // Adding resvation
 $routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReservation/$1');

@@ -37,5 +37,12 @@ class FactureModel extends Model
         ->find();
     }
 
+    public function getUserFacture($idFacture)
+    {
+        return $this->select('fk_users')
+        ->where('id_facture=' . $idFacture)
+        ->find();
+    }
+
     
 }
