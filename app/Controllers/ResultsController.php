@@ -100,7 +100,7 @@ class ResultsController extends BaseController
 
         // On créer la facture
         $dataFacture = [
-            'fk_company' => 6,
+            'fk_company' => 3,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];
@@ -142,7 +142,7 @@ class ResultsController extends BaseController
             "description" => "Paiement à $single_company->name_company"
         ]);
 
-        return redirect('/');
+        return redirect('/utilisateur/facture');
         session()->setFlashdata("message", "Paiement réussi");
     }
 }

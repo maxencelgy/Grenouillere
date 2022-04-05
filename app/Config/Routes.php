@@ -65,6 +65,8 @@ $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 // $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
+// Facture
+$routes->get('utilisateur/facture', 'FactureController::lastFactureUser');
 
 // Adding resvation
 $routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReservation/$1');

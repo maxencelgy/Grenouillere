@@ -30,8 +30,6 @@
         </div>
     </section>
 
-
-
     <div class="add">
         <a href="create-children" class="addChild">Inscrire mon enfant</a>
     </div>

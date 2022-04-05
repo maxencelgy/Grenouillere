@@ -48,11 +48,20 @@ class CompanyModel extends Model
     }
 
 
+    public function getInfoCompany(int $id)
+    {
+        return $this->select('*')
+        ->where('id_company',$id)
+        ->find();
+    }
+
+
     public function updateFolder($id, $row ,$data){
         return $this->update($id, [
             $row => "/upload/".$data
         ]);
     }
+
 
     public function companyData($id){
         return $this->select('email_company, name_company, last_name_company, city_company, postal_code_company,
