@@ -150,7 +150,7 @@ class ProfilController extends BaseController
         $nom = $this->request->getPost("nom");
         $email = $this->request->getPost("email");
         $postal = $this->request->getPost("postal");
-        $first_name = $this->request->getPost("first_name");
+        $last_name_company = $this->request->getPost("last_name_company");
         $adress = $this->request->getPost("adress");
         $siret = $this->request->getPost("siret");
         $capacity = $this->request->getPost("capacity");
@@ -162,7 +162,7 @@ class ProfilController extends BaseController
                 'email_company' => $email,
                 'name_company' => $nom,
                 'postal_code_company' => $postal,
-                'frist_name_company' => $first_name,
+                'last_name_company' => $last_name_company,
                 'adress_company' => $adress,
                 'siret_company' => $siret,
                 'child_capacity_company	' => $capacity,

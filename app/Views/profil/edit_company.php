@@ -27,8 +27,8 @@
                         <input type="text" name="postal" id="postal" value=" <?= $companyData["postal_code_company"]; ?> ">
                     </div>
                     <div class="input_box">
-                        <label for="first_name">Direction :</label>
-                        <input type="text" name="first_name" id="first_name" value="<?= $companyData["last_name_company"]; ?>">
+                        <label for="last_name_company">Direction :</label>
+                        <input type="text" name="last_name_company" id="last_name_company" value="<?= $companyData["last_name_company"]; ?>">
 
                         <label for="adress">Adresse :</label>
                         <input type="text" name="adress" id="adress" value="<?= $companyData["adress_company"]; ?>">
