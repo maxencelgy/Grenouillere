@@ -36,22 +36,47 @@
                 <h2>Mes documents</h2>
                 <div class="card">
                     <p>Pièce d'identité : </p>
+                        <?php if(!empty(session()->get("cni_company"))){ ?>
+                            <a href="<?= session()->get("cni_company") ?>">Voir le document</a>
+                        <?php }else{ ?>
+                            <p> EN ATTENTE </p>
+                        <?php } ?>
                     <a class="btn btn_identity_popup" href="">Mettre à jour</a>
                 </div>
                 <div class="card">
                     <p>Diplôme : </p>
+                    <?php if(!empty(session()->get("certificate_company"))){ ?>
+                        <a href="<?= session()->get("certificate_company") ?>">Voir le document</a>
+                    <?php }else{ ?>
+                        <p> EN ATTENTE </p>
+                    <?php } ?>
                     <a class="btn btn_certificate_popup" href="">Mettre à jour</a>
                 </div>
                 <div class="card">
                     <p>Autorisation préfectorale : </p>
+                    <?php if(!empty(session()->get("licence_company"))){ ?>
+                        <a href="<?= session()->get("licence_company") ?>">Voir le document</a>
+                    <?php }else{ ?>
+                        <p> EN ATTENTE </p>
+                    <?php } ?>
                     <a class="btn btn_licence_popup" href="">Mettre à jour</a>
                 </div>
                 <div class="card">
                     <p>Extrait Kbis : </p>
+                    <?php if(!empty(session()->get("kbis_company"))){ ?>
+                        <a href="<?= session()->get("kbis_company") ?>">Voir le document</a>
+                    <?php }else{ ?>
+                        <p> EN ATTENTE </p>
+                    <?php } ?>
                     <a class="btn btn_kbis_popup" href="">Mettre à jour</a>
                 </div>
                 <div class="card">
                     <p>RIB : </p>
+                    <?php if(!empty(session()->get("rib_company"))){ ?>
+                        <a href="<?= session()->get("rib_company") ?>">Voir le document</a>
+                    <?php }else{ ?>
+                        <p> EN ATTENTE </p>
+                    <?php } ?>
                     <a class="btn btn_rib_popup" href="">Mettre à jour</a>
                 </div>
             </div>

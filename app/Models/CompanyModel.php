@@ -50,7 +50,7 @@ class CompanyModel extends Model
 
     public function updateFolder($id, $row ,$data){
         return $this->update($id, [
-            $row => "./upload/".$data
+            $row => "/upload/".$data
         ]);
     }
 }

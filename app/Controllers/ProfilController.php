@@ -103,25 +103,30 @@ class ProfilController extends BaseController
 
     public function updateFile($id)
     {
-        $fileName = $this->uploadFolder();
-        if(!empty($_FILES["rib_company"])){
-            $this->companyModel->updateFolder($id, "rib_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
+        if(!empty($_FILES)){
+            $fileName = $this->uploadFolder();
+            if(!empty($_FILES["rib_company"])){
+                $this->companyModel->updateFolder($id, "rib_company" ,$fileName);
+                return redirect()->to('/profil/compagny');
+            }
+            elseif(!empty($_FILES["identity_company"])){
+                $this->companyModel->updateFolder($id, "cni_company" ,$fileName);
+                return redirect()->to('/profil/compagny');
+            }
+            elseif(!empty($_FILES["certificate_company"])){
+                $this->companyModel->updateFolder($id, "certificate_company" ,$fileName);
+                return redirect()->to('/profil/compagny');
+            }
+            elseif(!empty($_FILES["licence_company"])){
+                $this->companyModel->updateFolder($id, "licence_company" ,$fileName);
+                return redirect()->to('/profil/compagny');
+            }
+            elseif(!empty($_FILES["kbis_company"])){
+                $this->companyModel->updateFolder($id, "kbis_company" ,$fileName);
+                return redirect()->to('/profil/compagny');
+            }
         }
-        elseif(!empty($_FILES["identity_company"])){
-            $this->companyModel->updateFolder($id, "cni_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
-        }
-        elseif(!empty($_FILES["certificate_company"])){
-            $this->companyModel->updateFolder($id, "certificate_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
-        }
-        elseif(!empty($_FILES["licence_company"])){
-            $this->companyModel->updateFolder($id, "licence_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
-        }
-        elseif(!empty($_FILES["kbis_company"])){
-            $this->companyModel->updateFolder($id, "kbis_company" ,$fileName);
+        else{
             return redirect()->to('/profil/compagny');
         }
     }

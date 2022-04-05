@@ -293,6 +293,10 @@ class AuthenticationController extends BaseController
                         "x_company" => $company["x_company"],
                         "siret_company" => $company["siret_company"],
                         "rib_company" => $company["rib_company"],
+                        "cni_company" => $company["cni_company"],
+                        "certificate_company" => $company["certificate_company"],
+                        "licence_company" => $company["licence_company"],
+                        "kbis_company" => $company["kbis_company"],
                         "hourly_rate_company" => $company["hourly_rate_company"],
                         "child_capacity_company" => $company["child_capacity_company"],
                     ]);
