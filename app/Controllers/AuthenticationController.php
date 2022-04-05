@@ -295,6 +295,7 @@ class AuthenticationController extends BaseController
                         "name_company" => $company["name_company"],
                         "frist_name_company" => $company["frist_name_company"],
                         "last_name_company" => $company["last_name_company"],
+                        "status_company" => $company["status_company"],
                         "city_company" => $company["city_company"],
                         "postal_code_company" => $company["postal_code_company"],
                         "adress_company" => $company["adress_company"],

@@ -31,23 +31,32 @@ class ProfilController extends BaseController
 
     public function index()
     {
-        $children = $this->childrenModel->getParentsChild();
-        $allergy = $this->allergyModel->getAllAllergy();
-        $disease = $this->diseaseModel->getAllDisease();
-        $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
+        if(!empty(session()->get("role"))){
+            $children = $this->childrenModel->getParentsChild();
+            $allergy = $this->allergyModel->getAllAllergy();
+            $disease = $this->diseaseModel->getAllDisease();
+            $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
 
 
-        echo view('profil/index', [
-            "reservations" => $reservations,
-            "childrens" => $children,
-            "allergy" => $allergy,
-            "disease" => $disease,
-        ]);
+            echo view('profil/index', [
+                "reservations" => $reservations,
+                "childrens" => $children,
+                "allergy" => $allergy,
+                "disease" => $disease,
+            ]);
+        }else{
+            return redirect()->to('/404');
+        }
+
     }
 
     public function ProfilCompany()
     {
-        echo view('profil/profil_company');
+        if(!empty(session()->get("status_company"))) {
+            echo view('profil/profil_company');
+        }else{
+            return redirect()->to('/404');
+        }
     }
 
     public function uploadFolder()
@@ -134,12 +143,16 @@ class ProfilController extends BaseController
 
     public function editCompany()
     {
-        $planning = $this->planningModel->getAll();
-        $infoBtn = ['/calendar/add','Envoyer le planning'] ;  
-        echo view('profil/edit_company', [
-            "planning" => $planning,
-            "infoBtn" => $infoBtn,   
-        ]);
+        if(!empty(session()->get("status_company"))){
+            $planning = $this->planningModel->getAll();
+            $infoBtn = ['/calendar/add','Envoyer le planning'] ;
+            echo view('profil/edit_company', [
+                "planning" => $planning,
+                "infoBtn" => $infoBtn,
+            ]);
+        }else{
+            return redirect()->to('/404');
+        }
     }
 
     public function handlePostCalandar()
