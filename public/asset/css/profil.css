@@ -23,7 +23,7 @@
 }
 .informations {
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: space-between;
 }
 .information {
@@ -99,13 +99,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}.childrens .childrenCardLeft {
+}
+.childrens .childrenCardLeft {
   width: 59%;
 }
 .childrens .childrenCardRight {
   width: 29%;
   display: flex;
-
   justify-content: space-between;
 
 }
@@ -116,7 +116,6 @@ flex-direction: column;
 .childrens .childrenCardRight .right{
   display: flex;
   flex-direction: column;
-
   }
 
 .btnChild {
