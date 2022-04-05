@@ -5,27 +5,29 @@
 
 
 <?= $this->section('content') ?>
+<?php $companyData = $companyData[0]; ?>
+
 <div class="wrapProfil">
     <section id="profil">
         <h2>Mes informations</h2><br>
         <div class="informations">
             <div class="information">
-                <h3>Nom : <?= session()->get("nom") ?></h3><br>
-                <h3>Email : <?= session()->get("email") ?></h3><br>
-                <h3>Code Postale : <?= session()->get("postal") ?>27100</h3><br><br>
+                <h3>Entreprise : <?= $companyData["name_company"]; ?></h3><br>
+                <h3>Direction : <?= $companyData["last_name_company"]; ?></h3><br>
+                <h3>SIRET : <?= $companyData["siret_company"]; ?></h3><br><br>
             </div>
             <div class="information">
-                <h3>Prénom : <?= session()->get("prenom") ?></h3><br>
-                <h3>Adresse : <?= session()->get("adresse") ?>14 rue de la sauvagine</h3><br>
+                <h3>Email : <?= $companyData["email_company"]; ?></h3><br>
+                <h3>Adresse : <?= $companyData["adress_company"]; ?></h3><br>
 
             </div>
             <div class="information">
-                <h3>Télephone : <?= session()->get("telephone") ?>0651718409</h3><br>
-                <h3>Ville : <?= session()->get("ville") ?>Val de reuil</h3><br>
+                <h3>Ville : <?= $companyData["city_company"]; ?></h3><br>
+                <h3>Code Postale : <?= $companyData["postal_code_company"]; ?></h3><br>
             </div>
         </div>
         <div class="buttons">
-            <a class="btn" href="<?= site_url(); ?>profil/editCompany">Mettre à jour mes informations</a>
+            <a class="btn" href="<?= site_url(); ?>profil/editCompany/<?= session()->get("id"); ?>">Mettre à jour mes informations</a>
         </div>
     </section>
 
