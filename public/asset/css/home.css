@@ -12,6 +12,7 @@
   width: 100%;
   margin: 0 auto;
   position: relative;
+  margin-bottom: -3.6rem;
 }
 #main .back_1{
   position: absolute;
@@ -82,6 +83,8 @@ input[type="submit"] {
   flex-direction: column;
   align-items: center;
   padding-top: 3rem;
+  background-color: var(--blue);
+  padding-bottom: 5rem;
 }
 #main .bottomMain img{
   width: 4%;
@@ -89,15 +92,6 @@ input[type="submit"] {
 #main .bottomMain i {
   font-size: 3rem;
 }
-
-
-
-
-
-
-
-
-
 
 /* CARDS */
 #cards .wrap3 {
@@ -159,6 +153,7 @@ input[type="submit"] {
   margin-bottom: 1rem;
 }
 #cards .wrapCards .card h3 {
+  text-align: center;
   text-align: center;
   font-weight: 400;
   font-size: 1.2rem;
@@ -246,9 +241,10 @@ input[type="submit"] {
     right: 40%;
     top: 5%;
   }
+  
 }
 @media screen and (max-width:1080px) {
-  #main {height: 65vh;padding-top: 7rem;}
+  #main {height: 65vh;padding-top: 15rem;}
   #main .wrap2 {padding: 0 3rem;}
   #main .wrap2 .leftMain h1{font-size: 2rem;}
   #main .wrap2 .leftMain h2{font-size: 1.2rem;}
@@ -366,7 +362,7 @@ input[type="submit"] {
     font-size: 2rem;
   }
   #cards .wrap3{
-    margin-top: 7rem;
+    margin-top: 15rem;
   }
 }
 @media screen and (max-width:900px){
@@ -377,7 +373,7 @@ input[type="submit"] {
     gap: 1.5rem;
   }
   #cards .wrap3{
-    margin-top: 5rem;
+    margin-top: 10rem;
   }
 }
 @media screen and (max-width:705px) {
@@ -396,16 +392,19 @@ input[type="submit"] {
     font-size: 1.4rem;
   }
   #box1Nenu1{
-    transform: translate(-13vh, 9vh);
+    transform: translate(-6vh, 9vh);
   }
   #box1Nenu2{
-    transform: translate(10vh, -4vh);
+    transform: translate(18vh, -4vh);
+  }
+  #box2Nenu1{
+    transform: translate(4vh,6vh);
   }
   #box3Nenu1{
     transform: translate(19vh,19vh);    
   }
   #box3Nenu2{
-    transform: translate(-2vh,-10vh);
+    transform: translate(3vh,-10vh);
   }
 }
 @media screen and (max-width: 1150px){
@@ -419,25 +418,13 @@ input[type="submit"] {
   .box1, .box2, .box3, p{
     font-size: 1.2rem;
   }
-  #box1Nenu1{
-    transform: translate(-12vh, 9vh);
-  }
-  #box1Nenu2{
-    transform: translate(9vh, -4vh);
-  }
-  #box2Nenu1{
-    transform: translate(-4vh, 6vh);
-  }
   #box3Nenu1{
-    transform: translate(11vh,18vh);    
-  }
-  #box3Nenu2{
-    transform: translate(-3vh,-9vh);
+    transform: translate(18vh,19vh);    
   }
 }
 @media screen and (max-width: 1080px){
   #services{
-    margin-top: 7rem;
+    margin-top: 15rem;
   }
   .contentbox1, .contentbox2, .contentbox3{
     width: 22vh;
@@ -450,27 +437,27 @@ input[type="submit"] {
     font-size: 1.1rem;
   }
   #box1Nenu1{
-    transform: translate(-10vh,9vh);
+    transform: translate(-5vh, 9vh);
   }
   #box1Nenu2{
-    transform: translate(8vh,-3vh);
+    transform: translate(13vh, -4vh);
   }
   #box2Nenu1{
-    transform: translate(-3vh,5vh);
+    transform: translate(4vh,5vh);
   }
   #box2Nenu2{
-    transform: translate(4vh,-5vh);
+    transform: translate(8vh,-5vh);
   }
   #box3Nenu1{
-    transform: translate(10vh,15vh);    
+    transform: translate(15vh,16vh);
   }
   #box3Nenu2{
-    transform: translate(-3vh,-8vh);
+    transform: translate(3vh,-6vh);
   }
 }
 @media screen and (max-width: 900px){
   #services{
-    margin-top: 5rem;
+    margin-top: 10rem;
   }
   .boxs{
     display: flex;
@@ -481,6 +468,9 @@ input[type="submit"] {
   .box1, .box2, .box3{
     margin-bottom: 1rem;
     height: 24vh;
+  }
+  .box2, .box3{
+    margin-right: 1rem;
   }
   .box1,.box2,.box3,p{
     font-size: 1rem;
@@ -518,4 +508,34 @@ input[type="submit"] {
 }
 #fullAdresse::placeholder {
   color: black;
+}
+@media screen and (max-width: 1200px){
+  #fullAdresse{
+    font-size: 1.2rem;
+    width: 27%;
+  }
+}
+@media screen and (max-width: 1080px){
+  #fullAdresse{
+    font-size: .9rem;
+    width: 43%;
+  }
+  #enfant{
+    font-size: .9rem;
+  }
+  #day{
+    font-size: .9rem;
+  }
+}
+@media screen and (max-width: 950px){
+  #fullAdresse{
+    font-size: .8rem;
+    width: 47%;
+  }
+  #enfant{
+    font-size: .8rem;
+  }
+  #day{
+    font-size: .8rem;
+  }
 }
