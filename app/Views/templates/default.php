@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="/asset/css/reset.css">
     <link rel="stylesheet" href="/asset/css/style.css">
     <?= $this->renderSection('stylesheet') ?>
+    <link rel="stylesheet" href="/asset/css/responsive.css">
     <title>Grenouillère</title>
 </head>
 
 <body>
 
-    <?php include("navigation/header.php"); 
-  
+    <?php include("navigation/header.php");
+
     ?>
 
     <div class="container">

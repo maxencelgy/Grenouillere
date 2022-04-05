@@ -1,0 +1,121 @@
+@media screen and (max-width: 1200px) {
+.childrens .childrenCard {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         flex-direction: column;
+}    
+.childrenCardLeft {
+    width: 100%!important;
+    margin-bottom: 1rem;
+}
+.childrenCardRight {
+    width: 100%!important;
+}
+.childrens .childrenCardRight .left{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.childrens .childrenCardRight .right{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+}
+.btnChild {
+   margin-right: 1rem;
+}
+}
+@media screen and (max-width: 1100px) {
+    .popup {
+        width: 80%;
+    }
+    .popup textarea {
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 965px) {
+    .informations {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: left;
+    }
+}
+@media screen and (max-width: 560px) {
+    .childrens .childrenCardRight .left{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .childrens .childrenCardRight .right{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .childrens .childrenCardRight .right .btnChild{
+       margin: 0;
+    }
+    .popup {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 700px) {
+ header .wrap .right a{
+     display: none;
+ }
+ header .wrap .right i{
+    display: block;
+}
+}
+
+
+
+@media screen and (max-width: 500px) {
+.popup {
+    width: 98%;
+}
+.popup i{
+    right: 2%;
+}
+.wrapProfil {
+    padding: 1rem;
+}   
+ .childrenCardLeft p {
+     display: none;
+ }
+ .childrenCardLeft .name {
+    display: flex;
+    width: 100%;
+}
+.childrenCardLeft .name h2:nth-child(3) {
+    display: none!important;
+}
+}
+
+@media screen and (max-width: 360px) {
+    .childrenCardRight {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }  
+    .childrenCardRight .btnChild{
+      width: 100%!important;
+    }
+    .childrenCardRight .right .btnChild{
+        margin-bottom: 1rem!important;
+    }
+    .childrenCardRight .left{
+        width: 100%;
+    } 
+    .childrenCardRight .right{
+        width: 100%;
+    }  
+}
+@media screen and (max-width: 320px) {
+  .add .addChild {
+      font-size: 1.3rem;
+    }
+}

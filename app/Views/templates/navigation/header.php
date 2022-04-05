@@ -5,12 +5,13 @@
             <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
         </div>
         <div class="right">
+            <i class="fa-solid fa-bars"></i>
             <?php if (session()->get("role") == "admin") { ?>
                 <a href="<?= site_url(); ?>admin" class="btn">admin</a> <?php } ?>
             <?php if (!empty(session()->get("email"))) {
                 if (!empty(session()->get("role"))) { ?>
                     <a href="<?= site_url(); ?>profil" class="btn">Mon Profil</a>
-                    <?php
+                <?php
                 } else { ?>
                     <a href="<?= site_url(); ?>profil/editCompany" class="btn">Mon Profil</a>
                 <?php } ?>
