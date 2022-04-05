@@ -5,31 +5,29 @@
 
 
 <?= $this->section('content') ?>
-
-    <section id="profil">
-        <div class="wrapProfil">
-            <h2>Mes informations</h2>
+<?php $companyData = $companyData[0]; ?>
+        <section id="profil">
+            <h2>Mes informations</h2><br>
             <div class="informations">
                 <div class="information">
-                    <h3>Entreprise : <?= session()->get("name_company") ?></h3>
-                    <h3>Direction : <?= session()->get("frist_name_company") ?></h3>
-                    <h3>SIRET : </h3>
+                    <h3>Entreprise : <?= $companyData["name_company"]; ?></h3><br>
+                    <h3>Direction : <?= $companyData["last_name_company"]; ?></h3><br>
+                    <h3>SIRET : <?= $companyData["siret_company"]; ?></h3><br><br>
                 </div>
                 <div class="information">
-                    <h3>Email : <?= session()->get("email") ?></h3>
-                    <h3>Adresse : <?= session()->get("adress_company") ?></h3>
+                    <h3>Email : <?= $companyData["email_company"]; ?></h3><br>
+                    <h3>Adresse : <?= $companyData["adress_company"]; ?></h3><br>
+
                 </div>
                 <div class="information">
-                    <h3>Ville : <?= session()->get("city_company") ?></h3>
-                    <h3>Code Postale : <?= session()->get("postal_code_company") ?></h3>
+                    <h3>Ville : <?= $companyData["city_company"]; ?></h3><br>
+                    <h3>Code Postale : <?= $companyData["postal_code_company"]; ?></h3><br>
                 </div>
             </div>
-
-            <div class="actu">
-                <a class="btn" href="<?= site_url(); ?>profil/editCompany">Mettre à jour mes informations</a>
+            <div class="buttons">
+                <a class="btn" href="<?= site_url(); ?>profil/editCompany/<?= session()->get("id"); ?>">Mettre à jour mes informations</a>
             </div>
-
-        </div>
+        </section>
 
         <div id="administration" class="wrapProfil">
             <div class="administration_status">

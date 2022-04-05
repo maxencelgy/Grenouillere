@@ -47,13 +47,16 @@ class ProfilController extends BaseController
         }else{
             return redirect()->to('/404');
         }
-
     }
 
-    public function ProfilCompany()
+
+    public function ProfilCompany($id)
     {
         if(!empty(session()->get("status_company"))) {
-            echo view('profil/profil_company');
+            $companyData = $this->companyModel->companyData($id);
+            echo view('profil/profil_company', [
+                "companyData" => $companyData
+            ]);
         }else{
             return redirect()->to('/404');
         }
@@ -140,15 +143,45 @@ class ProfilController extends BaseController
         }
     }
 
+    public function companyModify($id)
+    {
+        $nom = $this->request->getPost("nom");
+        $email = $this->request->getPost("email");
+        $postal = $this->request->getPost("postal");
+        $first_name = $this->request->getPost("first_name");
+        $adress = $this->request->getPost("adress");
+        $siret = $this->request->getPost("siret");
+        $capacity = $this->request->getPost("capacity");
+        $city = $this->request->getPost("city");
+        $price = $this->request->getPost("price");
 
-    public function editCompany()
+        $this->companyModel->updateCompany($id,
+            $data = [
+                'email_company' => $email,
+                'name_company' => $nom,
+                'postal_code_company' => $postal,
+                'frist_name_company' => $first_name,
+                'adress_company' => $adress,
+                'siret_company' => $siret,
+                'child_capacity_company	' => $capacity,
+                'city_company' => $city,
+                'hourly_rate_company' => $price,
+                'status_company' => 'nouveau',
+            ]);
+
+        return redirect()->to('profil/compagny/'.session()->get("id"));
+    }
+
+    public function editCompany($id)
     {
         if(!empty(session()->get("status_company"))){
             $planning = $this->planningModel->getAll();
+            $companyData = $this->companyModel->companyData($id);
             $infoBtn = ['/calendar/add','Envoyer le planning'] ;
             echo view('profil/edit_company', [
                 "planning" => $planning,
                 "infoBtn" => $infoBtn,
+                "companyData" => $companyData
             ]);
         }else{
             return redirect()->to('/404');
