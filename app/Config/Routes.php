@@ -43,7 +43,8 @@ $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
 $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
-$routes->get('profil/editCompany', 'ProfilController::editCompany');
+$routes->get('profil/editCompany/(:num)', 'ProfilController::editCompany/$1');
+$routes->post('profil/modify/(:num)', 'ProfilController::companyModify/$1');
 $routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
 
 
@@ -64,6 +65,8 @@ $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 // $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
+// Facture
+$routes->get('utilisateur/facture', 'FactureController::lastFactureUser');
 
 // Adding resvation
 $routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReservation/$1');
@@ -72,7 +75,7 @@ $routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReser
 
 //////////////////////PROFIL  //////////////////////////////////
 $routes->get('profil', 'ProfilController::index');
-$routes->get('profil/compagny', 'ProfilController::ProfilCompany');
+$routes->get('profil/compagny/(:num)', 'ProfilController::ProfilCompany/$1');
 $routes->post('add/addFiles/(:num)', 'ProfilController::updateFile/$1');
 
 

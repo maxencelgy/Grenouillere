@@ -31,23 +31,37 @@ class ProfilController extends BaseController
 
     public function index()
     {
-        $children = $this->childrenModel->getParentsChild();
-        $allergy = $this->allergyModel->getAllAllergy();
-        $disease = $this->diseaseModel->getAllDisease();
-        $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
+        if(!empty(session()->get("role"))){
+            $children = $this->childrenModel->getParentsChild();
+            $allergy = $this->allergyModel->getAllAllergy();
+            $disease = $this->diseaseModel->getAllDisease();
+            $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
 
 
-        echo view('profil/index', [
-            "reservations" => $reservations,
-            "childrens" => $children,
-            "allergy" => $allergy,
-            "disease" => $disease,
-        ]);
+            echo view('profil/index', [
+                "reservations" => $reservations,
+                "childrens" => $children,
+                "allergy" => $allergy,
+                "disease" => $disease,
+            ]);
+        }else{
+            return redirect()->to('/404');
+        }
     }
 
-    public function ProfilCompany()
+
+    public function ProfilCompany($id)
     {
-        echo view('profil/profil_company');
+        if(!empty(session()->get("status_company"))) {
+            $companyData = $this->companyModel->companyData($id);
+            $companyFolder = $this->companyModel->companyFolder($id);
+            echo view('profil/profil_company', [
+                "companyData" => $companyData,
+                "companyFolder" => $companyFolder
+            ]);
+        }else{
+            return redirect()->to('/404');
+        }
     }
 
     public function uploadFolder()
@@ -103,38 +117,77 @@ class ProfilController extends BaseController
 
     public function updateFile($id)
     {
-        $fileName = $this->uploadFolder();
-        if(!empty($_FILES["rib_company"])){
-            $this->companyModel->updateFolder($id, "rib_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
+        if(!empty($_FILES)){
+            $fileName = $this->uploadFolder();
+            if(!empty($_FILES["rib_company"])){
+                $this->companyModel->updateFolder($id, "rib_company" ,$fileName);
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
+            }
+            elseif(!empty($_FILES["identity_company"])){
+                $this->companyModel->updateFolder($id, "cni_company" ,$fileName);
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
+            }
+            elseif(!empty($_FILES["certificate_company"])){
+                $this->companyModel->updateFolder($id, "certificate_company" ,$fileName);
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
+            }
+            elseif(!empty($_FILES["licence_company"])){
+                $this->companyModel->updateFolder($id, "licence_company" ,$fileName);
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
+            }
+            elseif(!empty($_FILES["kbis_company"])){
+                $this->companyModel->updateFolder($id, "kbis_company" ,$fileName);
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
+            }
         }
-        elseif(!empty($_FILES["identity_company"])){
-            $this->companyModel->updateFolder($id, "cni_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
-        }
-        elseif(!empty($_FILES["certificate_company"])){
-            $this->companyModel->updateFolder($id, "certificate_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
-        }
-        elseif(!empty($_FILES["licence_company"])){
-            $this->companyModel->updateFolder($id, "licence_company" ,$fileName);
-            return redirect()->to('/profil/compagny');
-        }
-        elseif(!empty($_FILES["kbis_company"])){
-            $this->companyModel->updateFolder($id, "kbis_company" ,$fileName);
+        else{
             return redirect()->to('/profil/compagny');
         }
     }
 
-
-    public function editCompany()
+    public function companyModify($id)
     {
-        $planning = $this->planningModel->getAll();
-        $infoBtn = ['/calendar/add','Envoyer le planning'] ;  
-        echo view('profil/edit_company', [
-            "planning" => $planning,
-            "infoBtn" => $infoBtn,   
-        ]);
+        $nom = $this->request->getPost("nom");
+        $email = $this->request->getPost("email");
+        $postal = $this->request->getPost("postal");
+        $last_name_company = $this->request->getPost("last_name_company");
+        $adress = $this->request->getPost("adress");
+        $siret = $this->request->getPost("siret");
+        $capacity = $this->request->getPost("capacity");
+        $city = $this->request->getPost("city");
+        $price = $this->request->getPost("price");
+
+        $this->companyModel->updateCompany($id,
+            $data = [
+                'email_company' => $email,
+                'name_company' => $nom,
+                'postal_code_company' => $postal,
+                'last_name_company' => $last_name_company,
+                'adress_company' => $adress,
+                'siret_company' => $siret,
+                'child_capacity_company	' => $capacity,
+                'city_company' => $city,
+                'hourly_rate_company' => $price,
+                'status_company' => 'nouveau',
+            ]);
+
+        return redirect()->to('profil/compagny/'.session()->get("id"));
+    }
+
+    public function editCompany($id)
+    {
+        if(!empty(session()->get("status_company"))){
+            $planning = $this->planningModel->getAll();
+            $companyData = $this->companyModel->companyData($id);
+            $infoBtn = ['/calendar/add','Envoyer le planning'] ;
+            echo view('profil/edit_company', [
+                "planning" => $planning,
+                "infoBtn" => $infoBtn,
+                "companyData" => $companyData
+            ]);
+        }else{
+            return redirect()->to('/404');
+        }
     }
 
     public function handlePostCalandar()

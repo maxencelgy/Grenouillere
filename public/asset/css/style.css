@@ -33,12 +33,33 @@ header .wrap {
 }
 header .wrap .left {
   display: flex;
-  text-align: center;
+
   justify-content: center;
   flex-direction: column;
 }
+header .wrap .left a:nth-child(1){
+ margin-left: 3rem;
+}
 header .wrap .left img {
   width: 20%;
+}
+
+.fa-bars {
+  font-size: 2.3rem;
+  cursor: pointer;
+  display: none;
+}
+.cross {
+  font-size: 2.3rem;
+  cursor: pointer;
+
+}
+.crossNone {
+  display: none!important;
+}
+
+.linkBlock {
+  display: block!important;
 }
 
 header .wrap .right {
