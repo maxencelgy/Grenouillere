@@ -26,7 +26,7 @@
             </div>
 
             <div class="actu">
-                <a class="btn" href="">Mettre à jour mes informations</a>
+                <a class="btn" href="<?= site_url(); ?>profil/editCompany">Mettre à jour mes informations</a>
             </div>
 
         </div>
