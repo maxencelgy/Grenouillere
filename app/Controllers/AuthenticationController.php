@@ -125,6 +125,12 @@ class AuthenticationController extends BaseController
             $user = $this->userModel->where(["email_users" => $this->request->getPost('email_users')])->first();
 
             if (!empty($user)) {
+                if (empty($user["adresse_users"])) {
+                    $userAdresse = "";
+                } else {
+                    $userAdresse = $user["adresse_users"];
+                }
+
                 if (password_verify($this->request->getPost('password_users'), $user["password_users"])) {
                     session()->set([
                         "id" => $user["id_users"],
@@ -132,10 +138,8 @@ class AuthenticationController extends BaseController
                         "role" => $user["role_users"],
                         "nom" => $user["last_name_users"],
                         "prenom" => $user["first_name_users"],
-                        "adresse " => $user["adresse_users"],
-                        "telephone " => $user["phone_users"],
-                        "ville  " => $user["city_users"],
-                        "postal  " => $user["postal_users"],
+                        "adresse " => $userAdresse,
+
                     ]);
                     return redirect()->to('/');
                 }

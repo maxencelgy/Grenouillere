@@ -220,6 +220,12 @@ flex-direction: column;
   display: none;
   z-index: 99999;
 }
+.popup i{
+  cursor: pointer;
+  position: absolute;
+  right: 10%;
+  font-size: 2.3rem;
+}
 
 .filtre {
     display: none;

@@ -41,6 +41,7 @@
             <!--Popup Allergie -->
             <div class="filtre">
                 <div class="popup">
+                    <i class="fa-solid fa-xmark"></i>
                     <form id="child_allergy" class="child_allergy popup_hidden" action="<?= site_url(); ?>children/allergyChild" method="post">
                         <h2>Declarer une allergie</h2>
                         <div class="selectPop">
@@ -61,6 +62,7 @@
             <!--Popup maladie -->
 
             <div class="popup2 popup">
+                <i class="fa-solid fa-xmark"></i>
                 <form id="child_disease" class="child_disease popup_hidden" action="<?= site_url(); ?>children/diseaseChild" method="post">
                     <h2>Declarer une Maladie</h2>
                     <div class="selectPop">
