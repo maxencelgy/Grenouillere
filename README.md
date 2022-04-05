@@ -10,4 +10,6 @@
 
 6 eme etape : /!\ à faire une seule fois -> php spark migrate
 
-7 eme etape : php spark serve
+7 eme etape : php spark db:seed CompanySeeder
+
+8 eme etape : php spark serve
