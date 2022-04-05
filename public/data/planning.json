@@ -1,0 +1,18 @@
+[
+  {
+    "libelle_planning": "08h - 12h",
+    "created_at_planning": "2022-04-05 00:00:00"
+  },
+  {
+    "libelle_planning": "12h - 16h",
+    "created_at_planning": "2022-04-05 00:00:00"
+  },
+  {
+    "libelle_planning": "16h - 20h",
+    "created_at_planning": "2022-04-05 00:00:00"
+  },
+  {
+    "libelle_planning": "20h - 00h",
+    "created_at_planning": "2022-04-05 00:00:00"
+  }
+]

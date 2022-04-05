@@ -66,7 +66,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/admin/allergie">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Ajouter Maladies</span></a>
+                    <span>Ajouter Maladies/Allergies</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -229,6 +229,11 @@
                                             <th>Prenom</th>
                                             <th>Ville</th>
                                             <th>Code Postal</th>
+                                            <th>Identité</th>
+                                            <th>RIB</th>
+                                            <th>Diplôme</th>
+                                            <th>Attestation</th>
+                                            <th>Kbis</th>
                                             <th>Status</th>
                                             <th>Modifier</th>
                                         </tr>
@@ -242,6 +247,11 @@
                                             <th>Prenom</th>
                                             <th>Ville</th>
                                             <th>Code Postal</th>
+                                            <th>Identité</th>
+                                            <th>RIB</th>
+                                            <th>Diplôme</th>
+                                            <th>Attestation</th>
+                                            <th>Kbis</th>
                                             <th>Status</th>
                                             <th>Modifier</th>
                                         </tr>
@@ -259,6 +269,37 @@
                                                 <td><?= $company['frist_name_company'] ?></td>
                                                 <td><?= $company['city_company'] ?></td>
                                                 <td><?= $company['postal_code_company'] ?></td>
+                                                <?php
+                                                if(!empty($company['cni_company'])){ ?>
+                                                    <td><a href="<?= $company['cni_company'] ?>">VOIR</a></td>
+                                                <?php }else{ ?>
+                                                    <td class="text-warning">EN ATTENTE</td>
+                                                <?php } ?>
+                                                <?php
+                                                if(!empty($company['rib_company'])){ ?>
+                                                <td><a href="<?= $company['rib_company'] ?>">VOIR</a></td>
+                                                <?php }else{ ?>
+                                                    <td class="text-warning">EN ATTENTE</td>
+                                                <?php } ?>
+                                                <?php
+                                                if(!empty($company['certificate_company'])){ ?>
+                                                    <td><a href="<?= $company['certificate_company'] ?>">VOIR</a></td>
+                                                <?php }else{ ?>
+                                                    <td class="text-warning">EN ATTENTE</td>
+                                                <?php } ?>
+                                                <?php
+                                                if(!empty($company['licence_company'])){ ?>
+                                                    <td><a href="<?= $company['licence_company'] ?>">VOIR</a></td>
+                                                <?php }else{ ?>
+                                                    <td class="text-warning">EN ATTENTE</td>
+                                                <?php } ?>
+                                                <?php
+                                                if(!empty($company['kbis_company'])){ ?>
+                                                    <td><a href="<?= $company['kbis_company'] ?>">VOIR</a></td>
+                                                <?php }else{ ?>
+                                                    <td class="text-warning">EN ATTENTE</td>
+                                                <?php } ?>
+
                                                 <form class="formu" action="/admin/modified" method="post">
                                                     <input type="hidden" name="id" value="<?= $company['id_company'] ?>">
                                                     <td><input type="text" name="status_company" value="<?= $company['status_company'] ?>"></td>
