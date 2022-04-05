@@ -1,42 +1,85 @@
 #facture{
     padding: 3rem 0;
-    background-color: yellowgreen;
-    .head{
-        background-color: lightskyblue;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        .logo{
+    .wrap{
+        border: 4mm ridge rgba(211, 220, 50, .6);
+        padding: 1rem;
+        .head{
             display: flex;
-            flex-flow: column;
-            align-items: center;
-            background-color: lightcoral;
-            img{
-                width: 15rem;
+            flex-flow: row nowrap;
+            justify-content: space-between;            
+            .logo{
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                padding-right: 10rem;
+                img{
+                    width: 10rem;                   
+                }
+            }            
+        }
+        .title{
+            p{
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        }       
+        .contacts{
+            padding: 1rem;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            .contact{
+                display: flex;
+                flex-flow: column nowrap;
+            }
+            .contact.left{
+                width: 100%;
+            }
+            .contact.right{
+                width: 100%;
             }
         }
-        
+        .list-facture{
+            .title{
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+            }
+            .factures{
+                .facture{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    padding: 1rem;
+                }
+            }
+            .total{
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: flex-end;
+                padding: 1rem;
+                font-size: 1.5rem;
+            }
+
+        }
+            
     }
-    .contacts{
-        padding: 1rem;
-        background-color: lightgreen;
+}
+
+.pdf{
+    margin-bottom: 2rem;
+    .wrap{
         display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        .contact{
-            display: flex;
-            flex-flow: column nowrap;
-        }
-        .contact.left{
-            width: 100%;
-            background-color: yellow;
-        }
-        .contact.right{
-            width: 100%;
+        justify-content: flex-end;
+        .btnPdf{
             background-color: red;
+            padding: 1rem;
+            border-radius: 1rem;
+            color: white;
+            cursor: pointer;   
         }
     }
-    .list-facture{
-        background-color: lightcoral;
-    }
+    
 }

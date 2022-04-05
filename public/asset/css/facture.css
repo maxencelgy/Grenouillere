@@ -1,43 +1,78 @@
 #facture {
   padding: 3rem 0;
-  background-color: yellowgreen;
 }
-#facture .head {
-  background-color: lightskyblue;
+#facture .wrap {
+  border: 4mm ridge rgba(211, 220, 50, 0.6);
+  padding: 1rem;
+}
+#facture .wrap .head {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-#facture .head .logo {
+#facture .wrap .head .logo {
   display: flex;
   flex-flow: column;
   align-items: center;
-  background-color: lightcoral;
+  padding-right: 10rem;
 }
-#facture .head .logo img {
-  width: 15rem;
+#facture .wrap .head .logo img {
+  width: 10rem;
 }
-#facture .contacts {
+#facture .wrap .title p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#facture .wrap .contacts {
   padding: 1rem;
-  background-color: lightgreen;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
 }
-#facture .contacts .contact {
+#facture .wrap .contacts .contact {
   display: flex;
   flex-flow: column nowrap;
 }
-#facture .contacts .contact.left {
+#facture .wrap .contacts .contact.left {
   width: 100%;
-  background-color: yellow;
 }
-#facture .contacts .contact.right {
+#facture .wrap .contacts .contact.right {
   width: 100%;
+}
+#facture .wrap .list-facture .title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+#facture .wrap .list-facture .factures .facture {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 1rem;
+}
+#facture .wrap .list-facture .total {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.pdf {
+  margin-bottom: 2rem;
+}
+.pdf .wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+.pdf .wrap .btnPdf {
   background-color: red;
-}
-#facture .list-facture {
-  background-color: lightcoral;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=facture.css.map */
