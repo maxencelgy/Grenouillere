@@ -5,7 +5,10 @@
 
 
 <?= $this->section('content') ?>
-<?php $companyData = $companyData[0]; ?>
+<?php
+$companyData = $companyData[0];
+$companyFolder = $companyFolder[0];
+?>
 
 <div class="wrapProfil">
     <section id="profil">
@@ -40,8 +43,8 @@
                         <h3>Pièce d'identité : </h3>
                     </div>
                     <div class="threeBox">
-                        <?php if (!empty(session()->get("cni_company"))) { ?>
-                            <a href="<?= session()->get("cni_company") ?>">Voir le document</a>
+                        <?php if (!empty($companyFolder['cni_company'])) { ?>
+                            <a href="<?= $companyFolder['cni_company'] ?>">Voir le document</a>
                         <?php } else { ?>
                             <p> EN ATTENTE </p>
                         <?php } ?>
@@ -57,8 +60,8 @@
                         <h3>Diplôme : </h3>
                     </div>
                     <div class="threeBox">
-                        <?php if (!empty(session()->get("certificate_company"))) { ?>
-                            <a href="<?= session()->get("certificate_company") ?>">Voir le document</a>
+                        <?php if (!empty($companyFolder['certificate_company'])) { ?>
+                            <a href="<?= $companyFolder['certificate_company'] ?>">Voir le document</a>
                         <?php } else { ?>
                             <p> EN ATTENTE </p>
                         <?php } ?>
@@ -74,8 +77,8 @@
                         <h3>Autorisation préfectorale : </h3>
                     </div>
                     <div class="threeBox">
-                        <?php if (!empty(session()->get("licence_company"))) { ?>
-                            <a href="<?= session()->get("licence_company") ?>">Voir le document</a>
+                        <?php if (!empty($companyFolder['licence_company'])) { ?>
+                            <a href="<?= $companyFolder['licence_company'] ?>">Voir le document</a>
                         <?php } else { ?>
                             <p> EN ATTENTE </p>
                         <?php } ?>
@@ -91,8 +94,8 @@
                         <h3>Extrait Kbis : </h3>
                     </div>
                     <div class="threeBox">
-                        <?php if (!empty(session()->get("kbis_company"))) { ?>
-                            <a href="<?= session()->get("kbis_company") ?>">Voir le document</a>
+                        <?php if (!empty($companyFolder['kbis_company'])) { ?>
+                            <a href="<?= $companyFolder['kbis_company'] ?>">Voir le document</a>
                         <?php } else { ?>
                             <p> EN ATTENTE </p>
                         <?php } ?>
@@ -108,8 +111,8 @@
                         <h3>RIB : </h3>
                     </div>
                     <div class="threeBox">
-                        <?php if (!empty(session()->get("rib_company"))) { ?>
-                            <a href="<?= session()->get("rib_company") ?>">Voir le document</a>
+                        <?php if (!empty($companyFolder['rib_company'])) { ?>
+                            <a href="<?= $companyFolder['rib_company'] ?>">Voir le document</a>
                         <?php } else { ?>
                             <p> EN ATTENTE </p>
                         <?php } ?>
