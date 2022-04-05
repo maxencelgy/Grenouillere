@@ -125,13 +125,21 @@ class AuthenticationController extends BaseController
             $user = $this->userModel->where(["email_users" => $this->request->getPost('email_users')])->first();
 
             if (!empty($user)) {
+                if (empty($user["adresse_users"])) {
+                    $userAdresse = "";
+                } else {
+                    $userAdresse = $user["adresse_users"];
+                }
+
                 if (password_verify($this->request->getPost('password_users'), $user["password_users"])) {
                     session()->set([
                         "id" => $user["id_users"],
                         "email" => $user["email_users"],
                         "role" => $user["role_users"],
                         "nom" => $user["last_name_users"],
-                        "prenom" => $user["first_name_users"]
+                        "prenom" => $user["first_name_users"],
+                        "adresse " => $userAdresse,
+
                     ]);
                     return redirect()->to('/');
                 }
@@ -218,9 +226,9 @@ class AuthenticationController extends BaseController
             'password_company_confirmation'    => [
                 'rules'  => 'trim|matches[password_company]',
                 'errors' => [
-                    'matches' => 'Mot de passe différents !',                    
+                    'matches' => 'Mot de passe différents !',
                 ],
-            ],          
+            ],
 
             'siret_company'    => [
                 'rules'  => 'trim|min_length[13]|max_length[13]|numeric',
@@ -243,7 +251,7 @@ class AuthenticationController extends BaseController
                 'errors' => [
                     'required' => 'Veuillez accepter les CGU',
                 ],
-            ],            
+            ],
 
         ]);
         if (!$val) {
