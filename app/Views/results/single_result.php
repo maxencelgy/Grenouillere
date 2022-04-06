@@ -59,10 +59,18 @@
     </div>
 </div>
 
-<?= $this->include('templates/calendar/planning') ?>
+<?php
+if(!empty(session()->get("role"))){ ?>
+    <?= $this->include('templates/calendar/planning') ?>
+<?php }else{ ?>
+    <p>Pour réserver, <a href="<?= site_url(); ?>particulier/connexion">connectez-vous</a> ou <a href="<?= site_url(); ?>particulier/inscription">inscrivez-vous</a></p>
+<?php } ?>
+
 <?= $this->endSection() ?>
 
-
-<?= $this->section('js') ?>
-<script src="/asset/js/calendarReservation.js"></script>
-<?= $this->endSection() ?>
+<?php
+    if(!empty(session()->get("role"))){ ?>
+        <?= $this->section('js') ?>
+        <script src="/asset/js/calendarReservation.js"></script>
+        <?= $this->endSection() ?>
+    <?php } ?>
