@@ -1,115 +1,115 @@
 #facture {
-  padding: 3rem 0;
-}
-#facture .wrap {
-  border: 4mm ridge rgba(211, 220, 50, 0.6);
-  padding: 1rem;
-}
-#facture .wrap .head {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-}
-#facture .wrap .head .logo {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-
-}
-#facture .wrap .head .logo img {
-  width: 10rem;
-}
-#facture .wrap .title p {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-#facture .wrap .contacts {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-#facture .wrap .contacts .contact.left {
-  width: 49%;
-}
-#facture .wrap .contacts .contact.right {
-  width: 39%;
-  display: flex;
+    padding: 3rem 0;
+  }
+  #facture .wrap {
+    border: 4mm ridge rgba(211, 220, 50, 0.6);
+    padding: 1rem;
+  }
+  #facture .wrap .head {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  #facture .wrap .head .logo {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
   
-  flex-direction: column;
-  justify-content: right;
-  align-items: right;
-}
-#facture .wrap .list-facture .title {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-}
-#facture .wrap .list-facture .factures .facture {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  padding: 1rem;
-}
-#facture .wrap .list-facture .total {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-  padding: 1rem;
-  font-size: 1.5rem;
-}
-
-.pdf .wrap {
-  display: flex;
-  justify-content: flex-end;
-}
-.pdf .wrap .btnPdf {
-  background-color: red;
-  padding: 1rem;
-  border-radius: 1rem;
-  color: white;
-  cursor: pointer;
-}
-
-/*# sourceMappingURL=facture.css.map */
-
-
-
-/* heading */
-
-
-body { box-sizing: border-box; height: 11in; margin: 0 auto; padding: 0.5in; width: 7.5in; }
-body { background: #FFF; border-radius: 1px; box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5); }
-
-/* header */
-/* article */
-
-
-
-/* table meta & balance */
-
-
-
-/* aside */
-table.sign {
-    float: left;
+  }
+  #facture .wrap .head .logo img {
+    width: 10rem;
+  }
+  #facture .wrap .title p {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  #facture .wrap .contacts {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
   
-}
-table.sign img {
-    width: 100%;
-}
-table.sign tr td {
-    border-color: transparent;
-}
-@media print {
-    * { -webkit-print-color-adjust: exact; }
-    html { background: none; padding: 0; }
-    body { box-shadow: none; margin: 0; }
-    span:empty { display: none; }
-    .add, .cut { display: none; }
-}
-
-@page { margin: 0; }
-
+  #facture .wrap .contacts .contact.left {
+    width: 49%;
+  }
+  #facture .wrap .contacts .contact.right {
+    width: 39%;
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+  }
+  #facture .wrap .list-facture .title {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  #facture .wrap .list-facture .factures .facture {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  #facture .wrap .list-facture .total {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .pdf .wrap {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .pdf .wrap .btnPdf {
+    background-color: red;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /*# sourceMappingURL=facture.css.map */
+  
+  
+  
+  /* heading */
+  
+  
+  body { box-sizing: border-box; height: 11in; margin: 0 auto; padding: 0.5in; width: 7.5in; }
+  body { background: #FFF; border-radius: 1px; box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5); }
+  
+  /* header */
+  /* article */
+  
+  
+  
+  /* table meta & balance */
+  
+  
+  
+  /* aside */
+  table.sign {
+      float: left;
+    
+  }
+  table.sign img {
+      width: 100%;
+  }
+  table.sign tr td {
+      border-color: transparent;
+  }
+  @media print {
+      * { -webkit-print-color-adjust: exact; }
+      html { background: none; padding: 0; }
+      body { box-shadow: none; margin: 0; }
+      span:empty { display: none; }
+      .add, .cut { display: none; }
+  }
+  
+  @page { margin: 0; }
+  

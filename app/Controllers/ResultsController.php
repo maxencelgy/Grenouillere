@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 use Stripe;
 
 class ResultsController extends BaseController
@@ -12,33 +11,42 @@ class ResultsController extends BaseController
 
     public function __construct()
     {
+        helper(["url"]);
         $this->resultsModel = model('App\Models\ResultsModel');
         $this->planningModel = model('App\Models\PlanningModel');
         $this->slotModel = model('App\Models\SlotModel');
         $this->childModel = model('App\Models\ChildrenModel');
         $this->factureModel = model('App\Models\FactureModel');
         $this->reservationModel = model('App\Models\ReservationModel');
+        $this->resultsModel = model('App\Models\ResultsModel');
         // findAllSlotByCompanyAndWeek
     }
 
 
     public function index()
     {
-
         if (!empty($_POST)) {
-            $postalCode = $_POST['postal_code_company'];
-            $planning = $_POST['horaire'];
-            $enfant = $_POST['enfant'];
-            $day = $_POST['day'];
+            if (!empty($_POST['postal_code_company'])) {
+                $postalCode = $_POST['postal_code_company'];
+                $planning = $_POST['horaire'];
+                $enfant = $_POST['enfant'];
+                $day = $_POST['day'];
+
+                $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
+            } else {
+                $planning = $_POST['horaire'];
+                $enfant = $_POST['enfant'];
+                $day = $_POST['day'];
+
+                $createFile = $this->resultsModel->createJsonFileWithoutPostal($enfant, $planning, $day);
+            }
+            $companyData = $this->resultsModel->getAllCompany();
+            echo view('results/global_result', [
+                'companyData' => $companyData
+            ]);
         } else {
             return redirect()->to('/');
         }
-
-        $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
-        $companyData = $this->resultsModel->getAllCompany();
-        echo view('results/global_result', [
-            'companyData' => $companyData
-        ]);
     }
 
     public function singlePage($id)
@@ -50,14 +58,14 @@ class ResultsController extends BaseController
         // On affiche la liste des enfants seulement si l'utilisateur est connecté
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
-        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Reréserver'];
+
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
         echo view('results/single_result', [
             'single' => $single_company,
             'planning' => $planning,
             'slot' => $slot,
             'chidrenList' => $chidrenList,
-            'infoBtn' => $infoBtn
+
         ]);
     }
 
@@ -100,7 +108,7 @@ class ResultsController extends BaseController
 
         // On créer la facture
         $dataFacture = [
-            'fk_company' => 3,
+            'fk_company' => 16,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];
@@ -142,7 +150,7 @@ class ResultsController extends BaseController
             "description" => "Paiement à $single_company->name_company"
         ]);
 
-        return redirect('/utilisateur/facture');
+        return redirect('/');
         session()->setFlashdata("message", "Paiement réussi");
     }
 }

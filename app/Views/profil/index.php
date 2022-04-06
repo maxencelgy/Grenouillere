@@ -5,33 +5,34 @@
 
 
 <?= $this->section('content') ?>
+<?php $userData = $userData[0] ?>
 
 <div class="wrapProfil">
     <section id="profil">
         <h2>Mes informations</h2><br>
         <div class="informations">
             <div class="information">
-                <h3>Nom : <?= session()->get("nom") ?></h3><br>
-                <h3>Email : <?= session()->get("email") ?></h3><br>
-                <h3>Code Postale : <?= session()->get("postal") ?>27100</h3><br><br>
+                <h3>Nom : <?= $userData["last_name_users"] ?></h3><br>
+                <h3>Prénom : <?= $userData["first_name_users"] ?></h3><br>
+                <h3>Email: <?= $userData["email_users"] ?></h3><br><br>
             </div>
             <div class="information">
-                <h3>Prénom : <?= session()->get("prenom") ?></h3><br>
-                <h3>Adresse : <?= session()->get("adresse") ?>14 rue de la sauvagine</h3><br>
+                <h3>Adresse : <?= $userData["adress_users"] ?></h3><br>
+                <h3>Code Postal : <?= $userData["postal_users"] ?></h3><br>
 
             </div>
             <div class="information">
-                <h3>Télephone : <?= session()->get("telephone") ?>0651718409</h3><br>
-                <h3>Ville : <?= session()->get("ville") ?>Val de reuil</h3><br>
+                <h3>Ville : <?= $userData["city_users"] ?></h3><br>
+                <h3>Télephone : <?= $userData["phone_users"] ?></h3><br>
             </div>
         </div>
         <div class="buttons">
-            <a href="" class="btn">Modifier informations</a>
+            <a href="<?= site_url(); ?>profil/editUser/<?= session()->get('id') ?>" class="btn">Modifier informations</a>
         </div>
     </section>
 
     <div class="add">
-        <a href="create-children" class="addChild">Inscrire mon enfant</a>
+        <a href="<?= site_url(); ?>create-children" class="addChild">Inscrire mon enfant</a>
     </div>
     <div class="cards">
         <div class="card">
@@ -113,29 +114,58 @@
     <section id="reservation">
         <div class="cards">
             <h2>Mes reservation</h2>
-            <?php foreach ($reservations as $reservation) { ?>
-                <div class="card">
-                    <div class="top">
-                        <div class="left">
-                            <h2>reservation n°<?= $reservation['id_reservation'] ?></h2>
-                            <h3><?= $reservation['last_name_company'] ?> <?= $reservation['frist_name_company'] ?></h3>
+            <div class="frame">
+                <?php foreach ($reservations as $reservation) { ?>
+                    <div class="card">
+                        <div class="top">
+                            <div class="left">
+                                <h2>reservation n°<?= $reservation['id_reservation'] ?></h2>
+                                <h3><?= $reservation['last_name_company'] ?> <?= $reservation['frist_name_company'] ?></h3>
+                            </div>
+                            <div class="right">
+                                <h3><?= $reservation['date_slot'] ?></h3>
+                            </div>
                         </div>
-                        <div class="right">
-                            <h3><?= $reservation['date_slot'] ?></h3>
+                        <div class="bottom">
+                            <a href="/export/<?= $reservation["id_reservation"] ?>" class="download">Télecharger cette facture</a>
                         </div>
                     </div>
-                    <div class="bottom">
-                        <a href="/export/<?= $reservation["id_reservation"] ?>" class="download">Télecharger cette facture</a>
-                    </div>
-                </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
+            <br>
 
             <a href="/export/all/<?= session()->get("id") ?>" class="">Télécharger le récapitulatif de vos réservations <i class="fa-solid fa-file-arrow-down"></i> </a>
         </div>
     </section>
+
+    <section id="factures">
+        <div class="cards">
+            <h2>Mes Factures</h2>
+            <div class="frame">
+                <?php
+                if (empty($idFacturePdf)) {
+                    echo '<p>Vous n\'avez pas encore de facture.</p>';
+                } else {
+                ?>
+                    <div class='childrens'>
+                        <?php
+                        foreach ($idFacturePdf as $facture) { ?>
+                            <div class='childrenCard'>
+                                <p>Facture n° <?= $facture['fk_facture'] ?> du <?= date('d/m/Y', strtotime($facture['date_facture'])) ?> </p>
+                                <p>Prix TTC : <?= $prixfacture[$facture['fk_facture']] ?> €</p>
+                                <a href="/profil/facture/<?= $facture['fk_facture'] ?> ">PDF</a>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+            <br>
+        </div>
+    </section>
 </div>
-
-
-
 
 <?= $this->endSection() ?>
