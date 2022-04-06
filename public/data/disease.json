@@ -1,0 +1,68 @@
+[
+  {
+    "name_disease": "varicelle"
+  },
+  {
+    "name_disease": "rougeole"
+  },
+  {
+    "name_disease": "rubéole"
+  },
+  {
+    "name_disease": "coqueluche"
+  },
+  {
+    "name_disease": "oreillons"
+  },
+  {
+    "name_disease": "scarlatine"
+  },
+  {
+    "name_disease": "méningites"
+  },
+  {
+    "name_disease": "bronchiolite"
+  },
+  {
+    "name_disease": "bronchite aiguë"
+  },
+  {
+    "name_disease": "gastro"
+  },
+  {
+    "name_disease": "laryngite aiguë"
+  },
+  {
+    "name_disease": "rhinopharyngite"
+  },
+  {
+    "name_disease": "otites"
+  },
+  {
+    "name_disease": "impétigo"
+  },
+  {
+    "name_disease": "gale"
+  },
+  {
+    "name_disease": "asthme"
+  },
+  {
+    "name_disease": "eczéma"
+  },
+  {
+    "name_disease": "urticaire"
+  },
+  {
+    "name_disease": "oxyurose"
+  },
+  {
+    "name_disease": "phimosis"
+  },
+  {
+    "name_disease": "saturnisme"
+  },
+  {
+    "name_disease": "cryptorchidie"
+  }
+]
