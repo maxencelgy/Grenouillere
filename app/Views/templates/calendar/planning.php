@@ -20,6 +20,10 @@
                     <div class="day">
                         <h2 class='date'><?= date('Y-m-d', strtotime("+ $i days")) ?></h2>
                         <div class="slots">
+                            <!-- <div class="slot">-</div>
+                            <div class="slot">-</div>
+                            <div class="slot">-</div>
+                            <div class="slot">-</div> -->
                             <?php
                             foreach ($planning as $day) {
                                 // On boucle dans le tableau slot
@@ -31,9 +35,8 @@
                                                 <div style="display: none;"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></div>
                                                 <div style="display: none;"> <?= $day['id_planning'] ?> </div>
                                                 <div style="display: none;"> <?= $uniqueSlot['id_slot'] ?> </div>
-
                                                 <div> <?= $day['libelle_planning']  ?> </div>
-                                                <div> Nombre de place Disponible : <?= $uniqueSlot['child_remaining_slot'] ?> </div>
+                                                <div> Places restantes : <?= $uniqueSlot['child_remaining_slot'] ?> </div>
                                             </div>
                                     <?php
                                         }
@@ -67,8 +70,7 @@
                         <?php
                         $i = 0;
                         foreach ($chidrenList as $uniqueChild) { ?>
-                            <div class='childs' id=" <?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?>
-                            </div>
+                            <div class='childs' id=" <?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?></div>
                     <?php
                         }
                     } ?>
@@ -77,8 +79,4 @@
             </form>
         </div>
     </div>
-
-
-
-
 </section>
