@@ -87,3 +87,36 @@
   -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
  }
+
+ #response {
+   display: flex;
+   align-items: left;
+    
+   flex-direction: column;
+ }
+ #reservation {
+   margin-bottom: 2rem;
+ }
+ #formu {
+   display: flex;
+  
+   justify-content: center;
+   flex-direction: column;
+   width: 100%;
+ }
+ #formu  h3{
+  font-size: 1.5rem;
+
+}
+ #formu .childs{
+   font-size: 1.1rem;
+  margin-bottom: .5rem;
+}
+#formu .boxDiv{
+  font-size: 1.1rem;
+ margin-bottom: .5rem;
+}
+.bigResponse {
+  display: flex;
+ justify-content: space-between;
+}
