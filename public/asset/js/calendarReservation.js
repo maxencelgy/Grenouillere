@@ -36,7 +36,7 @@ slot.forEach((e) => {
             `;
       });
       response.innerHTML += `
-        <div class="left">
+    
         <input style="display: none;" type="text" name="date_slot_${i}" value="${e.children[0].textContent}">       
         <input style="display: none;" type="text" name="fk_planning_${i}" value="${e.children[1].textContent}">        
         <input style="display: none;" type="text" name="id_slot_${i}" value="${e.children[2].textContent}">    
@@ -44,7 +44,7 @@ slot.forEach((e) => {
         <h4>${e.children[0].textContent}</h4> 
         <h4>${e.children[3].textContent}</h4> 
         <br>
-        </div>
+   
         `;
 
       response.innerHTML += `<br>`;
