@@ -47,7 +47,7 @@ class ProfilController extends BaseController
                     // On le mets aussi dans boucle parce que les entreprises n'ont pas toutes  
                     // le même taux horraires.
                     $hourlyRate = $this->factureModel->getHourlyRate($idFacture['fk_facture'])[0]['hourly_rate_company'];
-                    $prixfacture[$idFacture['fk_facture']] = $this->reservationModel->getCountFactures($idFacture['fk_facture'])*$hourlyRate;
+                    $prixfacture[$idFacture['fk_facture']] = $this->reservationModel->getCountFactures($idFacture['fk_facture'])*$hourlyRate*4;
                     
                 }
             }
