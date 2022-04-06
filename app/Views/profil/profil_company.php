@@ -1,6 +1,7 @@
 <?= $this->extend('templates/default') ?>
 <?= $this->section('stylesheet') ?>
 <link rel="stylesheet" href="/asset/css/profil.css">
+<link rel="stylesheet" href="/asset/css/edit_company.css">
 <?= $this->endSection() ?>
 
 
@@ -180,6 +181,7 @@ $companyFolder = $companyFolder[0];
             <br>
         </div>
     </section>
+    <?= $this->include('templates/calendar/planning') ?>
     <!--Popup rib -->
 
     <div class="filtre">
@@ -246,5 +248,4 @@ $companyFolder = $companyFolder[0];
 
 
 <?= $this->endSection() ?>
-
 <script src="asset/js/popup.js"></script>

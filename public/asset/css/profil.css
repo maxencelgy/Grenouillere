@@ -163,7 +163,10 @@ justify-content: space-between;
   width: 33.3333%;
 }
   
-/* FACTURES */
+/* FACTURES */*
+#factures {
+  margin-bottom: 2rem;
+}
 
 #factures .wrapProfil i {
   font-size: 1.4rem;

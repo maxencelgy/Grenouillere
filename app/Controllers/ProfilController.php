@@ -77,10 +77,16 @@ class ProfilController extends BaseController
                 $companyFolder = $this->companyModel->companyFolder($id);
                 $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
                 $idFacturePdf = $this->reservationModel->getAllUserFacture(session()->get("id"));
+                $planning = $this->planningModel->getAll();
+                $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
+                $infoBtn = ['', ''];
                 echo view('profil/profil_company', [
                     "companyData" => $companyData,
                     "reservations" => $reservations,
                     "idFacturePdf" => $idFacturePdf,
+                    "planning" => $planning,
+                    "infoBtn" => $infoBtn,
+                    'slot' => $slot,
                     "companyFolder" => $companyFolder
                 ]);
             } else {
