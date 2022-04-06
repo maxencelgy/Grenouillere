@@ -32,7 +32,7 @@
     </section>
 
     <div class="add">
-        <a href="create-children" class="addChild">Inscrire mon enfant</a>
+        <a href="<?= site_url(); ?>create-children" class="addChild">Inscrire mon enfant</a>
     </div>
     <div class="cards">
         <div class="card">

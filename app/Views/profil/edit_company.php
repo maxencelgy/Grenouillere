@@ -46,6 +46,12 @@
                         <label for="price">Prix :</label>
                         <input type="text" name="price" id="price" value="<?= $companyData["hourly_rate_company"]; ?>">
                     </div>
+
+                    <div class="input_box">
+                        <label for="description">Description :</label>
+                        <textarea type="text" name="description" id="description" cols="60" rows="6"><?= $companyData["description_company"]; ?></textarea>
+                    </div>
+
                     <input type="submit" value="Modifier les informations">
                 </form>
             </fieldset>

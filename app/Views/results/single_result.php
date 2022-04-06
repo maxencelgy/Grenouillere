@@ -4,7 +4,7 @@
 <?= $this->section('stylesheet') ?>
 <link rel="stylesheet" href="/asset/css/single.css">
 <link rel="stylesheet" href="/asset/css/edit_company.css">
-
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 
 <?= $this->endSection() ?>
 
@@ -51,9 +51,7 @@
             <br>
             <h4>Description :</h4>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur exercitationem fugit hic
-                ipsum maiores placeat soluta, temporibus. Accusamus asperiores beatae delectus eveniet molestias nihil
-                obcaecati odit omnis quam voluptatum!
+                <?= $single->description_company ?>
             </p>
         </div>
     </div>
@@ -73,16 +71,23 @@
             <?php } ?>
 
             <div class="right">
-                <h1>MAP</h1>
+                <div id="mapSingle"></div>
             </div>
         </div>
     </section>
 </div>
 <?= $this->endSection() ?>
 
+
 <?php
 if(!empty(session()->get("role"))){ ?>
     <?= $this->section('js') ?>
     <script src="/asset/js/calendarReservation.js"></script>
     <?= $this->endSection() ?>
-<?php } ?>
+<?php }?>
+
+<?= $this->section('js') ?>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src="/asset/js/mapSingle.js"></script>
+<?= $this->endSection() ?>
+
