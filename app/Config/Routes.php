@@ -43,10 +43,6 @@ $routes->post('/children/allergyChild', 'Children::handlePostAllergyChild');
 $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 
 
-$routes->get('profil/editCompany', 'ProfilController::editCompany');
-$routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
-
-
 //ALLERGY
 $routes->post('/allergie/Ajouter', 'allergyController::addAllergy');
 $routes->post('/maladie/Ajouter', 'DiseaseController::addDisease');
@@ -64,14 +60,26 @@ $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 // $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
+// Facture
+$routes->get('profil/facture/(:num)', 'FactureController::factureUser/$1');
+$routes->get('profil/facture', 'FactureController::factureUser');
 
 // Adding resvation
-$routes->post('/reservation/ajouter/enfant', 'ResultsController::addReservation');
+$routes->post('/reservation/ajouter/enfant/(:num)', 'ResultsController::addReservation/$1');
 
 
 
 //////////////////////PROFIL  //////////////////////////////////
-$routes->get('profil', 'ProfilController::index');
+///
+$routes->get('profil/(:num)', 'ProfilController::index/$1');
+$routes->get('profil/compagny/(:num)', 'ProfilController::ProfilCompany/$1');
+$routes->post('add/addFiles/(:num)', 'ProfilController::updateFile/$1');
+$routes->get('profil/editCompany/(:num)', 'ProfilController::editCompany/$1');
+$routes->get('profil/editUser/(:num)', 'ProfilController::editUser/$1');
+$routes->post('profil/modify/(:num)', 'ProfilController::companyModify/$1');
+$routes->post('profil/user/modify/(:num)', 'ProfilController::userModify/$1');
+$routes->post('/calendar/add', 'ProfilController::handlePostCalandar');
+
 
 // RESERVATION CSV/////////////////
 $routes->get('export/(:num)', 'CsvController::export/$1');
@@ -88,7 +96,7 @@ $routes->get('/admin/maladie/delete/(:num)', 'AdminController::handleDeleteMalad
 // STRIPE
 
 $routes->get("stripe/(:num)", "StripeController::stripe/$1");
-$routes->post("payment/(:num)", "StripeController::payment/$1");
+$routes->post("payment/(:num)", "ResultsController::payment/$1");
 
 
 

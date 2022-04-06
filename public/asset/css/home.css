@@ -47,7 +47,7 @@
 }
 
 input[type="submit"] {
-  width: 30%;
+  width: 23.33333%;
   background-color: var(--green);
   padding: 0.9rem;
   border-radius: 10rem;
@@ -195,9 +195,12 @@ input[type="submit"] {
 }
 #fullAdresse {
   border: 1px black;
-
+  font-size: 1.3rem;
   border-radius: 0.3rem;
+  width: 23.3333%;
 }
 #fullAdresse::placeholder {
   color: black;
 }
+
+

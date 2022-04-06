@@ -3,12 +3,13 @@
 namespace App\Controllers;
 
 
+use Stripe;
 
 class ResultsController extends BaseController
 {
 
     private $resultsModel;
-  
+
     public function __construct()
     {
         $this->resultsModel = model('App\Models\ResultsModel');
@@ -24,12 +25,12 @@ class ResultsController extends BaseController
     public function index()
     {
 
-        if(!empty($_POST)){
+        if (!empty($_POST)) {
             $postalCode = $_POST['postal_code_company'];
             $planning = $_POST['horaire'];
             $enfant = $_POST['enfant'];
             $day = $_POST['day'];
-        }else{
+        } else {
             return redirect()->to('/');
         }
 
@@ -40,15 +41,16 @@ class ResultsController extends BaseController
         ]);
     }
 
-    public function singlePage($id){
+    public function singlePage($id)
+    {
         // 
-        
+
         $single_company = $this->resultsModel->getCompanyById($id);
-        $planning = $this->planningModel->getAll(); 
+        $planning = $this->planningModel->getAll();
         // On affiche la liste des enfants seulement si l'utilisateur est connecté
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
-        $infoBtn = ['/reservation/ajouter/enfant','Reréserver'];          
+        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Reréserver'];
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
         echo view('results/single_result', [
             'single' => $single_company,
@@ -58,9 +60,9 @@ class ResultsController extends BaseController
             'infoBtn' => $infoBtn
         ]);
     }
-    
 
-    public function addReservation()
+
+    public function addReservation($id)
     {
         function debug($tableau)
         {
@@ -71,36 +73,34 @@ class ResultsController extends BaseController
         $idUser = session()->get('id');
         debug($_POST);
         var_dump(count($_POST));
-        $a=0;   
-        $b=0;   
+        $a = 0;
+        $b = 0;
         $newArray = [];
         // On trie les infos par un modulo de 5 pour faire les requètes
-        for($i=0; $i<(count($_POST)/5); $i++){
-            foreach($_POST['id_child_'.$i] as $child)
-            {
+        for ($i = 0; $i < (count($_POST) / 5); $i++) {
+            foreach ($_POST['id_child_' . $i] as $child) {
                 $newArray[$a]['id_users']    = $idUser;
                 $newArray[$a]['id_child']    = $child;
-                $newArray[$a]['date_slot']   = $_POST['date_slot_'.$i];
-                $newArray[$a]['fk_planning'] = $_POST['fk_planning_'.$i];
-                $newArray[$a]['id_slot']     = $_POST['id_slot_'.$i];
+                $newArray[$a]['date_slot']   = $_POST['date_slot_' . $i];
+                $newArray[$a]['fk_planning'] = $_POST['fk_planning_' . $i];
+                $newArray[$a]['id_slot']     = $_POST['id_slot_' . $i];
                 $a++;
                 $b++;
-            }            
-            if($i%5==0){
-                if($b!==0){
+            }
+            if ($i % 5 == 0) {
+                if ($b !== 0) {
                     //Pour avoir un bon incrément
                     $b = 0;
-                }else{
+                } else {
                     $a++;
                 }
-                
             }
-            
-        }	
+        }
         debug($newArray);
+
         // On créer la facture
         $dataFacture = [
-            'fk_company' => 1,
+            'fk_company' => 3,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];
@@ -111,20 +111,38 @@ class ResultsController extends BaseController
         debug($lastUsersFacture);
         $idFacture = $lastUsersFacture[0]['id_facture'];
         debug($idFacture);
-        $reservation=[];
-        foreach($newArray as $data){
+        $reservation = [];
+        foreach ($newArray as $data) {
             $reservation['fk_facture'] = $idFacture;
             $reservation['fk_child'] = $data['id_child'];
             $reservation['fk_slot'] = $data['id_slot'];
             $this->reservationModel->insertReservation($reservation);
         }
-        // TODO: verification si un enfant à été selectionné
-        // TODO:verification du nombre d'enfant est posible a ajouter dans le slot (si le child_remaining_slot est inférieur 
-        // au nombre d'enfant voulu, on ne peut pas ajouter)
-
-        // TODO: boucle en fonction du nombre d'enfant selectionné
-            // TODO: insertion dans la table reservation
-            // TODO: Update table slot (child_remaining_slot --)
+        $single_company = $this->resultsModel->getCompanyById($id);
+        $allChildrenPrice = count($newArray);
+        echo view('stripe/stripe', [
+            'single' => $single_company,
+            'allChildrenPrice' => $allChildrenPrice
+        ]);
     }
 
+
+    public function payment($id)
+    {
+        $single_company = $this->resultsModel->getCompanyById($id);
+        $idUser = session()->get('id');
+        $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
+        $getCountFactures = $this->reservationModel->getCountFactures($lastUsersFacture[0]['id_facture']);
+
+        Stripe\Stripe::setApiKey(STRIPE_SECRET);
+        $stripe = Stripe\Charge::create([
+            "amount" =>  $getCountFactures * ($single_company->hourly_rate_company * 100),
+            "currency" => "eur",
+            "source" => $_REQUEST["stripeToken"],
+            "description" => "Paiement à $single_company->name_company"
+        ]);
+
+        return redirect('/utilisateur/facture');
+        session()->setFlashdata("message", "Paiement réussi");
+    }
 }

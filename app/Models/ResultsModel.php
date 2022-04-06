@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ResultsModel extends Model
 {
     protected $table = 'company';
-    protected $allowedFields = ['email_company', 'name_company', 'city_company', 'postal_code_company', 'adress_company',
+    protected $allowedFields = ['email_company', 'name_company', 'status_company', 'city_company', 'postal_code_company', 'adress_company',
         'x_company', 'y_company'];
     protected $primaryKey    = 'id_company';
 
@@ -20,6 +20,7 @@ class ResultsModel extends Model
             ->where('slot.date_slot =', $day)
             ->where('slot.child_remaining_slot >=', $enfant)
             ->where('postal_code_company', $postalCode)
+            ->where('status_company=', 'valid')
             ->findAll();
         $json = json_encode($sql);
         $jsonFile = file_put_contents("api_company.json", $json);
