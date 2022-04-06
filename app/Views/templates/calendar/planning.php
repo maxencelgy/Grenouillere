@@ -20,6 +20,10 @@
                     <div class="day">
                         <h2 class='date'><?= date('Y-m-d', strtotime("+ $i days")) ?></h2>
                         <div class="slots">
+                            <!-- <div class="slot">-</div>
+                            <div class="slot">-</div>
+                            <div class="slot">-</div>
+                            <div class="slot">-</div> -->
                             <?php
                             foreach ($planning as $day) {
                                 // On boucle dans le tableau slot
@@ -31,9 +35,8 @@
                                                 <div style="display: none;"><?= strftime("%Y-%m-%d", strtotime("+ $i days")) ?></div>
                                                 <div style="display: none;"> <?= $day['id_planning'] ?> </div>
                                                 <div style="display: none;"> <?= $uniqueSlot['id_slot'] ?> </div>
-
                                                 <div> <?= $day['libelle_planning']  ?> </div>
-                                                <div> Nombre de place Disponible : <?= $uniqueSlot['child_remaining_slot'] ?> </div>
+                                                <div> Places restantes : <?= $uniqueSlot['child_remaining_slot'] ?> </div>
                                             </div>
                                     <?php
                                         }
@@ -60,25 +63,25 @@
         </div>
         <div class="reservation">
             <h2 id='reservation' class="hours">Votre reservation</h2>
-            <form action=" <?= $infoBtn[0] ?> " method="post">
-                <div id="response">
-                    <?php
-                    if (!empty($slot) && !empty($chidrenList)) { ?>
+            <form action="<?= $infoBtn[0] ?>" method="post" id="formu">
+                <h3>Vos enfants</h3>
+                <div class="bigResponse">
+                    <div id="response">
                         <?php
-                        $i = 0;
-                        foreach ($chidrenList as $uniqueChild) { ?>
-                            <div class='childs' id=" <?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?>
-                            </div>
-                    <?php
-                        }
-                    } ?>
+                        if (!empty($slot) && !empty($chidrenList)) { ?>
+                            <?php
+                            $i = 0;
+                            foreach ($chidrenList as $uniqueChild) { ?>
+                                <div class='childs' id="<?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?></div>
+                        <?php
+                            }
+                        } ?>
+                    </div>
+                    <div id="response2"></div>
                 </div>
+
                 <input class="send" type="submit" value="<?= $infoBtn[1] ?>">
             </form>
         </div>
     </div>
-
-
-
-
 </section>

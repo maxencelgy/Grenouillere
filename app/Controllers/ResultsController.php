@@ -25,17 +25,15 @@ class ResultsController extends BaseController
 
     public function index()
     {
-        if(!empty($_POST)){
-            if (!empty($_POST['postal_code_company'])){
+        if (!empty($_POST)) {
+            if (!empty($_POST['postal_code_company'])) {
                 $postalCode = $_POST['postal_code_company'];
                 $planning = $_POST['horaire'];
                 $enfant = $_POST['enfant'];
                 $day = $_POST['day'];
 
                 $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
-
-            }
-            else {
+            } else {
                 $planning = $_POST['horaire'];
                 $enfant = $_POST['enfant'];
                 $day = $_POST['day'];
@@ -46,8 +44,7 @@ class ResultsController extends BaseController
             echo view('results/global_result', [
                 'companyData' => $companyData
             ]);
-        }
-        else{
+        } else {
             return redirect()->to('/');
         }
     }
