@@ -57,20 +57,32 @@
             </p>
         </div>
     </div>
+
+
+
+    <section id="navigate">
+        <div class="navigator">
+            <div class="left">
+            <?php if(!empty(session()->get("role"))){ ?>
+                <?= $this->include('templates/calendar/planning') ?>
+            </div>
+            <?php }else{ ?>
+            <div class="left">
+                <p>Pour réserver, <a href="<?= site_url(); ?>particulier/connexion">connectez-vous</a> ou <a href="<?= site_url(); ?>particulier/inscription">inscrivez-vous</a></p>
+            </div>
+            <?php } ?>
+
+            <div class="right">
+                <h1>MAP</h1>
+            </div>
+        </div>
+    </section>
 </div>
-
-<?php
-if(!empty(session()->get("role"))){ ?>
-    <?= $this->include('templates/calendar/planning') ?>
-<?php }else{ ?>
-    <p>Pour réserver, <a href="<?= site_url(); ?>particulier/connexion">connectez-vous</a> ou <a href="<?= site_url(); ?>particulier/inscription">inscrivez-vous</a></p>
-<?php } ?>
-
 <?= $this->endSection() ?>
 
 <?php
-    if(!empty(session()->get("role"))){ ?>
-        <?= $this->section('js') ?>
-        <script src="/asset/js/calendarReservation.js"></script>
-        <?= $this->endSection() ?>
-    <?php } ?>
+if(!empty(session()->get("role"))){ ?>
+    <?= $this->section('js') ?>
+    <script src="/asset/js/calendarReservation.js"></script>
+    <?= $this->endSection() ?>
+<?php } ?>

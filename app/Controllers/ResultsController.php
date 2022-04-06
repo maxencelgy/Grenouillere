@@ -11,12 +11,14 @@ class ResultsController extends BaseController
 
     public function __construct()
     {
+        helper(["url"]);
         $this->resultsModel = model('App\Models\ResultsModel');
         $this->planningModel = model('App\Models\PlanningModel');
         $this->slotModel = model('App\Models\SlotModel');
         $this->childModel = model('App\Models\ChildrenModel');
         $this->factureModel = model('App\Models\FactureModel');
         $this->reservationModel = model('App\Models\ReservationModel');
+        $this->resultsModel = model('App\Models\ResultsModel');
         // findAllSlotByCompanyAndWeek
     }
 
@@ -109,7 +111,7 @@ class ResultsController extends BaseController
 
         // On créer la facture
         $dataFacture = [
-            'fk_company' => 3,
+            'fk_company' => 16,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];
@@ -151,7 +153,7 @@ class ResultsController extends BaseController
             "description" => "Paiement à $single_company->name_company"
         ]);
 
-        return redirect('/utilisateur/facture');
+        return redirect('/');
         session()->setFlashdata("message", "Paiement réussi");
     }
 }
