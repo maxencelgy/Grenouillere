@@ -47,7 +47,11 @@ if (!empty($companyData)){
         </a>
     <?php }
 }else{ ?>
-    <h2>Désolé, nous n'avons trouvé aucune crèche qui correspond à votre recherche ...</h2>
+    <div class="item_info_container">
+        <div class="item_card_info">
+            <h2>Désolé, nous n'avons trouvé aucune crèche qui correspond à votre recherche ...</h2>
+        </div>
+    </div>
 <?php } ?>
 
     </div>

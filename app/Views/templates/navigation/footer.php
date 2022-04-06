@@ -12,7 +12,7 @@
             <div class="foot">
                 <h2>Nos Services</h2>
                 <p>Ajouter une annonce</p>
-                <p>Recherche un profesionnel</p>
+                <p>Recherche un professionnel</p>
             </div>
             <div class="foot">
                 <h2>A propos</h2>

@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 use Stripe;
 
 class ResultsController extends BaseController
@@ -26,26 +25,28 @@ class ResultsController extends BaseController
 
     public function index()
     {
+        if (!empty($_POST)) {
+            if (!empty($_POST['postal_code_company'])) {
+                $postalCode = $_POST['postal_code_company'];
+                $planning = $_POST['horaire'];
+                $enfant = $_POST['enfant'];
+                $day = $_POST['day'];
 
-        if (!empty($_POST['postal_code_company'])) {
-            $postalCode = $_POST['postal_code_company'];
-            $planning = $_POST['horaire'];
-            $enfant = $_POST['enfant'];
-            $day = $_POST['day'];
+                $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
+            } else {
+                $planning = $_POST['horaire'];
+                $enfant = $_POST['enfant'];
+                $day = $_POST['day'];
 
-            $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
+                $createFile = $this->resultsModel->createJsonFileWithoutPostal($enfant, $planning, $day);
+            }
+            $companyData = $this->resultsModel->getAllCompany();
+            echo view('results/global_result', [
+                'companyData' => $companyData
+            ]);
         } else {
-            $planning = $_POST['horaire'];
-            $enfant = $_POST['enfant'];
-            $day = $_POST['day'];
-
-            $createFile = $this->resultsModel->createJsonFileWithoutPostal($enfant, $planning, $day);
+            return redirect()->to('/');
         }
-
-        $companyData = $this->resultsModel->getAllCompany();
-        echo view('results/global_result', [
-            'companyData' => $companyData
-        ]);
     }
 
     public function singlePage($id)
