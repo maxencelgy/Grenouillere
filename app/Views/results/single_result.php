@@ -57,9 +57,18 @@
             </p>
         </div>
     </div>
-</div>
 
-<?= $this->include('templates/calendar/planning') ?>
+    <section id="navigate">
+        <div class="navigator">
+            <div class="left">
+                <?= $this->include('templates/calendar/planning') ?>
+            </div>
+            <div class="right">
+                <h1>MAP</h1>
+            </div>
+        </div>
+    </section>
+</div>
 <?= $this->endSection() ?>
 
 

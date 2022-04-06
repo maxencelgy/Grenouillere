@@ -63,3 +63,23 @@ img {
 .single_info_container .flex h4{
   margin-right: .5rem;
  }
+
+ /* NAVIGATE */
+
+
+ #navigate {
+
+ }
+ #navigate .navigator {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ } 
+ #navigate .navigator .left{
+   width: 69%;
+ 
+}
+#navigate .navigator .right{
+    width: 29%;
+    background-color: red;
+ }
