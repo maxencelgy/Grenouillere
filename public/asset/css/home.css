@@ -190,9 +190,8 @@ input[type="submit"] {
 }
 #cards {
   margin-bottom: 2rem;
-  background-color: #B7AB95AB;
+  background-color: var(--bleuVert);
   padding: 2rem 0 6rem 0;
-
 }
 #cards .wrap3 h2{
  text-align: center;
@@ -200,8 +199,10 @@ input[type="submit"] {
 }
 #cards .wrap3 .cards {
   display: flex;
-  align-items: center;
+  align-items: top;
+  padding: .5rem;
   justify-content: space-between;
+
  }
 #cards .wrap3 .cards .card{
   padding: 2rem;
@@ -210,7 +211,16 @@ input[type="submit"] {
   -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   width: 26.33333%;text-align: center;
-  z-index: 9999;
+  z-index: 0;
+  position: relative;
+ }
+ #cards .wrap3 .cards .card img{
+  position: absolute;
+  width: 310px;
+  left: -11%;
+  top: -20%;
+  z-index: -99;
+  height: 310px;
  }
  .nenu {
    position: absolute;

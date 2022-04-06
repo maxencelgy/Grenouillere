@@ -80,7 +80,11 @@
 }
 
 /* CHILDRENS */
-
+.frame {
+  height: 200px;
+  width: 100%;
+  overflow-x: scroll;
+}
 
 .childrens .childrenCard {
  background-color: #E7F7F3;
@@ -91,6 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 .childrens .childrenCard h2 {
   font-size: 1.3rem;
@@ -197,7 +202,7 @@ justify-content: space-between;
 /* RESERVATION */
 #reservation {
  
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
 }
 
 #reservation .cards {

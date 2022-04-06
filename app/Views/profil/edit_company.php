@@ -56,12 +56,12 @@
 
 <?= $this->endSection() ?>
 
-<?php if($companyData["status_company"] === "valid"){ ?>
-    <?= $this->section('content2') ?>
+<?php if ($companyData["status_company"] === "valid") { ?>
+    <?= $this->section('content') ?>
     <?= $this->include('templates/calendar/planning') ?>
     <?= $this->endSection() ?>
-<?php }else{ ?>
-    <?= $this->section('content2') ?>
+<?php } else { ?>
+    <?= $this->section('content') ?>
     <h3>Votre demande d'inscription professionnel est en attente de validation. Une fois validé, vous pourrez avoir accès au planning.</h3>
     <?= $this->endSection() ?>
 <?php } ?>
@@ -69,5 +69,4 @@
 
 <?= $this->section('js') ?>
 <script src="/asset/js/calendar.js"></script>
-
 <?= $this->endSection() ?>

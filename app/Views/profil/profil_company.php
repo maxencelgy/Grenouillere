@@ -125,8 +125,61 @@ $companyFolder = $companyFolder[0];
         </div>
     </section>
 
+    <section id="reservation">
+        <div class="cards">
+            <h2>Mes reservation</h2>
+            <div class="frame">
+                <?php foreach ($reservations as $reservation) { ?>
+                    <div class="card">
+                        <div class="top">
+                            <div class="left">
+                                <h2>reservation n°<?= $reservation['id_reservation'] ?></h2>
+                                <h3><?= $reservation['last_name_company'] ?> <?= $reservation['frist_name_company'] ?></h3>
+                            </div>
+                            <div class="right">
+                                <h3><?= $reservation['date_slot'] ?></h3>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <a href="/export/<?= $reservation["id_reservation"] ?>" class="download">Télecharger cette réservation</a>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+            <br>
 
+            <a href="/export/all/<?= session()->get("id") ?>" class="">Télécharger le récapitulatif de vos réservations <i class="fa-solid fa-file-arrow-down"></i> </a>
+        </div>
+    </section>
 
+    <section id="factures">
+        <div class="cards">
+            <h2>Mes Factures</h2>
+            <div class="frame">
+                <?php
+                if (empty($idFacturePdf)) {
+                    echo '<p>Vous n\'avez pas encore de facture.</p>';
+                } else {
+                ?>
+                    <div class='childrens'>
+                        <?php
+                        foreach ($idFacturePdf as $facture) { ?>
+                            <div class='childrenCard'>
+                                <p>Facture n° <?= $facture['fk_facture'] ?> du <?= date('d/m/Y', strtotime($facture['date_facture'])) ?> </p>
+                                <p>Prix TTC : <?= $prixfacture[$facture['fk_facture']] ?> €</p>
+                                <a href="/profil/facture/<?= $facture['fk_facture'] ?> ">PDF</a>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+            <br>
+        </div>
+    </section>
     <!--Popup rib -->
 
     <div class="filtre">
