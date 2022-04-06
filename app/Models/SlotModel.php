@@ -44,4 +44,16 @@ class SlotModel extends Model
             ->find();
     }
 
+    public function getChildRemainingBySlot($idSlot)
+    {
+        return $this->select('child_remaining_slot')
+        ->where('id_slot =', $idSlot)
+        ->find();
+    }
+    public function putNewChildRemaining($id_slot, $data)
+    {
+        // $data = ["child_remaining_slot" => 3];
+        $this->update($id_slot, $data);
+    }
+
 }

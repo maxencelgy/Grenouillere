@@ -110,12 +110,31 @@ class ResultsController extends BaseController
         // $lastUsersFacture = $this->factureModel->getLastUsersFacture($idUser);
         $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
         $idFacture = $lastUsersFacture[0]['id_facture'];
+        // Update du nombre de place disponible dans un slot
+
         $reservation = [];
+             // à chaque qu'on appel la fonction on desincremente de 1
+        // si c'est inférieur à 0 on annule la requette
         foreach ($newArray as $data) {
-            $reservation['fk_facture'] = $idFacture;
-            $reservation['fk_child'] = $data['id_child'];
-            $reservation['fk_slot'] = $data['id_slot'];
-            $this->reservationModel->insertReservation($reservation);
+            // On verifie que l'emplacement dispo est valide avant d'inserer les données
+            $idSlot = intval($data['id_slot']);
+            // var_dump($idSlot); 
+            $newChildRemainingValue = $this->slotModel ->getChildRemainingBySlot($idSlot)[0]['child_remaining_slot'];
+            $newChildRemainingValue = intval($newChildRemainingValue)-1;
+            $dataSlot['child_remaining_slot'] = $newChildRemainingValue; 
+            $this->slotModel->putNewChildRemaining($idSlot, $dataSlot);
+            if($newChildRemainingValue>0){
+                var_dump($dataSlot);            
+                // Si OK on agit sur la bdd 
+                $reservation['fk_facture'] = $idFacture;
+                $reservation['fk_child'] = $data['id_child'];
+                $reservation['fk_slot'] = $data['id_slot'];
+                $this->reservationModel->insertReservation($reservation);
+            }else{
+                // cas où il n'y a pas d'emplacement disponible;
+                return redirect('/');
+            }
+            
         }
         $single_company = $this->resultsModel->getCompanyById($id);
         $allChildrenPrice = count($newArray);
