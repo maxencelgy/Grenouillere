@@ -226,7 +226,6 @@ class ProfilController extends BaseController
             return redirect()->to('/404');
         }
     }
-
     public function editCompany($id)
     {
         if(!empty(session()->get("status_company"))){
@@ -242,7 +241,6 @@ class ProfilController extends BaseController
             return redirect()->to('/404');
         }
     }
-
     public function handlePostCalandar()
     {
         $data = [];

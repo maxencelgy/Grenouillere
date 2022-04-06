@@ -32,6 +32,7 @@ class CompanyModel extends Model
     'licence_company',
     'kbis_company',
     'hourly_rate_company',
+    'token_company',
     'child_capacity_company'];
 
     // Validation
@@ -79,4 +80,14 @@ class CompanyModel extends Model
     public function updateCompany($id, $data){
         return $this->update($id, $data);
     }
+
+
+  
+    public function getIdFromToken($token){
+        return $this->select('id_company')
+        ->where('token_company=', $token)
+        ->find()[0]["id_company"];
+    }
+
+
 }
