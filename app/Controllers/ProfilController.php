@@ -13,6 +13,7 @@ class ProfilController extends BaseController
     private $reservationModel;
     private $profilModel;
     private $companyModel;
+    private $userModel;
     public function __construct()
     {
 
@@ -26,16 +27,18 @@ class ProfilController extends BaseController
         $this->profilModel        = model('App\Models\profilModel');
         $this->planningModel      = model('App\Models\planningModel');
         $this->slotModel          = model('App\Models\slotModel');
+        $this->userModel          = model('App\Models\userModel');
 
     }
 
-    public function index()
+    public function index($id)
     {
         if(!empty(session()->get("role"))){
             $children = $this->childrenModel->getParentsChild();
             $allergy = $this->allergyModel->getAllAllergy();
             $disease = $this->diseaseModel->getAllDisease();
             $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
+            $userData = $this->userModel->getInfoUser($id);
 
 
             echo view('profil/index', [
@@ -43,6 +46,7 @@ class ProfilController extends BaseController
                 "childrens" => $children,
                 "allergy" => $allergy,
                 "disease" => $disease,
+                "userData" => $userData,
             ]);
         }else{
             return redirect()->to('/404');
@@ -172,6 +176,42 @@ class ProfilController extends BaseController
             ]);
 
         return redirect()->to('profil/compagny/'.session()->get("id"));
+    }
+
+    public function userModify($id)
+    {
+        $nom = $this->request->getPost("nom");
+        $prenom = $this->request->getPost("prenom");
+        $email = $this->request->getPost("email");
+        $adress = $this->request->getPost("adress");
+        $postal = $this->request->getPost("postal");
+        $city = $this->request->getPost("city");
+        $phone = $this->request->getPost("phone");
+
+        $this->userModel->updateUser($id,
+            $data = [
+                'last_name_users' => $nom,
+                'first_name_users' => $prenom,
+                'email_users' => $email,
+                'adress_users' => $adress,
+                'postal_users' => $postal,
+                'city_users' => $city,
+                'phone_users' => $phone,
+            ]);
+
+        return redirect()->to('profil/'.session()->get("id"));
+    }
+
+    public function editUser($id)
+    {
+        if(!empty(session()->get("role"))) {
+            $userData = $this->userModel->getInfoUser($id);
+            echo view('profil/edit_user', [
+                "userData" => $userData,
+            ]);
+        }else{
+            return redirect()->to('/404');
+        }
     }
 
     public function editCompany($id)

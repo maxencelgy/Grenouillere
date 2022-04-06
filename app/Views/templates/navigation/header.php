@@ -9,7 +9,7 @@
                 <a href="<?= site_url(); ?>admin" class="btn link">admin</a> <?php } ?>
             <?php if (!empty(session()->get("email"))) {
                 if (!empty(session()->get("role"))) { ?>
-                    <a href="<?= site_url(); ?>profil" class="btn link">Mon Profil</a>
+                    <a href="<?= site_url(); ?>profil/<?= session()->get("id") ?>" class="btn link">Mon Profil</a>
                 <?php
                 } else { ?>
 
