@@ -24,4 +24,9 @@ class userModel extends Model
         ->find();
     }
 
+    public function updateUser($id, $data)
+    {
+        return $this->update($id, $data);
+    }
+
 }
