@@ -64,7 +64,7 @@
         <div class="reservation">
             <h2 id='reservation' class="hours">Votre reservation</h2>
             <form action="<?= $infoBtn[0] ?>" method="post" id="formu">
-                <h3>Vos enfants</h3>
+
                 <div class="bigResponse">
                     <div id="response">
                         <?php
@@ -79,7 +79,6 @@
                     </div>
                     <div id="response2"></div>
                 </div>
-
                 <input class="send" type="submit" value="<?= $infoBtn[1] ?>">
             </form>
         </div>

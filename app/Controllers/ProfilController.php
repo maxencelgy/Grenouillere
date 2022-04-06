@@ -33,22 +33,22 @@ class ProfilController extends BaseController
 
     public function index($id)
     {
-        if(!empty(session()->get("role"))){
-            if(session()->get("id") === $id){
+        if (!empty(session()->get("role"))) {
+            if (session()->get("id") === $id) {
                 $children = $this->childrenModel->getParentsChild();
                 $allergy = $this->allergyModel->getAllAllergy();
                 $disease = $this->diseaseModel->getAllDisease();
                 $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
-                $idFacturePdf = $this->reservationModel->getAllUserFacture(session()->get("id")) ;
+                $idFacturePdf = $this->reservationModel->getAllUserFacture(session()->get("id"));
                 $prixfacture = [];
-                $hourlyRate ='';
-                if(!empty($idFacturePdf)){
+                $hourlyRate = '';
+                if (!empty($idFacturePdf)) {
                     foreach ($idFacturePdf as $idFacture) {
                         // Si il y a des facture on affiche les prix, on lie un prix à une facture
                         // On le mets aussi dans boucle parce que les entreprises n'ont pas toutes
                         // le même taux horraires.
                         $hourlyRate = $this->factureModel->getHourlyRate($idFacture['fk_facture'])[0]['hourly_rate_company'];
-                        $prixfacture[$idFacture['fk_facture']] = $this->reservationModel->getCountFactures($idFacture['fk_facture'])*$hourlyRate*4;
+                        $prixfacture[$idFacture['fk_facture']] = $this->reservationModel->getCountFactures($idFacture['fk_facture']) * $hourlyRate * 4;
                     }
                 }
                 $userData = $this->userModel->getInfoUser($id);
@@ -61,30 +61,32 @@ class ProfilController extends BaseController
                     "prixfacture" => $prixfacture,
                     "userData" => $userData,
                 ]);
-            }
-            else{
+            } else {
                 return redirect()->to('/404');
             }
-        }else{
+        } else {
 
             return redirect()->to('/404');
         }
     }
     public function ProfilCompany($id)
     {
-        if(!empty(session()->get("status_company"))) {
-            if(session()->get("id") === $id){
+        if (!empty(session()->get("status_company"))) {
+            if (session()->get("id") === $id) {
                 $companyData = $this->companyModel->companyData($id);
                 $companyFolder = $this->companyModel->companyFolder($id);
+                $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
+                $idFacturePdf = $this->reservationModel->getAllUserFacture(session()->get("id"));
                 echo view('profil/profil_company', [
                     "companyData" => $companyData,
+                    "reservations" => $reservations,
+                    "idFacturePdf" => $idFacturePdf,
                     "companyFolder" => $companyFolder
                 ]);
-            }
-            else{
+            } else {
                 return redirect()->to('/404');
             }
-        }else{
+        } else {
             return redirect()->to('/404');
         }
     }
@@ -221,17 +223,16 @@ class ProfilController extends BaseController
 
     public function editUser($id)
     {
-        if(!empty(session()->get("role"))) {
-            if(session()->get("id") === $id){
+        if (!empty(session()->get("role"))) {
+            if (session()->get("id") === $id) {
                 $userData = $this->userModel->getInfoUser($id);
                 echo view('profil/edit_user', [
                     "userData" => $userData,
                 ]);
-            }
-            else{
+            } else {
                 return redirect()->to('/404');
             }
-        }else{
+        } else {
             return redirect()->to('/404');
         }
     }
@@ -239,21 +240,20 @@ class ProfilController extends BaseController
     public function editCompany($id)
     {
 
-        if(!empty(session()->get("status_company"))){
-            if(session()->get("id") === $id){
+        if (!empty(session()->get("status_company"))) {
+            if (session()->get("id") === $id) {
                 $planning = $this->planningModel->getAll();
                 $companyData = $this->companyModel->companyData($id);
-                $infoBtn = ['/calendar/add','Envoyer le planning'] ;
+                $infoBtn = ['/calendar/add', 'Envoyer le planning'];
                 echo view('profil/edit_company', [
                     "planning" => $planning,
                     "infoBtn" => $infoBtn,
                     "companyData" => $companyData
                 ]);
-            }
-            else{
+            } else {
                 return redirect()->to('/404');
             }
-        }else{
+        } else {
 
             return redirect()->to('/404');
         }
@@ -279,6 +279,7 @@ class ProfilController extends BaseController
                 // $occurenceData = false;
                 if (!$occurenceData) {
                     $this->profilModel->insertCalendar($data[$a]);
+                    return redirect()->to('/');
                 } else {
                     echo 'erreur donnée déja presentent en base !';
                 }
