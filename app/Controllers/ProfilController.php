@@ -13,6 +13,7 @@ class ProfilController extends BaseController
     private $reservationModel;
     private $profilModel;
     private $companyModel;
+    private $userModel;
     public function __construct()
     {
 
@@ -27,10 +28,12 @@ class ProfilController extends BaseController
         $this->planningModel      = model('App\Models\planningModel');
         $this->slotModel          = model('App\Models\slotModel');
         $this->factureModel          = model('App\Models\FactureModel');
+        $this->userModel          = model('App\Models\userModel');
+
 
     }
 
-    public function index()
+    public function index($id)
     {
         if(!empty(session()->get("role"))){
             $children = $this->childrenModel->getParentsChild();
@@ -40,17 +43,16 @@ class ProfilController extends BaseController
             $idFacturePdf = $this->reservationModel->getAllUserFacture(session()->get("id")) ;
             $prixfacture = [];
             $hourlyRate ='';            
-            if(!empty($idFacturePdf)){
-                
+            if(!empty($idFacturePdf)){                
                 foreach ($idFacturePdf as $idFacture) {
                     // Si il y a des facture on affiche les prix, on lie un prix à une facture
                     // On le mets aussi dans boucle parce que les entreprises n'ont pas toutes  
                     // le même taux horraires.
                     $hourlyRate = $this->factureModel->getHourlyRate($idFacture['fk_facture'])[0]['hourly_rate_company'];
-                    $prixfacture[$idFacture['fk_facture']] = $this->reservationModel->getCountFactures($idFacture['fk_facture'])*$hourlyRate*4;
-                    
+                    $prixfacture[$idFacture['fk_facture']] = $this->reservationModel->getCountFactures($idFacture['fk_facture'])*$hourlyRate*4;                    
                 }
             }
+            $userData = $this->userModel->getInfoUser($id);
             echo view('profil/index', [
                 "reservations" => $reservations,
                 "childrens" => $children,
@@ -58,19 +60,21 @@ class ProfilController extends BaseController
                 "disease" => $disease,
                 "idFacturePdf" => $idFacturePdf,
                 "prixfacture" => $prixfacture,
+                "userData" => $userData,
+
             ]);
         }else{
             return redirect()->to('/404');
         }
     }
-
-
     public function ProfilCompany($id)
     {
         if(!empty(session()->get("status_company"))) {
             $companyData = $this->companyModel->companyData($id);
+            $companyFolder = $this->companyModel->companyFolder($id);
             echo view('profil/profil_company', [
-                "companyData" => $companyData
+                "companyData" => $companyData,
+                "companyFolder" => $companyFolder
             ]);
         }else{
             return redirect()->to('/404');
@@ -134,23 +138,23 @@ class ProfilController extends BaseController
             $fileName = $this->uploadFolder();
             if(!empty($_FILES["rib_company"])){
                 $this->companyModel->updateFolder($id, "rib_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["identity_company"])){
                 $this->companyModel->updateFolder($id, "cni_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["certificate_company"])){
                 $this->companyModel->updateFolder($id, "certificate_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["licence_company"])){
                 $this->companyModel->updateFolder($id, "licence_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
             elseif(!empty($_FILES["kbis_company"])){
                 $this->companyModel->updateFolder($id, "kbis_company" ,$fileName);
-                return redirect()->to('/profil/compagny');
+                return redirect()->to('/profil/compagny/'.session()->get("id"));
             }
         }
         else{
@@ -163,7 +167,7 @@ class ProfilController extends BaseController
         $nom = $this->request->getPost("nom");
         $email = $this->request->getPost("email");
         $postal = $this->request->getPost("postal");
-        $first_name = $this->request->getPost("first_name");
+        $last_name_company = $this->request->getPost("last_name_company");
         $adress = $this->request->getPost("adress");
         $siret = $this->request->getPost("siret");
         $capacity = $this->request->getPost("capacity");
@@ -175,7 +179,7 @@ class ProfilController extends BaseController
                 'email_company' => $email,
                 'name_company' => $nom,
                 'postal_code_company' => $postal,
-                'frist_name_company' => $first_name,
+                'last_name_company' => $last_name_company,
                 'adress_company' => $adress,
                 'siret_company' => $siret,
                 'child_capacity_company	' => $capacity,
@@ -185,6 +189,42 @@ class ProfilController extends BaseController
             ]);
 
         return redirect()->to('profil/compagny/'.session()->get("id"));
+    }
+
+    public function userModify($id)
+    {
+        $nom = $this->request->getPost("nom");
+        $prenom = $this->request->getPost("prenom");
+        $email = $this->request->getPost("email");
+        $adress = $this->request->getPost("adress");
+        $postal = $this->request->getPost("postal");
+        $city = $this->request->getPost("city");
+        $phone = $this->request->getPost("phone");
+
+        $this->userModel->updateUser($id,
+            $data = [
+                'last_name_users' => $nom,
+                'first_name_users' => $prenom,
+                'email_users' => $email,
+                'adress_users' => $adress,
+                'postal_users' => $postal,
+                'city_users' => $city,
+                'phone_users' => $phone,
+            ]);
+
+        return redirect()->to('profil/'.session()->get("id"));
+    }
+
+    public function editUser($id)
+    {
+        if(!empty(session()->get("role"))) {
+            $userData = $this->userModel->getInfoUser($id);
+            echo view('profil/edit_user', [
+                "userData" => $userData,
+            ]);
+        }else{
+            return redirect()->to('/404');
+        }
     }
 
     public function editCompany($id)

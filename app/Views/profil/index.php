@@ -5,28 +5,29 @@
 
 
 <?= $this->section('content') ?>
+<?php $userData = $userData[0] ?>
 
 <div class="wrapProfil">
     <section id="profil">
         <h2>Mes informations</h2><br>
         <div class="informations">
             <div class="information">
-                <h3>Nom : <?= session()->get("nom") ?></h3><br>
-                <h3>Email : <?= session()->get("email") ?></h3><br>
-                <h3>Code Postale : <?= session()->get("postal") ?>27100</h3><br><br>
+                <h3>Nom : <?= $userData["last_name_users"] ?></h3><br>
+                <h3>Prénom : <?= $userData["first_name_users"] ?></h3><br>
+                <h3>Email: <?= $userData["email_users"] ?></h3><br><br>
             </div>
             <div class="information">
-                <h3>Prénom : <?= session()->get("prenom") ?></h3><br>
-                <h3>Adresse : <?= session()->get("adresse") ?>14 rue de la sauvagine</h3><br>
+                <h3>Adresse : <?= $userData["adress_users"] ?></h3><br>
+                <h3>Code Postal : <?= $userData["postal_users"] ?></h3><br>
 
             </div>
             <div class="information">
-                <h3>Télephone : <?= session()->get("telephone") ?>0651718409</h3><br>
-                <h3>Ville : <?= session()->get("ville") ?>Val de reuil</h3><br>
+                <h3>Ville : <?= $userData["city_users"] ?></h3><br>
+                <h3>Télephone : <?= $userData["phone_users"] ?></h3><br>
             </div>
         </div>
         <div class="buttons">
-            <a href="" class="btn">Modifier informations</a>
+            <a href="<?= site_url(); ?>profil/editUser/<?= session()->get('id') ?>" class="btn">Modifier informations</a>
         </div>
     </section>
 
@@ -160,46 +161,5 @@
         </div>
     </section>
 </div>
-
-
-
-
-<!-- <section id="factures">
-    <div class="wrapProfil">
-        <h2>Vos Factures</h2>
-        <i class="fa-solid fa-chevron-down"></i>
-    </div>
-
-    <div class="cards">
-        <div class="card">
-            <div class="top">
-                <div class="left">
-                    <h2>Facture n°1</h2>
-                    <h3>Dupont Jean Michel</h3>
-                </div>
-                <div class="right">
-                    <h3>12/02/2022</h3>
-                </div>
-            </div>
-            <div class="bottom">
-                <a href="" class="download">Télecharger cette facture</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="top">
-                <div class="left">
-                    <h2>Facture n°2</h2>
-                    <h3>Dupont Jean Michel</h3>
-                </div>
-                <div class="right">
-                    <h3>12/02/2022</h3>
-                </div>
-            </div>
-            <div class="bottom">
-                <a href="" class="download">Télecharger cette facture</a>
-            </div>
-        </div>
-    </div>
-</section> -->
 
 <?= $this->endSection() ?>

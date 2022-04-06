@@ -49,6 +49,18 @@ header .wrap .left img {
   cursor: pointer;
   display: none;
 }
+.cross {
+  font-size: 2.3rem;
+  cursor: pointer;
+
+}
+.crossNone {
+  display: none!important;
+}
+
+.linkBlock {
+  display: block!important;
+}
 
 header .wrap .right {
   display: flex;

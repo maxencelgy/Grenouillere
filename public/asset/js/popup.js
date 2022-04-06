@@ -8,9 +8,7 @@ const filtre = document.querySelector(".filtre");
 const croix = document.querySelectorAll(".fa-xmark");
 
 const popup = document.querySelector(".popup");
-
 const popup1 = document.querySelector(".popup1");
-
 const popup3 = document.querySelector(".popup3");
 const popup4 = document.querySelector(".popup4");
 

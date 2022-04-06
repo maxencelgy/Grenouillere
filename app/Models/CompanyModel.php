@@ -70,6 +70,12 @@ class CompanyModel extends Model
             ->find();
     }
 
+    public function companyFolder($id){
+        return $this->select('cni_company, rib_company, certificate_company, licence_company, kbis_company')
+            ->where('id_company=', $id)
+            ->find();
+    }
+
     public function updateCompany($id, $data){
         return $this->update($id, $data);
     }

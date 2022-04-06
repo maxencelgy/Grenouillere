@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/asset/css/responsive.css">
     <title>Grenouillère</title>
 </head>
-
 <body>
 
     <?php include("navigation/header.php");
@@ -28,9 +27,9 @@
 
 
     <?= $this->renderSection('js') ?>
+    <script src="/asset/js/main.js"></script>
     <script src="/asset/js/popup.js"></script>
-    <?= $this->renderSection('js') ?>
-
+    
 
 </body>
 
