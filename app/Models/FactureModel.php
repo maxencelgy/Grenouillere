@@ -44,5 +44,13 @@ class FactureModel extends Model
         ->find();
     }
 
+    public function getHourlyRate($idFacture)
+    {
+        return $this
+            ->select('hourly_rate_company')
+            ->join('company', 'facture.fk_company = company.id_company')
+            ->where('id_facture', $idFacture)
+            ->find();
+    }
     
 }

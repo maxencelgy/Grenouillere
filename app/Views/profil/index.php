@@ -141,17 +141,16 @@
         if(empty($idFacturePdf)){
             echo '<p>Vous n\'avez pas encore de facture.</p>';
         }else{
-            var_dump($idFacturePdf); 
             ?>
             <div class='childrens'>
             <?php
             foreach ($idFacturePdf as $facture) { ?>
                 <div class='childrenCard'>
-                    <p>Facture du <?= $facture['date_facture'] ?> </p>
-                    <a href=" <?= $facture['fk_facture'] ?> ">PDF</a>
+                    <p>Facture n° <?= $facture['fk_facture'] ?> du <?= date('d/m/Y', strtotime($facture['date_facture'])) ?> </p>
+                    <p>Prix TTC :  <?= $prixfacture[$facture['fk_facture']] ?>  €</p>
+                    <a href="profil/facture/<?= $facture['fk_facture'] ?> ">PDF</a>
                 </div>
-            <?php
-                
+            <?php                
             }
             ?>
             </div>
