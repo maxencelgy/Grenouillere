@@ -12,6 +12,7 @@ class ResultsController extends BaseController
 
     public function __construct()
     {
+        helper(["url"]);
         $this->resultsModel = model('App\Models\ResultsModel');
         $this->planningModel = model('App\Models\PlanningModel');
         $this->slotModel = model('App\Models\SlotModel');
@@ -115,6 +116,24 @@ class ResultsController extends BaseController
             'allChildrenPrice' => $allChildrenPrice
         ]);
     }
+    // public function payment($id)
+    // {
+    //     $single_company = $this->resultsModel->getCompanyById($id);
+    //     $idUser = session()->get('id');
+    //     $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
+    //     $getCountFactures = $this->reservationModel->getCountFactures($lastUsersFacture[0]['id_facture']);
+
+    //     Stripe\Stripe::setApiKey(STRIPE_SECRET);
+    //     $stripe = Stripe\Charge::create([
+    //         "amount" =>  $getCountFactures * ($single_company->hourly_rate_company * 100 * 4),
+    //         "currency" => "eur",
+    //         "source" => $_REQUEST["stripeToken"],
+    //         "description" => "Paiement à $single_company->name_company"
+    //     ]);
+
+    //     return redirect('/utilisateur/facture');
+    //     session()->setFlashdata("message", "Paiement réussi");
+    // }
     public function payment($id)
     {
         $single_company = $this->resultsModel->getCompanyById($id);
@@ -133,4 +152,5 @@ class ResultsController extends BaseController
         return redirect('/utilisateur/facture');
         session()->setFlashdata("message", "Paiement réussi");
     }
+
 }
