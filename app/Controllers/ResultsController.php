@@ -64,15 +64,7 @@ class ResultsController extends BaseController
 
     public function addReservation($id)
     {
-        function debug($tableau)
-        {
-            echo '<pre style="height:500px;overflow-y: scroll;font-size: .7rem;padding: .6rem;font-family: Verdana;background-color: #000;color:#fff;">';
-            print_r($tableau);
-            echo '</pre>';
-        }
         $idUser = session()->get('id');
-        debug($_POST);
-        var_dump(count($_POST));
         $a = 0;
         $b = 0;
         $newArray = [];
@@ -96,21 +88,19 @@ class ResultsController extends BaseController
                 }
             }
         }
-        debug($newArray);
-
+        // On récupère l'id de l'entreprise avec avec celle du slot, comme il n'y a qu'une entreprise
+        // on prend que le premier slot.
+        $idCompany = $this->slotModel->getIdCompanyBySlot($newArray[0]['id_slot'])[0]['fk_company'];
         // On créer la facture
         $dataFacture = [
-            'fk_company' => 3,
+            'fk_company' => $idCompany,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];
         $this->factureModel->insertFacture($dataFacture);
         // $lastUsersFacture = $this->factureModel->getLastUsersFacture($idUser);
-
         $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
-        debug($lastUsersFacture);
         $idFacture = $lastUsersFacture[0]['id_facture'];
-        debug($idFacture);
         $reservation = [];
         foreach ($newArray as $data) {
             $reservation['fk_facture'] = $idFacture;
@@ -125,8 +115,6 @@ class ResultsController extends BaseController
             'allChildrenPrice' => $allChildrenPrice
         ]);
     }
-
-
     public function payment($id)
     {
         $single_company = $this->resultsModel->getCompanyById($id);
