@@ -19,6 +19,7 @@ class ResultsController extends BaseController
         $this->childModel = model('App\Models\ChildrenModel');
         $this->factureModel = model('App\Models\FactureModel');
         $this->reservationModel = model('App\Models\ReservationModel');
+        $this->resultsModel = model('App\Models\ResultsModel');
         // findAllSlotByCompanyAndWeek
     }
 
@@ -26,16 +27,23 @@ class ResultsController extends BaseController
     public function index()
     {
 
-        if (!empty($_POST)) {
+        if (!empty($_POST['postal_code_company'])){
             $postalCode = $_POST['postal_code_company'];
             $planning = $_POST['horaire'];
             $enfant = $_POST['enfant'];
             $day = $_POST['day'];
-        } else {
-            return redirect()->to('/');
+
+            $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
+
+        }
+        else {
+            $planning = $_POST['horaire'];
+            $enfant = $_POST['enfant'];
+            $day = $_POST['day'];
+
+            $createFile = $this->resultsModel->createJsonFileWithoutPostal($enfant, $planning, $day);
         }
 
-        $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
         $companyData = $this->resultsModel->getAllCompany();
         echo view('results/global_result', [
             'companyData' => $companyData
@@ -116,24 +124,6 @@ class ResultsController extends BaseController
             'allChildrenPrice' => $allChildrenPrice
         ]);
     }
-    // public function payment($id)
-    // {
-    //     $single_company = $this->resultsModel->getCompanyById($id);
-    //     $idUser = session()->get('id');
-    //     $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
-    //     $getCountFactures = $this->reservationModel->getCountFactures($lastUsersFacture[0]['id_facture']);
-
-    //     Stripe\Stripe::setApiKey(STRIPE_SECRET);
-    //     $stripe = Stripe\Charge::create([
-    //         "amount" =>  $getCountFactures * ($single_company->hourly_rate_company * 100 * 4),
-    //         "currency" => "eur",
-    //         "source" => $_REQUEST["stripeToken"],
-    //         "description" => "Paiement à $single_company->name_company"
-    //     ]);
-
-    //     return redirect('/utilisateur/facture');
-    //     session()->setFlashdata("message", "Paiement réussi");
-    // }
     public function payment($id)
     {
         $single_company = $this->resultsModel->getCompanyById($id);
@@ -149,8 +139,10 @@ class ResultsController extends BaseController
             "description" => "Paiement à $single_company->name_company"
         ]);
 
-        return redirect('/utilisateur/facture');
+        return redirect('/');
         session()->setFlashdata("message", "Paiement réussi");
     }
 
+
 }
+

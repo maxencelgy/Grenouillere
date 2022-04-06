@@ -9,27 +9,46 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-
-<div id="single_container" class="wrap">
-    <h3><?= $single->name_company ?></h3>
-
-    <div class="single_picture">
-        <div class="picture_items">
-            <img src="/asset/img/illustration_result.jpg" alt="image creche">
+<div class="wrap">
+    <br> <br> <br> <br>
+    <h2><?= $single->name_company ?></h2>
+    <br>
+    <div id="single_container">
+        <div class="single_picture">
+            <div class="picture_items">
+                <img src="/asset/img/singleFirst.jpeg" alt="image creche">
+            </div>
+            <div class="picture_items_right">
+                <div class="top">
+                    <img src="/asset/img/secondFirst.jpeg" alt="image creche">
+                    <img src="/asset/img/thirdFirst.jpeg" alt="image creche">
+                </div>
+                <div class="bottom">
+                    <img src="/asset/img/fourFirst.jpeg" alt="image creche">
+                    <img src="/asset/img/fiveFirst.jpeg" alt="image creche">
+                </div>
+            </div>
         </div>
     </div>
-
+    <br>
     <h3><?= $single->name_company ?> à <?= $single->city_company ?>, <?= $single->postal_code_company ?></h3>
-
+    <br>
     <div class="separator"></div>
-
+    <br><br>
     <div class="single_info_container">
-        <h3>Informations :</h3>
+        <h2>Informations :</h2>
+        <br>
         <div class="single_box">
-            <p>Adresse :
-                <?= $single->adress_company . ', ' . $single->postal_code_company . ', ' . $single->city_company ?></p>
-            <p>Taux horaire : <?= $single->hourly_rate_company ?>€</p>
-            <p>Place disponible : <?= $single->child_capacity_company ?></p>
+            <h4>Place disponible : <?= $single->child_capacity_company ?></h4>
+            <div class="flex">
+                <h4>Adresse : </h4>
+                <p><?= $single->adress_company . ', ' . $single->postal_code_company . ', ' . $single->city_company ?></p>
+            </div>
+            <div class="flex">
+                <h4>Taux horaire : </h4>
+                <p><?= $single->hourly_rate_company ?>€</p>
+            </div>
+            <br>
             <h4>Description :</h4>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur exercitationem fugit hic
@@ -38,20 +57,21 @@
             </p>
         </div>
     </div>
+
+    <section id="navigate">
+        <div class="navigator">
+            <div class="left">
+                <?= $this->include('templates/calendar/planning') ?>
+            </div>
+            <div class="right">
+                <h1>MAP</h1>
+            </div>
+        </div>
+    </section>
 </div>
-
-<h1>Single</h1>
-
-<a href="/stripe/<?= $single->id_company ?>">LA</a>
-
-
-
-
 <?= $this->endSection() ?>
-<?= $this->section('content2') ?>
-<?= $this->include('templates/calendar/planning') ?>
 
 
-</div> <?= $this->endSection() ?> <?= $this->section('js') ?> <script src="/asset/js/calendarReservation.js">
-</script>
+<?= $this->section('js') ?>
+<script src="/asset/js/calendarReservation.js"></script>
 <?= $this->endSection() ?>

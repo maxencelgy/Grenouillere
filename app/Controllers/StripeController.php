@@ -15,8 +15,10 @@ class StripeController extends BaseController
     //  */
     // public function __construct()
     // {
+
     //     helper(["url"]);
     //     $this->resultsModel = model('App\Models\ResultsModel');
+
     // }
 
     // /**
@@ -24,17 +26,18 @@ class StripeController extends BaseController
     //  *
     //  * @return Response
     //  */
-    public function stripe($id)
-    {
-        if (session()->get("role") == "user") {
-            $single_company = $this->resultsModel->getCompanyById($id);
-            echo view('stripe/stripe', [
-                'single' => $single_company
-            ]);
-        } else {
-            return redirect()->to('/404');
-        }
-    }
+    // public function stripe($id)
+    // {
+    //     if (session()->get("role") == "user") {
+    //         $single_company = $this->resultsModel->getCompanyById($id);
+    //         echo view('stripe/stripe', [
+    //             'single' => $single_company
+    //         ]);
+    //     } else {
+    //         return redirect()->to('/404');
+    //     }
+    // }
+
 
     // /**
     //  * Get All Data from this method.
@@ -64,4 +67,6 @@ class StripeController extends BaseController
 
     //     return redirect('/');
     // }
+
  }
+
