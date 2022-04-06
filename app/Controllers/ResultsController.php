@@ -134,7 +134,6 @@ class ResultsController extends BaseController
         ]);
     }
 
-
     public function payment($id)
     {
         $single_company = $this->resultsModel->getCompanyById($id);
