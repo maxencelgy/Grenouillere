@@ -14,4 +14,6 @@
 
 8 eme etape : php spark db:seed PlanningSeeder
 
-9 eme etape : php spark serve
+9 eme etape : php spark db:seed AllergySeeder
+
+10 eme etape : php spark serve
