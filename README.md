@@ -18,4 +18,4 @@
 
 10 eme etape : php spark db:seed DiseaseSeeder
 
-10 eme etape : php spark serve
+=> php spark serve
