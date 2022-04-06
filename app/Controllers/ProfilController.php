@@ -27,7 +27,9 @@ class ProfilController extends BaseController
         $this->profilModel        = model('App\Models\profilModel');
         $this->planningModel      = model('App\Models\planningModel');
         $this->slotModel          = model('App\Models\slotModel');
+        $this->factureModel          = model('App\Models\FactureModel');
         $this->userModel          = model('App\Models\userModel');
+
 
     }
 
@@ -38,22 +40,33 @@ class ProfilController extends BaseController
             $allergy = $this->allergyModel->getAllAllergy();
             $disease = $this->diseaseModel->getAllDisease();
             $reservations = $this->reservationModel->getReservationsWithCompanyById(session()->get("id"));
+            $idFacturePdf = $this->reservationModel->getAllUserFacture(session()->get("id")) ;
+            $prixfacture = [];
+            $hourlyRate ='';            
+            if(!empty($idFacturePdf)){                
+                foreach ($idFacturePdf as $idFacture) {
+                    // Si il y a des facture on affiche les prix, on lie un prix à une facture
+                    // On le mets aussi dans boucle parce que les entreprises n'ont pas toutes  
+                    // le même taux horraires.
+                    $hourlyRate = $this->factureModel->getHourlyRate($idFacture['fk_facture'])[0]['hourly_rate_company'];
+                    $prixfacture[$idFacture['fk_facture']] = $this->reservationModel->getCountFactures($idFacture['fk_facture'])*$hourlyRate*4;                    
+                }
+            }
             $userData = $this->userModel->getInfoUser($id);
-
-
             echo view('profil/index', [
                 "reservations" => $reservations,
                 "childrens" => $children,
                 "allergy" => $allergy,
                 "disease" => $disease,
+                "idFacturePdf" => $idFacturePdf,
+                "prixfacture" => $prixfacture,
                 "userData" => $userData,
+
             ]);
         }else{
             return redirect()->to('/404');
         }
     }
-
-
     public function ProfilCompany($id)
     {
         if(!empty(session()->get("status_company"))) {
