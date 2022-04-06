@@ -5,13 +5,31 @@
 }
 
 .calendar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: aqua;
+  background-color: #F6F6F6;
+  border-radius: .8rem;
+  padding: 1rem;
   margin-bottom: 2rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
 }
-
+.semaine{
+ text-align: center;
+ margin-bottom: 2rem;
+}
+.calendar .calendarBody {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+}
+/* .calendar .calendarBody .calendarLeft {
+ width: 19%;
+}
+.calendar .calendarBody .calendarRight {
+  width: 79%;
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+} */
 .days {
   width: 13.33333%;
   text-align: center;
@@ -32,7 +50,7 @@
 
 .send {
   text-align: center;
-  margin-bottom: 2rem;
+  
 }
 #send {
   text-align: center;
@@ -47,3 +65,25 @@
 .clicked {
   background-color: red !important;
 }
+
+.reservation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.reservation h2{
+  margin-bottom: 1rem;
+}
+ 
+
+.reservation input[type="submit"]{
+  cursor:pointer;
+  padding: .8rem;
+  border: none;
+  background-color: var(--green);
+  border-radius: .8rem;
+  font-size: 1.2rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+ }
