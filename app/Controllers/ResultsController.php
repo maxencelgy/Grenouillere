@@ -126,7 +126,7 @@ class ResultsController extends BaseController
             $dataSlot['child_remaining_slot'] = $newChildRemainingValue; 
             $this->slotModel->putNewChildRemaining($idSlot, $dataSlot);
             if($newChildRemainingValue>0){
-                var_dump($dataSlot);            
+                      
                 // Si OK on agit sur la bdd 
                 $reservation['fk_facture'] = $idFacture;
                 $reservation['fk_child'] = $data['id_child'];

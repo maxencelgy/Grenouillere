@@ -12,7 +12,7 @@
     ?>
 
     <div class="calendar">
-        <h2 class="semaine">Semaine 01</h2>
+        <h2 class="semaine">Semaine du <?= date('d-m-Y', strtotime("+ 0 days")) ?></h2>
         <div class="calendarBody">
             <?php
             for ($i = 0; $i < 7; $i++) { ?>
@@ -88,4 +88,3 @@
 
     </div>
 </section>
-

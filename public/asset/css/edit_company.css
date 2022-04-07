@@ -21,15 +21,7 @@
   align-items: top;
   justify-content: space-between;
 }
-/* .calendar .calendarBody .calendarLeft {
- width: 19%;
-}
-.calendar .calendarBody .calendarRight {
-  width: 79%;
-  display: flex;
-  align-items: top;
-  justify-content: space-between;
-} */
+
 .days {
   width: 13.33333%;
   text-align: center;
