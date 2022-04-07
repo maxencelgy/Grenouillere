@@ -51,8 +51,6 @@ class ResultsController extends BaseController
 
     public function singlePage($id)
     {
-        // 
-
         $single_company = $this->resultsModel->getCompanyById($id);
         $planning = $this->planningModel->getAll();
         // On affiche la liste des enfants seulement si l'utilisateur est connecté
@@ -72,15 +70,7 @@ class ResultsController extends BaseController
 
     public function addReservation($id)
     {
-        function debug($tableau)
-        {
-            echo '<pre style="height:500px;overflow-y: scroll;font-size: .7rem;padding: .6rem;font-family: Verdana;background-color: #000;color:#fff;">';
-            print_r($tableau);
-            echo '</pre>';
-        }
         $idUser = session()->get('id');
-        debug($_POST);
-        var_dump(count($_POST));
         $a = 0;
         $b = 0;
         $newArray = [];
@@ -104,7 +94,6 @@ class ResultsController extends BaseController
                 }
             }
         }
-        debug($newArray);
 
         // On créer la facture
         $dataFacture = [
@@ -116,9 +105,7 @@ class ResultsController extends BaseController
         // $lastUsersFacture = $this->factureModel->getLastUsersFacture($idUser);
 
         $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
-        debug($lastUsersFacture);
         $idFacture = $lastUsersFacture[0]['id_facture'];
-        debug($idFacture);
         $reservation = [];
         foreach ($newArray as $data) {
             $reservation['fk_facture'] = $idFacture;

@@ -283,12 +283,12 @@ class ProfilController extends BaseController
                 // $occurenceData = false;
                 if (!$occurenceData) {
                     $this->profilModel->insertCalendar($data[$a]);
-                    return redirect()->to('/');
                 } else {
                     echo 'erreur donnée déja presentent en base !';
                 }
                 $a++;
             }
         }
+        return redirect()->to('/');
     }
 }
