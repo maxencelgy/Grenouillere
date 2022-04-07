@@ -33,7 +33,9 @@ class CompanyModel extends Model
     'kbis_company',
     'hourly_rate_company',
     'token_company',
-    'child_capacity_company'];
+    'child_capacity_company',
+    'description_company'];
+
 
     // Validation
     protected $validationRules      = [];
@@ -66,7 +68,7 @@ class CompanyModel extends Model
 
     public function companyData($id){
         return $this->select('email_company, name_company, last_name_company, city_company, postal_code_company,
-         adress_company, siret_company, hourly_rate_company, child_capacity_company, status_company')
+         adress_company, siret_company, hourly_rate_company, child_capacity_company, status_company, description_company')
             ->where('id_company=', $id)
             ->find();
     }

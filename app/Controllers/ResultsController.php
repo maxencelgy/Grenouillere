@@ -58,14 +58,14 @@ class ResultsController extends BaseController
         // On affiche la liste des enfants seulement si l'utilisateur est connecté
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
-        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Reréserver'];
+
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
         echo view('results/single_result', [
             'single' => $single_company,
             'planning' => $planning,
             'slot' => $slot,
             'chidrenList' => $chidrenList,
-            'infoBtn' => $infoBtn
+
         ]);
     }
 

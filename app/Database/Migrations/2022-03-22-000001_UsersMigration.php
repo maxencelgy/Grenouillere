@@ -22,10 +22,12 @@ class UsersMigration extends Migration
             'last_name_users'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '180',
+                'null' => true,
             ],
             'first_name_users'  => [
                 'type'       => 'VARCHAR',
                 'constraint' => '180',
+                'null' => true,
             ],
             'password_users'  => [
                 'type'       => 'VARCHAR',

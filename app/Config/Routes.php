@@ -60,7 +60,6 @@ $routes->match(['get', 'post'], 'entreprise/oublie/nouveau/(:any)', 'Authenticat
 ////Search result
 $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
-// $routes->post('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 // Facture
 $routes->get('profil/facture/(:num)', 'FactureController::factureUser/$1');
