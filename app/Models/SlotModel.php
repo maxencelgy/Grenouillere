@@ -9,7 +9,7 @@ use CodeIgniter\Database\Query;
 class SlotModel extends Model
 {
     protected $table = 'slot';
-    protected $allowedFields = ['fk_planning', 'fk_company', 'date_slot'];
+    protected $allowedFields = ['fk_planning', 'fk_company', 'date_slot','child_remaining_slot'];
     protected $primaryKey = 'id_slot';
 
     public function verifyOccurence($planning, $fkCompany, $dateSlot)
