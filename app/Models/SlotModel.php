@@ -52,7 +52,6 @@ class SlotModel extends Model
     }
     public function putNewChildRemaining($id_slot, $data)
     {
-        // $data = ["child_remaining_slot" => 3];
         $this->update($id_slot, $data);
     }
 
