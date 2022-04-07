@@ -242,7 +242,6 @@ class ProfilController extends BaseController
             return redirect()->to('/404');
         }
     }
-
     public function editCompany($id)
     {
 
@@ -251,6 +250,8 @@ class ProfilController extends BaseController
                 $planning = $this->planningModel->getAll();
                 $companyData = $this->companyModel->companyData($id);
                 $infoBtn = ['/calendar/add', 'Envoyer le planning'];
+
+
                 echo view('profil/edit_company', [
                     "planning" => $planning,
                     "infoBtn" => $infoBtn,
@@ -264,7 +265,6 @@ class ProfilController extends BaseController
             return redirect()->to('/404');
         }
     }
-
     public function handlePostCalandar()
     {
         $data = [];
@@ -285,7 +285,6 @@ class ProfilController extends BaseController
                 // $occurenceData = false;
                 if (!$occurenceData) {
                     $this->profilModel->insertCalendar($data[$a]);
-                    return redirect()->to('/');
                 } else {
                     echo 'erreur donnée déja presentent en base !';
                 }

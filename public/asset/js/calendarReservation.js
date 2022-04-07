@@ -1,13 +1,11 @@
 const slot = document.querySelectorAll(".slot");
 const submit = document.querySelector(".send");
 const response = document.querySelector("#response");
-const response2 = document.querySelector("#response2");
 const child = document.querySelectorAll(".childs");
 console.log(child.length);
 // console.log(slot);
 // console.log(submit);
 console.log(response);
-
 let send = [];
 slot.forEach((e) => {
   e.addEventListener("click", function (e) {
@@ -36,7 +34,6 @@ slot.forEach((e) => {
             `;
       });
       response.innerHTML += `
-    
         <input style="display: none;" type="text" name="date_slot_${i}" value="${e.children[0].textContent}">       
         <input style="display: none;" type="text" name="fk_planning_${i}" value="${e.children[1].textContent}">        
         <input style="display: none;" type="text" name="id_slot_${i}" value="${e.children[2].textContent}">    

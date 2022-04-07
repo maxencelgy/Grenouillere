@@ -54,6 +54,8 @@ $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 // Company / Incription connection
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
+$routes->match(['get', 'post'], 'entreprise/oublie', 'AuthenticationController::forgotPassWordCompany');
+$routes->match(['get', 'post'], 'entreprise/oublie/nouveau/(:any)', 'AuthenticationController::newPasswordCompany');
 
 ////Search result
 $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
@@ -97,7 +99,10 @@ $routes->get('/admin/maladie/delete/(:num)', 'AdminController::handleDeleteMalad
 $routes->get("stripe/(:num)", "StripeController::stripe/$1");
 $routes->post("payment/(:num)", "ResultsController::payment/$1");
 
-
+// MENTIONS LEGALES
+$routes->get('legal/mentionLegal', 'cguController::showmentionLegal');
+$routes->get('legal/viePrivee', 'cguController::showviePrivee');
+$routes->get('legal/cgu', 'cguController::showcgu');
 
 /*
  * --------------------------------------------------------------------
