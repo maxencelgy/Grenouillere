@@ -291,5 +291,6 @@ class ProfilController extends BaseController
                 $a++;
             }
         }
+        return redirect()->to('/');
     }
 }

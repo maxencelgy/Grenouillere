@@ -56,32 +56,28 @@ class ResultsController extends BaseController
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
-        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Reréserver'];
+        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Réserver'];
         echo view('results/single_result', [
             'single' => $single_company,
             'planning' => $planning,
             'slot' => $slot,
             "infoBtn" => $infoBtn,
             'chidrenList' => $chidrenList,
-
         ]);
     }
 
 
     public function addReservation($id)
     {
-        function debug($tableau)
-        {
-            echo '<pre style="height:500px;overflow-y: scroll;font-size: .7rem;padding: .6rem;font-family: Verdana;background-color: #000;color:#fff;">';
-            print_r($tableau);
-            echo '</pre>';
-        }
         $idUser = session()->get('id');
-        debug($_POST);
-        var_dump(count($_POST));
         $a = 0;
         $b = 0;
         $newArray = [];
+
+        if(empty($_POST["id_child_0"])){
+            return redirect('/');
+        }
+
         // On trie les infos par un modulo de 5 pour faire les requètes
         for ($i = 0; $i < (count($_POST) / 5); $i++) {
             foreach ($_POST['id_child_' . $i] as $child) {
@@ -102,11 +98,11 @@ class ResultsController extends BaseController
                 }
             }
         }
-        debug($newArray);
 
         // On créer la facture
+        $idCompany = $this->slotModel->getIdCompanyBySlot($newArray[0]['id_slot'])[0]['fk_company'];
         $dataFacture = [
-            'fk_company' => 16,
+            'fk_company' => $idCompany,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];
@@ -114,9 +110,7 @@ class ResultsController extends BaseController
         // $lastUsersFacture = $this->factureModel->getLastUsersFacture($idUser);
 
         $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
-        debug($lastUsersFacture);
         $idFacture = $lastUsersFacture[0]['id_facture'];
-        debug($idFacture);
         $reservation = [];
         foreach ($newArray as $data) {
             $reservation['fk_facture'] = $idFacture;

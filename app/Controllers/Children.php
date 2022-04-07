@@ -14,6 +14,7 @@ class Children extends BaseController
         $this->diseaseModel = model('App\Models\diseaseModel');
         $this->ChildAllergyModel = model('App\Models\ChildAllergyModel');
         $this->ChildDiseaseModel = model('App\Models\ChildDiseaseModel');
+        $this->ChildReservationModel = model('App\Models\ReservationModel');
     }
 
 
@@ -34,7 +35,8 @@ class Children extends BaseController
     {
         $data = $this->generateChildrenFromPost($this->request);
         $this->childrenModel->insertChildren($data);
-        return redirect()->to('/create-children');
+        $id_user = session()->get("id");
+        return redirect()->to('profil/'.$id_user);
     }
 
     public function handlePostAllergyChild()
@@ -82,8 +84,6 @@ class Children extends BaseController
 
     public function handleModify(int $id_child)
     {
-        var_dump($id_child);
-
         $children = $this->childrenModel->find($id_child);
         if (is_null($children)) {
             return redirect()->to('/create-children');
@@ -97,13 +97,18 @@ class Children extends BaseController
     {
         $data = $this->generateChildrenFromPost($this->request);
         $this->childrenModel->update($this->request->getPost("id_child"), $data);
-        return redirect()->to('/create-children');
+        return redirect()->to('/');
     }
 
-    public function handleDelete(int $id_child)
+
+    public function handleDelete($id_child)
     {
+        $this->ChildAllergyModel->deleteById($id_child);
+        $this->ChildDiseaseModel->deleteById($id_child);
+        $this->ChildReservationModel->deleteById($id_child);
         $this->childrenModel->deleteById($id_child);
-        return redirect()->to('/create-children');
+        $id_user = session()->get("id");
+        return redirect()->to('profil/'.$id_user);
     }
 
 }

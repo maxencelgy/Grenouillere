@@ -20,7 +20,9 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
+$routes->set404Override(function () {
+    return view('/errors/html/error_404');
+});
 $routes->setAutoRoute(true);
 
 /*
@@ -46,16 +48,18 @@ $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 //ALLERGY
 $routes->post('/allergie/Ajouter', 'allergyController::addAllergy');
 $routes->post('/maladie/Ajouter', 'DiseaseController::addDisease');
-
+// Utilsateur / Incription connection
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
 $routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');
+$routes->match(['get', 'post'], 'particulier/oublie', 'AuthenticationController::forgotPassWord');
+$routes->match(['get', 'post'], 'particulier/oublie/nouveau/(:any)', 'AuthenticationController::newPassword');
 $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 // Company / Incription connection
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
-$routes->match(['get', 'post'], 'entreprise/oublie', 'AuthenticationController::forgotPassWordCompany');
-$routes->match(['get', 'post'], 'entreprise/oublie/nouveau/(:any)', 'AuthenticationController::newPasswordCompany');
+$routes->match(['get', 'post'], 'entreprise/oublie', 'AuthenticationController::forgotPassWord');
+$routes->match(['get', 'post'], 'entreprise/oublie/nouveau/(:any)', 'AuthenticationController::newPassword');
 
 ////Search result
 $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');

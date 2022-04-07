@@ -56,8 +56,6 @@
         </div>
     </div>
 
-
-
     <section id="navigate">
         <div class="navigator">
             <div class="left">

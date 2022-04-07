@@ -53,6 +53,8 @@ class ReservationModel extends Model
             child.first_name_child,
             child.birthday_child,
 
+            allergy.name_allergy,
+
             slot.child_remaining_slot,
             slot.date_slot,
 
@@ -62,6 +64,8 @@ class ReservationModel extends Model
             ')
             ->where('id_reservation=' . $id)
             ->join('child', 'child.id_child = reservation.fk_child')
+            ->join('child_allergy', 'child_allergy.fk_child = child.id_child')
+            ->join('allergy', 'child_allergy.fk_allergy = allergy.id_allergy ')
             ->join('slot', 'slot.id_slot = reservation.fk_slot')
             ->join('company', 'company.id_company = slot.fk_company')
             ->find();
@@ -77,6 +81,8 @@ class ReservationModel extends Model
             child.first_name_child,
             child.birthday_child,
 
+            allergy.name_allergy,
+
             slot.child_remaining_slot,
             slot.date_slot,
 
@@ -86,8 +92,11 @@ class ReservationModel extends Model
             ')
             ->where('id_company=' . $id)
             ->join('child', 'child.id_child = reservation.fk_child')
+            ->join('child_allergy', 'child_allergy.fk_child = child.id_child')
+            ->join('allergy', 'child_allergy.fk_allergy = allergy.id_allergy ')
             ->join('slot', 'slot.id_slot = reservation.fk_slot')
             ->join('company', 'company.id_company = slot.fk_company')
+
             ->find();
     }
     public function getCountFactures($idFacture)
@@ -96,23 +105,30 @@ class ReservationModel extends Model
             ->where('fk_facture', $idFacture)
             ->countAllResults();
     }
-    
-    public function getAllSlotByFacture($idFacture)    {
+
+    public function getAllSlotByFacture($idFacture)
+    {
         return $this->select('first_name_child,date_slot,libelle_planning,fk_company,id_slot')
-        ->join('child', 'reservation.fk_child = child.id_child')
-        ->join('slot', 'reservation.fk_slot = slot.id_slot')
-        ->join('planning', 'slot.fk_planning = planning.id_planning')
-        ->where('fk_facture', $idFacture)
-        ->orderBy("date_slot")
-        ->orderBy("fk_planning")
-        ->findAll();
+            ->join('child', 'reservation.fk_child = child.id_child')
+            ->join('slot', 'reservation.fk_slot = slot.id_slot')
+            ->join('planning', 'slot.fk_planning = planning.id_planning')
+            ->where('fk_facture', $idFacture)
+            ->orderBy("date_slot")
+            ->orderBy("fk_planning")
+            ->findAll();
     }
     public function getAllUserFacture($idUser)
     {
         return $this->select('fk_facture,date_facture')
-        ->join('facture', 'facture.id_facture = reservation.fk_facture')
-        ->where('fk_users', $idUser)
-        ->distinct()
-        ->findAll();
+            ->join('facture', 'facture.id_facture = reservation.fk_facture')
+            ->where('fk_users', $idUser)
+            ->distinct()
+            ->findAll();
+    }
+
+    public function deleteById($id)
+    {
+        return $this->where("fk_child", $id)
+            ->delete();
     }
 }
