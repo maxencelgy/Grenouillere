@@ -148,8 +148,11 @@ $companyFolder = $companyFolder[0];
                 <?php } ?>
             </div>
             <br>
-
-            <a href="/export/all/<?= session()->get("id") ?>" class="">Télécharger le récapitulatif de vos réservations <i class="fa-solid fa-file-arrow-down"></i> </a>
+            <?php if(!empty($reservation["id_reservation"])){ ?>
+                <a href="/export/all/<?= session()->get("id") ?>" class="">Télécharger le récapitulatif de vos réservations <i class="fa-solid fa-file-arrow-down"></i> </a>
+            <?php }else{ ?>
+                <p>Vous n'avez pas encore de réservation</p>
+            <?php } ?>
         </div>
     </section>
 

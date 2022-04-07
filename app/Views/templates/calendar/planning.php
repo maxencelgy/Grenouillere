@@ -72,12 +72,14 @@
                                 <?php
                                 $i = 0;
                                 foreach ($chidrenList as $uniqueChild) { ?>
-                                    <div class='childs' id="<?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?></div>
+                                    <div class='childs' id="<?= $uniqueChild['id_child'] ?>">
+                                        <h3><?= $uniqueChild['first_name_child'] ?></h3>
+                                    </div>
                             <?php
                                 }
                             } ?>
                         </div>
-                        <div id="response2"></div>
+
                     </div>
                     <input class="send" type="submit" value="<?= $infoBtn[1] ?>">
                 </form>

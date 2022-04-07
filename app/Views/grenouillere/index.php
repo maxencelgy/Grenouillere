@@ -10,7 +10,7 @@
 <section id="main">
     <div class="wrap2">
         <!-- <img class="nenuFirst" src="/asset/img/nenuphar.svg" alt=""> -->
-        <div class="leftMain">
+        <div class="leftMain" data-aos="zoom-out-right" data-aos-duration="1500">
             <h1>Grenouillere</h1><br>
             <h2>Recherchez votre garde d'enfant directement <br> grâce au moteur de recherche ci-dessous.</h2>
             <!-- <h2>Trouvez parmi plus de 2000 annonces <br> d’Assitant Martenelle ou de creche <br> qualifiées !</h2> -->
@@ -48,13 +48,13 @@
 
         </div>
 
-        <div class="rightMain">
+        <div class="rightMain" data-aos="fade-down" data-aos-duration="1000">
             <img src="/asset/img/bigFroag.svg" alt="">
         </div>
     </div>
 </section>
 
-<section id="solutions">
+<section id="solutions" data-aos="fade-up" data-aos-duration="3000">
     <div class="wrap">
         <h2>Des solutions de garde adaptée <br> a vos besoins </h2>
         <div class="containe">
@@ -88,23 +88,19 @@
     <div class="wrap3">
         <h2>Un Service de Qualitée</h2>
         <div class="cards">
-
-            <div class="card">
-                <img src="/asset/img/svg/first.svg" alt="">
+            <div class="card" data-aos="zoom-out-right" data-aos-duration="1500">
                 <h2>Qualitée</h2>
                 <p>Des profils complets ,
                     vérifier par nos service et un
                     systeme de paiment sécurisée</p>
             </div>
-            <div class="card">
-                <img src="/asset/img/svg/second.svg" alt="">
+            <div class="card" data-aos="zoom-in" data-aos-duration="1500">
                 <h2>Confiance</h2>
                 <p>Des profils complets ,
                     vérifier par nos service et un
                     systeme de paiment sécurisée</p>
             </div>
-            <div class="card">
-                <img src="/asset/img/svg/third.svg" alt="">
+            <div class="card" data-aos="zoom-out-left" data-aos-duration="1500">
                 <h2>Mise en relation </h2>
                 <p>Des profils complets ,
                     vérifier par nos service et un
@@ -113,12 +109,6 @@
         </div>
     </div>
 </section>
-
-
-
-
-
-
 
 <?= $this->endSection() ?>
 

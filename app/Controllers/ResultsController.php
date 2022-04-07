@@ -22,7 +22,6 @@ class ResultsController extends BaseController
         // findAllSlotByCompanyAndWeek
     }
 
-
     public function index()
     {
         if (!empty($_POST)) {
@@ -51,22 +50,20 @@ class ResultsController extends BaseController
 
     public function singlePage($id)
     {
-        // 
-
         $single_company = $this->resultsModel->getCompanyById($id);
         $planning = $this->planningModel->getAll();
         // On affiche la liste des enfants seulement si l'utilisateur est connecté
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
-        $infoBtn = ['',''];
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
+        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Réserver'];
         echo view('results/single_result', [
             'single' => $single_company,
             'planning' => $planning,
             'slot' => $slot,
+            "infoBtn" => $infoBtn,
             'chidrenList' => $chidrenList,
             'infoBtn' => $infoBtn,
-
         ]);
     }
 
@@ -77,6 +74,11 @@ class ResultsController extends BaseController
         $a = 0;
         $b = 0;
         $newArray = [];
+
+        if(empty($_POST["id_child_0"])){
+            return redirect('/');
+        }
+
         // On trie les infos par un modulo de 5 pour faire les requètes
         for ($i = 0; $i < (count($_POST) / 5); $i++) {
             foreach ($_POST['id_child_' . $i] as $child) {
@@ -97,10 +99,11 @@ class ResultsController extends BaseController
                 }
             }
         }
+
         // On récupère l'id de l'entreprise avec avec celle du slot, comme il n'y a qu'une entreprise
         // on prend que le premier slot.
-        $idCompany = $this->slotModel->getIdCompanyBySlot($newArray[0]['id_slot'])[0]['fk_company'];
         // On créer la facture
+        $idCompany = $this->slotModel->getIdCompanyBySlot($newArray[0]['id_slot'])[0]['fk_company'];
         $dataFacture = [
             'fk_company' => $idCompany,
             'fk_users' => $idUser,
@@ -111,9 +114,8 @@ class ResultsController extends BaseController
         $lastUsersFacture = $this->factureModel->getLastFactureByUser($idUser);
         $idFacture = $lastUsersFacture[0]['id_facture'];
         // Update du nombre de place disponible dans un slot
-
         $reservation = [];
-             // à chaque qu'on appel la fonction on desincremente de 1
+        // à chaque qu'on appel la fonction on desincremente de 1
         // si c'est inférieur à 0 on annule la requette
         foreach ($newArray as $data) {
             // On verifie que l'emplacement dispo est valide avant d'inserer les données

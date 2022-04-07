@@ -40,6 +40,10 @@
   align-items: center;
   transform: translateY(40%);
 }
+#auth__container .auth__conditions h3{
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
 #auth__container .auth__conditions .cards__container {
   display: flex;
   flex-flow: column nowrap;
@@ -54,10 +58,13 @@
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.5rem;
-
   border-radius: 20px;
   -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  transition: .6s;
+}
+#auth__container .auth__conditions .cards__container .card__box:hover {
+  background-color: var(--blue);
 }
 
 .card__item h4 {
