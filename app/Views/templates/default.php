@@ -29,7 +29,7 @@
 
     <?= $this->renderSection('js') ?>
     <script src="/asset/js/main.js"></script>
-    <script src="/asset/js/popup.js"></script>
+    <!-- <script src="/asset/js/popup.js"></script> -->
 
 
 </body>
