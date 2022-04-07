@@ -72,7 +72,9 @@
                                 <?php
                                 $i = 0;
                                 foreach ($chidrenList as $uniqueChild) { ?>
-                                    <div class='childs' id="<?= $uniqueChild['id_child'] ?>"> <?= $uniqueChild['first_name_child'] ?></div>
+                                    <div class='childs' id="<?= $uniqueChild['id_child'] ?>">
+                                        <h3><?= $uniqueChild['first_name_child'] ?></h3>
+                                    </div>
                             <?php
                                 }
                             } ?>
