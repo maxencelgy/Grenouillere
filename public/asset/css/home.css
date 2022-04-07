@@ -99,52 +99,6 @@ input[type="submit"] {
 }
 /* SOLUTIONS */
 
-/* #solutions {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 13rem;
-  position: relative;
-  padding: 10rem 0;
-}
-#solutions .bigPic {
-  position: absolute;
-  height: 600px;
-  width: 100%;
-  border-radius: 0.6rem;
-  top: -42%;
-  border-radius: 0.8rem;
-}
-#solutions .filtre {
-  height: 600px;
-  width: 100%;
-  position: absolute;
-  top: -42%;
-  border-radius: 0.8rem;
-
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-} */
-/* .txtSolutions {
-  position: absolute;
-  color: white;
-  z-index: 33;
-  left: 15%;
-  top: 30%;
-}
-.txtSolutions h2 {
-  font-size: 2.4rem;
-  font-weight: 400;
-  margin-bottom: 4rem;
-}
-.txtSolutions a {
-  font-size: 1.4rem;
-  text-decoration: none;
-  color: white;
-  background-color: var(--green);
-  padding: 0.8rem;
-  border-radius: 0.3rem;
-} */
 
 #solutions {
   padding: 5rem 2rem 10rem 2rem;
@@ -177,7 +131,7 @@ input[type="submit"] {
 }
 
 .containe .pic h3{
-  font-weight: 600;
+  font-weight: 500;
 }
 
 

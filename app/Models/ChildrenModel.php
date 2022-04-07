@@ -42,7 +42,7 @@ class ChildrenModel extends Model
         return $this->insert($data);
     }
 
-    public function deleteById(int $id)
+    public function deleteById($id)
     {
         return $this->delete($id);
     }

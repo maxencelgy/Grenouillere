@@ -115,4 +115,10 @@ class ReservationModel extends Model
         ->distinct()
         ->findAll();
     }
+
+    public function deleteById($id)
+    {
+        return $this->where("fk_child", $id)
+                    ->delete();
+    }
 }

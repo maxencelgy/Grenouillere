@@ -1,4 +1,4 @@
-<img src="asset/img/svg/wave.svg" alt="">
+<img src="/asset/img/svg/wave.svg" alt="">
 <footer>
     <div class="wrap">
         <div class="footerLeft foot">
@@ -14,7 +14,10 @@
             <div class="foot">
                 <h2>Nos Services</h2>
                 <a href="/entreprise/connexion">
-                    <p>Ajouter une annonce</p>
+                    <p>Connexion professionnel</p>
+                </a>
+                <a href="/particulier/connexion">
+                    <p>Connexion particulier</p>
                 </a>
                 <a href="/">
                     <p>Recherche un professionnel</p>
