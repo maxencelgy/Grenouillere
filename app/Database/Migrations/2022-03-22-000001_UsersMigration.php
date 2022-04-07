@@ -57,6 +57,11 @@ class UsersMigration extends Migration
                 'constraint' => 200,
                 'null' => true,
             ],
+            'token_users' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true,
+            ],
             'created_at_users datetime default current_timestamp',
             'updated_at_users datetime default current_timestamp on update current_timestamp',
         ]);

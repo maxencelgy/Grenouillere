@@ -95,8 +95,13 @@ class CompanyMigration extends Migration
             'child_capacity_company' => [
                 'type' => 'INT',
             ],
+            'token_company' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+            ],    
             'description_company' => [
                 'type' => 'TEXT',
+
                 'null' => true,
             ],
             'created_at_company datetime default current_timestamp',

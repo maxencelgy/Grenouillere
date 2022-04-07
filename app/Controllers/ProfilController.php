@@ -242,7 +242,6 @@ class ProfilController extends BaseController
             return redirect()->to('/404');
         }
     }
-
     public function editCompany($id)
     {
 
@@ -264,7 +263,6 @@ class ProfilController extends BaseController
             return redirect()->to('/404');
         }
     }
-
     public function handlePostCalandar()
     {
         $data = [];
