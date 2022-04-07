@@ -8,7 +8,7 @@
 
 <h2>Connexion</h2>
 <form action="" method="post">
-    <input type="text" name="email_users" placeholder="exemple@gmail.com">
+    <input type="email" name="email_users" placeholder="exemple@gmail.com" value='<?php if(!empty($_POST['email_users'])) echo $_POST['email_users'] ?>'>
     <span class="error">
         <?php  if(!empty($validation->getErrors()['email_users']) && !empty($_POST)) echo $validation->getErrors()['email_users'] ?>
     </span>

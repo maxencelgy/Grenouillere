@@ -73,7 +73,7 @@ class AuthenticationController extends BaseController
             'password_users'    => [
                 'rules'  => 'trim|required|min_length[6]',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
+                    'required' => 'Veuillez saisir un mot de passe',
                     'min_length' => 'Veuillez Saisir un mots de passe à plus de 6 caractère',
 
                 ],
@@ -116,7 +116,7 @@ class AuthenticationController extends BaseController
             'password_users'    => [
                 'rules'  => 'trim|required',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
+                    'required' => 'Veuillez saisir un mot de passe',
                 ],
             ],
         ]);
@@ -145,9 +145,9 @@ class AuthenticationController extends BaseController
                 }
             }
         }
-
+        
         echo view('authentication/users/login', [
-            'validation' => $this->validator
+            'validation' => $this->validator,
         ]);
     }
 
@@ -213,31 +213,31 @@ class AuthenticationController extends BaseController
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
                     'required' => 'Veuillez rentrer un nom d\'entreprise',
-                    'min_length' => 'Veuillez Saisir un nom d\'entreprise à plus de 3 caractère',
-                    'max_length' => 'Veuillez Saisir un nom d\'entreprise à moins de 200 caractère',
+                    'min_length' => 'Veuillez saisir un nom d\'entreprise à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un nom d\'entreprise à moins de 200 caractère',
                 ],
             ],
             'last_name_company'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
                     'required' => 'Veuillez rentrer un nom',
-                    'min_length' => 'Veuillez Saisir un nom à plus de 3 caractère',
-                    'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
+                    'min_length' => 'Veuillez saisir un nom à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un nom à moins de 200 caractère',
                 ],
             ],
             'frist_name_company'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
                     'required' => 'Veuillez rentrer un prenom',
-                    'min_length' => 'Veuillez Saisir un nom à plus de 3 caractère',
-                    'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
+                    'min_length' => 'Veuillez saisir un nom à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un nom à moins de 200 caractère',
                 ],
             ],
             'password_company'    => [
                 'rules'  => 'trim|required|min_length[5]',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
-                    'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
+                    'required' => 'Veuillez saisir un mot de passe',
+                    'min_length' => 'Veuillez saisir un mots de passe à plus de 5 caractère',
                 ],
             ],
             'password_company_confirmation'    => [
@@ -256,24 +256,33 @@ class AuthenticationController extends BaseController
                 ],
             ],
             'hourly_rate_company'    => [
-                'rules'  => 'trim|required|numeric',
+                'rules'  => 'trim|required|numeric|greater_than[0]',
                 'errors' => [
                     'required' => 'Vous devez renter un taux horraire',
                     'numeric' => 'Vous devez rentrer un nombre',
+                    'greater_than' => 'Votre taux horaire  doit être positif',
+                ],
+            ],
+            'child_capacity_company'    => [
+                'rules'  => 'trim|required|is_natural_no_zero',
+                'errors' => [
+                    'required' => 'Vous devez renter un taux horraire',
+                    'is_natural' => 'Vous devez rentrer un nombre entier supérieur à 0',
                 ],
             ],
 
             'cgu'    => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Veuillez accepter les CGU',
+                    'required' => 'Veuillez accepter les ',
                 ],
             ],
 
         ]);
         if (!$val) {
             echo view('authentication/company/register', [
-                'validation' => $this->validator
+                'validation' => $this->validator,
+                
             ]);
         } else {
             $this->companyModel->insertCompany($data);
@@ -294,7 +303,7 @@ class AuthenticationController extends BaseController
             'password_company'    => [
                 'rules'  => 'trim|required|min_length[5]',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
+                    'required' => 'Veuillez saisir un mot de passe',
                     'min_length' => 'Veuillez saisir un mots de passe à plus de 5 caractère',
 
                 ],
@@ -358,7 +367,6 @@ class AuthenticationController extends BaseController
             }else if($type==='particulier'){
                 $info = $this->userModel->where(["email_users" => $this->request->getPost('email')])->first();
             }            
-            var_dump($info);
             if (!empty($info)) {
                 // On met en place un nouveau token
                 $token = bin2hex(random_bytes(100));
@@ -378,7 +386,6 @@ class AuthenticationController extends BaseController
                 // partie envoye de mail
                 // On mets le type sur l'URL pour aller sur le bon lien en fonction qu'on soit
                 // une entreprise ou un particulier
-                var_dump('ici ?');
                 $email = \Config\Services::email();
                 $email->setFrom('grenouillehier@gmail.com', 'Oublie de mots de passe');
                 $email->setTo("kioprenard@gmail.com");
