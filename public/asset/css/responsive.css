@@ -67,9 +67,9 @@
         display: none;
     }
     footer .wrap .footerRight {
-        width: 100%;
-        
+        width: 100%;   
     }
+    
 }
 @media screen and (max-width: 560px) {
     .childrens .childrenCardRight .left{
@@ -120,6 +120,12 @@
 }
 
 @media screen and (max-width: 670px) {
+    .childrenSearch {
+       
+        left: 0;
+        top: -100%;
+     
+      }
     #main .wrap2 .leftMain {
         width: 70%;
       }
