@@ -4,58 +4,73 @@
 
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
+<?php $companyData = $companyData[0]; ?>
 
-<section id="edit_container">
-    <div class="edit_title">
-        <h2>Mon Profil</h2>
-    </div>
+<div class="wrap">
+    <section id="edit_container">
+        <div class="edit_info_container">
+            <br>
+            <h2>Mon Profil</h2>
+            <div class="global_info">
+                <h3>Mes informations: </h3>
+                <form method="post" action="<?= site_url(); ?>profil/modify/<?= session()->get("id") ?>">
+                    <div class="input_box">
+                        <label for="nom">Entreprise :</label>
+                        <input type="text" name="nom" id="nom" value="<?= $companyData["name_company"]; ?>"><br>
 
-    <div class="edit_info_container">
-        <div class="global_info">
-            <fieldset>
-                <legend>Mes informations: </legend>
-                <div class="input_box">
-                    <label for="nom">Nom :</label>
-                    <input type="text" name="nom" id="nom">
+                        <label for="email">Email :</label>
+                        <input type="text" name="email" id="email" value="<?= $companyData["email_company"]; ?>"><br>
 
-                    <label for="email">Email :</label>
-                    <input type="text" name="email" id="email">
+                        <label for="postal">Code Postal :</label>
+                        <input type="text" name="postal" id="postal" value=" <?= $companyData["postal_code_company"]; ?> "><br>
+                    </div>
+                    <div class="input_box">
+                        <label for="last_name_company">Direction :</label>
+                        <input type="text" name="last_name_company" id="last_name_company" value="<?= $companyData["last_name_company"]; ?>"><br>
 
-                    <label for="postal">Code Postal :</label>
-                    <input type="text" name="postal" id="postal">
-                </div>
-                <div class="input_box">
-                    <label for="first_name">Prénom :</label>
-                    <input type="text" name="first_name" id="first_name">
+                        <label for="adress">Adresse :</label>
+                        <input type="text" name="adress" id="adress" value="<?= $companyData["adress_company"]; ?>"><br>
 
-                    <label for="adress">Adresse :</label>
-                    <input type="text" name="adress" id="adress">
+                        <label for="siret">SIRET :</label>
+                        <input type="text" name="siret" id="siret" value="<?= $companyData["siret_company"]; ?>"><br>
+                    </div>
+                    <div class="input_box">
+                        <label for="capacity">Capacité d'accueil :</label>
+                        <input type="text" name="capacity" id="capacity" value="<?= $companyData["child_capacity_company"]; ?>"><br>
 
-                    <label for="siret">SIRET :</label>
-                    <input type="text" name="siret" id="siret">
-                </div>
-                <div class="input_box">
-                    <label for="phone">Telephone :</label>
-                    <input type="text" name="phone" id="phone">
+                        <label for="city">Ville :</label>
+                        <input type="text" name="city" id="city" value="<?= $companyData["city_company"]; ?>"><br>
 
-                    <label for="city">Ville :</label>
-                    <input type="text" name="city" id="city">
-                </div>
-                <input type="submit" value="Modifier les informations">
-            </fieldset>
+                        <label for="price">Prix :</label>
+                        <input type="text" name="price" id="price" value="<?= $companyData["hourly_rate_company"]; ?>"><br>
+                    </div>
+
+                    <div class="input_box">
+                        <label for="description">Description :</label>
+                        <textarea type="text" name="description" id="description" cols="60" rows="6"><?= $companyData["description_company"]; ?></textarea>
+                        <input type="submit" value="Modifier les informations">
+                    </div>
+
+
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
+</div>
 
 <?= $this->endSection() ?>
 
-<?= $this->section('content2') ?>
-<?= $this->include('templates/calendar/planning') ?>
-<?= $this->endSection() ?>
+<?php if ($companyData["status_company"] === "valid") { ?>
+    <?= $this->section('content') ?>
+    <?= $this->include('templates/calendar/planning') ?>
+    <?= $this->endSection() ?>
+<?php } else { ?>
+    <?= $this->section('content') ?>
+    <h3>Votre demande d'inscription professionnel est en attente de validation. Une fois validé, vous pourrez avoir accès au planning.</h3>
+    <?= $this->endSection() ?>
+<?php } ?>
+
 
 <?= $this->section('js') ?>
 <script src="/asset/js/calendar.js"></script>
-
 <?= $this->endSection() ?>

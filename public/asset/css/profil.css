@@ -80,7 +80,11 @@
 }
 
 /* CHILDRENS */
-
+.frame {
+  height: 200px;
+  width: 100%;
+  overflow-x: scroll;
+}
 
 .childrens .childrenCard {
  background-color: #E7F7F3;
@@ -91,6 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 .childrens .childrenCard h2 {
   font-size: 1.3rem;
@@ -128,8 +133,40 @@ flex-direction: column;
   -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);  transition: .5s;
 }
+/* Administration */
 
-/* FACTURES */
+#administration {
+  background-color: white;
+  border-radius: .8rem;
+  padding: 1rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  margin-bottom: 2rem;
+}
+#administration h2{
+  margin-bottom: 2rem;
+}
+
+#administration .administration_status .card .box .threeBox:nth-child(3){
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+
+ }
+#administration .administration_status .card .box{
+display: flex;
+align-items: center;
+justify-content: space-between;
+ }
+#administration .administration_status .card .box .threeBox{
+  width: 33.3333%;
+}
+  
+/* FACTURES */*
+#factures {
+  margin-bottom: 2rem;
+}
 
 #factures .wrapProfil i {
   font-size: 1.4rem;
@@ -168,7 +205,7 @@ flex-direction: column;
 /* RESERVATION */
 #reservation {
  
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
 }
 
 #reservation .cards {
@@ -224,6 +261,7 @@ flex-direction: column;
   position: absolute;
   right: 10%;
   font-size: 2.3rem;
+  z-index: 999999;
 }
 
 .filtre {

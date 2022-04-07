@@ -15,8 +15,8 @@ class StripeController extends BaseController
     //  */
     // public function __construct()
     // {
-    //     helper(["url"]);
-    //     $this->resultsModel = model('App\Models\ResultsModel');
+    // helper(["url"]);
+    // $this->resultsModel = model('App\Models\ResultsModel');
     // }
 
     // /**
@@ -64,4 +64,4 @@ class StripeController extends BaseController
 
     //     return redirect('/');
     // }
- }
+}

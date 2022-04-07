@@ -21,15 +21,15 @@
 
     <div class="container">
         <?= $this->renderSection('content') ?>
-        <?= $this->renderSection('content2') ?>
+
     </div>
 
     <?php include("navigation/footer.php"); ?>
 
 
     <?= $this->renderSection('js') ?>
-    <script src="/asset/js/popup.js"></script>
-    <?= $this->renderSection('js') ?>
+    <script src="/asset/js/main.js"></script>
+    <!-- <script src="/asset/js/popup.js"></script> -->
 
 
 </body>

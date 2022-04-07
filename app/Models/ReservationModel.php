@@ -96,4 +96,23 @@ class ReservationModel extends Model
             ->where('fk_facture', $idFacture)
             ->countAllResults();
     }
+    
+    public function getAllSlotByFacture($idFacture)    {
+        return $this->select('first_name_child,date_slot,libelle_planning,fk_company,id_slot')
+        ->join('child', 'reservation.fk_child = child.id_child')
+        ->join('slot', 'reservation.fk_slot = slot.id_slot')
+        ->join('planning', 'slot.fk_planning = planning.id_planning')
+        ->where('fk_facture', $idFacture)
+        ->orderBy("date_slot")
+        ->orderBy("fk_planning")
+        ->findAll();
+    }
+    public function getAllUserFacture($idUser)
+    {
+        return $this->select('fk_facture,date_facture')
+        ->join('facture', 'facture.id_facture = reservation.fk_facture')
+        ->where('fk_users', $idUser)
+        ->distinct()
+        ->findAll();
+    }
 }

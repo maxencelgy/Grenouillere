@@ -22,10 +22,12 @@ class UsersMigration extends Migration
             'last_name_users'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '180',
+                'null' => true,
             ],
             'first_name_users'  => [
                 'type'       => 'VARCHAR',
                 'constraint' => '180',
+                'null' => true,
             ],
             'password_users'  => [
                 'type'       => 'VARCHAR',
@@ -53,6 +55,11 @@ class UsersMigration extends Migration
             'adress_users' => [
                 'type' => 'VARCHAR',
                 'constraint' => 200,
+                'null' => true,
+            ],
+            'token_users' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255,
                 'null' => true,
             ],
             'created_at_users datetime default current_timestamp',

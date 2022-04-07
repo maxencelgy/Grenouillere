@@ -68,7 +68,7 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Payer maintenant <?= $allChildrenPrice * $single->hourly_rate_company ?> €</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Payer maintenant <?= 4 * $allChildrenPrice * $single->hourly_rate_company ?> €</button>
                             </div>
                         </div>
 
