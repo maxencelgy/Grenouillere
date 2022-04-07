@@ -1,15 +1,15 @@
-<header>
+<header id="navbar">
     <div class="wrap">
         <div class="left">
             <?php if (site_url(uri_string()) == site_url() . 'particulier/connexion') { ?>
-                <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
-                <a href="/authentification"><i class="fa-solid fa-arrow-left"></i> Retour au choix</a>
+                <a href="/" class="logoA"><img src="/asset/img/logo.svg" alt=""></a>
+                <a href="/authentification" class="logoA"><i class="fa-solid fa-arrow-left"></i> Retour au choix</a>
             <?php } else if (site_url(uri_string()) == site_url() . 'entreprise/connexion') { ?>
-                <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
-                <a href="/authentification"><i class="fa-solid fa-arrow-left"></i> Retour au choix</a>
+                <a href="/" class="logoA"><img src="/asset/img/logo.svg" alt=""></a>
+                <a href="/authentification" class="logoA"><i class="fa-solid fa-arrow-left"></i> Retour au choix</a>
             <?php } else { ?>
-                <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
-                <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
+                <a href="/" class="logoA"><img src="/asset/img/logo.svg" alt=""></a>
+                <a href="/" class="logoA"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
             <?php } ?>
         </div>
         <?php if (site_url(uri_string()) == site_url() . 'authentification') { ?>
