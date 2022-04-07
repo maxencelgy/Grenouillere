@@ -18,4 +18,6 @@
 
 10 eme etape : php spark db:seed DiseaseSeeder
 
+bonus pour le paiement : composer require stripe/stripe-php
+
 => php spark serve
