@@ -103,7 +103,7 @@ background-color: var(--hover);
   flex-wrap: wrap;
   flex-direction: column;
  }
- .cards {
+ #response .cards {
  display: flex;
  align-items: center;
  justify-content: space-between;
