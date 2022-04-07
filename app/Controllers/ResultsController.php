@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-
 use Stripe;
 
 class ResultsController extends BaseController
@@ -26,28 +25,28 @@ class ResultsController extends BaseController
 
     public function index()
     {
+        if (!empty($_POST)) {
+            if (!empty($_POST['postal_code_company'])) {
+                $postalCode = $_POST['postal_code_company'];
+                $planning = $_POST['horaire'];
+                $enfant = $_POST['enfant'];
+                $day = $_POST['day'];
 
-        if (!empty($_POST['postal_code_company'])){
-            $postalCode = $_POST['postal_code_company'];
-            $planning = $_POST['horaire'];
-            $enfant = $_POST['enfant'];
-            $day = $_POST['day'];
+                $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
+            } else {
+                $planning = $_POST['horaire'];
+                $enfant = $_POST['enfant'];
+                $day = $_POST['day'];
 
-            $createFile = $this->resultsModel->createJsonFile($postalCode, $enfant, $planning, $day);
-
+                $createFile = $this->resultsModel->createJsonFileWithoutPostal($enfant, $planning, $day);
+            }
+            $companyData = $this->resultsModel->getAllCompany();
+            echo view('results/global_result', [
+                'companyData' => $companyData
+            ]);
+        } else {
+            return redirect()->to('/');
         }
-        else {
-            $planning = $_POST['horaire'];
-            $enfant = $_POST['enfant'];
-            $day = $_POST['day'];
-
-            $createFile = $this->resultsModel->createJsonFileWithoutPostal($enfant, $planning, $day);
-        }
-
-        $companyData = $this->resultsModel->getAllCompany();
-        echo view('results/global_result', [
-            'companyData' => $companyData
-        ]);
     }
 
     public function singlePage($id)
@@ -59,14 +58,14 @@ class ResultsController extends BaseController
         // On affiche la liste des enfants seulement si l'utilisateur est connecté
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
-        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Reréserver'];
+
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
         echo view('results/single_result', [
             'single' => $single_company,
             'planning' => $planning,
             'slot' => $slot,
             'chidrenList' => $chidrenList,
-            'infoBtn' => $infoBtn
+
         ]);
     }
 
@@ -161,7 +160,6 @@ class ResultsController extends BaseController
         return redirect('/');
         session()->setFlashdata("message", "Paiement réussi");
     }
-
 
 }
 

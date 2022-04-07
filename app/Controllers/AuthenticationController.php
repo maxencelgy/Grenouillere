@@ -176,6 +176,15 @@ class AuthenticationController extends BaseController
             'siret_company' => $request->getPost("siret_company"),
             'hourly_rate_company' => $request->getPost("hourly_rate_company"),
             'child_capacity_company' => $request->getPost("child_capacity_company"),
+            'token_company' => $request->getPost("token_company"),
+        ];
+        return $data;
+    }
+    function generateNewPassword(IncomingRequest $request): array
+    {
+        $data = [
+            'password_company' => password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
+            'token_company' => null,
         ];
         return $data;
     }
@@ -307,7 +316,7 @@ class AuthenticationController extends BaseController
                         "licence_company" => $company["licence_company"],
                         "kbis_company" => $company["kbis_company"],
                         "hourly_rate_company" => $company["hourly_rate_company"],
-                        "child_capacity_company" => $company["child_capacity_company"],
+                        "child_capacity_company" => $company["child_capacity_company"],                        
                     ]);
                     return redirect()->to('/');
                 }
@@ -318,4 +327,94 @@ class AuthenticationController extends BaseController
             'validation' => $this->validator
         ]);
     }
+
+    public function forgotPassWordCompany()
+    {
+        // si le mail n'est pas envoyer le message est vide
+        $message ='';
+        $input = $this->validate([
+            'email_company'    => [
+                'rules'  => 'trim|required|valid_email',
+                'errors' => [
+                    'required' => 'Veuillez rentrer un email',
+                    'valid_email' => 'Votre mail n\'est pas valide',
+                ],
+            ],
+        ]);
+        if ($input) {
+            $company = $this->companyModel->where(["email_company" => $this->request->getPost('email_company')])->first();
+            if (!empty($company)) {
+                // On met en place un nouveau token
+                $token = bin2hex(random_bytes(100));
+                $data = [
+                    'token_company' => $token,
+                ];
+                $this->companyModel->updateCompany($company['id_company'], $data);
+               // partie envoye de mail
+                $email = \Config\Services::email();
+                $email->setFrom('grenouillehier@gmail.com', 'Oublie de mots de passe');
+                $email->setTo("kioprenard@gmail.com");
+                $email->setSubject('Email test');
+                $email->setMessage('Cliquez ici pour changer votre mot de passe : http://localhost:8080/entreprise/oublie/nouveau/'.$token);
+
+                if (! $email->send())
+                {
+                    $message = 'Erreur';
+                    // var_dump($email->printDebugger());
+                    
+                }else{
+                    $message = 'Un mail vient de vous être envoyé.';
+                }
+            }
+        }    
+        echo view('authentication/company/password', [
+            // 'validation' => $this->validator,
+            'message' => $message
+        ]);
+    }
+
+    public function newPasswordCompany ()
+    {
+        // On recupère l'URL et on prend le dernier elemement, ce qui corespond au token 
+        $url = (site_url(uri_string()));
+        $token = explode("/", $url)[6];
+        try {
+            $idcompany = $this->companyModel->getIdFromToken($token);
+            var_dump($idcompany);
+        }catch (Exception $e){
+            echo'erreur dans le token';
+        }
+        $data = $this->generateNewPassword($this->request);
+        $input = $this->validate([
+            'password_company'    => [
+                'rules'  => 'trim|required|min_length[5]',
+                'errors' => [
+                    'required' => 'Veuillez un mot de passe',
+                    'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
+                ],
+            ],
+            'password_company_confirmation'    => [
+                'rules'  => 'trim|matches[password_company]',
+                'errors' => [
+                    'matches' => 'Mot de passe différents !',
+                ],
+            ],
+        ]);
+        if ($input) {
+            // On change le mot de passe en fonction du token, et on remet le token à vide
+            
+            try {
+                $this->companyModel->updateCompany($idcompany ,$data);
+                echo'Mot de passe modifié !';
+ 
+            }catch (Exception $e){
+                echo'erreur dans la requette';
+            }
+        }else{
+            echo view('authentication/company/newPassword',[
+                'validation' => $this->validator,
+                'url' => $token
+            ]);
+        }
+    }    
 }
