@@ -6,10 +6,7 @@
 <?= $this->section('formAuth') ?>
 
 <h2>Veuillez saisir un mot de passe</h2>
-<?php 
-var_dump($url);
 
-?>
 <form action="" method="post">
 
     <span class="error">

@@ -50,12 +50,14 @@ $routes->post('/maladie/Ajouter', 'DiseaseController::addDisease');
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
 $routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');
+$routes->match(['get', 'post'], 'particulier/oublie', 'AuthenticationController::forgotPassWord');
+$routes->match(['get', 'post'], 'particulier/oublie/nouveau/(:any)', 'AuthenticationController::newPassword');
 $routes->get('deconnexion', 'AuthenticationController::logoutUser');
 // Company / Incription connection
 $routes->match(['get', 'post'], 'entreprise/inscription', 'AuthenticationController::registerCompany');
 $routes->match(['get', 'post'], 'entreprise/connexion', 'AuthenticationController::loginCompany');
-$routes->match(['get', 'post'], 'entreprise/oublie', 'AuthenticationController::forgotPassWordCompany');
-$routes->match(['get', 'post'], 'entreprise/oublie/nouveau/(:any)', 'AuthenticationController::newPasswordCompany');
+$routes->match(['get', 'post'], 'entreprise/oublie', 'AuthenticationController::forgotPassWord');
+$routes->match(['get', 'post'], 'entreprise/oublie/nouveau/(:any)', 'AuthenticationController::newPassword');
 
 ////Search result
 $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');

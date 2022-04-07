@@ -183,7 +183,7 @@ class AuthenticationController extends BaseController
     function generateNewPasswordCompany(IncomingRequest $request): array
     {
         $data = [
-            'password_company' => password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
+            'password_company' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'token_company' => null,
         ];
         return $data;
@@ -191,7 +191,7 @@ class AuthenticationController extends BaseController
     function generateNewPasswordUsers(IncomingRequest $request): array
     {
         $data = [
-            'password_users' => password_hash($this->request->getPost('password_users'), PASSWORD_DEFAULT),
+            'password_users' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'token_users' => null,
         ];
         return $data;
@@ -335,13 +335,16 @@ class AuthenticationController extends BaseController
             'validation' => $this->validator
         ]);
     }
+    // Genere un TOKEN, et envoie un mail à la personne qui a oublié sont mdp  
 
-    public function forgotPassWordCompany()
+    public function forgotPassWord()
     {
         // si le mail n'est pas envoyer le message est vide
+        $url = (site_url(uri_string()));
+        $type = explode("/", $url)[3];  // renvoit 'entrerpise' ou 'particulier'
         $message ='';
         $input = $this->validate([
-            'email_company'    => [
+            'email'    => [
                 'rules'  => 'trim|required|valid_email',
                 'errors' => [
                     'required' => 'Veuillez rentrer un email',
@@ -350,20 +353,37 @@ class AuthenticationController extends BaseController
             ],
         ]);
         if ($input) {
-            $company = $this->companyModel->where(["email_company" => $this->request->getPost('email_company')])->first();
-            if (!empty($company)) {
+            if($type==='entreprise'){
+                $info = $this->companyModel->where(["email_company" => $this->request->getPost('email')])->first();
+            }else if($type==='particulier'){
+                $info = $this->userModel->where(["email_users" => $this->request->getPost('email')])->first();
+            }            
+            var_dump($info);
+            if (!empty($info)) {
                 // On met en place un nouveau token
                 $token = bin2hex(random_bytes(100));
-                $data = [
-                    'token_company' => $token,
-                ];
-                $this->companyModel->updateCompany($company['id_company'], $data);
-               // partie envoye de mail
+                
+                if($type==='entreprise'){
+                    $data = [
+                        'token_company' => $token,
+                    ];
+                    $this->companyModel->updateCompany($info['id_company'], $data);
+                }else if($type==='particulier'){
+                    $data = [
+                        'token_users' => $token,
+                    ];
+                    $this->userModel->updateUser($info['id_users'], $data);
+
+                }
+                // partie envoye de mail
+                // On mets le type sur l'URL pour aller sur le bon lien en fonction qu'on soit
+                // une entreprise ou un particulier
+                var_dump('ici ?');
                 $email = \Config\Services::email();
                 $email->setFrom('grenouillehier@gmail.com', 'Oublie de mots de passe');
                 $email->setTo("kioprenard@gmail.com");
                 $email->setSubject('Email test');
-                $email->setMessage('Cliquez ici pour changer votre mot de passe : http://localhost:8080/entreprise/oublie/nouveau/'.$token);
+                $email->setMessage('Cliquez ici pour changer votre mot de passe : http://localhost:8080/'.$type.'/oublie/nouveau/'.$token);
 
                 if (! $email->send())
                 {
@@ -375,13 +395,13 @@ class AuthenticationController extends BaseController
                 }
             }
         }    
-        echo view('authentication/company/password', [
+        echo view('authentication/commun/password', [
             // 'validation' => $this->validator,
             'message' => $message
         ]);
     }
 
-    public function newPasswordCompany ()
+    public function newPassword ()
     {
         // On recupère l'URL et on prend le dernier elemement, ce qui corespond au token 
         $url = (site_url(uri_string()));
@@ -393,7 +413,7 @@ class AuthenticationController extends BaseController
             if($type==='entreprise'){
                 $id = $this->companyModel->getIdFromToken($token);
             }else if($type==='particulier'){
-                $id = 'todo:';
+                $id = $this->userModel->getIdFromToken($token);
             }
         }catch (Exception $e){
             echo'erreur dans le token';
@@ -404,7 +424,7 @@ class AuthenticationController extends BaseController
         }else if($type==='particulier'){
             $data = $this->generateNewPasswordUsers($this->request);
         }
-
+        // verification que le mdp est valide
         $input = $this->validate([
             'password'    => [
                 'rules'  => 'trim|required|min_length[5]',
@@ -429,7 +449,7 @@ class AuthenticationController extends BaseController
                     $this->companyModel->updateCompany($id ,$data);
                     return redirect()->to('/entreprise/connexion');
                 }else if($type==='particulier'){
-                    $data = $this->generateNewPasswordUsers($this->request);
+                    $this->userModel->updateUser($id ,$data);
                     return redirect()->to('/particulier/connexion');
                 }
             }catch (Exception $e){

@@ -4,17 +4,17 @@
 {# Form login User #}
 
 <?= $this->section('formAuth') ?>
-
+<?php var_dump($_POST) ?>
 <h2>Connexion</h2>
 <form action="" method="post">
     <input type="email" name="email_company" placeholder="exemple@gmail.com" value=' <?php if(!empty($_POST['email_company'])) echo $_POST['email_company'] ?>'>
     <span class="error">
-        <?php  if(!empty($_POST)) echo $validation->getErrors()['email_company'] ?>
+        <?php /* if(!empty($_POST)) echo $validation->getErrors()['email_company'] */ ?>
     </span>
 
     <input type="password" name="password_company" placeholder="Mot de passe">
     <span class="error">
-        <?php  if(!empty($_POST))  echo $validation->getErrors()['password_company'] ?>
+        <?php /* if(!empty($_POST))  echo $validation->getErrors()['password_company'] */ ?>
     </span>
 
     <input type="submit" name="submitted" value="Envoyer">
