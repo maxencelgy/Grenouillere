@@ -21,7 +21,6 @@
 		</div>
 	</div>
 
-	<script src="/asset/js/error.js"></script>
 </body>
 
 </html>
