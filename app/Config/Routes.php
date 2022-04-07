@@ -99,7 +99,10 @@ $routes->get('/admin/maladie/delete/(:num)', 'AdminController::handleDeleteMalad
 $routes->get("stripe/(:num)", "StripeController::stripe/$1");
 $routes->post("payment/(:num)", "ResultsController::payment/$1");
 
-
+// MENTIONS LEGALES
+$routes->get('legal/mentionLegal', 'cguController::showmentionLegal');
+$routes->get('legal/viePrivee', 'cguController::showviePrivee');
+$routes->get('legal/cgu', 'cguController::showcgu');
 
 /*
  * --------------------------------------------------------------------
