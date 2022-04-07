@@ -46,7 +46,7 @@ $routes->post('/children/diseaseChild', 'Children::handlePostDiseaseChild');
 //ALLERGY
 $routes->post('/allergie/Ajouter', 'allergyController::addAllergy');
 $routes->post('/maladie/Ajouter', 'DiseaseController::addDisease');
-
+// Utilsateur / Incription connection
 $routes->get('authentification', 'AuthenticationController::viewAuth');
 $routes->match(['get', 'post'], 'particulier/inscription', 'AuthenticationController::registerUser');
 $routes->match(['get', 'post'], 'particulier/connexion', 'AuthenticationController::loginUser');

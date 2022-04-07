@@ -21,7 +21,7 @@
     <a href="<?= site_url(); ?>entreprise/inscription">
         <p>Vous n'avez pas de compte ? Inscrivez-vous</p>
     </a>
-    <a href="<?= site_url(); ?>entreprise/oublieMotDePasse">
+    <a href="<?= site_url(); ?>entreprise/oublie">
         <p>Mot de passe oublié ?</p>
     </a>
 </form>

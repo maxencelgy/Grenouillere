@@ -180,11 +180,19 @@ class AuthenticationController extends BaseController
         ];
         return $data;
     }
-    function generateNewPassword(IncomingRequest $request): array
+    function generateNewPasswordCompany(IncomingRequest $request): array
     {
         $data = [
             'password_company' => password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
             'token_company' => null,
+        ];
+        return $data;
+    }
+    function generateNewPasswordUsers(IncomingRequest $request): array
+    {
+        $data = [
+            'password_users' => password_hash($this->request->getPost('password_users'), PASSWORD_DEFAULT),
+            'token_users' => null,
         ];
         return $data;
     }
@@ -377,13 +385,20 @@ class AuthenticationController extends BaseController
     {
         // On recupère l'URL et on prend le dernier elemement, ce qui corespond au token 
         $url = (site_url(uri_string()));
-        $token = explode("/", $url)[6];
+        $token = explode("/", $url)[6]; // renvoit le token présent dans l'URL
+        // Sert à savoir si on fait les actions pour un compte entreprise ou utilsateur
+        $type = explode("/", $url)[3]; // renvoit 'entrerpise' ou 'particulier'
+
         try {
-            $idcompany = $this->companyModel->getIdFromToken($token);
-            var_dump($idcompany);
+            if($type==='entreprise'){
+                $id = $this->companyModel->getIdFromToken($token);
+            }else if($type==='particulier'){
+                $id = 'todo:';
+            }
         }catch (Exception $e){
             echo'erreur dans le token';
         }
+        // generation du mdp 
         $data = $this->generateNewPassword($this->request);
         $input = $this->validate([
             'password_company'    => [
@@ -401,12 +416,10 @@ class AuthenticationController extends BaseController
             ],
         ]);
         if ($input) {
-            // On change le mot de passe en fonction du token, et on remet le token à vide
-            
+            // On change le mot de passe en fonction du token, et on remet le token à vide            
             try {
-                $this->companyModel->updateCompany($idcompany ,$data);
+                $this->companyModel->updateCompany($id ,$data);
                 echo'Mot de passe modifié !';
- 
             }catch (Exception $e){
                 echo'erreur dans la requette';
             }
