@@ -105,8 +105,10 @@ class ResultsController extends BaseController
         debug($newArray);
 
         // On créer la facture
+        $idCompany = $this->slotModel->getIdCompanyBySlot($newArray[0]['id_slot'])[0]['fk_company'];
+
         $dataFacture = [
-            'fk_company' => 16,
+            'fk_company' => $idCompany,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];

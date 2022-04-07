@@ -1,4 +1,4 @@
-<img src="asset/img/svg/wave.svg" alt="">
+<img src="/asset/img/svg/wave.svg" alt="">
 <footer>
     <div class="wrap">
         <div class="footerLeft foot">
