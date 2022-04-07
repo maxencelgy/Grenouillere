@@ -73,7 +73,7 @@ class AuthenticationController extends BaseController
             'password_users'    => [
                 'rules'  => 'trim|required|min_length[6]',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
+                    'required' => 'Veuillez saisir un mot de passe',
                     'min_length' => 'Veuillez Saisir un mots de passe à plus de 6 caractère',
 
                 ],
@@ -116,7 +116,7 @@ class AuthenticationController extends BaseController
             'password_users'    => [
                 'rules'  => 'trim|required',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
+                    'required' => 'Veuillez saisir un mot de passe',
                 ],
             ],
         ]);
@@ -145,9 +145,9 @@ class AuthenticationController extends BaseController
                 }
             }
         }
-
+        
         echo view('authentication/users/login', [
-            'validation' => $this->validator
+            'validation' => $this->validator,
         ]);
     }
 
@@ -180,11 +180,19 @@ class AuthenticationController extends BaseController
         ];
         return $data;
     }
-    function generateNewPassword(IncomingRequest $request): array
+    function generateNewPasswordCompany(IncomingRequest $request): array
     {
         $data = [
-            'password_company' => password_hash($this->request->getPost('password_company'), PASSWORD_DEFAULT),
+            'password_company' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'token_company' => null,
+        ];
+        return $data;
+    }
+    function generateNewPasswordUsers(IncomingRequest $request): array
+    {
+        $data = [
+            'password_users' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'token_users' => null,
         ];
         return $data;
     }
@@ -205,31 +213,31 @@ class AuthenticationController extends BaseController
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
                     'required' => 'Veuillez rentrer un nom d\'entreprise',
-                    'min_length' => 'Veuillez Saisir un nom d\'entreprise à plus de 3 caractère',
-                    'max_length' => 'Veuillez Saisir un nom d\'entreprise à moins de 200 caractère',
+                    'min_length' => 'Veuillez saisir un nom d\'entreprise à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un nom d\'entreprise à moins de 200 caractère',
                 ],
             ],
             'last_name_company'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
                     'required' => 'Veuillez rentrer un nom',
-                    'min_length' => 'Veuillez Saisir un nom à plus de 3 caractère',
-                    'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
+                    'min_length' => 'Veuillez saisir un nom à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un nom à moins de 200 caractère',
                 ],
             ],
             'frist_name_company'    => [
                 'rules'  => 'trim|required|min_length[3]|max_length[200]',
                 'errors' => [
                     'required' => 'Veuillez rentrer un prenom',
-                    'min_length' => 'Veuillez Saisir un nom à plus de 3 caractère',
-                    'max_length' => 'Veuillez Saisir un nom à moins de 200 caractère',
+                    'min_length' => 'Veuillez saisir un nom à plus de 3 caractère',
+                    'max_length' => 'Veuillez saisir un nom à moins de 200 caractère',
                 ],
             ],
             'password_company'    => [
                 'rules'  => 'trim|required|min_length[5]',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
-                    'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
+                    'required' => 'Veuillez saisir un mot de passe',
+                    'min_length' => 'Veuillez saisir un mots de passe à plus de 5 caractère',
                 ],
             ],
             'password_company_confirmation'    => [
@@ -248,24 +256,33 @@ class AuthenticationController extends BaseController
                 ],
             ],
             'hourly_rate_company'    => [
-                'rules'  => 'trim|required|numeric',
+                'rules'  => 'trim|required|numeric|greater_than[0]',
                 'errors' => [
                     'required' => 'Vous devez renter un taux horraire',
                     'numeric' => 'Vous devez rentrer un nombre',
+                    'greater_than' => 'Votre taux horaire  doit être positif',
+                ],
+            ],
+            'child_capacity_company'    => [
+                'rules'  => 'trim|required|is_natural_no_zero',
+                'errors' => [
+                    'required' => 'Vous devez renter un taux horraire',
+                    'is_natural' => 'Vous devez rentrer un nombre entier supérieur à 0',
                 ],
             ],
 
             'cgu'    => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Veuillez accepter les CGU',
+                    'required' => 'Veuillez accepter les ',
                 ],
             ],
 
         ]);
         if (!$val) {
             echo view('authentication/company/register', [
-                'validation' => $this->validator
+                'validation' => $this->validator,
+                
             ]);
         } else {
             $this->companyModel->insertCompany($data);
@@ -286,7 +303,7 @@ class AuthenticationController extends BaseController
             'password_company'    => [
                 'rules'  => 'trim|required|min_length[5]',
                 'errors' => [
-                    'required' => 'Veuillez un mot de passe',
+                    'required' => 'Veuillez saisir un mot de passe',
                     'min_length' => 'Veuillez saisir un mots de passe à plus de 5 caractère',
 
                 ],
@@ -327,13 +344,16 @@ class AuthenticationController extends BaseController
             'validation' => $this->validator
         ]);
     }
+    // Genere un TOKEN, et envoie un mail à la personne qui a oublié sont mdp  
 
-    public function forgotPassWordCompany()
+    public function forgotPassWord()
     {
         // si le mail n'est pas envoyer le message est vide
+        $url = (site_url(uri_string()));
+        $type = explode("/", $url)[3];  // renvoit 'entrerpise' ou 'particulier'
         $message ='';
         $input = $this->validate([
-            'email_company'    => [
+            'email'    => [
                 'rules'  => 'trim|required|valid_email',
                 'errors' => [
                     'required' => 'Veuillez rentrer un email',
@@ -342,20 +362,35 @@ class AuthenticationController extends BaseController
             ],
         ]);
         if ($input) {
-            $company = $this->companyModel->where(["email_company" => $this->request->getPost('email_company')])->first();
-            if (!empty($company)) {
+            if($type==='entreprise'){
+                $info = $this->companyModel->where(["email_company" => $this->request->getPost('email')])->first();
+            }else if($type==='particulier'){
+                $info = $this->userModel->where(["email_users" => $this->request->getPost('email')])->first();
+            }            
+            if (!empty($info)) {
                 // On met en place un nouveau token
                 $token = bin2hex(random_bytes(100));
-                $data = [
-                    'token_company' => $token,
-                ];
-                $this->companyModel->updateCompany($company['id_company'], $data);
-               // partie envoye de mail
+                
+                if($type==='entreprise'){
+                    $data = [
+                        'token_company' => $token,
+                    ];
+                    $this->companyModel->updateCompany($info['id_company'], $data);
+                }else if($type==='particulier'){
+                    $data = [
+                        'token_users' => $token,
+                    ];
+                    $this->userModel->updateUser($info['id_users'], $data);
+
+                }
+                // partie envoye de mail
+                // On mets le type sur l'URL pour aller sur le bon lien en fonction qu'on soit
+                // une entreprise ou un particulier
                 $email = \Config\Services::email();
                 $email->setFrom('grenouillehier@gmail.com', 'Oublie de mots de passe');
                 $email->setTo("kioprenard@gmail.com");
                 $email->setSubject('Email test');
-                $email->setMessage('Cliquez ici pour changer votre mot de passe : http://localhost:8080/entreprise/oublie/nouveau/'.$token);
+                $email->setMessage('Cliquez ici pour changer votre mot de passe : http://localhost:8080/'.$type.'/oublie/nouveau/'.$token);
 
                 if (! $email->send())
                 {
@@ -367,51 +402,68 @@ class AuthenticationController extends BaseController
                 }
             }
         }    
-        echo view('authentication/company/password', [
+        echo view('authentication/commun/password', [
             // 'validation' => $this->validator,
             'message' => $message
         ]);
     }
 
-    public function newPasswordCompany ()
+    public function newPassword ()
     {
         // On recupère l'URL et on prend le dernier elemement, ce qui corespond au token 
         $url = (site_url(uri_string()));
-        $token = explode("/", $url)[6];
+        $token = explode("/", $url)[6]; // renvoit le token présent dans l'URL
+        // Sert à savoir si on fait les actions pour un compte entreprise ou utilsateur
+        $type = explode("/", $url)[3]; // renvoit 'entrerpise' ou 'particulier'
+
         try {
-            $idcompany = $this->companyModel->getIdFromToken($token);
-            var_dump($idcompany);
+            if($type==='entreprise'){
+                $id = $this->companyModel->getIdFromToken($token);
+            }else if($type==='particulier'){
+                $id = $this->userModel->getIdFromToken($token);
+            }
         }catch (Exception $e){
             echo'erreur dans le token';
         }
-        $data = $this->generateNewPassword($this->request);
+        // generation du mdp 
+        if($type==='entreprise'){
+            $data = $this->generateNewPasswordCompany($this->request);
+        }else if($type==='particulier'){
+            $data = $this->generateNewPasswordUsers($this->request);
+        }
+        // verification que le mdp est valide
         $input = $this->validate([
-            'password_company'    => [
+            'password'    => [
                 'rules'  => 'trim|required|min_length[5]',
                 'errors' => [
                     'required' => 'Veuillez un mot de passe',
                     'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
                 ],
             ],
-            'password_company_confirmation'    => [
-                'rules'  => 'trim|matches[password_company]',
+            'password_confirmation'    => [
+                'rules'  => 'trim|matches[password]',
                 'errors' => [
                     'matches' => 'Mot de passe différents !',
                 ],
             ],
         ]);
         if ($input) {
-            // On change le mot de passe en fonction du token, et on remet le token à vide
-            
+            // On change le mot de passe en fonction du token, et on remet le token à vide            
             try {
-                $this->companyModel->updateCompany($idcompany ,$data);
-                echo'Mot de passe modifié !';
- 
+                // On charge le mdp en fonction des tables sur lesquel on envoit les datas (mdp + reset du token)
+                // ensuite on redirige sur la page de connexion
+                if($type==='entreprise'){
+                    $this->companyModel->updateCompany($id ,$data);
+                    return redirect()->to('/entreprise/connexion');
+                }else if($type==='particulier'){
+                    $this->userModel->updateUser($id ,$data);
+                    return redirect()->to('/particulier/connexion');
+                }
             }catch (Exception $e){
                 echo'erreur dans la requette';
             }
         }else{
-            echo view('authentication/company/newPassword',[
+            echo view('authentication/commun/newPassword',[
                 'validation' => $this->validator,
                 'url' => $token
             ]);

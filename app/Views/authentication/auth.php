@@ -12,7 +12,7 @@
             <div class="cards__container">
                 <a href="<?= site_url(); ?>particulier/connexion" class="card__box">
                     <div class="card__logo">
-                        <img src="/asset/img/happy.svg" alt="logo particulier">
+                        <img src="/asset/img/auth/particulier.svg" alt="logo particulier">
                     </div>
                     <div class="card__item">
                         <h4>Particulier</h4>
@@ -25,7 +25,7 @@
 
                 <a href="<?= site_url(); ?>entreprise/connexion" class="card__box">
                     <div class="card__logo">
-                        <img src="/asset/img/happy.svg" alt="logo professionnel">
+                        <img src="/asset/img/auth/pro.svg" alt="logo professionnel">
                     </div>
                     <div class="card__item">
                         <h4>Professionnel</h4>

@@ -9,7 +9,7 @@ class userModel extends Model
 {
     protected $table = 'users';
     protected $allowedFields = ['email_users' , 'last_name_users', 'first_name_users', 'password_users',
-        'phone_users', 'role_users', 'city_users', 'postal_users', 'adress_users'];
+        'phone_users', 'role_users', 'city_users', 'postal_users', 'adress_users','token_users'];
     protected $primaryKey       = 'id_users';    
 
     public function insertUser(array $data)
@@ -27,6 +27,12 @@ class userModel extends Model
     public function updateUser($id, $data)
     {
         return $this->update($id, $data);
+    }
+
+    public function getIdFromToken($token){
+        return $this->select('id_users')
+        ->where('token_users=', $token)
+        ->find()[0]["id_users"];
     }
 
 }
