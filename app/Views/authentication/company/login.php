@@ -18,6 +18,7 @@
         <?php  if(!empty($validation->getErrors()['password_company']) && !empty($_POST) )  echo $validation->getErrors()['password_company']  ?>
     </span>
 
+    <span class="error"> <?= $connectionError ?> </span>
     <input type="submit" name="submitted" value="Envoyer">
     <a href="<?= site_url(); ?>entreprise/inscription">
         <p>Vous n'avez pas de compte ? Inscrivez-vous</p>

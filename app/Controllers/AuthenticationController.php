@@ -105,6 +105,7 @@ class AuthenticationController extends BaseController
 
     public function loginUser()
     {
+        $connectionError = '';
         $input = $this->validate([
             'email_users'    => [
                 'rules'  => 'trim|required|valid_email',
@@ -142,12 +143,15 @@ class AuthenticationController extends BaseController
 
                     ]);
                     return redirect()->to('/');
+                }else{
+                    $connectionError = 'Mauvais identifiants';
                 }
             }
         }
         
         echo view('authentication/users/login', [
             'validation' => $this->validator,
+            'connectionError' => $connectionError,
         ]);
     }
 
@@ -292,6 +296,7 @@ class AuthenticationController extends BaseController
 
     public function loginCompany()
     {
+        $connectionError = '';
         $input = $this->validate([
             'email_company'    => [
                 'rules'  => 'trim|required|valid_email',
@@ -336,12 +341,15 @@ class AuthenticationController extends BaseController
                         "child_capacity_company" => $company["child_capacity_company"],                        
                     ]);
                     return redirect()->to('/');
+                }else{
+                    $connectionError = 'Mauvais identifiants';
                 }
             }
         }
 
         echo view('authentication/company/login', [
-            'validation' => $this->validator
+            'validation' => $this->validator,
+            'connectionError' => $connectionError,
         ]);
     }
     // Genere un TOKEN, et envoie un mail à la personne qui a oublié sont mdp  
@@ -388,10 +396,10 @@ class AuthenticationController extends BaseController
                 // une entreprise ou un particulier
                 $email = \Config\Services::email();
                 $email->setFrom('grenouillehier@gmail.com', 'Oublie de mots de passe');
+                $email->setTo($this->request->getPost('email'));
                 $email->setTo("kioprenard@gmail.com");
                 $email->setSubject('Email test');
                 $email->setMessage('Cliquez ici pour changer votre mot de passe : http://localhost:8080/'.$type.'/oublie/nouveau/'.$token);
-
                 if (! $email->send())
                 {
                     $message = 'Erreur';
@@ -418,9 +426,18 @@ class AuthenticationController extends BaseController
 
         try {
             if($type==='entreprise'){
+                if($this->companyModel->getIdFromToken($token)){
+                    $id = $this->companyModel->getIdFromToken($token)[0]["id_company"];
+                }else{
+                    return redirect()->to('/erreur/htlm/error_404');
+                }
                 $id = $this->companyModel->getIdFromToken($token);
             }else if($type==='particulier'){
-                $id = $this->userModel->getIdFromToken($token);
+                if($this->userModel->getIdFromToken($token)){
+                    $id = $this->userModel->getIdFromToken($token)[0]["id_users"];
+                }else{
+                    return redirect()->to('/erreur/htlm/error_404');
+                }
             }
         }catch (Exception $e){
             echo'erreur dans le token';

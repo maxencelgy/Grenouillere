@@ -30,7 +30,6 @@
         <?php if (!empty($validation->getErrors()['password_users']) && !empty($_POST) ) echo $validation->getErrors()['password_users'] ?>
     </span>
 
-    <label for="password_users_confirmation">Confirmer votre mot de passe *</label>
     <input type="password" name="password_users_confirmation"  placeholder="Confirmer votre mot de passe">
     <span class="error">
         <?php if (!empty($validation->getErrors()['password_users_confirmation']) && !empty($_POST)) echo $validation->getErrors()['password_users_confirmation'] ?>
