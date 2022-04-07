@@ -77,7 +77,7 @@
                                 }
                             } ?>
                         </div>
-                        <div id="response2"></div>
+
                     </div>
                     <input class="send" type="submit" value="<?= $infoBtn[1] ?>">
                 </form>

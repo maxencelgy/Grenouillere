@@ -9,7 +9,7 @@ use CodeIgniter\Database\Query;
 class SlotModel extends Model
 {
     protected $table = 'slot';
-    protected $allowedFields = ['fk_planning','fk_company','date_slot'];
+    protected $allowedFields = ['fk_planning', 'fk_company', 'date_slot'];
     protected $primaryKey = 'id_slot';
 
     public function verifyOccurence($planning, $fkCompany, $dateSlot)
@@ -35,6 +35,13 @@ class SlotModel extends Model
             ->where('fk_company =', $fkCompany)
             ->where('date_slot >=', $date)
             ->findAll();
+    }
+
+    public function getIdCompanyBySlot($idSlot)
+    {
+        return $this->select('fk_company')
+            ->where('id_slot =', $idSlot)
+            ->find();
     }
 
 }

@@ -100,8 +100,8 @@
                                 <a href="" id="<?= $children["id_child"]; ?>" class="btn_disease_popup btnChild">Déclarer une maladie</a>
                             </div>
                             <div class="right">
-                                <a href="/children/modify/<?php echo $children["id_child"]; ?>" class="btnChild edit">Modifier</a>
-                                <a href="/children/delete/<?php echo $children["id_child"]; ?>" class="btnChild del">Supprimer</a>
+                                <a href="/children/modify/<?= $children["id_child"]; ?>" class="btnChild edit">Modifier</a>
+                                <a href="/children/delete/<?= $children["id_child"]; ?>" class="btnChild del">Supprimer</a>
                             </div>
                         </div>
                     </div>
@@ -113,14 +113,14 @@
 
     <section id="reservation">
         <div class="cards">
-            <h2>Mes reservation</h2>
+            <h2>Mes reservations</h2>
             <div class="frame">
                 <?php foreach ($reservations as $reservation) { ?>
                     <div class="card">
                         <div class="top">
                             <div class="left">
-                                <h2>reservation n°<?= $reservation['id_reservation'] ?></h2>
-                                <h3><?= $reservation['last_name_company'] ?> <?= $reservation['frist_name_company'] ?></h3>
+                                    <h2>reservation n°<?= $reservation['id_reservation'] ?></h2>
+                                    <h3><?= $reservation['last_name_company'].' '.$reservation['frist_name_company'] ?></h3>
                             </div>
                             <div class="right">
                                 <h3><?= $reservation['date_slot'] ?></h3>
@@ -134,7 +134,11 @@
             </div>
             <br>
 
-            <a href="/export/all/<?= session()->get("id") ?>" class="">Télécharger le récapitulatif de vos réservations <i class="fa-solid fa-file-arrow-down"></i> </a>
+            <?php if(!empty($reservation["id_reservation"])){ ?>
+                <a href="/export/all/<?= session()->get("id") ?>" class="">Télécharger le récapitulatif de vos réservations <i class="fa-solid fa-file-arrow-down"></i> </a>
+            <?php }else{ ?>
+                <p>Vous n'avez pas encore de réservation</p>
+            <?php } ?>
         </div>
     </section>
 

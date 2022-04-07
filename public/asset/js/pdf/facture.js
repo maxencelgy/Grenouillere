@@ -1,6 +1,6 @@
 const options = {
   margin: 0.5,
-  filename: "invoice.pdf",
+  filename: "facture.pdf",
   image: {
     type: "jpeg",
     quality: 500,
