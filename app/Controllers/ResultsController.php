@@ -22,7 +22,6 @@ class ResultsController extends BaseController
         // findAllSlotByCompanyAndWeek
     }
 
-
     public function index()
     {
         if (!empty($_POST)) {
@@ -56,12 +55,13 @@ class ResultsController extends BaseController
         // On affiche la liste des enfants seulement si l'utilisateur est connecté
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
-
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
+        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Reréserver'];
         echo view('results/single_result', [
             'single' => $single_company,
             'planning' => $planning,
             'slot' => $slot,
+            "infoBtn" => $infoBtn,
             'chidrenList' => $chidrenList,
 
         ]);

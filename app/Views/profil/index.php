@@ -152,7 +152,7 @@
                         foreach ($idFacturePdf as $facture) { ?>
                             <div class='childrenCard'>
                                 <p>Facture n° <?= $facture['fk_facture'] ?> du <?= date('d/m/Y', strtotime($facture['date_facture'])) ?> </p>
-                                <p>Prix TTC : <?= $prixfacture[$facture['fk_facture']] ?> €</p>
+
                                 <a href="/profil/facture/<?= $facture['fk_facture'] ?> ">PDF</a>
                             </div>
                         <?php
