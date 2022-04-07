@@ -43,4 +43,5 @@ class SlotModel extends Model
             ->where('id_slot =', $idSlot)
             ->find();
     }
+
 }
