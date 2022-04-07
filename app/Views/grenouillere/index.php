@@ -90,20 +90,23 @@
         <div class="cards">
 
             <div class="card">
+                <img src="/asset/img/svg/first.svg" alt="">
                 <h2>Qualitée</h2>
                 <p>Des profils complets ,
                     vérifier par nos service et un
                     systeme de paiment sécurisée</p>
             </div>
             <div class="card">
+                <img src="/asset/img/svg/second.svg" alt="">
                 <h2>Confiance</h2>
-                <p>>Des profils complets ,
+                <p>Des profils complets ,
                     vérifier par nos service et un
                     systeme de paiment sécurisée</p>
             </div>
             <div class="card">
+                <img src="/asset/img/svg/third.svg" alt="">
                 <h2>Mise en relation </h2>
-                <p>>Des profils complets ,
+                <p>Des profils complets ,
                     vérifier par nos service et un
                     systeme de paiment sécurisée</p>
             </div>

@@ -36,10 +36,7 @@ if (!empty($companyData)){
 
                     <div class="description_box">
                         <p>Description :
-                            Bonjour Madame, Monsieur
-                            je suis assistante maternelle agréée depuis 2010, je suis agréé pour 3 enfant, en ce moment je recherche pour le mois de septembre à partir du 31/ 07 /2022j’aurai. 1 palace
-                            palace libre, en ce moment j’ai 3 enfant à garder, il ne sera pas tout seul avec le votre.
-                            De 0 à 18 mois Jusqu’à trois ans.
+                            <?= $company->description_company; ?>
                         </p>
                     </div>
                 </div>
