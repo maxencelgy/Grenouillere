@@ -100,8 +100,8 @@
                                 <a href="" id="<?= $children["id_child"]; ?>" class="btn_disease_popup btnChild">Déclarer une maladie</a>
                             </div>
                             <div class="right">
-                                <a href="/children/modify/<?php echo $children["id_child"]; ?>" class="btnChild edit">Modifier</a>
-                                <a href="/children/delete/<?php echo $children["id_child"]; ?>" class="btnChild del">Supprimer</a>
+                                <a href="/children/modify/<?= $children["id_child"]; ?>" class="btnChild edit">Modifier</a>
+                                <a href="/children/delete/<?= $children["id_child"]; ?>" class="btnChild del">Supprimer</a>
                             </div>
                         </div>
                     </div>
