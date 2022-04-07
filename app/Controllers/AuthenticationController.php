@@ -399,17 +399,22 @@ class AuthenticationController extends BaseController
             echo'erreur dans le token';
         }
         // generation du mdp 
-        $data = $this->generateNewPassword($this->request);
+        if($type==='entreprise'){
+            $data = $this->generateNewPasswordCompany($this->request);
+        }else if($type==='particulier'){
+            $data = $this->generateNewPasswordUsers($this->request);
+        }
+
         $input = $this->validate([
-            'password_company'    => [
+            'password'    => [
                 'rules'  => 'trim|required|min_length[5]',
                 'errors' => [
                     'required' => 'Veuillez un mot de passe',
                     'min_length' => 'Veuillez Saisir un mots de passe à plus de 5 caractère',
                 ],
             ],
-            'password_company_confirmation'    => [
-                'rules'  => 'trim|matches[password_company]',
+            'password_confirmation'    => [
+                'rules'  => 'trim|matches[password]',
                 'errors' => [
                     'matches' => 'Mot de passe différents !',
                 ],
@@ -418,13 +423,20 @@ class AuthenticationController extends BaseController
         if ($input) {
             // On change le mot de passe en fonction du token, et on remet le token à vide            
             try {
-                $this->companyModel->updateCompany($id ,$data);
-                echo'Mot de passe modifié !';
+                // On charge le mdp en fonction des tables sur lesquel on envoit les datas (mdp + reset du token)
+                // ensuite on redirige sur la page de connexion
+                if($type==='entreprise'){
+                    $this->companyModel->updateCompany($id ,$data);
+                    return redirect()->to('/entreprise/connexion');
+                }else if($type==='particulier'){
+                    $data = $this->generateNewPasswordUsers($this->request);
+                    return redirect()->to('/particulier/connexion');
+                }
             }catch (Exception $e){
                 echo'erreur dans la requette';
             }
         }else{
-            echo view('authentication/company/newPassword',[
+            echo view('authentication/commun/newPassword',[
                 'validation' => $this->validator,
                 'url' => $token
             ]);
