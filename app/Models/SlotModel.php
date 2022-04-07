@@ -37,4 +37,10 @@ class SlotModel extends Model
             ->findAll();
     }
 
+    public function getIdCompanyBySlot($idSlot)
+    {
+        return $this->select('fk_company')
+            ->where('id_slot =', $idSlot)
+            ->find();
+    }
 }

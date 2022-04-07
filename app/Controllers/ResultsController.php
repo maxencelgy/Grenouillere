@@ -56,14 +56,13 @@ class ResultsController extends BaseController
         $chidrenList = (!empty(session()->get('id'))) ? $this->childModel->getAllIdNameChildByIdParent(session()->get('id')) : [];
         // correspond à la redirection du bouton "envoyer le planning"
         $slot = $this->slotModel->findAllSlotByCompanyAndWeek($id, date('Y-m-d'));
-        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Reréserver'];
+        $infoBtn = ['/reservation/ajouter/enfant/' . $id, 'Réserver'];
         echo view('results/single_result', [
             'single' => $single_company,
             'planning' => $planning,
             'slot' => $slot,
             "infoBtn" => $infoBtn,
             'chidrenList' => $chidrenList,
-
         ]);
     }
 
@@ -96,8 +95,9 @@ class ResultsController extends BaseController
         }
 
         // On créer la facture
+        $idCompany = $this->slotModel->getIdCompanyBySlot($newArray[0]['id_slot'])[0]['fk_company'];
         $dataFacture = [
-            'fk_company' => 16,
+            'fk_company' => $idCompany,
             'fk_users' => $idUser,
             'date_facture' => date('Y-m-d')
         ];
