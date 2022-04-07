@@ -7,9 +7,20 @@
             <?php } else if (site_url(uri_string()) == site_url() . 'entreprise/connexion') { ?>
                 <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
                 <a href="/authentification"><i class="fa-solid fa-arrow-left"></i> Retour au choix</a>
+            <?php } else if (site_url(uri_string()) == site_url() . 'profil/editCompany/'.session()->get("id")){ ?>
+                <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
+                <a href="/profil/compagny/<?= session()->get("id") ?>"><i class="fa-solid fa-arrow-left"></i> Retour au profil</a>
+            <?php }else if (site_url(uri_string()) == site_url() . 'profil/editUser/'.session()->get("id")){ ?>
+                <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
+                <a href="/profil/<?= session()->get("id") ?>"><i class="fa-solid fa-arrow-left"></i> Retour au profil</a>
+            <?php }else if (site_url(uri_string()) == site_url() . 'create-children'){ ?>
+                <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
+                <a href="/profil/<?= session()->get("id") ?>"><i class="fa-solid fa-arrow-left"></i> Retour au profil</a>
             <?php } else { ?>
                 <a href="/"><img src="/asset/img/logo.svg" alt=""></a>
-                <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
+                <?php if(site_url(uri_string()) != site_url() . ''){ ?>
+                    <a href="/"><i class="fa-solid fa-arrow-left"></i> Retour à l'accueil</a>
+                <?php } ?>
             <?php } ?>
         </div>
         <?php if (site_url(uri_string()) == site_url() . 'authentification') { ?>

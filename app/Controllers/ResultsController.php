@@ -73,6 +73,11 @@ class ResultsController extends BaseController
         $a = 0;
         $b = 0;
         $newArray = [];
+
+        if(empty($_POST["id_child_0"])){
+            return redirect('/');
+        }
+
         // On trie les infos par un modulo de 5 pour faire les requètes
         for ($i = 0; $i < (count($_POST) / 5); $i++) {
             foreach ($_POST['id_child_' . $i] as $child) {
