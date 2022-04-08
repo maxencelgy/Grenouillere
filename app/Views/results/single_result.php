@@ -10,6 +10,7 @@
 
 <?= $this->section('content') ?>
 <div class="wrap">
+    <div style="display: none" id="idCompany_js"><?= $single->id_company ?></div>
     <br> <br> <br> <br>
     <h2><?= $single->name_company ?></h2>
     <br>
