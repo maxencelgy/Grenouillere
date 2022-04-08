@@ -12,13 +12,13 @@
     ?>
 
     <div class="calendar">
-        <h2 class="semaine">Semaine du <?= date('d-m-Y', strtotime("+ 0 days")) ?></h2>
+        <h2 class="semaine">Semaine du <?= date('d/m/Y', strtotime("+ 0 days")) ?></h2>
         <div class="calendarBody">
             <?php
             for ($i = 0; $i < 7; $i++) { ?>
                 <div class="days">
                     <div class="day">
-                        <h2 class='date'><?= date('Y-m-d', strtotime("+ $i days")) ?></h2>
+                        <h2 class='date'><?= date('d/m/Y', strtotime("+ $i days")) ?></h2>
                         <div class="slots">
                             <!-- <div class="slot">-</div>
                             <div class="slot">-</div>
