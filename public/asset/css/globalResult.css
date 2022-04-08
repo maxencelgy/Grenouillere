@@ -22,8 +22,16 @@
     padding: 0 0 1.5rem 0;
     border-bottom: 1px solid var(--green);
     gap: 2rem;
-  
     align-items: center;
+    cursor: pointer;
+    transition: .8s;
+    padding: 0 0 1rem 1rem;
+}
+
+#global_results_container .result_list_box .box_item:hover{
+ background-color: var(--green);
+
+ border-radius: .8rem;
 }
 
 #global_results_container .result_list_box .box_item .image {

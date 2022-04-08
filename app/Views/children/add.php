@@ -26,9 +26,7 @@
                     <div class="input_box">
                         <label for="">Date d'anniversaire de l'enfant</label>
                         <input type="date" name="birthday_child">
-                        <br>
-                        <label for="">Commentaire sur l'enfant</label>
-                        <input type="text" name="need_child">
+
                     </div>
                     <input type="submit" value="Valider">
 
