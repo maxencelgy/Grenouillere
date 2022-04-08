@@ -88,7 +88,7 @@ class CompanyModel extends Model
     public function getIdFromToken($token){
         return $this->select('id_company')
         ->where('token_company=', $token)
-        ->find()[0]["id_company"];
+        ->find();
     }
 
 

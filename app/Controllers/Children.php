@@ -43,14 +43,14 @@ class Children extends BaseController
     {
         $data = $this->generateChildAllergyFromPost($this->request);
         $this->ChildAllergyModel->insertAllergyChild($data);
-        return redirect()->to('/profil');
+        return redirect()->to('/profil/'.session()->get("id"));
     }
 
     public function handlePostDiseaseChild()
     {
         $data = $this->generateChildDiseaseFromPost($this->request);
         $this->ChildDiseaseModel->insertDiseaseChild($data);
-        return redirect()->to('/profil');
+        return redirect()->to('/profil/'.session()->get("id"));
     }
 
     private function generateChildrenFromPost($request)

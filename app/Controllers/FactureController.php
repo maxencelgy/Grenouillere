@@ -38,8 +38,7 @@ class FactureController extends BaseController
         if(empty($reservations)){
             // Si la facture est vide on redirige vers la page d'accueil
             return redirect('/');
-        }
-        
+        }        
         // tous les slots on le même id company, on prend le 0 pour être sur d'avoir un résultat
         // avec l'id company on récup toutes les infos dont on a besoin
         $company = $this->companyModel->getInfoCompany($reservations[0]['fk_company'])[0];

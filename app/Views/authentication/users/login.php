@@ -17,7 +17,7 @@
     <span class="error">
         <?php if (!empty($validation->getErrors()['password_users']) && !empty($_POST)) echo $validation->getErrors()['password_users'] ?>
     </span>
-
+    <span class="error"> <?= $connectionError ?> </span>
     <input type="submit" name="submitted" value="Envoyer" id="submit">
 
     <p>Vous n'avez pas de compte ? <br> <a href="<?= site_url(); ?>particulier/inscription"> Inscrivez-vous </a></p><br>

@@ -69,7 +69,7 @@
     <span class="error">
         <?php if (!empty($validation->getErrors()['cgu']) && !empty($_POST)) echo $validation->getErrors()['cgu'] ?>
     </span>
-    <label for="cgu">CGU</label>
+    <label for="cgu">J’accepte la <a href="/legal/cgu">politique de confidentialité</a> du site</label>
     <input name="cgu" type="checkbox">
 
 
