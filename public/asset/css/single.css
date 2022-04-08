@@ -90,3 +90,11 @@ img {
     width : 100%;
     height : 200px;
 }
+
+#navigate .left .left p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+#navigate .left .left a {
+    color: blue;
+}

@@ -8,20 +8,20 @@
 
 <h2>Connexion</h2>
 <form action="" method="post">
-    <input type="email" name="email_users" placeholder="exemple@gmail.com" value='<?php if(!empty($_POST['email_users'])) echo $_POST['email_users'] ?>'>
+    <input type="email" name="email_users" placeholder="exemple@gmail.com" value='<?php if (!empty($_POST['email_users'])) echo $_POST['email_users'] ?>'>
     <span class="error">
-        <?php  if(!empty($validation->getErrors()['email_users']) && !empty($_POST)) echo $validation->getErrors()['email_users'] ?>
+        <?php if (!empty($validation->getErrors()['email_users']) && !empty($_POST)) echo $validation->getErrors()['email_users'] ?>
     </span>
 
     <input type="password" name="password_users" placeholder="Mot de passe">
     <span class="error">
-        <?php  if(!empty($validation->getErrors()['password_users'])&& !empty($_POST)) echo $validation->getErrors()['password_users'] ?>
+        <?php if (!empty($validation->getErrors()['password_users']) && !empty($_POST)) echo $validation->getErrors()['password_users'] ?>
     </span>
     <span class="error"> <?= $connectionError ?> </span>
     <input type="submit" name="submitted" value="Envoyer" id="submit">
-    <a href="<?= site_url(); ?>particulier/inscription">
-        <p>Vous n'avez pas de compte ? <br> Inscrivez-vous</p>
-    </a>
+
+    <p>Vous n'avez pas de compte ? <br> <a href="<?= site_url(); ?>particulier/inscription"> Inscrivez-vous </a></p><br>
+
 
     <a href="<?= site_url(); ?>particulier/oublie">
         <p>Mot de passe oublié ?</p>
