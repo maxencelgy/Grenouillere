@@ -63,7 +63,7 @@ class ResultsController extends BaseController
             'slot' => $slot,
             "infoBtn" => $infoBtn,
             'chidrenList' => $chidrenList,
-            'infoBtn' => $infoBtn,
+//            'infoBtn' => $infoBtn,
         ]);
     }
 
