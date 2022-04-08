@@ -63,7 +63,7 @@ class ResultsController extends BaseController
             'slot' => $slot,
             "infoBtn" => $infoBtn,
             'chidrenList' => $chidrenList,
-            'infoBtn' => $infoBtn,
+//            'infoBtn' => $infoBtn,
         ]);
     }
 
@@ -75,7 +75,7 @@ class ResultsController extends BaseController
         $b = 0;
         $newArray = [];
 
-        if(empty($_POST["id_child_0"])){
+        if (empty($_POST["id_child_0"])) {
             return redirect('/');
         }
 
@@ -121,21 +121,20 @@ class ResultsController extends BaseController
             // On verifie que l'emplacement dispo est valide avant d'inserer les données
             $idSlot = intval($data['id_slot']);
             // var_dump($idSlot); 
-            $newChildRemainingValue = $this->slotModel ->getChildRemainingBySlot($idSlot)[0]['child_remaining_slot'];
-            $newChildRemainingValue = intval($newChildRemainingValue)-1;
-            $dataSlot['child_remaining_slot'] = $newChildRemainingValue; 
+            $newChildRemainingValue = $this->slotModel->getChildRemainingBySlot($idSlot)[0]['child_remaining_slot'];
+            $newChildRemainingValue = intval($newChildRemainingValue) - 1;
+            $dataSlot['child_remaining_slot'] = $newChildRemainingValue;
             $this->slotModel->putNewChildRemaining($idSlot, $dataSlot);
-            if($newChildRemainingValue>0){
+            if ($newChildRemainingValue > 0) {
                 // Si OK on agit sur la bdd 
                 $reservation['fk_facture'] = $idFacture;
                 $reservation['fk_child'] = $data['id_child'];
                 $reservation['fk_slot'] = $data['id_slot'];
                 $this->reservationModel->insertReservation($reservation);
-            }else{
+            } else {
                 // cas où il n'y a pas d'emplacement disponible;
                 return redirect('/');
             }
-            
         }
         $single_company = $this->resultsModel->getCompanyById($id);
         $allChildrenPrice = count($newArray);
@@ -153,7 +152,7 @@ class ResultsController extends BaseController
 
         Stripe\Stripe::setApiKey(STRIPE_SECRET);
         $stripe = Stripe\Charge::create([
-            "amount" =>  $getCountFactures * ($single_company->hourly_rate_company * 100),
+            "amount" =>  $getCountFactures * ($single_company->hourly_rate_company * 4 *  100),
             "currency" => "eur",
             "source" => $_REQUEST["stripeToken"],
             "description" => "Paiement à $single_company->name_company"
@@ -162,6 +161,4 @@ class ResultsController extends BaseController
         session()->setFlashdata("message", "Paiement réussi");
         return redirect('/');
     }
-
 }
-

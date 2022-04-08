@@ -22,7 +22,7 @@ class AdminController extends BaseController
 
             ]);
         } else {
-            return redirect()->to('/404');
+            return redirect()->to('/erreur/htlm/error_404');
         }
     }
 

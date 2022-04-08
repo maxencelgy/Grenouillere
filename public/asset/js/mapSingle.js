@@ -1,6 +1,7 @@
 //SINGLE RESULTS
 
 var mapSingle = L.map('mapSingle');
+let id_company = document.querySelector("#idCompany_js");
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -20,7 +21,14 @@ fetch('../../api_company.json',{
     .then((response) => response.json())
     .then(res =>
         res.forEach(e => {
-            L.marker([e.x_company, e.y_company],{icon:professionalIcon}).addTo(mapSingle)
-            mapSingle += mapSingle.setView([e.x_company, e.y_company], 16);
+            let tab_asso ={
+                "id_company":e.id_company,
+                "tab": e
+            }
+
+            if (tab_asso.id_company === id_company.innerHTML){
+                L.marker([tab_asso.tab.x_company, tab_asso.tab.y_company],{icon:professionalIcon}).addTo(mapSingle)
+                mapSingle += mapSingle.setView([tab_asso.tab.x_company, tab_asso.tab.y_company], 16);
+            }
         })
     )
