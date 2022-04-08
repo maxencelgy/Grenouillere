@@ -18,9 +18,7 @@ fetch('../../api_company.json',{
     }
 })
     .then((response) => response.json())
-    .then(res =>
-        res.forEach(e => {
-            L.marker([e.x_company, e.y_company],{icon:professionalIcon}).addTo(mapSingle)
-            mapSingle += mapSingle.setView([e.x_company, e.y_company], 16);
-        })
-    )
+    .then(res => {
+            L.marker([res[0].x_company, res[0].y_company],{icon:professionalIcon}).addTo(mapSingle)
+            mapSingle += mapSingle.setView([res[0].x_company, res[0].y_company], 16);
+    })
