@@ -71,7 +71,6 @@
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Payer maintenant <?= 4 * $allChildrenPrice * $single->hourly_rate_company ?> €</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>

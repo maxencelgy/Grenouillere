@@ -11,6 +11,7 @@
   margin-bottom: 2rem;
   -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
   box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+
 }
 .semaine{
  text-align: center;
@@ -20,18 +21,13 @@
   display: flex;
   align-items: top;
   justify-content: space-between;
+  width: 100%;
+overflow-x: scroll;
 }
-/* .calendar .calendarBody .calendarLeft {
- width: 19%;
-}
-.calendar .calendarBody .calendarRight {
-  width: 79%;
-  display: flex;
-  align-items: top;
-  justify-content: space-between;
-} */
+
 .days {
-  width: 13.33333%;
+  width: 98%;
+  margin-right: 1rem;
   text-align: center;
 }
 .day h2 {

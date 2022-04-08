@@ -2,6 +2,7 @@
   margin: 0 auto;
   max-width: 700px;
   width: 100%;
+  
 }
 #connexion .wrap h2 {
   font-size: 3rem;
@@ -17,6 +18,8 @@
   align-items: center;
   flex-direction: column;
   border-radius: 0.8rem;
+  -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
+  box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
 }
 #connexion .wrap form input {
   -webkit-box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.17);
@@ -35,11 +38,18 @@
 }
 #connexion .wrap form input[type="submit"] {
   width: 30%;
+  transition: .5s;
+  cursor: pointer;
 }
 #connexion .wrap form p {
   text-align: center;
 }
 
+#connexion .wrap form a{
+  margin-bottom: 1rem;
+  color: blue;
+ 
+}
 #radio {
   display: inline-block;
   background-color: inherit;
@@ -53,11 +63,18 @@
   justify-content: space-between;
 }
 
-/* #connexion .error {
-  display: none;
+#connexion .error {
   color: red;
-} */
+}
 
+#connexion input[type="submit"]:hover {
+  background-color: var(--hover);
+  color: white;
+}
+#connexion input[type="checkbox"] {
+  -webkit-box-shadow: 1px 2px 3px 1px rgb(0 0 0 / 0%);
+  box-shadow: 1px 2px 3px 1px rgb(0 0 0 / 0%)!important;
+}
 .childrenSearch {
   display: none;
   position: absolute;

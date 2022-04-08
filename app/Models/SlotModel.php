@@ -9,7 +9,7 @@ use CodeIgniter\Database\Query;
 class SlotModel extends Model
 {
     protected $table = 'slot';
-    protected $allowedFields = ['fk_planning', 'fk_company', 'date_slot'];
+    protected $allowedFields = ['fk_planning', 'fk_company', 'date_slot','child_remaining_slot'];
     protected $primaryKey = 'id_slot';
 
     public function verifyOccurence($planning, $fkCompany, $dateSlot)
@@ -44,4 +44,16 @@ class SlotModel extends Model
             ->find();
     }
 
+    public function getChildRemainingBySlot($idSlot)
+    {
+        return $this->select('child_remaining_slot')
+        ->where('id_slot =', $idSlot)
+        ->find();
+    }
+    public function putNewChildRemaining($id_slot, $data)
+    {
+        $this->update($id_slot, $data);
+    }
+
 }
+

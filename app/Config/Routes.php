@@ -66,7 +66,7 @@ $routes->match(['get', 'post'], 'resultats', 'ResultsController::index');
 $routes->get('profil/creche/(:num)', 'ResultsController::singlePage/$1');
 
 // Facture
-$routes->get('profil/facture/(:num)', 'FactureController::factureUser/$1');
+$routes->get('profil/facture/(:num)',    'FactureController::factureUser/$1');
 $routes->get('profil/facture', 'FactureController::factureUser');
 
 // Adding resvation

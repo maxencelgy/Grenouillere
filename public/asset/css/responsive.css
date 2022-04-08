@@ -67,11 +67,48 @@
         display: none;
     }
     footer .wrap .footerRight {
-        width: 100%;
-        
+        width: 100%;   
     }
+    
+}
+@media screen and (max-width: 850px) {
+#global_results_container {
+    display: flex;
+    flex-direction: column;
+}
+    
+.result_map_box {
+    width: 100%;
+}
+#global_results_container .result_list_box {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2rem;
+   
+}
+.result_map_box #map {
+
+    height: 400px;
+ 
+}
 }
 @media screen and (max-width: 560px) {
+    #global_results_container .result_list_box .box_item {
+        display: flex;
+        flex-direction: column;
+    }
+    #global_results_container .result_list_box .box_item .image {
+        width: 80%;
+    }
+    
+
+#global_results_container .result_list_box .box_item .item_info_container {
+    width: 100%;
+    text-align: center;
+}
+#global_results_container .result_list_box .box_item .item_info_container .item_card_info .separator {
+    display: none;
+}
     .childrens .childrenCardRight .left{
         display: flex;
         flex-direction: column;
@@ -120,6 +157,19 @@
 }
 
 @media screen and (max-width: 670px) {
+    .global_info form{
+        display: flex;
+        flex-direction: column;
+    }
+    .input_box {
+        width: 100%;
+    }
+    .childrenSearch {
+       
+        left: 0;
+        top: -100%;
+     
+      }
     #main .wrap2 .leftMain {
         width: 70%;
       }

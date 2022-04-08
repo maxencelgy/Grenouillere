@@ -32,7 +32,7 @@ class userModel extends Model
     public function getIdFromToken($token){
         return $this->select('id_users')
         ->where('token_users=', $token)
-        ->find()[0]["id_users"];
+        ->find();
     }
 
 }

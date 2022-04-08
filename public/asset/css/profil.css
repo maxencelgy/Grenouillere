@@ -308,9 +308,13 @@ select {
   border-radius: .8rem;
   color: white;
   font-size: 1.3rem;
+  cursor: pointer;
+  transition: .6s;
   margin-bottom: 2rem;
 }
-
+.popup input[type="submit"]:hover{
+  background-color: var(--hover);
+}
 
 .wrapProfil .actu{
   display: flex;

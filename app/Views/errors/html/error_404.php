@@ -17,11 +17,10 @@
 		<h1>Erreur 404 Page Introuvable</h1>
 		<p> Désolé ! Impossible de trouver la page que vous cherchiez. </p>
 		<div class="bottom">
-			<a href="">Retour à l'accueil</a>
+			<a href=" <?= base_url(); ?> ">Retour à l'accueil</a>
 		</div>
 	</div>
 
-	<script src="/asset/js/error.js"></script>
 </body>
 
 </html>
